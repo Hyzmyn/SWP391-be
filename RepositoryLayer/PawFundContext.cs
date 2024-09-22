@@ -28,30 +28,53 @@ namespace RepositoryLayer
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    => optionsBuilder.UseSqlServer(GetConnectionString());
+        {
+            optionsBuilder.UseMySql(GetConnectionString(),
+                new MySqlServerVersion(new Version(8, 0, 2))); // Replace with your MySQL version
+        }
 
-        private string? GetConnectionString()
+        private string GetConnectionString()
         {
             IConfiguration configuration = new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("appsettings.json", true, true).Build();
-            return configuration["ConnectionStrings:DefaultConnection"];
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", true, true)
+                .Build();
+
+            return configuration.GetConnectionString("DefaultConnection"); // Replace this with your actual connection string key
         }
 
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
-            //modelBuilder.Entity<>(entity =>
-            //{
-            //    entity.HasKey(e => e.Id);
+            modelBuilder.Entity<AdoptionRegistrationForm>()
+                .Property(a => a.IncomeAmount)
+                .HasColumnType("decimal(16, 4)");
 
-            //    entity.HasOne(e => e.User)
-            //          .WithMany()
-            //          .HasForeignKey(e => e.UserId)
-            //          .OnDelete(DeleteBehavior.Restrict);
-            //});
+            modelBuilder.Entity<Donation>()
+                .Property(a => a.Amount)
+                .HasColumnType("decimal(16, 4)");
+
+            modelBuilder.Entity<User>()
+                .Property(a => a.TotalDonation)
+                .HasColumnType("decimal(16, 4)");
+
+            modelBuilder.Entity<Shelter>()
+                .Property(a => a.DonationAmount)
+                .HasColumnType("decimal(16, 4)");
+
+            modelBuilder.Entity<Certification>()
+                .HasOne(c => c.Pet)
+                .WithOne(p => p.Certification)
+                .HasForeignKey<Certification>(c => c.PetId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+
+            modelBuilder.Entity<Certification>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.Certifications)
+                .HasForeignKey(c => c.UserId)
+                .OnDelete(DeleteBehavior.NoAction);
         }
-        }
+    }
 }
