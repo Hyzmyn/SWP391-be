@@ -1,0 +1,18 @@
+﻿using Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ModelLayer.Entities
+{
+    public class Notification : BaseEntity
+    {
+        public string Message { get; set; }
+        public string Date { get; set; }
+        public string UserId { get; set; }
+
+        public virtual User? User { get; set; }
+    }
+}
