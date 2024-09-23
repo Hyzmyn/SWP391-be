@@ -9,6 +9,6 @@ namespace ServiceLayer.Interfaces
         Task<Pet> GetPetById(int id);
         IEnumerable<Pet> GetPets();
         Task UpdatePetAsync(Pet pet);
-        Task UpdatePetStatus(Pet pet);
+        Task UpdatePetStatus(Pet pet,int newStatus);
     }
 }
