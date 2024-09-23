@@ -9,7 +9,7 @@ namespace ModelLayer.Entities
 {
     public class Donation : BaseEntity
     {
-        public string Amount { get; set; }
+        public decimal Amount { get; set; }
         public DateTime Date { get; set; }
         public int DonorId { get; set; }
         public int ShelterId { get; set; }
