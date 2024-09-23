@@ -66,8 +66,7 @@
               "RelativeToolTip": "RepositoryLayer\\Repositories\\IGenericRepository.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAqwB8AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T16:59:26.443Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-23T16:59:26.443Z"
             },
             {
               "$type": "Document",
@@ -79,8 +78,7 @@
               "RelativeToolTip": "RepositoryLayer\\UnitOfWork\\UnitOfWork.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAA5wA4AAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T16:57:22.008Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-23T16:57:22.008Z"
             },
             {
               "$type": "Document",
@@ -105,8 +103,7 @@
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\UserController.cs",
               "ViewState": "AgIAAHgAAAAAAAAAAAAmwIIAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T16:46:03.242Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-23T16:46:03.242Z"
             },
             {
               "$type": "Document",
@@ -118,8 +115,7 @@
               "RelativeToolTip": "RepositoryLayer\\Repositories\\GenericRepository.cs",
               "ViewState": "AgIAADMAAAAAAAAAAAAmwEoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T04:30:31.169Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-23T04:30:31.169Z"
             },
             {
               "$type": "Document",
@@ -131,8 +127,7 @@
               "RelativeToolTip": "ServiceLayer\\Services\\UserService.cs",
               "ViewState": "AgIAADEAAAAAAAAAAAAtwEEAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T02:53:03.411Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-23T02:53:03.411Z"
             },
             {
               "$type": "Document",
@@ -144,8 +139,7 @@
               "RelativeToolTip": "ServiceLayer\\Interfaces\\IAuthServices.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwA0AAABrAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-22T14:55:36.637Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-22T14:55:36.637Z"
             },
             {
               "$type": "Document",
@@ -157,8 +151,7 @@
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\AuthController.cs",
               "ViewState": "AgIAABwAAAAAAAAAAIA6wD4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-22T14:52:53.757Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-22T14:52:53.757Z"
             },
             {
               "$type": "Document",
@@ -170,8 +163,7 @@
               "RelativeToolTip": "ServiceLayer\\ServiceLayer.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-09-22T14:57:06.562Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-22T14:57:06.562Z"
             }
           ]
         }
