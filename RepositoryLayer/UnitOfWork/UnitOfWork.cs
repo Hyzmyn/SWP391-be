@@ -10,9 +10,9 @@ namespace RepositoryLayer.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly HomeHuntContext _context;
+        private readonly PawFundContext _context;
 
-        public UnitOfWork(HomeHuntContext context)
+        public UnitOfWork(PawFundContext context)
         {
             _context = context;
         }
