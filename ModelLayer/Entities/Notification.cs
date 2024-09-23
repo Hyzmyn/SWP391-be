@@ -11,7 +11,7 @@ namespace ModelLayer.Entities
     {
         public string Message { get; set; }
         public string Date { get; set; }
-        public string UserId { get; set; }
+        public int UserId { get; set; }
 
         public virtual User? User { get; set; }
     }
