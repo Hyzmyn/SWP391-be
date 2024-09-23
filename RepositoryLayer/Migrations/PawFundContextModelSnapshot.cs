@@ -17,10 +17,10 @@ namespace RepositoryLayer.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.27")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
             modelBuilder.Entity("Domain.Entities.Role", b =>
                 {
@@ -28,18 +28,104 @@ namespace RepositoryLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<bool?>("Status")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.AdoptionRegistrationForm", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AdopterId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Condition")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("IdentityProof")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<decimal>("IncomeAmount")
+                        .HasColumnType("decimal(16, 4)");
+
+                    b.Property<int>("PetId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ShelterStaffId")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("Status")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PetId")
+                        .IsUnique();
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AdoptionRegistrationForm");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.Certification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Desciption")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("PetId")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("Status")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PetId")
+                        .IsUnique();
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Certification");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Donation", b =>
@@ -48,14 +134,13 @@ namespace RepositoryLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Amount")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(16, 4)");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("DonorId")
                         .HasColumnType("int");
@@ -64,9 +149,17 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<bool?>("Status")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ShelterId")
+                        .IsUnique();
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Donations");
                 });
@@ -77,35 +170,61 @@ namespace RepositoryLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Location")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<int>("ShelterId")
                         .HasColumnType("int");
 
                     b.Property<bool?>("Status")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("VolunteerId")
+                    b.HasKey("Id");
+
+                    b.HasIndex("ShelterId");
+
+                    b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.EventUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("Status")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Events");
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("EventUser");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.FeedBack", b =>
@@ -114,23 +233,27 @@ namespace RepositoryLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("PostId")
+                        .HasColumnType("int");
 
                     b.Property<bool?>("Status")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PostId");
 
                     b.ToTable("FeedBacks");
                 });
@@ -141,24 +264,25 @@ namespace RepositoryLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Date")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Message")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<bool?>("Status")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Notifications");
                 });
@@ -169,65 +293,104 @@ namespace RepositoryLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AdoptionStatus")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
                     b.Property<string>("Breed")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Color")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Gender")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Image")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<int>("ShelterID")
                         .HasColumnType("int");
 
                     b.Property<string>("Size")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<bool?>("Status")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("StatusId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("StatusId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Type")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<int>("UserID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ShelterID");
+
                     b.HasIndex("UserID");
 
                     b.ToTable("Pets");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.Post", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("PetId")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("Status")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Post");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Shelter", b =>
@@ -236,35 +399,43 @@ namespace RepositoryLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Capaxity")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("DonationAmount")
+                        .HasColumnType("decimal(16, 4)");
+
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Location")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("ShelterStaffId")
+                        .HasColumnType("int");
 
                     b.Property<bool?>("Status")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Website")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ShelterStaffId");
 
                     b.ToTable("Shelters");
                 });
@@ -275,13 +446,13 @@ namespace RepositoryLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ShelterId")
                         .HasColumnType("int");
 
                     b.Property<bool?>("Status")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -297,28 +468,33 @@ namespace RepositoryLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Date")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Disease")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("PetId")
+                        .HasColumnType("int");
 
                     b.Property<bool?>("Status")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Vaccine")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PetId");
 
                     b.ToTable("Statuses");
                 });
@@ -329,80 +505,313 @@ namespace RepositoryLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Donation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Location")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Phone")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
-                    b.Property<string>("PictureUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("RoleId")
+                    b.Property<int?>("ShelterStaffId")
                         .HasColumnType("int");
 
                     b.Property<bool?>("Status")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Token")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
+
+                    b.Property<decimal>("TotalDonation")
+                        .HasColumnType("decimal(16, 4)");
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ShelterStaffId");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.UserRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("Status")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("Users");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserRole");
                 });
 
-            modelBuilder.Entity("ModelLayer.Entities.Pet", b =>
+            modelBuilder.Entity("ModelLayer.Entities.AdoptionRegistrationForm", b =>
+                {
+                    b.HasOne("ModelLayer.Entities.Pet", "Pet")
+                        .WithOne("AdoptionRegistrationForm")
+                        .HasForeignKey("ModelLayer.Entities.AdoptionRegistrationForm", "PetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ModelLayer.Entities.User", "User")
+                        .WithMany("AdoptionRegistrationForms")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Pet");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.Certification", b =>
+                {
+                    b.HasOne("ModelLayer.Entities.Pet", "Pet")
+                        .WithOne("Certification")
+                        .HasForeignKey("ModelLayer.Entities.Certification", "PetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ModelLayer.Entities.User", "User")
+                        .WithMany("Certifications")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Pet");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.Donation", b =>
+                {
+                    b.HasOne("ModelLayer.Entities.Shelter", "Shelter")
+                        .WithOne("Donation")
+                        .HasForeignKey("ModelLayer.Entities.Donation", "ShelterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ModelLayer.Entities.User", "User")
+                        .WithMany("Donations")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Shelter");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.Event", b =>
+                {
+                    b.HasOne("ModelLayer.Entities.Shelter", "Shelter")
+                        .WithMany("Events")
+                        .HasForeignKey("ShelterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Shelter");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.EventUser", b =>
+                {
+                    b.HasOne("ModelLayer.Entities.Event", "Event")
+                        .WithMany("EventUsers")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ModelLayer.Entities.User", "User")
+                        .WithOne("EventUser")
+                        .HasForeignKey("ModelLayer.Entities.EventUser", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.FeedBack", b =>
+                {
+                    b.HasOne("ModelLayer.Entities.Post", "Post")
+                        .WithMany("FeedBacks")
+                        .HasForeignKey("PostId");
+
+                    b.Navigation("Post");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.Notification", b =>
                 {
                     b.HasOne("ModelLayer.Entities.User", "User")
-                        .WithMany("Pets")
-                        .HasForeignKey("UserID")
+                        .WithMany("Notifications")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("ModelLayer.Entities.Pet", b =>
+                {
+                    b.HasOne("ModelLayer.Entities.Shelter", "Shelter")
+                        .WithMany("Pets")
+                        .HasForeignKey("ShelterID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ModelLayer.Entities.User", "User")
+                        .WithMany("Pets")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Shelter");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.Post", b =>
+                {
+                    b.HasOne("ModelLayer.Entities.User", "User")
+                        .WithMany("Posts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.Shelter", b =>
+                {
+                    b.HasOne("ModelLayer.Entities.ShelterStaff", "ShelterStaff")
+                        .WithMany("Shelters")
+                        .HasForeignKey("ShelterStaffId");
+
+                    b.Navigation("ShelterStaff");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.Status", b =>
+                {
+                    b.HasOne("ModelLayer.Entities.Pet", "Pet")
+                        .WithMany("Statuses")
+                        .HasForeignKey("PetId");
+
+                    b.Navigation("Pet");
+                });
+
             modelBuilder.Entity("ModelLayer.Entities.User", b =>
                 {
-                    b.HasOne("Domain.Entities.Role", "Role")
+                    b.HasOne("ModelLayer.Entities.ShelterStaff", "ShelterStaff")
                         .WithMany("Users")
-                        .HasForeignKey("RoleId");
+                        .HasForeignKey("ShelterStaffId");
+
+                    b.Navigation("ShelterStaff");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.UserRole", b =>
+                {
+                    b.HasOne("Domain.Entities.Role", "Role")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ModelLayer.Entities.User", "User")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Role");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Domain.Entities.Role", b =>
                 {
+                    b.Navigation("UserRoles");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.Event", b =>
+                {
+                    b.Navigation("EventUsers");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.Pet", b =>
+                {
+                    b.Navigation("AdoptionRegistrationForm");
+
+                    b.Navigation("Certification");
+
+                    b.Navigation("Statuses");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.Post", b =>
+                {
+                    b.Navigation("FeedBacks");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.Shelter", b =>
+                {
+                    b.Navigation("Donation");
+
+                    b.Navigation("Events");
+
+                    b.Navigation("Pets");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.ShelterStaff", b =>
+                {
+                    b.Navigation("Shelters");
+
                     b.Navigation("Users");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.User", b =>
                 {
+                    b.Navigation("AdoptionRegistrationForms");
+
+                    b.Navigation("Certifications");
+
+                    b.Navigation("Donations");
+
+                    b.Navigation("EventUser");
+
+                    b.Navigation("Notifications");
+
                     b.Navigation("Pets");
+
+                    b.Navigation("Posts");
+
+                    b.Navigation("UserRoles");
                 });
 #pragma warning restore 612, 618
         }

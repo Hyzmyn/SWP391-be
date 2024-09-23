@@ -13,6 +13,6 @@ namespace ModelLayer.Entities
         public int ShelterId { get; set; }
 
         public virtual ICollection<User>? Users { get; set; }
-        public virtual Shelter? Shelter { get; set; }
+        public virtual ICollection<Shelter>? Shelters { get; set; }
     }
 }
