@@ -32,7 +32,7 @@ namespace SWP391_PawFund.Controllers
         // GET: api/Users/5
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<User>> GetUser(Guid id)
+        public async Task<ActionResult<User>> GetUser(int id)
         {
             var user = await _userService.GetUserByIdAsync(id);
             if (user == null)
@@ -45,7 +45,7 @@ namespace SWP391_PawFund.Controllers
 
         [HttpGet("GetUserProfile/{id}")]
         [Authorize]
-        public async Task<ActionResult<User>> GetUserProfile(Guid id)
+        public async Task<ActionResult<User>> GetUserProfile(int id)
         {
             try
             {
@@ -61,7 +61,7 @@ namespace SWP391_PawFund.Controllers
         // PUT: api/Users/5
         [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> PutUser(Guid id, UserUpdateRequestModel userModel)
+        public async Task<IActionResult> PutUser(int id, UserUpdateRequestModel userModel)
         {
             try
             {
@@ -71,12 +71,9 @@ namespace SWP391_PawFund.Controllers
                     return NotFound(new { message = "User ID not found." });
                 }
 
-                user.Dob = userModel.Dob;
-                user.Address = userModel.Address;
-                user.PhoneNumber = userModel.PhoneNumber;
-                user.UpdatedDate = DateTime.Now;
-                user.Gender = userModel.Gender;
-                user.FullName = userModel.FullName;
+                user.Location = userModel.Location;
+                user.Phone = userModel.Phone;
+                user.Username = userModel.Username;
 
                 await _userService.UpdateUserAsync(user);
 
@@ -127,16 +124,12 @@ namespace SWP391_PawFund.Controllers
             var user = new User
             {
                 //Field = userModel.Field,
-                FullName = userModel.FullName,
+                Username = userModel.Username,
                 Password = userModel.Password,
                 Email = userModel.Email,
-                Dob = userModel.Dob,
-                Address = userModel.Address,
-                PhoneNumber = userModel.PhoneNumber,
-                RoleId = userModel.RoleId,
-                Status = userModel.Status,
-                CreatedDate = DateTime.Now,
-                Gender = userModel.Gender
+                Location = userModel.Location,
+                Phone = userModel.Phone,
+                Status = userModel.Status
             };
 
             await _userService.CreateUserAsync(user);
@@ -146,7 +139,7 @@ namespace SWP391_PawFund.Controllers
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
         [Authorize]
-        public async Task<IActionResult> DeleteUser(Guid id)
+        public async Task<IActionResult> DeleteUser(int id)
         {
             var user = await _userService.GetUserByIdAsync(id);
             if (user == null)
@@ -158,7 +151,7 @@ namespace SWP391_PawFund.Controllers
             return NoContent();
         }
 
-        private async Task<bool> UserExists(Guid id)
+        private async Task<bool> UserExists(int id)
         {
             return await _userService.UserExistsAsync(id);
         }
