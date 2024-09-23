@@ -3515,19 +3515,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ADMIN\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\SWP391_PawFund.csproj",
+      "projectUniqueName": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\SWP391_PawFund\\SWP391_PawFund.csproj",
       "projectName": "SWP391_PawFund",
-      "projectPath": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\SWP391_PawFund.csproj",
-      "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\obj\\",
+      "projectPath": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\SWP391_PawFund\\SWP391_PawFund.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\SWP391_PawFund\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3542,8 +3542,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\ServiceLayer.csproj": {
-              "projectPath": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\ServiceLayer.csproj"
+            "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\ServiceLayer.csproj": {
+              "projectPath": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\ServiceLayer.csproj"
             }
           }
         }
@@ -3603,7 +3603,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
