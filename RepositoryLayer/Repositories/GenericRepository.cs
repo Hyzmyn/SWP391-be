@@ -169,5 +169,18 @@ namespace RepositoryLayer.Repositories
 
             return query.AsNoTracking().Select(selector);
         }
+
+        public IQueryable<T> Include(params Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> query = Table;
+
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            return query;
+        }
+
     }
 }
