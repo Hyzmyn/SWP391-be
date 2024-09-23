@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace ModelLayer.Entities
 {
-    public class ShelterStaff : BaseEntity
+    public class EventUser : BaseEntity
     {
         public int UserId { get; set; }
-        public int ShelterId { get; set; }
+        public int EventId { get; set; }
 
-        public virtual ICollection<User>? Users { get; set; }
-        public virtual ICollection<Shelter>? Shelters { get; set; }
+        public virtual User User { get; set; }
+        public virtual Event Event { get; set; }
     }
 }
