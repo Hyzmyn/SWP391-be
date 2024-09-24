@@ -1,8 +1,10 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using RepositoryLayer;
+using ServiceLayer.Interfaces;
+using ServiceLayer.Services;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,6 +35,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddDistributedMemoryCache();
+// Đăng ký Iterface
+builder.Services.AddScoped<IDonateService, DonateService>();
+builder.Services.AddScoped<IPetService,PetService>();
+builder.Services.AddScoped<IShelterService, ShelterService>();
+builder.Services.AddScoped<IStatusPetService, StatusPetService>();
 
 builder.Services.AddSession(options =>
 {
