@@ -29,54 +29,52 @@ namespace SWP391_PawFund.Controllers
         //    return Ok(users);
         //}
 
-        //// GET: api/Users/5
-        //[HttpGet("{id}")]
-        //[Authorize]
-        //public async Task<ActionResult<User>> GetUser(Guid id)
-        //{
-        //    var user = await _userService.GetUserByIdAsync(id);
-        //    if (user == null)
-        //    {
-        //        return NotFound();
-        //    }
+
+        // GET: api/Users/5
+        [HttpGet("{id}")]
+        [Authorize]
+        public async Task<ActionResult<User>> GetUser(int id)
+        {
+            var user = await _userService.GetUserByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
 
         //    return Ok(user);
         //}
 
-        //[HttpGet("GetUserProfile/{id}")]
-        //[Authorize]
-        //public async Task<ActionResult<User>> GetUserProfile(Guid id)
-        //{
-        //    try
-        //    {
-        //        var user = await _userService.GetUserProfile(id);
-        //        return Ok(user);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
-        //}
+        [HttpGet("GetUserProfile/{id}")]
+        [Authorize]
+        public async Task<ActionResult<User>> GetUserProfile(int id)
+        {
+            try
+            {
+                var user = await _userService.GetUserProfile(id);
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
-        //// PUT: api/Users/5
-        //[HttpPut("{id}")]
-        //[Authorize]
-        //public async Task<IActionResult> PutUser(Guid id, UserUpdateRequestModel userModel)
-        //{
-        //    try
-        //    {
-        //        var user = await _userService.GetUserByIdAsync(id);
-        //        if (user == null)
-        //        {
-        //            return NotFound(new { message = "User ID not found." });
-        //        }
+        // PUT: api/Users/5
+        [HttpPut("{id}")]
+        [Authorize]
+        public async Task<IActionResult> PutUser(int id, UserUpdateRequestModel userModel)
+        {
+            try
+            {
+                var user = await _userService.GetUserByIdAsync(id);
+                if (user == null)
+                {
+                    return NotFound(new { message = "User ID not found." });
+                }
 
-        //        user.Dob = userModel.Dob;
-        //        user.Address = userModel.Address;
-        //        user.PhoneNumber = userModel.PhoneNumber;
-        //        user.UpdatedDate = DateTime.Now;
-        //        user.Gender = userModel.Gender;
-        //        user.FullName = userModel.FullName;
+                user.Location = userModel.Location;
+                user.Phone = userModel.Phone;
+                user.Username = userModel.Username;
 
         //        await _userService.UpdateUserAsync(user);
 
@@ -118,49 +116,47 @@ namespace SWP391_PawFund.Controllers
         //    }
         //}
 
-        //// POST: api/Users
-        //[HttpPost]
-        //[Authorize]
-        //public async Task<ActionResult<User>> PostUser(UserCreateRequestModel userModel)
-        //{
-        //    // Map properties from userModel to create a new user entity
-        //    var user = new User
-        //    {
-        //        //Field = userModel.Field,
-        //        FullName = userModel.FullName,
-        //        Password = userModel.Password,
-        //        Email = userModel.Email,
-        //        Dob = userModel.Dob,
-        //        Address = userModel.Address,
-        //        PhoneNumber = userModel.PhoneNumber,
-        //        RoleId = userModel.RoleId,
-        //        Status = userModel.Status,
-        //        CreatedDate = DateTime.Now,
-        //        Gender = userModel.Gender
-        //    };
+
+        // POST: api/Users
+        [HttpPost]
+        [Authorize]
+        public async Task<ActionResult<User>> PostUser(UserCreateRequestModel userModel)
+        {
+            // Map properties from userModel to create a new user entity
+            var user = new User
+            {
+                //Field = userModel.Field,
+                Username = userModel.Username,
+                Password = userModel.Password,
+                Email = userModel.Email,
+                Location = userModel.Location,
+                Phone = userModel.Phone,
+                Status = userModel.Status
+            };
 
         //    await _userService.CreateUserAsync(user);
         //    return CreatedAtAction("GetUser", new { id = user.Id }, user);
         //}
 
-        //// DELETE: api/Users/5
-        //[HttpDelete("{id}")]
-        //[Authorize]
-        //public async Task<IActionResult> DeleteUser(Guid id)
-        //{
-        //    var user = await _userService.GetUserByIdAsync(id);
-        //    if (user == null)
-        //    {
-        //        return NotFound();
-        //    }
+        // DELETE: api/Users/5
+        [HttpDelete("{id}")]
+        [Authorize]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            var user = await _userService.GetUserByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
 
         //    await _userService.DeleteUserAsync(id);
         //    return NoContent();
         //}
 
-        //private async Task<bool> UserExists(Guid id)
-        //{
-        //    return await _userService.UserExistsAsync(id);
-        //}
+
+        private async Task<bool> UserExists(int id)
+        {
+            return await _userService.UserExistsAsync(id);
+        }
     }
 }
