@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using RepositoryLayer;
+using RepositoryLayer.UnitOfWork;
 using ServiceLayer.Interfaces;
 using ServiceLayer.Services;
 using System.Text;
@@ -40,6 +41,9 @@ builder.Services.AddScoped<IDonateService, DonateService>();
 builder.Services.AddScoped<IPetService,PetService>();
 builder.Services.AddScoped<IShelterService, ShelterService>();
 builder.Services.AddScoped<IStatusPetService, StatusPetService>();
+builder.Services.AddScoped<IUsersService,UsersServices>();  
+builder.Services.AddScoped<IAuthServices,AuthServices>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddSession(options =>
 {
