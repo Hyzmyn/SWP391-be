@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|d:\\course\\swp391v2\\swp391-se1878\\pawfund_project\\swp391-be\\servicelayer\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|d:\\course\\swp391v2\\swp391-se1878\\pawfund_project\\swp391-be\\swp391_pawfund\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|d:\\course\\swp391v2\\swp391-se1878\\pawfund_project\\swp391-be\\servicelayer\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|d:\\course\\swp391v2\\swp391-se1878\\pawfund_project\\swp391-be\\modellayer\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,8 +19,8 @@
       "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\interfaces\\iusersservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|d:\\course\\swp391v2\\swp391-se1878\\pawfund_project\\swp391-be\\swp391_pawfund\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|d:\\course\\swp391v2\\swp391-se1878\\pawfund_project\\swp391-be\\servicelayer\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|d:\\course\\swp391v2\\swp391-se1878\\pawfund_project\\swp391-be\\swp391_pawfund\\controllers\\statuspetcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -81,8 +85,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 947,
-          "SelectedChildIndex": 5,
+          "DockedHeight": 1277,
+          "SelectedChildIndex": 15,
           "Children": [
             {
               "$type": "Bookmark",
@@ -106,20 +110,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "IUsersService.cs",
               "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\Interfaces\\IUsersService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Interfaces\\IUsersService.cs",
               "ToolTip": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\Interfaces\\IUsersService.cs",
               "RelativeToolTip": "ServiceLayer\\Interfaces\\IUsersService.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABMAAAA7AAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABMAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-24T04:02:41.094Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "IGenericRepository.cs",
               "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\RepositoryLayer\\Repositories\\IGenericRepository.cs",
               "RelativeDocumentMoniker": "RepositoryLayer\\Repositories\\IGenericRepository.cs",
@@ -127,12 +131,11 @@
               "RelativeToolTip": "RepositoryLayer\\Repositories\\IGenericRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T04:02:00.079Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-24T04:02:00.079Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "GenericRepository.cs",
               "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\RepositoryLayer\\Repositories\\GenericRepository.cs",
               "RelativeDocumentMoniker": "RepositoryLayer\\Repositories\\GenericRepository.cs",
@@ -140,12 +143,11 @@
               "RelativeToolTip": "RepositoryLayer\\Repositories\\GenericRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T04:01:59.505Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-24T04:01:59.505Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "IShelterService.cs",
               "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\Interfaces\\IShelterService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Interfaces\\IShelterService.cs",
@@ -153,12 +155,11 @@
               "RelativeToolTip": "ServiceLayer\\Interfaces\\IShelterService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T04:00:28.968Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-24T04:00:28.968Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ShelterController.cs",
               "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\SWP391_PawFund\\Controllers\\ShelterController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\ShelterController.cs",
@@ -166,12 +167,11 @@
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\ShelterController.cs",
               "ViewState": "AQIAABoAAAAAAAAAAAAYwAwAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T04:00:15.911Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-24T04:00:15.911Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "IStatusPetService.cs",
               "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\Interfaces\\IStatusPetService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Interfaces\\IStatusPetService.cs",
@@ -179,12 +179,11 @@
               "RelativeToolTip": "ServiceLayer\\Interfaces\\IStatusPetService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T03:53:50.614Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-24T03:53:50.614Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "StatusPetController.cs",
               "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\SWP391_PawFund\\Controllers\\StatusPetController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\StatusPetController.cs",
@@ -192,12 +191,11 @@
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\StatusPetController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T03:53:43.646Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-24T03:53:43.646Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "PetController.cs",
               "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\SWP391_PawFund\\Controllers\\PetController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\PetController.cs",
@@ -205,12 +203,11 @@
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\PetController.cs",
               "ViewState": "AQIAADAAAAAAAAAAAAAkwF0AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T03:49:33.64Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-24T03:49:33.64Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\SWP391_PawFund\\Program.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Program.cs",
@@ -218,12 +215,11 @@
               "RelativeToolTip": "SWP391_PawFund\\Program.cs",
               "ViewState": "AQIAABIAAAAAAAAAAAAAACsAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T03:37:03.513Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-24T03:37:03.513Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "DonationController.cs",
               "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\SWP391_PawFund\\Controllers\\DonationController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\DonationController.cs",
@@ -231,25 +227,24 @@
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\DonationController.cs",
               "ViewState": "AQIAAEEAAAAAAAAAAAAowAkAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T03:19:24.142Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-24T03:19:24.142Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\SWP391_PawFund\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\UserController.cs",
               "ToolTip": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\SWP391_PawFund\\Controllers\\UserController.cs",
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\UserController.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAwwAwAAAA2AAAA",
+              "ViewState": "AQIAAOMAAAAAAAAAAAAAwO8AAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-24T03:18:29.535Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "DonateService.cs",
               "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\Services\\DonateService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Services\\DonateService.cs",
@@ -257,12 +252,11 @@
               "RelativeToolTip": "ServiceLayer\\Services\\DonateService.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T18:33:05.33Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-23T18:33:05.33Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "PetService.cs",
               "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\Services\\PetService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Services\\PetService.cs",
@@ -270,12 +264,11 @@
               "RelativeToolTip": "ServiceLayer\\Services\\PetService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T18:33:04.762Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-23T18:33:04.762Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "ShelterService.cs",
               "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\Services\\ShelterService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Services\\ShelterService.cs",
@@ -283,12 +276,11 @@
               "RelativeToolTip": "ServiceLayer\\Services\\ShelterService.cs",
               "ViewState": "AQIAABgAAAAAAAAAAAAYwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T18:33:04.038Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-23T18:33:04.038Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "IDonateService.cs",
               "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\Interfaces\\IDonateService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Interfaces\\IDonateService.cs",
@@ -296,12 +288,11 @@
               "RelativeToolTip": "ServiceLayer\\Interfaces\\IDonateService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T18:23:09.774Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-23T18:23:09.774Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "IPetService.cs",
               "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\Interfaces\\IPetService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Interfaces\\IPetService.cs",
@@ -309,37 +300,49 @@
               "RelativeToolTip": "ServiceLayer\\Interfaces\\IPetService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-23T18:23:05.985Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-23T18:23:05.985Z"
             }
           ]
         },
         {
-          "DockedHeight": 581,
+          "DockedHeight": 251,
           "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "ServiceLayer\\Services\\AuthService.cs",
+              "ToolTip": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\Services\\AuthService.cs",
+              "RelativeToolTip": "ServiceLayer\\Services\\AuthService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-24T04:35:15.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "UserService.cs",
               "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Services\\UserService.cs",
               "ToolTip": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\Services\\UserService.cs",
               "RelativeToolTip": "ServiceLayer\\Services\\UserService.cs",
-              "ViewState": "AQIAADcAAAAAAAAAAAAwwE0AAAAJAAAA",
+              "ViewState": "AQIAADcAAAAAAAAAAAAwwE0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-24T04:10:59.392Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ModelLayer\\Entities\\User.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\User.cs",
               "ToolTip": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ModelLayer\\Entities\\User.cs",
               "RelativeToolTip": "ModelLayer\\Entities\\User.cs",
-              "ViewState": "AQIAABwAAAAAAAAAAAAiwAAAAAAAAAAA",
+              "ViewState": "AQIAABwAAAAAAAAAAAA4wAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-24T04:10:42.815Z",
               "EditorCaption": ""
