@@ -14,8 +14,9 @@ namespace ModelLayer.Entities
         public DateTime Date { get; set; }
         public string Description { get; set; }
         public string Location { get; set; }
+        public int VolunteerId { get; set; }
 
+        public virtual User? User { get; set; }
         public virtual Shelter? Shelter { get; set; }
-        public virtual ICollection<EventUser>? EventUsers { get; set; }
     }
 }

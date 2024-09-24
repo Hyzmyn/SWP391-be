@@ -193,38 +193,19 @@ namespace RepositoryLayer.Migrations
                     b.Property<bool?>("Status")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VolunteerId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ShelterId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Events");
-                });
-
-            modelBuilder.Entity("ModelLayer.Entities.EventUser", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("EventId")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("EventUser");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.FeedBack", b =>
@@ -423,9 +404,6 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("ShelterStaffId")
-                        .HasColumnType("int");
-
                     b.Property<bool?>("Status")
                         .HasColumnType("tinyint(1)");
 
@@ -434,8 +412,6 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ShelterStaffId");
 
                     b.ToTable("Shelters");
                 });
@@ -458,6 +434,9 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ShelterId")
+                        .IsUnique();
 
                     b.ToTable("ShelterStaffs");
                 });
@@ -511,7 +490,7 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Image")
+                    b.Property<string>("Immage")
                         .HasColumnType("longtext");
 
                     b.Property<string>("Location")
@@ -525,6 +504,9 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<int?>("RoleId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("ShelterStaffId")
                         .HasColumnType("int");
@@ -545,35 +527,11 @@ namespace RepositoryLayer.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RoleId");
+
                     b.HasIndex("ShelterStaffId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("ModelLayer.Entities.UserRole", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserRole");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.AdoptionRegistrationForm", b =>
@@ -637,24 +595,11 @@ namespace RepositoryLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Shelter");
-                });
-
-            modelBuilder.Entity("ModelLayer.Entities.EventUser", b =>
-                {
-                    b.HasOne("ModelLayer.Entities.Event", "Event")
-                        .WithMany("EventUsers")
-                        .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ModelLayer.Entities.User", "User")
-                        .WithOne("EventUser")
-                        .HasForeignKey("ModelLayer.Entities.EventUser", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Events")
+                        .HasForeignKey("UserId");
 
-                    b.Navigation("Event");
+                    b.Navigation("Shelter");
 
                     b.Navigation("User");
                 });
@@ -709,13 +654,15 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("ModelLayer.Entities.Shelter", b =>
+            modelBuilder.Entity("ModelLayer.Entities.ShelterStaff", b =>
                 {
-                    b.HasOne("ModelLayer.Entities.ShelterStaff", "ShelterStaff")
-                        .WithMany("Shelters")
-                        .HasForeignKey("ShelterStaffId");
+                    b.HasOne("ModelLayer.Entities.Shelter", "Shelter")
+                        .WithOne("ShelterStaff")
+                        .HasForeignKey("ModelLayer.Entities.ShelterStaff", "ShelterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("ShelterStaff");
+                    b.Navigation("Shelter");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Status", b =>
@@ -729,40 +676,22 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("ModelLayer.Entities.User", b =>
                 {
+                    b.HasOne("Domain.Entities.Role", "Role")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleId");
+
                     b.HasOne("ModelLayer.Entities.ShelterStaff", "ShelterStaff")
                         .WithMany("Users")
                         .HasForeignKey("ShelterStaffId");
 
-                    b.Navigation("ShelterStaff");
-                });
-
-            modelBuilder.Entity("ModelLayer.Entities.UserRole", b =>
-                {
-                    b.HasOne("Domain.Entities.Role", "Role")
-                        .WithMany("UserRoles")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ModelLayer.Entities.User", "User")
-                        .WithMany("UserRoles")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Role");
 
-                    b.Navigation("User");
+                    b.Navigation("ShelterStaff");
                 });
 
             modelBuilder.Entity("Domain.Entities.Role", b =>
                 {
-                    b.Navigation("UserRoles");
-                });
-
-            modelBuilder.Entity("ModelLayer.Entities.Event", b =>
-                {
-                    b.Navigation("EventUsers");
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Pet", b =>
@@ -786,12 +715,12 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("Events");
 
                     b.Navigation("Pets");
+
+                    b.Navigation("ShelterStaff");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.ShelterStaff", b =>
                 {
-                    b.Navigation("Shelters");
-
                     b.Navigation("Users");
                 });
 
@@ -803,15 +732,13 @@ namespace RepositoryLayer.Migrations
 
                     b.Navigation("Donations");
 
-                    b.Navigation("EventUser");
+                    b.Navigation("Events");
 
                     b.Navigation("Notifications");
 
                     b.Navigation("Pets");
 
                     b.Navigation("Posts");
-
-                    b.Navigation("UserRoles");
                 });
 #pragma warning restore 612, 618
         }

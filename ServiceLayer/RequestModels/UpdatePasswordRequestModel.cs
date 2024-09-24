@@ -8,7 +8,7 @@ namespace ServiceLayer.RequestModels
 {
     public class UpdatePasswordRequestModel
     {
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         public string NewPassword { get; set; }
         public string OldPassword { get; set; }
     }
