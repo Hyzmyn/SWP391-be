@@ -40,8 +40,9 @@ namespace ServiceLayer.Services
 
             if (user != null)
             {
-                var userWithRole = await _userService.GetUserByFullNameAsync(user.FullName);
-                string token = GenerateJwtToken(user.FullName, userWithRole.Role.Name, user.Id);
+                var userWithRole = await _userService.GetUserByUsernameAsync(user.Username);
+                var roleNames = string.Join(",", userWithRole.UserRoles.Select(ur => ur.Role.Name));
+                string token = GenerateJwtToken(user.Username, roleNames, user.Id);
 
                 if (user.Status == false)
                 {
@@ -54,12 +55,10 @@ namespace ServiceLayer.Services
                             User = new UsersResponseModel()
                             {
                                 Id = user.Id,
-                                FullName = user.FullName,
+                                Username = user.Username,
                                 Email = user.Email,
-                                Dob = user.Dob,
-                                Address = user.Address,
-                                PhoneNumber = user.PhoneNumber,
-                                Gender = user.Gender
+                                Location = user.Location,
+                                Phone = user.Phone,
                             },
                         },
                         IsBanned = true,
@@ -76,12 +75,10 @@ namespace ServiceLayer.Services
                         User = new UsersResponseModel()
                         {
                             Id = user.Id,
-                            FullName = user.FullName,
+                            Username = user.Username,
                             Email = user.Email,
-                            Dob = user.Dob,
-                            Address = user.Address,
-                            PhoneNumber = user.PhoneNumber,
-                            Gender = user.Gender
+                            Location = user.Location,
+                            Phone = user.Phone,
                         },
                     },
                     IsBanned = false
@@ -96,7 +93,7 @@ namespace ServiceLayer.Services
             };
         }
 
-        public string GenerateJwtToken(string username, string roleName, Guid userId)
+        public string GenerateJwtToken(string username, string roleName, int userId)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
@@ -132,26 +129,20 @@ namespace ServiceLayer.Services
 
             var user = new User()
             {
-                Id = Guid.NewGuid(),
-                Address = registerModel.Address,
-                RoleId = 2,
-                FullName = registerModel.FullName,
+                Location = registerModel.Location,
+                Username = registerModel.Username,
                 Email = registerModel.Email,
                 Password = HashPassword(registerModel.Password),
-                Dob = DateTime.Now,
-                PhoneNumber = registerModel.PhoneNumber,
-                Gender = registerModel.Gender,
-                UpdatedDate = DateTime.UtcNow,
-                CreatedDate = DateTime.UtcNow,
-                Rating = 0,
+                Phone = registerModel.Phone,
                 Status = true,
             };
 
             await _unitOfWork.Repository<User>().InsertAsync(user);
             await _unitOfWork.CommitAsync();
 
-            var userWithRole = await _userService.GetUserByFullNameAsync(user.FullName);
-            string token = GenerateJwtToken(user.FullName, userWithRole.Role.Name, user.Id);
+            var userWithRole = await _userService.GetUserByUsernameAsync(user.Username);
+            var roleNames = string.Join(",", userWithRole.UserRoles.Select(ur => ur.Role.Name));
+            string token = GenerateJwtToken(user.Username, roleNames, user.Id);
 
             return new BaseResponse<TokenModel>
             {
@@ -179,13 +170,11 @@ namespace ServiceLayer.Services
 
             var user = new User()
             {
-                Address = adminCreateAccountModel.Address,
-                FullName = adminCreateAccountModel.FullName,
+                Location = adminCreateAccountModel.Location,
+                Username = adminCreateAccountModel.Username,
                 Email = adminCreateAccountModel.Email,
                 Password = "01234",
-                Gender = adminCreateAccountModel.Gender,
-                Dob = adminCreateAccountModel.Dob,
-                PhoneNumber = adminCreateAccountModel.PhoneNumber,
+                Phone = adminCreateAccountModel.Phone,
                 Status = true,
             };
 
@@ -194,8 +183,9 @@ namespace ServiceLayer.Services
 
             await SendAccount(user.Id);
 
-            var userWithRole = await _userService.GetUserByFullNameAsync(user.FullName);
-            string token = GenerateJwtToken(user.FullName, userWithRole.Role.Name, user.Id);
+            var userWithRole = await _userService.GetUserByUsernameAsync(user.Username);
+            var roleNames = string.Join(",", userWithRole.UserRoles.Select(ur => ur.Role.Name));
+            string token = GenerateJwtToken(user.Username, roleNames, user.Id);
 
             return new BaseResponse<TokenModel>
             {
@@ -208,14 +198,14 @@ namespace ServiceLayer.Services
             };
         }
 
-        public async Task<BaseResponse> SendAccount(Guid userId)
+        public async Task<BaseResponse> SendAccount(int userId)
         {
             try
             {
                 var user = await _userService.GetUserByIdAsync(userId);
                 var providePassword = GeneratePassword();
                 user.Password = HashPassword(providePassword);
-                await _unitOfWork.Repository<User>().UpdateGuid(user, user.Id);
+                await _unitOfWork.Repository<User>().Update(user, user.Id);
                 await _unitOfWork.CommitAsync();
 
                 var smtpClient = new SmtpClient("smtp.gmail.com");
@@ -375,7 +365,7 @@ namespace ServiceLayer.Services
   <div class='container'>
     <div class='header'>Password Reset Request</div>
     <div class='content'>
-      <p>Hello <span class='highlight'>" + query.FullName + @"</span>,</p>
+      <p>Hello <span class='highlight'>" + query.Username + @"</span>,</p>
       <p>Your reset password is: <span class='highlight'>" + providePassword + @"</span></p>
       <p>This is a temporary password. Please change your password after logging in.</p>
     </div>
@@ -389,7 +379,7 @@ namespace ServiceLayer.Services
                 mailMessage.IsBodyHtml = true;
 
                 await smtpClient.SendMailAsync(mailMessage);
-                await _unitOfWork.Repository<User>().UpdateGuid(query, query.Id);
+                await _unitOfWork.Repository<User>().Update(query, query.Id);
                 await _unitOfWork.CommitAsync();
 
                 return new BaseResponse
