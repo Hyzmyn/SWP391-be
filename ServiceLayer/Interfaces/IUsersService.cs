@@ -1,5 +1,4 @@
 ﻿using ModelLayer.Entities;
-using ServiceLayer.ResponseModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +10,14 @@ namespace ServiceLayer.Interfaces
     public interface IUsersService
     {
         IEnumerable<User> GetUsers();
-        Task<User> GetUserByIdAsync(int id);
+        Task<User> GetUserByIdAsync(Guid id);
         Task CreateUserAsync(User user);
         Task UpdateUserAsync(User user);
-        Task DeleteUserAsync(int id);
-        Task<bool> UserExistsAsync(int id);
-        Task<User> GetUserByUsernameAsync(string username);
+        Task DeleteUserAsync(Guid id);
+        Task<bool> UserExistsAsync(Guid id);
+        Task<User> GetUserByFullNameAsync(string username);
         Task<User> GetUserByEmailAsync(string email);
-        Task<UserDetailResponse> GetUserProfile(int id);
+        //Task<UserDetailResponse> GetUserProfile(Guid id);
     }
 
 }
