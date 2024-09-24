@@ -49,12 +49,34 @@ namespace ServiceLayer.Services
             }
         }
 
-        public async Task UpdatePetStatus(Pet pet)
+        public async Task UpdatePetStatus(Pet pet, int newStatusId)
         {
-            var check = await _content.Pets.Include(x => x.Status).FirstOrDefaultAsync(x => x.Id == pet.Id);
+            // Lấy Pet từ database theo ID
+            var existingPet = await _unitOfWork.Repository<Pet>().GetById(pet.Id);
 
-            await _unitOfWork.Repository<Pet>().Update(pet, pet.Id);
-            await _unitOfWork.CommitAsync();
+            if (existingPet != null)
+            {
+                // Cập nhật StatusId mới
+                existingPet.StatusId = newStatusId;
+
+                // Nếu cần cập nhật trạng thái liên quan khác, có thể thêm ở đây
+                // Ví dụ cập nhật AdoptionStatus
+                if (newStatusId == 1) // Ví dụ: 1 là trạng thái "Available for Adoption"
+                {
+                    existingPet.AdoptionStatus = "Available";
+                }
+                else if (newStatusId == 2) // Ví dụ: 2 là trạng thái "Adopted"
+                {
+                    existingPet.AdoptionStatus = "Adopted";
+                }
+                await _unitOfWork.Repository<Pet>().Update(existingPet, existingPet.Id);
+                await _unitOfWork.CommitAsync();
+            }
+            else
+            {
+                throw new Exception($"Pet with ID {pet.Id} not found.");
+            }
         }
+
     }
 }

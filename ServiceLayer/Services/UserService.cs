@@ -2,7 +2,6 @@
 using ModelLayer.Entities;
 using RepositoryLayer.UnitOfWork;
 using ServiceLayer.Interfaces;
-using ServiceLayer.ResponseModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +24,9 @@ namespace ServiceLayer.Services
             return _unitOfWork.Repository<User>().GetAll();
         }
 
-        public async Task<User> GetUserByIdAsync(int id)
+        public async Task<User> GetUserByIdAsync(Guid id)
         {
-            return await _unitOfWork.Repository<User>().GetById(id);
+            return await _unitOfWork.Repository<User>().GetByIdGuid(id);
         }
 
         public async Task CreateUserAsync(User user)
@@ -63,8 +62,7 @@ namespace ServiceLayer.Services
             // Truy vấn người dùng từ cơ sở dữ liệu theo tên người dùng
             var user = await _unitOfWork.Repository<User>()
                 .GetAll()
-                .Include(u => u.UserRoles)
-                .ThenInclude(ur => ur.Role)
+                .Include(u => u.Role)
                 .FirstOrDefaultAsync(u => u.Username == Username);
 
             return user;
@@ -79,26 +77,28 @@ namespace ServiceLayer.Services
             return user;
         }
 
-        public async Task<UserDetailResponse> GetUserProfile(int id)
-        {
-            var user = await _unitOfWork.Repository<User>().GetById(id);
+        //public async Task<UserDetailResponse> GetUserProfile(Guid id)
+        //{
+        //    var user = await _unitOfWork.Repository<User>().GetByIdGuid(id);
 
-            if (user == null)
-            {
-                throw new Exception($"User with ID {id} not found.");
-            }
+        //    if (user == null)
+        //    {
+        //        throw new Exception($"User with ID {id} not found.");
+        //    }
 
-            var responseModel = new UserDetailResponse
-            {
-                Id = user.Id,
-                Username = user.Username,
-                Email = user.Email,
-                Location = user.Location,
-                Phone = user.Phone,
-                TotalDonation = user.TotalDonation,
-            };
+        //    var responseModel = new UserDetailResponse
+        //    {
+        //        Id = user.Id,
+        //        FullName = user.FullName,
+        //        Email = user.Email,
+        //        Dob = user.Dob,
+        //        Address = user.Address,
+        //        PhoneNumber = user.PhoneNumber,
+        //        Gender = user.Gender,
+        //        RatingCount = user.Rating,
+        //    };
 
-            return responseModel;
-        }
+        //    return responseModel;
+        //}
     }
 }

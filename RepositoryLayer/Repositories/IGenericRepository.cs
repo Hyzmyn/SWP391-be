@@ -60,5 +60,7 @@ namespace RepositoryLayer.Repositories
             Expression<Func<TEntity, TResult>> selector,
             Expression<Func<TEntity, bool>> predicate = null,
             Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null);
+        IQueryable<TEntity> Include(params Expression<Func<TEntity, object>>[] includes);
+
     }
 }
