@@ -26,7 +26,7 @@ namespace SWP391_PawFund.Controllers
         }
 
         [HttpPost("send-email")]
-        public async Task<ActionResult> Gets(int userId)
+        public async Task<ActionResult> Gets(Guid userId)
         {
             var result = await _authService.SendAccount(userId);
             return StatusCode((int)result.Code, result);
