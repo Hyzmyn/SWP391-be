@@ -10,24 +10,24 @@ namespace SWP391_PawFund.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        //private readonly IUsersService _userService;
-        //private readonly IAuthServices _authService;
+        private readonly IUsersService _userService;
+        private readonly IAuthServices _authService;
 
-        //public UsersController(IUsersService userService, IAuthServices authServices)
-        //{
-        //    _userService = userService;
-        //    _authService = authServices;
+        public UsersController(IUsersService userService, IAuthServices authServices)
+        {
+            _userService = userService;
+            _authService = authServices;
 
-        //}
+        }
 
-        //// GET: api/Users
-        //[HttpGet]
-        //[Authorize]
-        //public ActionResult<IEnumerable<User>> GetUsers()
-        //{
-        //    var users = _userService.GetUsers();
-        //    return Ok(users);
-        //}
+        // GET: api/Users
+        [HttpGet]
+        [Authorize]
+        public ActionResult<IEnumerable<User>> GetUsers()
+        {
+            var users = _userService.GetUsers();
+            return Ok(users);
+        }
 
 
         // GET: api/Users/5
@@ -41,8 +41,8 @@ namespace SWP391_PawFund.Controllers
                 return NotFound();
             }
 
-        //    return Ok(user);
-        //}
+            return Ok(user);
+        }
 
         [HttpGet("GetUserProfile/{id}")]
         [Authorize]
@@ -76,45 +76,45 @@ namespace SWP391_PawFund.Controllers
                 user.Phone = userModel.Phone;
                 user.Username = userModel.Username;
 
-        //        await _userService.UpdateUserAsync(user);
+                await _userService.UpdateUserAsync(user);
 
-        //        return Ok(new { message = "User updated successfully." });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
-        //}
+                return Ok(new { message = "User updated successfully." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
-        //[HttpPut("UpdatePassword")]
-        //[Authorize]
-        //public async Task<IActionResult> UpdatePassword(UpdatePasswordRequestModel request)
-        //{
-        //    try
-        //    {
-        //        var user = await _userService.GetUserByIdAsync(request.UserId);
-        //        if (user == null)
-        //        {
-        //            return NotFound(new { message = "User ID not found." });
-        //        }
-        //        if (_authService.VerifyPassword(request.OldPassword, user.Password) == false)
-        //        {
-        //            return BadRequest(new { message = "Password is uncorrect." });
-        //        }
+        [HttpPut("UpdatePassword")]
+        [Authorize]
+        public async Task<IActionResult> UpdatePassword(UpdatePasswordRequestModel request)
+        {
+            try
+            {
+                var user = await _userService.GetUserByIdAsync(request.UserId);
+                if (user == null)
+                {
+                    return NotFound(new { message = "User ID not found." });
+                }
+                if (_authService.VerifyPassword(request.OldPassword, user.Password) == false)
+                {
+                    return BadRequest(new { message = "Password is uncorrect." });
+                }
 
-        //        string hashedPass = _authService.HashPassword(request.NewPassword);
+                string hashedPass = _authService.HashPassword(request.NewPassword);
 
-        //        user.Password = hashedPass;
+                user.Password = hashedPass;
 
-        //        await _userService.UpdateUserAsync(user);
+                await _userService.UpdateUserAsync(user);
 
-        //        return Ok(new { message = "User Password updated successfully." });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
-        //}
+                return Ok(new { message = "User Password updated successfully." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
 
         // POST: api/Users
@@ -134,9 +134,9 @@ namespace SWP391_PawFund.Controllers
                 Status = userModel.Status
             };
 
-        //    await _userService.CreateUserAsync(user);
-        //    return CreatedAtAction("GetUser", new { id = user.Id }, user);
-        //}
+            await _userService.CreateUserAsync(user);
+            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+        }
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
@@ -149,9 +149,9 @@ namespace SWP391_PawFund.Controllers
                 return NotFound();
             }
 
-        //    await _userService.DeleteUserAsync(id);
-        //    return NoContent();
-        //}
+            await _userService.DeleteUserAsync(id);
+            return NoContent();
+        }
 
 
         private async Task<bool> UserExists(int id)
