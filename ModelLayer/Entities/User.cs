@@ -17,18 +17,17 @@ namespace ModelLayer.Entities
         public string Location { get; set; }
         public string Token { get; set; }
         public decimal TotalDonation { get; set; }
-        public string? Immage { get; set; }
-        public int? RoleId { get; set; }
+        public string? Image { get; set; }
 
-        public virtual Role? Role { get; set; }
         public virtual ShelterStaff? ShelterStaff { get; set; }
+        public virtual EventUser? EventUser { get; set; }
 
+        public virtual ICollection<UserRole>? UserRoles { get; set; }
         public virtual ICollection<Pet>? Pets { get; set; }
         public virtual ICollection<AdoptionRegistrationForm>? AdoptionRegistrationForms { get; set; }
         public virtual ICollection<Notification>? Notifications { get; set; }
         public virtual ICollection<Post>? Posts { get; set; }
         public virtual ICollection<Donation>? Donations { get; set; }
-        public virtual ICollection<Event>? Events { get; set; }
         public virtual ICollection<Certification>? Certifications { get; set; }
 
     }
