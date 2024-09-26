@@ -74,12 +74,6 @@
   ],
   "logs": [
     {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\SWP391_PawFund\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    },
-    {
       "code": "NU1608",
       "level": "Warning",
       "warningLevel": 1,
