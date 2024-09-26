@@ -1,9 +1,12 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using RepositoryLayer;
+using RepositoryLayer.UnitOfWork;
+using ServiceLayer.Interfaces;
+using ServiceLayer.Services;
 using System.Text;
 using SWP391_PawFund.AppStarts;
 

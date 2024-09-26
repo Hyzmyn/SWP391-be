@@ -30,6 +30,13 @@ namespace SWP391_PawFund.AppStarts
             //services.AddScoped<IJwtService, JwtService>();
             services.AddScoped<IAuthServices, AuthServices>();
             services.AddScoped<IUsersService, UsersServices>();
+            services.AddScoped<IDonateService, DonateService>();
+            services.AddScoped<IPetService, PetService>();
+            services.AddScoped<IShelterService, ShelterService>();
+            services.AddScoped<IStatusPetService, StatusPetService>();
+            services.AddScoped<IUsersService, UsersServices>();
+            services.AddScoped<IAuthServices, AuthServices>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         }
     }
