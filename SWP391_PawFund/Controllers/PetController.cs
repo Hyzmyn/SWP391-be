@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿ using Microsoft.AspNetCore.Mvc;
 using ModelLayer.Entities;
 using ServiceLayer.Interfaces;
+using ServiceLayer.RequestModels;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -39,35 +40,77 @@ namespace SWP391_PawFund.Controllers
 
         // POST: api/Pet
         [HttpPost]
-        public async Task<IActionResult> CreatePet([FromBody] Pet pet)
+        public async Task<IActionResult> CreatePet([FromBody] PetCreateRequestModel petCreateRequest)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            // Tạo một thực thể Pet mới từ PetCreateRequestModel
+            var pet = new Pet
+            {
+                ShelterID = petCreateRequest.ShelterID,
+                UserID = petCreateRequest.UserID,
+                Name = petCreateRequest.Name,
+                Type = petCreateRequest.Type,
+                Breed = petCreateRequest.Breed,
+                Gender = petCreateRequest.Gender,
+                Age = petCreateRequest.Age,
+                Size = petCreateRequest.Size,
+                Color = petCreateRequest.Color,
+                Description = petCreateRequest.Description,
+                AdoptionStatus = petCreateRequest.AdoptionStatus,
+
+                //Thiếu Status
+
+                Image = petCreateRequest.Image
+            };
             await _petService.CreatePetAsync(pet);
-            return CreatedAtAction(nameof(GetPetById), new { id = pet.Id }, pet);
+
+            // Trả về kết quả, bao gồm URL để truy xuất Pet mới được tạo
+            return CreatedAtAction(nameof(GetPetById), new { id = pet.Id }, petCreateRequest);
         }
+
 
         // PUT: api/Pet/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePet(int id, [FromBody] Pet pet)
+        public async Task<IActionResult> UpdatePet(int id, [FromBody] PetUpdateRequestModel updatedPet)
         {
-            if (id != pet.Id)
+            if (!ModelState.IsValid)
             {
-                return BadRequest("Pet ID mismatch");
+                return BadRequest(ModelState);
             }
 
+            // Lấy pet hiện có từ database bằng id
             var existingPet = await _petService.GetPetById(id);
+
             if (existingPet == null)
             {
-                return NotFound();
+                return NotFound($"Pet with Id = {id} not found.");
             }
 
-            await _petService.UpdatePetAsync(pet);
-            return NoContent();
+            // Cập nhật thông tin pet với dữ liệu từ model
+            existingPet.Name = updatedPet.Name;
+            existingPet.Type = updatedPet.Type;
+            existingPet.Breed = updatedPet.Breed;
+            existingPet.Gender = updatedPet.Gender;
+            existingPet.Age = updatedPet.Age;
+            existingPet.Size = updatedPet.Size;
+            existingPet.Color = updatedPet.Color;
+            existingPet.Description = updatedPet.Description;
+            existingPet.AdoptionStatus = updatedPet.AdoptionStatus;
+
+            if (!string.IsNullOrEmpty(updatedPet.Image))
+            {
+                existingPet.Image = updatedPet.Image;
+            }
+
+            // Gọi service để cập nhật pet
+            await _petService.UpdatePetAsync(existingPet);
+            return Ok(new {message= "Pet updated successfully." });
         }
+
 
         // DELETE: api/Pet/{id}
         [HttpDelete("{id}")]
