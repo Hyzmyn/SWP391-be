@@ -120,3 +120,6 @@ C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\refint\S
 C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.pdb
 C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.genruntimeconfig.cache
 C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\ref\SWP391_PawFund.dll
+C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Versioning.dll
+C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
+C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Swashbuckle.AspNetCore.Annotations.dll
