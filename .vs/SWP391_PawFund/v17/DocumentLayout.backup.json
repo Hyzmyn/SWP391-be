@@ -1,7 +1,36 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\swp391_pawfund\\appstarts\\dependencyinjectioncontainers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\appstarts\\dependencyinjectioncontainers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\swp391_pawfund\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\repositorylayer\\utils\\hashhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|solutionrelative:repositorylayer\\utils\\hashhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\swp391_pawfund\\appstarts\\authconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\appstarts\\authconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\swp391_pawfund\\appstarts\\swaggerconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\appstarts\\swaggerconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\swp391_pawfund\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\servicelayer\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +47,97 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DependencyInjectionContainers.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\AppStarts\\DependencyInjectionContainers.cs",
+              "RelativeDocumentMoniker": "SWP391_PawFund\\AppStarts\\DependencyInjectionContainers.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\AppStarts\\DependencyInjectionContainers.cs",
+              "RelativeToolTip": "SWP391_PawFund\\AppStarts\\DependencyInjectionContainers.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T03:00:44.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SwaggerConfig.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\AppStarts\\SwaggerConfig.cs",
+              "RelativeDocumentMoniker": "SWP391_PawFund\\AppStarts\\SwaggerConfig.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\AppStarts\\SwaggerConfig.cs",
+              "RelativeToolTip": "SWP391_PawFund\\AppStarts\\SwaggerConfig.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T02:39:21.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthConfig.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\AppStarts\\AuthConfig.cs",
+              "RelativeDocumentMoniker": "SWP391_PawFund\\AppStarts\\AuthConfig.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\AppStarts\\AuthConfig.cs",
+              "RelativeToolTip": "SWP391_PawFund\\AppStarts\\AuthConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T02:38:52.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HashHelper.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\RepositoryLayer\\Utils\\HashHelper.cs",
+              "RelativeDocumentMoniker": "RepositoryLayer\\Utils\\HashHelper.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\RepositoryLayer\\Utils\\HashHelper.cs",
+              "RelativeToolTip": "RepositoryLayer\\Utils\\HashHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-24T14:35:34.43Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\appsettings.json",
+              "RelativeDocumentMoniker": "SWP391_PawFund\\appsettings.json",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\appsettings.json",
+              "RelativeToolTip": "SWP391_PawFund\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-24T14:13:13.713Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\Program.cs",
+              "RelativeDocumentMoniker": "SWP391_PawFund\\Program.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\Program.cs",
+              "RelativeToolTip": "SWP391_PawFund\\Program.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAAcAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-24T14:12:14.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "ServiceLayer\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\Services\\AuthService.cs",
+              "RelativeToolTip": "ServiceLayer\\Services\\AuthService.cs",
+              "ViewState": "AgIAAH8BAAAAAAAAAAAuwA0AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-24T06:39:01.747Z",
+              "EditorCaption": ""
             }
           ]
         }
