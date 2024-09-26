@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer.Entities;
+using RepositoryLayer.Models;
 using ServiceLayer.Interfaces;
 using ServiceLayer.RequestModels;
 
@@ -23,11 +24,12 @@ namespace SWP391_PawFund.Controllers
         // GET: api/Users
         [HttpGet]
         [Authorize]
-        public ActionResult<IEnumerable<User>> GetUsers()
+        public ActionResult<IEnumerable<UserViewModel>> GetUsers()
         {
             var users = _userService.GetUsers();
             return Ok(users);
         }
+
 
         // GET: api/Users/5
         [HttpGet("{id}")]
@@ -115,6 +117,7 @@ namespace SWP391_PawFund.Controllers
             }
         }
 
+
         // POST: api/Users
         [HttpPost]
         [Authorize]
@@ -150,6 +153,7 @@ namespace SWP391_PawFund.Controllers
             await _userService.DeleteUserAsync(id);
             return NoContent();
         }
+
 
         private async Task<bool> UserExists(int id)
         {

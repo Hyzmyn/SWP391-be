@@ -8,6 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using ModelLayer.Entities;
 
 namespace RepositoryLayer.Repositories
 {
@@ -18,7 +19,7 @@ namespace RepositoryLayer.Repositories
 
         public GenericRepository(PawFundContext context)
         {
-            Context = context;
+            Context = context ?? throw new ArgumentNullException(nameof(context));  // Thêm kiểm tra null
             Table = Context.Set<T>();
         }
 
@@ -37,12 +38,14 @@ namespace RepositoryLayer.Repositories
             return Table.Where(predicate).AsQueryable();
         }
 
-        public DbSet<T> GetAll()
+        //public DbSet<T> GetAll()
+        //{
+        //    return Table;
+        //}
+        public IQueryable<T> GetAll()
         {
-            return Table;
+            return Context.Set<T>().AsQueryable(); // Trả về IQueryable để hỗ trợ Include()
         }
-
-
         public async Task<T> GetByIdGuid(Guid Id)
         {
             return await Table.FindAsync(Id);

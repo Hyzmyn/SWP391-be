@@ -19,7 +19,9 @@ namespace RepositoryLayer.Repositories
 
         Task AddRangeAsync(IEnumerable<TEntity> entities);
 
-        DbSet<TEntity> GetAll();
+        //DbSet<TEntity> GetAll();
+        // Thêm mới
+        IQueryable<TEntity> GetAll(); // Trả về IEnumerable thay vì IQueryable hoặc DbSet
         IQueryable<TEntity> GetAllApart();
         Task<IEnumerable<TEntity>> GetWhere(Expression<Func<TEntity, bool>> predicate);
 
