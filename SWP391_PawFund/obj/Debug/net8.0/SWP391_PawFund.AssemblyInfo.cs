@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SWP391_PawFund")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4cc306558af35647f5ad8040e76a424c9f75a767")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d15e7f5ffb8d7869c676cd5ab4a73f976083a793")]
 [assembly: System.Reflection.AssemblyProductAttribute("SWP391_PawFund")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SWP391_PawFund")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -29,18 +29,18 @@ namespace SWP391_PawFund.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<DonationResponseModel>> GetAllDonations()
         {
-            //var donations = _donateService.GetAllDonations()
-            //    .Select(d => new DonationResponseModel
-            //    {
-            //        Id = d.Id,
-            //        Amount = d.Amount,
-            //        Date = d.Date,
-            //        DonorId = d.DonorId,
-            //        DonorName = d.User?.Username ?? string.Empty,
-            //        ShelterId = d.ShelterId,
-            //        ShelterName = d.Shelter?.Name ?? string.Empty
-            //    });
-            var donations= _donateService.GetAllDonations();
+            var donations = _donateService.GetAllDonations()
+               .Select(d => new DonationResponseModel
+               {
+                   Id = d.Id,
+                   Amount = d.Amount,
+                   Date = d.Date,
+                   DonorId = d.DonorId,
+                   DonorName = d.User?.Username ?? string.Empty,
+                   ShelterId = d.ShelterId,
+                   ShelterName = d.Shelter?.Name ?? string.Empty
+               });
+            //var donations= _donateService.GetAllDonations();
             return Ok(donations);
         }
 
@@ -49,7 +49,7 @@ namespace SWP391_PawFund.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<DonationDetailResponseModel>> GetDonationById(int id)
         {
-            var donation = await _donateService.GetDonationById(id);
+            var donation = await _donateService.GetDonationsByIdAsync(id);
             if (donation == null)
             {
                 return NotFound();
@@ -82,12 +82,35 @@ namespace SWP391_PawFund.Controllers
                     Name = shelter.Name,
                     Location = shelter.Location,
                     PhoneNumber = shelter.PhoneNumber,
-                    Capacity=shelter.Capaxity,
+                    Capacity = shelter.Capaxity,
                     Email = shelter.Email,
                     Website = shelter.Website,
                     DonationAmount = shelter.DonationAmount
                 } : null
             };
+
+            return Ok(response);
+        }
+        // Lấy danh sách donations theo DonorId
+        [HttpGet("by-donor/{donorId}")]
+        public ActionResult<IEnumerable<DonationResponseModel>> GetDonationsByDonorId(int donorId)
+        {
+            var donations = _donateService.GetDonationsByDonorId(donorId);
+
+            if (donations == null || !donations.Any())
+            {
+                return NotFound($"No donations found for DonorId {donorId}.");
+            }
+
+            var response = donations.Select(d => new DonationResponseModel
+            {
+                Id = d.Id,
+                Amount = d.Amount,
+                Date = d.Date,
+                DonorId = d.DonorId,
+                DonorName = d.User?.Username ?? string.Empty,
+                ShelterName = d.Shelter?.Name ?? string.Empty
+            });
 
             return Ok(response);
         }
@@ -146,7 +169,7 @@ namespace SWP391_PawFund.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateDonation(int id, [FromBody] DonationUpdateRequestModel request)
         {
-            var existingDonation = await _donateService.GetDonationById(id);
+            var existingDonation = await _donateService.GetDonationsByIdAsync(id);
             if (existingDonation == null)
             {
                 return NotFound(new { message = "Donation not found." });
@@ -180,7 +203,7 @@ namespace SWP391_PawFund.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDonation(int id)
         {
-            var donation = await _donateService.GetDonationById(id);
+            var donation = await _donateService.GetDonationsByIdAsync(id);
             if (donation == null)
             {
                 return NotFound();
