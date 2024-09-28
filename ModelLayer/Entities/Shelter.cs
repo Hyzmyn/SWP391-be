@@ -14,16 +14,14 @@ namespace ModelLayer.Entities
         public string PhoneNumber { get; set; }
         public int Capaxity { get; set; }
         public string Email { get; set; }
-        public string Website { get; set; }
-        public decimal DonationAmount { get; set; }
+        public string? Website { get; set; }
+        public decimal? DonationAmount { get; set; }
 
         public virtual ICollection<Pet>? Pets { get; set; }
         public virtual ICollection<Event>? Events { get; set; }
+        public virtual ICollection<ShelterStaff>? Staffs { get; set; }
 
         public virtual Donation? Donation { get; set; }
-        public virtual ShelterStaff? ShelterStaff { get; set; }
-
-
 
     }
 }
