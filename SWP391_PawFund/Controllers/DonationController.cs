@@ -74,7 +74,7 @@ namespace SWP391_PawFund.Controllers
                     Email = donor.Email,
                     Location = donor.Location,
                     Phone = donor.Phone,
-                    TotalDonation = donor.TotalDonation
+                    TotalDonation = (decimal)donor.TotalDonation
                 } : null,
                 Shelter = shelter != null ? new ShelterResponseModel
                 {
@@ -85,7 +85,7 @@ namespace SWP391_PawFund.Controllers
                     Capacity = shelter.Capaxity,
                     Email = shelter.Email,
                     Website = shelter.Website,
-                    DonationAmount = shelter.DonationAmount
+                    DonationAmount = (decimal)shelter.DonationAmount
                 } : null
             };
 
