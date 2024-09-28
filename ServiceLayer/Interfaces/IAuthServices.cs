@@ -17,8 +17,6 @@ namespace ServiceLayer.Interfaces
         Task<BaseResponse<TokenModel>> AdminGenAcc(AdminCreateAccountModel adminCreateAccountModel);
         Task<BaseResponse> SendAccount(int userId);
         Task<BaseResponse> ForgotPassword(RequestModels.ForgotPasswordRequest request);
-        string HashPassword(string password);
-        bool VerifyPassword(string password, string hashedPassword);
 
     }
 }

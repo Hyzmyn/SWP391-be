@@ -19,7 +19,9 @@ namespace RepositoryLayer.Repositories
 
         Task AddRangeAsync(IEnumerable<TEntity> entities);
 
-        DbSet<TEntity> GetAll();
+        //DbSet<TEntity> GetAll();
+        // Thêm mới
+        IQueryable<TEntity> GetAll(); // Trả về IEnumerable thay vì IQueryable hoặc DbSet
         IQueryable<TEntity> GetAllApart();
         Task<IEnumerable<TEntity>> GetWhere(Expression<Func<TEntity, bool>> predicate);
 
@@ -27,6 +29,7 @@ namespace RepositoryLayer.Repositories
 
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
         Task<TEntity> FindAsync(Expression<Func<TEntity, bool>> predicate);
+        Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate);
         Task<TEntity> GetById(int Id);
 
         Task<TEntity> GetByIdGuid(Guid Id);
