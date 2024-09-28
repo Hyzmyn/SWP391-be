@@ -1,4 +1,5 @@
-﻿using ModelLayer.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using ModelLayer.Entities;
 using RepositoryLayer.UnitOfWork;
 using ServiceLayer.Interfaces;
 using System;
@@ -24,11 +25,24 @@ namespace ServiceLayer.Services
             return _unitOfWork.Repository<Donation>().GetAll();
         }
 
-        // Lấy donation theo Id
-        public async Task<Donation> GetDonationById(int id)
+        // Lấy danh sách các donation theo danh sách IDs
+        public async Task<Donation> GetDonationsByIdAsync(int id)
         {
-            return await _unitOfWork.Repository<Donation>().GetById(id);
+            if (id == null)
+            {
+                throw new ArgumentException("Id annot be null or empty.", nameof(id));
+            }
+
+            try
+            {
+                return await _unitOfWork.Repository<Donation>().GetById(id);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("An error occurred while retrieving donations.", ex);
+            }
         }
+
 
         // Thêm donation mới
         public async Task CreateDonationAsync(Donation donation)
@@ -71,6 +85,27 @@ namespace ServiceLayer.Services
                 .AsQueryable()
                 .Where(d => d.DonorId == donorId)
                 .Sum(d => d.Amount);
+        }
+
+        // Lấy danh sách donations theo DonorId
+        public IEnumerable<Donation> GetDonationsByDonorId(int donorId)
+        {
+            if (donorId <= 0)
+            {
+                throw new ArgumentException("DonorId must be greater than 0.", nameof(donorId));
+            }
+
+            try
+            {
+                return _unitOfWork.Repository<Donation>()
+                    .AsQueryable()
+                    .Where(d => d.DonorId == donorId)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("An error occurred while retrieving donations by DonorId.", ex);
+            }
         }
     }
 
