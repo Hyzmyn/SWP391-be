@@ -14,9 +14,9 @@ namespace ServiceLayer.ResponseModels
         public string Location { get; set; } = null!;
         public string Phone { get; set; } = null!;
         public decimal TotalDonation { get; set; }
-        public int? RoleId { get; set; }
 
     }
+
     public class UserDetailResponse : UsersResponseModel
     {
         public double RatingCount { get; set; }
