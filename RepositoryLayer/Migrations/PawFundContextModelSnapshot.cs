@@ -40,6 +40,33 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "ShelterStaff"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Donor"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Volunteer"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Adopter"
+                        });
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.AdoptionRegistrationForm", b =>
@@ -193,17 +220,9 @@ namespace RepositoryLayer.Migrations
                     b.Property<bool?>("Status")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VolunteerId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ShelterId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Events");
                 });
@@ -304,30 +323,24 @@ namespace RepositoryLayer.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AdoptionStatus")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Age")
+                    b.Property<int?>("Age")
                         .HasColumnType("int");
 
                     b.Property<string>("Breed")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Color")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Gender")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Name")
@@ -338,20 +351,19 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Size")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<bool?>("Status")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("StatusId")
+                    b.Property<int?>("StatusId")
                         .HasColumnType("int");
 
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("UserID")
+                    b.Property<int?>("UserID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -361,6 +373,141 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("Pets");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Pet",
+                            ShelterID = 1,
+                            Type = "Dog"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Pet",
+                            ShelterID = 1,
+                            Type = "Cat"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Pet",
+                            ShelterID = 1,
+                            Type = "Dog"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Pet",
+                            ShelterID = 1,
+                            Type = "Cat"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Pet",
+                            ShelterID = 1,
+                            Type = "Dog"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Pet",
+                            ShelterID = 1,
+                            Type = "Cat"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Pet",
+                            ShelterID = 1,
+                            Type = "Dog"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Pet",
+                            ShelterID = 1,
+                            Type = "Cat"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Pet",
+                            ShelterID = 1,
+                            Type = "Dog"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Pet",
+                            ShelterID = 2,
+                            Type = "Cat"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Pet",
+                            ShelterID = 2,
+                            Type = "Dog"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Pet",
+                            ShelterID = 2,
+                            Type = "Cat"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Pet",
+                            ShelterID = 2,
+                            Type = "Dog"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "Pet",
+                            ShelterID = 2,
+                            Type = "Cat"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "Pet",
+                            ShelterID = 2,
+                            Type = "Dog"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Name = "Pet",
+                            ShelterID = 2,
+                            Type = "Cat"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Name = "Pet",
+                            ShelterID = 2,
+                            Type = "Dog"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Name = "Pet",
+                            ShelterID = 2,
+                            Type = "Dog"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Name = "Pet",
+                            ShelterID = 2,
+                            Type = "Dog"
+                        });
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Post", b =>
@@ -412,7 +559,7 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("Capaxity")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("DonationAmount")
+                    b.Property<decimal?>("DonationAmount")
                         .HasColumnType("decimal(16, 4)");
 
                     b.Property<string>("Email")
@@ -435,12 +582,31 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Website")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
                     b.ToTable("Shelters");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Capaxity = 20,
+                            Email = "PetShelter1@email.com",
+                            Location = "Tp. HCM",
+                            Name = "Shelter1",
+                            PhoneNumber = "1234567890"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Capaxity = 20,
+                            Email = "PetShelter2@email.com",
+                            Location = "Ha Noi",
+                            Name = "Shelter2",
+                            PhoneNumber = "0987654321"
+                        });
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.ShelterStaff", b =>
@@ -462,10 +628,38 @@ namespace RepositoryLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ShelterId")
+                    b.HasIndex("ShelterId");
+
+                    b.HasIndex("UserId")
                         .IsUnique();
 
                     b.ToTable("ShelterStaffs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ShelterId = 1,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ShelterId = 1,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ShelterId = 2,
+                            UserId = 4
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ShelterId = 2,
+                            UserId = 5
+                        });
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Status", b =>
@@ -521,7 +715,6 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Location")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Password")
@@ -529,23 +722,18 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int?>("RoleId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ShelterStaffId")
                         .HasColumnType("int");
 
                     b.Property<bool?>("Status")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Token")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<decimal>("TotalDonation")
+                    b.Property<decimal?>("TotalDonation")
                         .HasColumnType("decimal(16, 4)");
 
                     b.Property<string>("Username")
@@ -556,9 +744,128 @@ namespace RepositoryLayer.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.HasIndex("ShelterStaffId");
-
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "Admin@email.com",
+                            Password = "$2a$11$Igil46NwzpLUr6WWRa1U1.c9NjRdiMey.j6ZJB.CLimq21aUnwr6a",
+                            Username = "Admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "Admin@email.com",
+                            Password = "$2a$11$mmFy78YeO256a278wa4kUe6deWmoGJulLh7uEu/kkr/SR6aAS/upO",
+                            Username = "Staff1"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "Admin@email.com",
+                            Password = "$2a$11$N3w29krW1jKMT6ZRQfCZfeY5PugvbRou5LuAguOAAadB4MSadGqrW",
+                            Username = "Staff2"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Email = "Admin@email.com",
+                            Password = "$2a$11$JsLSx/si1CK2YEiP2MtxQuoXL2G9PUMiFZnVDlJ57dNarDIj9FixC",
+                            Username = "Staff3"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Email = "Admin@email.com",
+                            Password = "$2a$11$rhWE2d73lwIdbAJFAnUSvu68I1PFOMNOqjnnv38pm0cEm0fXgDjXu",
+                            Username = "Staff4"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Email = "Admin@email.com",
+                            Password = "$2a$11$zWbU8VAvsLXMPIXFVYpBe.2RXEY7mrjoA7ktYOzvwx6ZKwwnMwLFG",
+                            Username = "Donor1"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Email = "Admin@email.com",
+                            Password = "$2a$11$K9pjzPrP8W0geTU0Cx/Hj.88c1Q3RNkvS/WsYMajrwJ178U3jKu8O",
+                            Username = "Donor2"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Email = "Admin@email.com",
+                            Password = "$2a$11$dTqw2MqjSgdBLrqsUryB5.qL0DAvauo1yUmSud50cVKJRptYGYkka",
+                            Username = "Donor3"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Email = "Admin@email.com",
+                            Password = "$2a$11$a1oJoDM3H7MXmgwMwxWmRezT/sK6g4rBytuaNwzr0XMdTGa0c7Jq.",
+                            Username = "Donor4"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Email = "Admin@email.com",
+                            Password = "$2a$11$Vm06gLFB6AzkDpLdt1K7K.etT9fSZYoyeOUpdRtgx78P/jebkDpc6",
+                            Username = "Volunteer1"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Email = "Admin@email.com",
+                            Password = "$2a$11$u6lqI6maZgSWrCsQ0U1S1eYJGMBlvqcGp2OFSG/e/1371XTVkjrnC",
+                            Username = "Volunteer2"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Email = "Admin@email.com",
+                            Password = "$2a$11$BDFh6.GsxIGZFbSf8lzsh.B8/BxoAD/O.jTto.S.dQA.9PpAenAta",
+                            Username = "Volunteer3"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Email = "Admin@email.com",
+                            Password = "$2a$11$IB0T865NbKP6Haow9F5bXuQ5XFSK9Gxn6PsZyEXSuhLNtWmNbzyZi",
+                            Username = "Volunteer4"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Email = "Admin@email.com",
+                            Password = "$2a$11$HgQzAbdRWFbZvNLRVy4WR.Qquf7LJV3vvm4vElsv2ouUZHV0MBtrG",
+                            Username = "Adopter1"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Email = "Admin@email.com",
+                            Password = "$2a$11$GrA0aDn2fnd1nvwsrY3HSOYLWvgtf0AYBsNkspYdUHWkIdhsq9gVi",
+                            Username = "Adopter2"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Email = "Admin@email.com",
+                            Password = "$2a$11$OhXN9xviW3TTLsCGITKEweCijHJHeM/RVCG4e0yT8CCMSemnACRta",
+                            Username = "Adopter3"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Email = "Admin@email.com",
+                            Password = "$2a$11$45P9P8lUoQGS7hAr8sbLPOyOnrsVH43ngfeBPFOZGG4ItzeS.T2b.",
+                            Username = "Adopter4"
+                        });
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.UserRole", b =>
@@ -585,6 +892,110 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserRole");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            RoleId = 1,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            RoleId = 2,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            RoleId = 2,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            RoleId = 2,
+                            UserId = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            RoleId = 2,
+                            UserId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            RoleId = 3,
+                            UserId = 6
+                        },
+                        new
+                        {
+                            Id = 7,
+                            RoleId = 3,
+                            UserId = 7
+                        },
+                        new
+                        {
+                            Id = 8,
+                            RoleId = 3,
+                            UserId = 8
+                        },
+                        new
+                        {
+                            Id = 9,
+                            RoleId = 3,
+                            UserId = 9
+                        },
+                        new
+                        {
+                            Id = 10,
+                            RoleId = 4,
+                            UserId = 10
+                        },
+                        new
+                        {
+                            Id = 11,
+                            RoleId = 4,
+                            UserId = 11
+                        },
+                        new
+                        {
+                            Id = 12,
+                            RoleId = 4,
+                            UserId = 12
+                        },
+                        new
+                        {
+                            Id = 13,
+                            RoleId = 4,
+                            UserId = 13
+                        },
+                        new
+                        {
+                            Id = 14,
+                            RoleId = 5,
+                            UserId = 14
+                        },
+                        new
+                        {
+                            Id = 15,
+                            RoleId = 5,
+                            UserId = 15
+                        },
+                        new
+                        {
+                            Id = 16,
+                            RoleId = 5,
+                            UserId = 16
+                        },
+                        new
+                        {
+                            Id = 17,
+                            RoleId = 5,
+                            UserId = 17
+                        });
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.AdoptionRegistrationForm", b =>
@@ -648,19 +1059,13 @@ namespace RepositoryLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ModelLayer.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
                     b.Navigation("Shelter");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.EventUser", b =>
                 {
                     b.HasOne("ModelLayer.Entities.Event", "Event")
-                        .WithMany()
+                        .WithMany("EventUser")
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -706,9 +1111,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasOne("ModelLayer.Entities.User", "User")
                         .WithMany("Pets")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserID");
 
                     b.Navigation("Shelter");
 
@@ -729,12 +1132,20 @@ namespace RepositoryLayer.Migrations
             modelBuilder.Entity("ModelLayer.Entities.ShelterStaff", b =>
                 {
                     b.HasOne("ModelLayer.Entities.Shelter", "Shelter")
+                        .WithMany("Staffs")
+                        .HasForeignKey("ShelterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ModelLayer.Entities.User", "Users")
                         .WithOne("ShelterStaff")
-                        .HasForeignKey("ModelLayer.Entities.ShelterStaff", "ShelterId")
+                        .HasForeignKey("ModelLayer.Entities.ShelterStaff", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Shelter");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Status", b =>
@@ -751,12 +1162,6 @@ namespace RepositoryLayer.Migrations
                     b.HasOne("Domain.Entities.Role", null)
                         .WithMany("Users")
                         .HasForeignKey("RoleId");
-
-                    b.HasOne("ModelLayer.Entities.ShelterStaff", "ShelterStaff")
-                        .WithMany("Users")
-                        .HasForeignKey("ShelterStaffId");
-
-                    b.Navigation("ShelterStaff");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.UserRole", b =>
@@ -783,6 +1188,11 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("Users");
                 });
 
+            modelBuilder.Entity("ModelLayer.Entities.Event", b =>
+                {
+                    b.Navigation("EventUser");
+                });
+
             modelBuilder.Entity("ModelLayer.Entities.Pet", b =>
                 {
                     b.Navigation("AdoptionRegistrationForm");
@@ -805,12 +1215,7 @@ namespace RepositoryLayer.Migrations
 
                     b.Navigation("Pets");
 
-                    b.Navigation("ShelterStaff");
-                });
-
-            modelBuilder.Entity("ModelLayer.Entities.ShelterStaff", b =>
-                {
-                    b.Navigation("Users");
+                    b.Navigation("Staffs");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.User", b =>
@@ -828,6 +1233,8 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("Pets");
 
                     b.Navigation("Posts");
+
+                    b.Navigation("ShelterStaff");
 
                     b.Navigation("UserRoles");
                 });
