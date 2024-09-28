@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using ServiceLayer.ResponseModels;
 using ServiceLayer.RequestModels;
 using Microsoft.EntityFrameworkCore;
+using RepositoryLayer.Utils;
 
 namespace ServiceLayer.Services
 {
@@ -132,7 +133,7 @@ namespace ServiceLayer.Services
                 Location = registerModel.Location,
                 Username = registerModel.Username,
                 Email = registerModel.Email,
-                Password = HashPassword(registerModel.Password),
+                Password = PasswordTools.HashPassword(registerModel.Password),
                 Phone = registerModel.Phone,
                 Status = true,
             };
@@ -204,7 +205,7 @@ namespace ServiceLayer.Services
             {
                 var user = await _userService.GetUserByIdAsync(userId);
                 var providePassword = GeneratePassword();
-                user.Password = HashPassword(providePassword);
+                user.Password = PasswordTools.HashPassword(providePassword);
                 await _unitOfWork.Repository<User>().Update(user, user.Id);
                 await _unitOfWork.CommitAsync();
 
@@ -310,7 +311,7 @@ namespace ServiceLayer.Services
                 }
 
                 var providePassword = GeneratePassword();
-                query.Password = HashPassword(providePassword);
+                query.Password = PasswordTools.HashPassword(providePassword);
 
                 var smtpClient = new SmtpClient("smtp.gmail.com");
                 smtpClient.Port = 587;
@@ -396,46 +397,6 @@ namespace ServiceLayer.Services
                     Message = "An error occurred: " + ex.Message
                 };
             }
-        }
-
-        public string HashPassword(string password)
-        {
-            byte[] salt = new byte[16];
-            using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(salt);
-            }
-
-            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
-            byte[] hash = pbkdf2.GetBytes(20);
-
-            byte[] hashBytes = new byte[36];
-            Array.Copy(salt, 0, hashBytes, 0, 16);
-            Array.Copy(hash, 0, hashBytes, 16, 20);
-            string hashedPassword = Convert.ToBase64String(hashBytes);
-
-            return hashedPassword;
-        }
-
-        public bool VerifyPassword(string password, string hashedPassword)
-        {
-            byte[] hashBytes = Convert.FromBase64String(hashedPassword);
-            byte[] salt = new byte[16];
-            Array.Copy(hashBytes, 0, salt, 0, 16);
-            byte[] hash = new byte[20];
-            Array.Copy(hashBytes, 16, hash, 0, 20);
-
-            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
-            byte[] computedHash = pbkdf2.GetBytes(20);
-
-            for (int i = 0; i < 20; i++)
-            {
-                if (hash[i] != computedHash[i])
-                {
-                    return false;
-                }
-            }
-            return true;
         }
 
         public string GeneratePassword()
