@@ -29,6 +29,7 @@ namespace RepositoryLayer.Repositories
 
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
         Task<TEntity> FindAsync(Expression<Func<TEntity, bool>> predicate);
+        Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate);
         Task<TEntity> GetById(int Id);
 
         Task<TEntity> GetByIdGuid(Guid Id);

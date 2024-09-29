@@ -95,7 +95,7 @@ namespace ServiceLayer.Services
                 Email = user.Email,
                 Location = user.Location,
                 Phone = user.Phone,
-                TotalDonation = user.TotalDonation,
+                TotalDonation = (decimal)user.TotalDonation,
             };
 
             return responseModel;

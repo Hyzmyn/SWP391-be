@@ -33,6 +33,8 @@ namespace SWP391_PawFund.AppStarts
             services.AddScoped<IDonateService, DonateService>();
             services.AddScoped<IPetService, PetService>();
             services.AddScoped<IShelterService, ShelterService>();
+            services.AddScoped<IStatusPetService, StatusPetService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAdoptionRegistrationFormService, AdoptionRegistrationFormService>();
         }
     }
