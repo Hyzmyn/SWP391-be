@@ -10,7 +10,7 @@ namespace ServiceLayer.ResponseModels
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public string Date { get; set; } = string.Empty; // Nếu có thể, nên sử dụng DateTime thay vì string
+        public string Date { get; set; } = string.Empty; // Nếu Date là string
         public string Disease { get; set; } = string.Empty;
         public string Vaccine { get; set; } = string.Empty;
         public int PetId { get; set; }
