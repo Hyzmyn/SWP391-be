@@ -9,8 +9,9 @@ namespace ModelLayer.Entities
 {
     public class Status : BaseEntity
     {
+        public int PetId { get; set; }
         public string Name { get; set; }
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         public string Disease { get; set; }
         public string Vaccine { get; set; }
 

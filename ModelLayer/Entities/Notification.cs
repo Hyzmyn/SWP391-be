@@ -10,7 +10,7 @@ namespace ModelLayer.Entities
     public class Notification : BaseEntity
     {
         public string Message { get; set; }
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         public int UserId { get; set; }
 
         public virtual User? User { get; set; }

@@ -17,7 +17,7 @@ namespace SWP391_PawFund.Controllers
         private readonly IShelterService _shelterService;
         private readonly IUsersService _usersService;
         private readonly IPetService _petService;
-        
+
         public AdoptionRegistrationFormController(IAdoptionRegistrationFormService adoptionFormService, IUsersService usersService, IShelterService shelterService, IPetService petService)
         {
             _adoptionFormService = adoptionFormService;
@@ -68,6 +68,7 @@ namespace SWP391_PawFund.Controllers
                 IncomeAmount = form.IncomeAmount,
                 Image = form.Image,
                 Condition = form.Condition,
+                Status = form.Status,
                 Adopter = adopter != null ? new UserDetailResponse
                 {
                     Id = adopter.Id,
@@ -97,7 +98,7 @@ namespace SWP391_PawFund.Controllers
                 ShelterStaff = shelterStaff != null ? new UserDetailResponse
                 {
                     Id = shelterStaff.Id,
-                    Username=shelterStaff.Username, 
+                    Username = shelterStaff.Username,
                     Email = shelterStaff.Email,
                     Phone = shelterStaff.Phone,
                     Location = shelterStaff.Location
