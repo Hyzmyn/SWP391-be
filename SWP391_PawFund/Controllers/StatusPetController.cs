@@ -53,9 +53,6 @@ namespace SWP391_PawFund.Controllers
             {
                 return NotFound($"Status with ID {id} not found.");
             }
-
-            // Đảm bảo rằng Pet được nạp (Eager Loading)
-            // Nếu chưa nạp Pet trong service, bạn cần cập nhật service để nạp Pet
             var pet = status.Pet;
 
             var response = new StatusDetailResponseModel
@@ -69,16 +66,16 @@ namespace SWP391_PawFund.Controllers
                 PetName = pet?.Name ?? string.Empty,
                 Pet = pet != null ? new PetResponseModel
                 {
-                    Type = pet.Type,
-                    Breed = pet.Breed,
-                    Gender = pet.Gender,
-                    Age = pet.Age,
-                    Size = pet.Size,
-                    Color = pet.Color,
-                    AdoptionStatus = pet.AdoptionStatus,
-                    Image = pet.Image,
-                    ShelterID = pet.ShelterID,
-                    UserID = pet.UserID
+                    Type = status.Pet.Type,
+                    Breed = status.Pet.Breed,
+                    Gender = status.Pet.Gender,
+                    Age = (int)status.Pet.Age,
+                    Size = status.Pet.Size,
+                    Color = status.Pet.Color,
+                    AdoptionStatus = status.Pet.AdoptionStatus,
+                    Image = status.Pet.Image,
+                    ShelterID = status.Pet.ShelterID,
+                    UserID = (int)status.Pet.UserID
                 } : null!
             };
 
@@ -93,13 +90,19 @@ namespace SWP391_PawFund.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            // Kiểm tra xem PetId có tồn tại không và lấy PetName
+            var pet =  _statusPetService.GetStatusesForPet(request.PetId);
+            if (pet == null)
+            {
+                return BadRequest($"Pet with ID {request.PetId} does not exist.");
+            }
             var status = new Status
             {
                 Name = request.Name,
-                Date = request.Date,
+                Date = request.Date.ToString("yyyy-MM-dd"), // Nếu bạn muốn giữ định dạng string
                 Disease = request.Disease,
                 Vaccine = request.Vaccine,
+                PetId=request.PetId
             };
 
             await _statusPetService.CreateStatusAsync(status);
@@ -139,12 +142,25 @@ namespace SWP391_PawFund.Controllers
             {
                 return NotFound($"Status with ID {id} not found.");
             }
-
+            // Kiểm tra xem PetId mới có tồn tại không
+            var pet =  _statusPetService.GetStatusesForPet(request.PetId);
+            if (pet == null)
+            {
+                return BadRequest($"Pet with ID {request.PetId} does not exist.");
+            }
             existingStatus.Name = request.Name;
-            existingStatus.Date = request.Date;
+            existingStatus.Date = request.Date.ToString("yyyy-MM-dd"); // Nếu bạn giữ định dạng string
             existingStatus.Disease = request.Disease;
             existingStatus.Vaccine = request.Vaccine;
-            await _statusPetService.UpdateStatusAsync(existingStatus);
+            try
+            {
+                await _statusPetService.UpdateStatusAsync(existingStatus);
+            }
+            catch (Exception ex)
+            {
+                // Có thể ghi log lỗi ở đây nếu cần
+                return StatusCode(500, "An error occurred while updating the status.");
+            }
 
             return NoContent();
         }
@@ -159,7 +175,16 @@ namespace SWP391_PawFund.Controllers
                 return NotFound($"Status with ID {id} not found.");
             }
 
-            await _statusPetService.DeleteStatusAsync(id);
+            try
+            {
+                await _statusPetService.DeleteStatusAsync(id);
+            }
+            catch (Exception ex)
+            {
+                // Có thể ghi log lỗi ở đây nếu cần
+                return StatusCode(500, "An error occurred while deleting the status.");
+            }
+
             return NoContent();
         }
     }

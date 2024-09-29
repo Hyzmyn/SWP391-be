@@ -11,10 +11,12 @@ namespace ServiceLayer.RequestModels
     {
         [Required]
         public string Name { get; set; } = string.Empty;      // Tên trạng thái
-        public string Date { get; set; } // Sử dụng DateTime thay vì string
+        [Required]
+        public DateTime Date { get; set; } // Sử dụng DateTime thay vì string
 
         public string Disease { get; set; } = string.Empty;   // Bệnh lý (nếu có)
         public string Vaccine { get; set; } = string.Empty;   // Vắc xin đã tiêm
+        [Required]
         public int PetId { get; set; }                       // ID của thú cưng liên kết
 
         // Thuộc tính cho Pet (không bắt buộc, sử dụng khi cần liên kết với thông tin thú cưng trong Create/Update)
@@ -23,5 +25,21 @@ namespace ServiceLayer.RequestModels
         public string? PetBreed { get; set; } = string.Empty; // Giống loài
         public string? PetColor { get; set; } = string.Empty; // Màu sắc của thú cưng
     }
+    public class StatusUpdateRequestModel
+    {
+        [Required]
+        public int Id { get; set; }
 
+        [Required]
+        public string Name { get; set; } = string.Empty;
+
+        [Required]
+        public DateTime Date { get; set; } // Sử dụng DateTime thay vì string
+
+        public string Disease { get; set; } = string.Empty;
+        public string Vaccine { get; set; } = string.Empty;
+
+        [Required]
+        public int PetId { get; set; }
+    }
 }
