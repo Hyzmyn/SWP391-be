@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\RepositoryLayer\\Migrations\\20240929060833_v2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RepositoryLayer\\Migrations\\20240929060833_v2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\modellayer\\entities\\status.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\status.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\swp391_pawfund\\controllers\\adoptionregistrationformcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\adoptionregistrationformcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -81,6 +89,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "20240929060833_v2.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\RepositoryLayer\\Migrations\\20240929060833_v2.cs",
+              "RelativeDocumentMoniker": "RepositoryLayer\\Migrations\\20240929060833_v2.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\RepositoryLayer\\Migrations\\20240929060833_v2.cs",
+              "RelativeToolTip": "RepositoryLayer\\Migrations\\20240929060833_v2.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-29T06:08:33.821Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Status.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\Status.cs",
+              "RelativeDocumentMoniker": "ModelLayer\\Entities\\Status.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\Status.cs",
+              "RelativeToolTip": "ModelLayer\\Entities\\Status.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-29T06:06:54.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "AdoptionRegistrationFormController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\Controllers\\AdoptionRegistrationFormController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\AdoptionRegistrationFormController.cs",
@@ -93,7 +127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "DonationController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\Controllers\\DonationController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\DonationController.cs",
@@ -101,12 +135,11 @@
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\DonationController.cs",
               "ViewState": "AgIAADsAAAAAAAAAAAAwwFcAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T14:25:08.787Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-28T14:25:08.787Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "DependencyInjectionContainers.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\AppStarts\\DependencyInjectionContainers.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\AppStarts\\DependencyInjectionContainers.cs",
@@ -114,12 +147,11 @@
               "RelativeToolTip": "SWP391_PawFund\\AppStarts\\DependencyInjectionContainers.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAzwCkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T14:22:03.639Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-28T14:22:03.639Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "EventUser.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\EventUser.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\EventUser.cs",
@@ -131,7 +163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "Event.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\Event.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\Event.cs",
@@ -143,7 +175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\User.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\User.cs",
@@ -155,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "Role.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\Role.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\Role.cs",
@@ -167,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "UserRole.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\UserRole.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\UserRole.cs",
@@ -179,7 +211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "Shelter.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\Shelter.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\Shelter.cs",
@@ -191,7 +223,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "ShelterStaff.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\ShelterStaff.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\ShelterStaff.cs",
@@ -203,7 +235,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "BaseEntity.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\BaseEntity.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\BaseEntity.cs",
@@ -215,7 +247,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "UserService.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Services\\UserService.cs",
@@ -227,7 +259,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "PawFundContext.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\RepositoryLayer\\PawFundContext.cs",
               "RelativeDocumentMoniker": "RepositoryLayer\\PawFundContext.cs",
