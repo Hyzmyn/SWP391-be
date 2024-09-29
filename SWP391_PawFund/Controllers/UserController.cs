@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer.Entities;
+using RepositoryLayer.Models;
+using RepositoryLayer.Utils;
 using ServiceLayer.Interfaces;
 using ServiceLayer.RequestModels;
 
@@ -23,7 +25,7 @@ namespace SWP391_PawFund.Controllers
         // GET: api/Users
         [HttpGet]
         [Authorize]
-        public ActionResult<IEnumerable<User>> GetUsers()
+        public ActionResult<IEnumerable<UserViewModel>> GetUsers()
         {
             var users = _userService.GetUsers();
             return Ok(users);
@@ -97,12 +99,12 @@ namespace SWP391_PawFund.Controllers
                 {
                     return NotFound(new { message = "User ID not found." });
                 }
-                if (_authService.VerifyPassword(request.OldPassword, user.Password) == false)
+                if (PasswordTools.VerifyPassword(request.OldPassword, user.Password) == false)
                 {
                     return BadRequest(new { message = "Password is uncorrect." });
                 }
 
-                string hashedPass = _authService.HashPassword(request.NewPassword);
+                string hashedPass = PasswordTools.HashPassword(request.NewPassword);
 
                 user.Password = hashedPass;
 

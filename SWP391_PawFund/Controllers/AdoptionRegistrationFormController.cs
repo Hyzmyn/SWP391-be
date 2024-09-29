@@ -76,7 +76,7 @@ namespace SWP391_PawFund.Controllers
                     Email = adopter.Email,
                     Phone = adopter.Phone,
                     Location = adopter.Location,
-                    TotalDonation = adopter.TotalDonation
+                    TotalDonation = (decimal)adopter.TotalDonation
                 } : null,
                 Pet = pet != null ? new PetDetailResponse
                 {
@@ -85,7 +85,7 @@ namespace SWP391_PawFund.Controllers
                     Type = pet.Type,
                     Breed = pet.Breed,
                     Gender = pet.Gender,
-                    Age = pet.Age,
+                    Age = (int)pet.Age,
                     Size = pet.Size,
                     Color = pet.Color,
                     Description = pet.Description,

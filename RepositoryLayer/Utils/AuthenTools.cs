@@ -14,7 +14,7 @@ namespace RepositoryLayer.Utils
             if (identity != null)
             {
                 var userClaims = identity.Claims;
-                return userClaims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value; // THAY VÌ .Name thì đặt tên gì cũng dc cưng
+                return userClaims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value; 
             }
             return null;
         }
