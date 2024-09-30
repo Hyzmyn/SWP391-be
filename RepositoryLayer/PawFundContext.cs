@@ -49,12 +49,16 @@ namespace RepositoryLayer
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var entityType in modelBuilder.Model.GetEntityTypes()
-         .Where(e => typeof(BaseEntity).IsAssignableFrom(e.ClrType)))
+                .Where(e => typeof(BaseEntity).IsAssignableFrom(e.ClrType)))
             {
                 modelBuilder.Entity(entityType.ClrType)
                     .Property(nameof(BaseEntity.Id))
                     .ValueGeneratedOnAdd();
             }
+
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
 
             modelBuilder.Entity<AdoptionRegistrationForm>()
                 .Property(a => a.IncomeAmount)
@@ -79,13 +83,6 @@ namespace RepositoryLayer
                 .OnDelete(DeleteBehavior.Cascade);
 
 
-            modelBuilder.Entity<Certification>()
-                .HasOne(c => c.User)
-                .WithMany(u => u.Certifications)
-                .HasForeignKey(c => c.UserId)
-                .OnDelete(DeleteBehavior.NoAction);
-
-
             modelBuilder.Entity<Role>().HasData(
                 new Role { Id = 1, Name = "Admin" },
                 new Role { Id = 2, Name = "ShelterStaff" },
@@ -96,22 +93,22 @@ namespace RepositoryLayer
 
             modelBuilder.Entity<User>().HasData(
                 new User { Id = 1, Username = "Admin", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 2, Username = "Staff1", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 3, Username = "Staff2", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 4, Username = "Staff3", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 5, Username = "Staff4", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 6, Username = "Donor1", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 7, Username = "Donor2", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 8, Username = "Donor3", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 9, Username = "Donor4", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 10, Username = "Volunteer1", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 11, Username = "Volunteer2", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 12, Username = "Volunteer3", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 13, Username = "Volunteer4", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 14, Username = "Adopter1", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 15, Username = "Adopter2", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 16, Username = "Adopter3", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 17, Username = "Adopter4", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") }
+                new User { Id = 2, Username = "Staff1", Email = "Staff1@email.com", Password = PasswordTools.HashPassword("123456") },
+                new User { Id = 3, Username = "Staff2", Email = "Staff2@email.com", Password = PasswordTools.HashPassword("123456") },
+                new User { Id = 4, Username = "Staff3", Email = "Staff3@email.com", Password = PasswordTools.HashPassword("123456") },
+                new User { Id = 5, Username = "Staff4", Email = "Staff4@email.com", Password = PasswordTools.HashPassword("123456") },
+                new User { Id = 6, Username = "Donor1", Email = "Donor1@email.com", Password = PasswordTools.HashPassword("123456") },
+                new User { Id = 7, Username = "Donor2", Email = "Donor2@email.com", Password = PasswordTools.HashPassword("123456") },
+                new User { Id = 8, Username = "Donor3", Email = "Donor3@email.com", Password = PasswordTools.HashPassword("123456") },
+                new User { Id = 9, Username = "Donor4", Email = "Donor4@email.com", Password = PasswordTools.HashPassword("123456") },
+                new User { Id = 10, Username = "Volunteer1", Email = "Volunteer1@email.com", Password = PasswordTools.HashPassword("123456") },
+                new User { Id = 11, Username = "Volunteer2", Email = "Volunteer2@email.com", Password = PasswordTools.HashPassword("123456") },
+                new User { Id = 12, Username = "Volunteer3", Email = "Volunteer3@email.com", Password = PasswordTools.HashPassword("123456") },
+                new User { Id = 13, Username = "Volunteer4", Email = "Volunteer4@email.com", Password = PasswordTools.HashPassword("123456") },
+                new User { Id = 14, Username = "Adopter1", Email = "Adopter1@email.com", Password = PasswordTools.HashPassword("123456") },
+                new User { Id = 15, Username = "Adopter2", Email = "Adopter2@email.com", Password = PasswordTools.HashPassword("123456") },
+                new User { Id = 16, Username = "Adopter3", Email = "Adopter3@email.com", Password = PasswordTools.HashPassword("123456") },
+                new User { Id = 17, Username = "Adopter4", Email = "Adopter4@email.com", Password = PasswordTools.HashPassword("123456") }
 
             );
 
@@ -150,27 +147,83 @@ namespace RepositoryLayer
             );
 
             modelBuilder.Entity<Pet>().HasData(
-                new Pet { Id = 1, ShelterID = 1, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 2, ShelterID = 1, Name = "Pet", Type = "Cat" },
-                new Pet { Id = 3, ShelterID = 1, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 4, ShelterID = 1, Name = "Pet", Type = "Cat" },
-                new Pet { Id = 5, ShelterID = 1, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 6, ShelterID = 1, Name = "Pet", Type = "Cat" },
-                new Pet { Id = 7, ShelterID = 1, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 8, ShelterID = 1, Name = "Pet", Type = "Cat" },
-                new Pet { Id = 9, ShelterID = 1, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 10, ShelterID = 2, Name = "Pet", Type = "Cat" },
-                new Pet { Id = 11, ShelterID = 2, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 12, ShelterID = 2, Name = "Pet", Type = "Cat" },
-                new Pet { Id = 13, ShelterID = 2, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 14, ShelterID = 2, Name = "Pet", Type = "Cat" },
-                new Pet { Id = 15, ShelterID = 2, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 16, ShelterID = 2, Name = "Pet", Type = "Cat" },
-                new Pet { Id = 18, ShelterID = 2, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 19, ShelterID = 2, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 20, ShelterID = 2, Name = "Pet", Type = "Dog" }
+                new Pet { Id = 1, ShelterID = 1, Name = "Buddy", Type = "Dog", UserID = 17 },
+                new Pet { Id = 2, ShelterID = 1, Name = "Whiskers", Type = "Cat", UserID = 17 },
+                new Pet { Id = 3, ShelterID = 1, Name = "Max", Type = "Dog", UserID = 16 },
+                new Pet { Id = 4, ShelterID = 1, Name = "Luna", Type = "Cat", UserID = 14 },
+                new Pet { Id = 5, ShelterID = 1, Name = "Bella", Type = "Dog" },
+                new Pet { Id = 6, ShelterID = 1, Name = "Lux", Type = "Cat" },
+                new Pet { Id = 7, ShelterID = 1, Name = "Dono", Type = "Dog" },
+                new Pet { Id = 8, ShelterID = 1, Name = "Linker", Type = "Cat" },
+                new Pet { Id = 9, ShelterID = 1, Name = "Dawin", Type = "Dog", UserID = 15 },
+                new Pet { Id = 10, ShelterID = 2, Name = "Modor", Type = "Cat" },
+                new Pet { Id = 11, ShelterID = 2, Name = "Pingking", Type = "Dog" },
+                new Pet { Id = 12, ShelterID = 2, Name = "Seto", Type = "Cat" },
+                new Pet { Id = 13, ShelterID = 2, Name = "kaiba", Type = "Dog" },
+                new Pet { Id = 14, ShelterID = 2, Name = "Asuka", Type = "Cat" },
+                new Pet { Id = 15, ShelterID = 2, Name = "Jax", Type = "Dog" },
+                new Pet { Id = 16, ShelterID = 2, Name = "Jihn", Type = "Cat" },
+                new Pet { Id = 18, ShelterID = 2, Name = "Kaisa", Type = "Dog" },
+                new Pet { Id = 19, ShelterID = 2, Name = "Bump", Type = "Dog" },
+                new Pet { Id = 20, ShelterID = 2, Name = "Rasko", Type = "Dog" }
 
 
+            );
+            modelBuilder.Entity<Donation>().HasData(
+                new Donation { Id = 1, DonorId = 6, ShelterId = 1, Amount = 100000 },
+                new Donation { Id = 2, DonorId = 7, ShelterId = 1, Amount = 200000 },
+                new Donation { Id = 3, DonorId = 8, ShelterId = 2, Amount = 543333 },
+                new Donation { Id = 4, DonorId = 9, ShelterId = 2, Amount = 632229 },
+                new Donation { Id = 5, DonorId = 7, ShelterId = 1, Amount = 760000 }
+
+            );
+
+            modelBuilder.Entity<Status>().HasData(
+                  new Status    
+                  {
+                      Id = 1,
+                      PetId = 1,
+                      Name = "Canine Parvovirus",
+                      Date = new DateTime(2024, 1, 15),
+                      Disease = "Parvovirus Infection",
+                      Vaccine = "Parvovirus Vaccine"
+                  },
+                  new Status
+                  {
+                      Id = 2,
+                      PetId = 3,
+                      Name = "Canine Distemper",
+                      Date = new DateTime(2024, 2, 20),
+                      Disease = "Distemper Virus",
+                      Vaccine = "Distemper Vaccine"
+                  },
+                  new Status
+                  {
+                      Id = 3,
+                      PetId = 5,
+                      Name = "Rabies",
+                      Date = new DateTime(2024, 3, 10),
+                      Disease = "Rabies Virus",
+                      Vaccine = "Rabies Vaccine"
+                  },
+                  new Status
+                  {
+                      Id = 4,
+                      PetId = 2,
+                      Name = "Feline Leukemia Virus",
+                      Date = new DateTime(2024, 4, 5),
+                      Disease = "FeLV",
+                      Vaccine = "FeLV Vaccine"
+                  },
+                  new Status
+                  {
+                      Id = 5,
+                      PetId = 4,
+                      Name = "Feline Immunodeficiency Virus",
+                      Date = new DateTime(2024, 5, 12),
+                      Disease = "FIV",
+                      Vaccine = "None"
+                  }
             );
         }
     }

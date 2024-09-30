@@ -48,7 +48,7 @@ namespace SWP391_PawFund.AppStarts
                         new List<string>()
                     }
                 });
-                var filePath = Path.Combine(System.AppContext.BaseDirectory, "HomeHunt.xml");
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "PawFund.xml");
                 c.IncludeXmlComments(filePath);
             });
             services.AddVersionedApiExplorer(setup =>
