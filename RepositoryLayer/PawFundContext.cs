@@ -150,27 +150,82 @@ namespace RepositoryLayer
             );
 
             modelBuilder.Entity<Pet>().HasData(
-                new Pet { Id = 1, ShelterID = 1, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 2, ShelterID = 1, Name = "Pet", Type = "Cat" },
-                new Pet { Id = 3, ShelterID = 1, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 4, ShelterID = 1, Name = "Pet", Type = "Cat" },
-                new Pet { Id = 5, ShelterID = 1, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 6, ShelterID = 1, Name = "Pet", Type = "Cat" },
-                new Pet { Id = 7, ShelterID = 1, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 8, ShelterID = 1, Name = "Pet", Type = "Cat" },
-                new Pet { Id = 9, ShelterID = 1, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 10, ShelterID = 2, Name = "Pet", Type = "Cat" },
-                new Pet { Id = 11, ShelterID = 2, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 12, ShelterID = 2, Name = "Pet", Type = "Cat" },
-                new Pet { Id = 13, ShelterID = 2, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 14, ShelterID = 2, Name = "Pet", Type = "Cat" },
-                new Pet { Id = 15, ShelterID = 2, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 16, ShelterID = 2, Name = "Pet", Type = "Cat" },
-                new Pet { Id = 18, ShelterID = 2, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 19, ShelterID = 2, Name = "Pet", Type = "Dog" },
-                new Pet { Id = 20, ShelterID = 2, Name = "Pet", Type = "Dog" }
+                new Pet { Id = 1, ShelterID = 1, Name = "Buddy", Type = "Dog", UserID = 17 },
+                new Pet { Id = 2, ShelterID = 1, Name = "Whiskers", Type = "Cat", UserID = 17 },
+                new Pet { Id = 3, ShelterID = 1, Name = "Max", Type = "Dog", UserID = 16 },
+                new Pet { Id = 4, ShelterID = 1, Name = "Luna", Type = "Cat", UserID = 14 },
+                new Pet { Id = 5, ShelterID = 1, Name = "Bella", Type = "Dog" },
+                new Pet { Id = 6, ShelterID = 1, Name = "Lux", Type = "Cat" },
+                new Pet { Id = 7, ShelterID = 1, Name = "Dono", Type = "Dog" },
+                new Pet { Id = 8, ShelterID = 1, Name = "Linker", Type = "Cat" },
+                new Pet { Id = 9, ShelterID = 1, Name = "Dawin", Type = "Dog", UserID = 15 },
+                new Pet { Id = 10, ShelterID = 2, Name = "Modor", Type = "Cat" },
+                new Pet { Id = 11, ShelterID = 2, Name = "Pingking", Type = "Dog" },
+                new Pet { Id = 12, ShelterID = 2, Name = "Seto", Type = "Cat" },
+                new Pet { Id = 13, ShelterID = 2, Name = "kaiba", Type = "Dog" },
+                new Pet { Id = 14, ShelterID = 2, Name = "Asuka", Type = "Cat" },
+                new Pet { Id = 15, ShelterID = 2, Name = "Jax", Type = "Dog" },
+                new Pet { Id = 16, ShelterID = 2, Name = "Jihn", Type = "Cat" },
+                new Pet { Id = 18, ShelterID = 2, Name = "Kaisa", Type = "Dog" },
+                new Pet { Id = 19, ShelterID = 2, Name = "Bump", Type = "Dog" },
+                new Pet { Id = 20, ShelterID = 2, Name = "Rasko", Type = "Dog" }
 
 
+            );
+            modelBuilder.Entity<Donation>().HasData(
+                new Donation { Id = 1, DonorId = 6, ShelterId = 1, Amount = 100000 },
+                new Donation { Id = 2, DonorId = 7, ShelterId = 1, Amount = 200000 },
+                new Donation { Id = 3, DonorId = 8, ShelterId = 2, Amount = 543333 },
+                new Donation { Id = 4, DonorId = 9, ShelterId = 2, Amount = 632229 },
+                new Donation { Id = 5, DonorId = 7, ShelterId = 2, Amount = 760000 }
+
+            );
+            modelBuilder.Entity<Status>().HasData(
+                new Status
+                {
+                    Id = 1,
+                    PetId = 1, 
+                    Name = "Canine Parvovirus",
+                    Date = new DateTime(2024, 1, 15),
+                    Disease = "Parvovirus Infection",
+                    Vaccine = "Parvovirus Vaccine"
+                },
+                new Status
+                {
+                    Id = 2,
+                    PetId = 3, 
+                    Name = "Canine Distemper",
+                    Date = new DateTime(2024, 2, 20),
+                    Disease = "Distemper Virus",
+                    Vaccine = "Distemper Vaccine"
+                },
+                new Status
+                {
+                    Id = 3,
+                    PetId = 5, 
+                    Name = "Rabies",
+                    Date = new DateTime(2024, 3, 10),
+                    Disease = "Rabies Virus",
+                    Vaccine = "Rabies Vaccine"
+                },
+                new Status
+                {
+                    Id = 4,
+                    PetId = 2, 
+                    Name = "Feline Leukemia Virus",
+                    Date = new DateTime(2024, 4, 5),
+                    Disease = "FeLV",
+                    Vaccine = "FeLV Vaccine"
+                },
+                new Status
+                {
+                    Id = 5,
+                    PetId = 4, 
+                    Name = "Feline Immunodeficiency Virus",
+                    Date = new DateTime(2024, 5, 12),
+                    Disease = "FIV",
+                    Vaccine = "None" 
+                }
             );
         }
     }
