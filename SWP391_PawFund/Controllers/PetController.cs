@@ -61,14 +61,11 @@ namespace SWP391_PawFund.Controllers
                 Color = petCreateRequest.Color,
                 Description = petCreateRequest.Description,
                 AdoptionStatus = petCreateRequest.AdoptionStatus,
-
-                //Thiếu Status
-
+                StatusId = petCreateRequest.StatusId,
                 Image = petCreateRequest.Image
             };
             await _petService.CreatePetAsync(pet);
 
-            // Trả về kết quả, bao gồm URL để truy xuất Pet mới được tạo
             return CreatedAtAction(nameof(GetPetById), new { id = pet.Id }, petCreateRequest);
         }
 
@@ -120,10 +117,16 @@ namespace SWP391_PawFund.Controllers
             if (pet == null)
             {
                 return NotFound();
+            }          
+            try
+            {
+                await _petService.DeletePetAsync(id);
+                return Ok(new { message = "Pet have been Delete Successfully." });
             }
-
-            await _petService.DeletePetAsync(id);
-            return NoContent();
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // PATCH: api/Pet/{id}/status
