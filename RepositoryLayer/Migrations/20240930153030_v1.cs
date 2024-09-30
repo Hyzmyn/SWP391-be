@@ -67,7 +67,7 @@ namespace RepositoryLayer.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Username = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Email = table.Column<string>(type: "longtext", nullable: false)
+                    Email = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Password = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -160,8 +160,7 @@ namespace RepositoryLayer.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Message = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Date = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Date = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
@@ -384,6 +383,7 @@ namespace RepositoryLayer.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Date = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
+                    ShelterStaffId = table.Column<int>(type: "int", nullable: false),
                     PetId = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
@@ -396,11 +396,6 @@ namespace RepositoryLayer.Migrations
                         principalTable: "Pets",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Certification_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -410,15 +405,14 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    PetId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Date = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Date = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     Disease = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Vaccine = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PetId = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>
@@ -428,7 +422,8 @@ namespace RepositoryLayer.Migrations
                         name: "FK_Statuses_Pets_PetId",
                         column: x => x.PetId,
                         principalTable: "Pets",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -453,6 +448,31 @@ namespace RepositoryLayer.Migrations
                         column: x => x.PostId,
                         principalTable: "Post",
                         principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "CertificationUser",
+                columns: table => new
+                {
+                    CertificationsId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CertificationUser", x => new { x.CertificationsId, x.UserId });
+                    table.ForeignKey(
+                        name: "FK_CertificationUser_Certification_CertificationsId",
+                        column: x => x.CertificationsId,
+                        principalTable: "Certification",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CertificationUser_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -482,23 +502,35 @@ namespace RepositoryLayer.Migrations
                 columns: new[] { "Id", "Email", "Image", "Location", "Password", "Phone", "RoleId", "Status", "Token", "TotalDonation", "Username" },
                 values: new object[,]
                 {
-                    { 1, "Admin@email.com", null, null, "$2a$11$Igil46NwzpLUr6WWRa1U1.c9NjRdiMey.j6ZJB.CLimq21aUnwr6a", null, null, null, null, null, "Admin" },
-                    { 2, "Admin@email.com", null, null, "$2a$11$mmFy78YeO256a278wa4kUe6deWmoGJulLh7uEu/kkr/SR6aAS/upO", null, null, null, null, null, "Staff1" },
-                    { 3, "Admin@email.com", null, null, "$2a$11$N3w29krW1jKMT6ZRQfCZfeY5PugvbRou5LuAguOAAadB4MSadGqrW", null, null, null, null, null, "Staff2" },
-                    { 4, "Admin@email.com", null, null, "$2a$11$JsLSx/si1CK2YEiP2MtxQuoXL2G9PUMiFZnVDlJ57dNarDIj9FixC", null, null, null, null, null, "Staff3" },
-                    { 5, "Admin@email.com", null, null, "$2a$11$rhWE2d73lwIdbAJFAnUSvu68I1PFOMNOqjnnv38pm0cEm0fXgDjXu", null, null, null, null, null, "Staff4" },
-                    { 6, "Admin@email.com", null, null, "$2a$11$zWbU8VAvsLXMPIXFVYpBe.2RXEY7mrjoA7ktYOzvwx6ZKwwnMwLFG", null, null, null, null, null, "Donor1" },
-                    { 7, "Admin@email.com", null, null, "$2a$11$K9pjzPrP8W0geTU0Cx/Hj.88c1Q3RNkvS/WsYMajrwJ178U3jKu8O", null, null, null, null, null, "Donor2" },
-                    { 8, "Admin@email.com", null, null, "$2a$11$dTqw2MqjSgdBLrqsUryB5.qL0DAvauo1yUmSud50cVKJRptYGYkka", null, null, null, null, null, "Donor3" },
-                    { 9, "Admin@email.com", null, null, "$2a$11$a1oJoDM3H7MXmgwMwxWmRezT/sK6g4rBytuaNwzr0XMdTGa0c7Jq.", null, null, null, null, null, "Donor4" },
-                    { 10, "Admin@email.com", null, null, "$2a$11$Vm06gLFB6AzkDpLdt1K7K.etT9fSZYoyeOUpdRtgx78P/jebkDpc6", null, null, null, null, null, "Volunteer1" },
-                    { 11, "Admin@email.com", null, null, "$2a$11$u6lqI6maZgSWrCsQ0U1S1eYJGMBlvqcGp2OFSG/e/1371XTVkjrnC", null, null, null, null, null, "Volunteer2" },
-                    { 12, "Admin@email.com", null, null, "$2a$11$BDFh6.GsxIGZFbSf8lzsh.B8/BxoAD/O.jTto.S.dQA.9PpAenAta", null, null, null, null, null, "Volunteer3" },
-                    { 13, "Admin@email.com", null, null, "$2a$11$IB0T865NbKP6Haow9F5bXuQ5XFSK9Gxn6PsZyEXSuhLNtWmNbzyZi", null, null, null, null, null, "Volunteer4" },
-                    { 14, "Admin@email.com", null, null, "$2a$11$HgQzAbdRWFbZvNLRVy4WR.Qquf7LJV3vvm4vElsv2ouUZHV0MBtrG", null, null, null, null, null, "Adopter1" },
-                    { 15, "Admin@email.com", null, null, "$2a$11$GrA0aDn2fnd1nvwsrY3HSOYLWvgtf0AYBsNkspYdUHWkIdhsq9gVi", null, null, null, null, null, "Adopter2" },
-                    { 16, "Admin@email.com", null, null, "$2a$11$OhXN9xviW3TTLsCGITKEweCijHJHeM/RVCG4e0yT8CCMSemnACRta", null, null, null, null, null, "Adopter3" },
-                    { 17, "Admin@email.com", null, null, "$2a$11$45P9P8lUoQGS7hAr8sbLPOyOnrsVH43ngfeBPFOZGG4ItzeS.T2b.", null, null, null, null, null, "Adopter4" }
+                    { 1, "Admin@email.com", null, null, "$2a$11$LFfN8/Vo069p6DDYSzaoSePlTudPsdXCZDvtZC/wg6CyQZOEYoxX6", null, null, null, null, null, "Admin" },
+                    { 2, "Staff1@email.com", null, null, "$2a$11$6RqsgS5iUrXvruYnG5OLX.ZAVPfbIqzVC.jyYyNy1KA2sF3w2uBHS", null, null, null, null, null, "Staff1" },
+                    { 3, "Staff2@email.com", null, null, "$2a$11$.ThIczEjiOnOtnO3oXjjZez/ZrlNsBf/VMIyxc9wA8Ka1KOmbAWnm", null, null, null, null, null, "Staff2" },
+                    { 4, "Staff3@email.com", null, null, "$2a$11$dmOAVWB5Fn1MES7wBjwHoOdDZfIFOtryNb1Vup9zBLcjjlmyZijAu", null, null, null, null, null, "Staff3" },
+                    { 5, "Staff4@email.com", null, null, "$2a$11$Zu1MG2FuDQRFHYYenAfdXeYGddMvACAQkmLyETiL6ONpiozne77Ce", null, null, null, null, null, "Staff4" },
+                    { 6, "Donor1@email.com", null, null, "$2a$11$CFkH7WNAYNd3QOXuH.Ms9e92yKcw5VPmi8h0UXxFsE7o82Nq5Hfd.", null, null, null, null, null, "Donor1" },
+                    { 7, "Donor2@email.com", null, null, "$2a$11$RywSVhTNbbIvn7Vi2qT11uAiy.xY4rz6Bvria18DwS3v509WIJecG", null, null, null, null, null, "Donor2" },
+                    { 8, "Donor3@email.com", null, null, "$2a$11$PJjEWAZNpS1HVKGuDZYELu0kaUpuSPQ4DGXp/5DMFmCEf1xbbMhW.", null, null, null, null, null, "Donor3" },
+                    { 9, "Donor4@email.com", null, null, "$2a$11$CIbZRFlGDlDvHuGf61MjY.gu4yyZq14uFGu.gYRRlgzuJGcnSyQ8e", null, null, null, null, null, "Donor4" },
+                    { 10, "Volunteer1@email.com", null, null, "$2a$11$.tiSSYmTB4n7Chsdtoe7pOh/UP39ptVYIbMLQTXjLZIDVsU6oAwfm", null, null, null, null, null, "Volunteer1" },
+                    { 11, "Volunteer2@email.com", null, null, "$2a$11$MvkJAmTguwagTgkisaip3.cgk8.FHVo0uVxks2b/Me9a5DxSbcq9e", null, null, null, null, null, "Volunteer2" },
+                    { 12, "Volunteer3@email.com", null, null, "$2a$11$ciGkKA2jlTLf0byS3gpJN./.5rv7RxnLZ22A6/cFRahB1vXhgvqFi", null, null, null, null, null, "Volunteer3" },
+                    { 13, "Volunteer4@email.com", null, null, "$2a$11$qqLa7ZuPvf4XOpKIYp4eQuVJLqjD8M/UQ79WWl5KH7txLNgz6HipO", null, null, null, null, null, "Volunteer4" },
+                    { 14, "Adopter1@email.com", null, null, "$2a$11$Ziwx1rkjvI3nDKG7tdZKte6LkGV4/8Dj89ihyWoB5ds4SFT679jo6", null, null, null, null, null, "Adopter1" },
+                    { 15, "Adopter2@email.com", null, null, "$2a$11$9Dh6a6w.8K4nj5upfFao9eAPtymmx/p8XpKBelIryh7hhbTQh58iC", null, null, null, null, null, "Adopter2" },
+                    { 16, "Adopter3@email.com", null, null, "$2a$11$Ira0TU.aBbbwr6NCjXu80ebM3JcMDk3y.kJWxBMvieoTVaoh6oerm", null, null, null, null, null, "Adopter3" },
+                    { 17, "Adopter4@email.com", null, null, "$2a$11$xfNvNd4V7QVvP.8ti9u4k.jJeM0yjFSmK2zKc2U.MkP1keM1eb2OC", null, null, null, null, null, "Adopter4" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Donations",
+                columns: new[] { "Id", "Amount", "Date", "DonorId", "ShelterId", "Status", "UserId" },
+                values: new object[,]
+                {
+                    { 1, 100000m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, 1, null, null },
+                    { 2, 200000m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, 1, null, null },
+                    { 3, 543333m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 8, 2, null, null },
+                    { 4, 632229m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 9, 2, null, null },
+                    { 5, 760000m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, 1, null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -506,25 +538,25 @@ namespace RepositoryLayer.Migrations
                 columns: new[] { "Id", "AdoptionStatus", "Age", "Breed", "Color", "Description", "Gender", "Image", "Name", "ShelterID", "Size", "Status", "StatusId", "Type", "UserID" },
                 values: new object[,]
                 {
-                    { 1, null, null, null, null, null, null, null, "Pet", 1, null, null, null, "Dog", null },
-                    { 2, null, null, null, null, null, null, null, "Pet", 1, null, null, null, "Cat", null },
-                    { 3, null, null, null, null, null, null, null, "Pet", 1, null, null, null, "Dog", null },
-                    { 4, null, null, null, null, null, null, null, "Pet", 1, null, null, null, "Cat", null },
-                    { 5, null, null, null, null, null, null, null, "Pet", 1, null, null, null, "Dog", null },
-                    { 6, null, null, null, null, null, null, null, "Pet", 1, null, null, null, "Cat", null },
-                    { 7, null, null, null, null, null, null, null, "Pet", 1, null, null, null, "Dog", null },
-                    { 8, null, null, null, null, null, null, null, "Pet", 1, null, null, null, "Cat", null },
-                    { 9, null, null, null, null, null, null, null, "Pet", 1, null, null, null, "Dog", null },
-                    { 10, null, null, null, null, null, null, null, "Pet", 2, null, null, null, "Cat", null },
-                    { 11, null, null, null, null, null, null, null, "Pet", 2, null, null, null, "Dog", null },
-                    { 12, null, null, null, null, null, null, null, "Pet", 2, null, null, null, "Cat", null },
-                    { 13, null, null, null, null, null, null, null, "Pet", 2, null, null, null, "Dog", null },
-                    { 14, null, null, null, null, null, null, null, "Pet", 2, null, null, null, "Cat", null },
-                    { 15, null, null, null, null, null, null, null, "Pet", 2, null, null, null, "Dog", null },
-                    { 16, null, null, null, null, null, null, null, "Pet", 2, null, null, null, "Cat", null },
-                    { 18, null, null, null, null, null, null, null, "Pet", 2, null, null, null, "Dog", null },
-                    { 19, null, null, null, null, null, null, null, "Pet", 2, null, null, null, "Dog", null },
-                    { 20, null, null, null, null, null, null, null, "Pet", 2, null, null, null, "Dog", null }
+                    { 1, null, null, null, null, null, null, null, "Buddy", 1, null, null, null, "Dog", 17 },
+                    { 2, null, null, null, null, null, null, null, "Whiskers", 1, null, null, null, "Cat", 17 },
+                    { 3, null, null, null, null, null, null, null, "Max", 1, null, null, null, "Dog", 16 },
+                    { 4, null, null, null, null, null, null, null, "Luna", 1, null, null, null, "Cat", 14 },
+                    { 5, null, null, null, null, null, null, null, "Bella", 1, null, null, null, "Dog", null },
+                    { 6, null, null, null, null, null, null, null, "Lux", 1, null, null, null, "Cat", null },
+                    { 7, null, null, null, null, null, null, null, "Dono", 1, null, null, null, "Dog", null },
+                    { 8, null, null, null, null, null, null, null, "Linker", 1, null, null, null, "Cat", null },
+                    { 9, null, null, null, null, null, null, null, "Dawin", 1, null, null, null, "Dog", 15 },
+                    { 10, null, null, null, null, null, null, null, "Modor", 2, null, null, null, "Cat", null },
+                    { 11, null, null, null, null, null, null, null, "Pingking", 2, null, null, null, "Dog", null },
+                    { 12, null, null, null, null, null, null, null, "Seto", 2, null, null, null, "Cat", null },
+                    { 13, null, null, null, null, null, null, null, "kaiba", 2, null, null, null, "Dog", null },
+                    { 14, null, null, null, null, null, null, null, "Asuka", 2, null, null, null, "Cat", null },
+                    { 15, null, null, null, null, null, null, null, "Jax", 2, null, null, null, "Dog", null },
+                    { 16, null, null, null, null, null, null, null, "Jihn", 2, null, null, null, "Cat", null },
+                    { 18, null, null, null, null, null, null, null, "Kaisa", 2, null, null, null, "Dog", null },
+                    { 19, null, null, null, null, null, null, null, "Bump", 2, null, null, null, "Dog", null },
+                    { 20, null, null, null, null, null, null, null, "Rasko", 2, null, null, null, "Dog", null }
                 });
 
             migrationBuilder.InsertData(
@@ -562,6 +594,18 @@ namespace RepositoryLayer.Migrations
                     { 17, 5, null, 17 }
                 });
 
+            migrationBuilder.InsertData(
+                table: "Statuses",
+                columns: new[] { "Id", "Date", "Disease", "Name", "PetId", "Status", "Vaccine" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Parvovirus Infection", "Canine Parvovirus", 1, null, "Parvovirus Vaccine" },
+                    { 2, new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Distemper Virus", "Canine Distemper", 3, null, "Distemper Vaccine" },
+                    { 3, new DateTime(2024, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Rabies Virus", "Rabies", 5, null, "Rabies Vaccine" },
+                    { 4, new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "FeLV", "Feline Leukemia Virus", 2, null, "FeLV Vaccine" },
+                    { 5, new DateTime(2024, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "FIV", "Feline Immunodeficiency Virus", 4, null, "None" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AdoptionRegistrationForm_PetId",
                 table: "AdoptionRegistrationForm",
@@ -580,15 +624,14 @@ namespace RepositoryLayer.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Certification_UserId",
-                table: "Certification",
+                name: "IX_CertificationUser_UserId",
+                table: "CertificationUser",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Donations_ShelterId",
                 table: "Donations",
-                column: "ShelterId",
-                unique: true);
+                column: "ShelterId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Donations_UserId",
@@ -663,6 +706,12 @@ namespace RepositoryLayer.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Users_Email",
+                table: "Users",
+                column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_RoleId",
                 table: "Users",
                 column: "RoleId");
@@ -675,7 +724,7 @@ namespace RepositoryLayer.Migrations
                 name: "AdoptionRegistrationForm");
 
             migrationBuilder.DropTable(
-                name: "Certification");
+                name: "CertificationUser");
 
             migrationBuilder.DropTable(
                 name: "Donations");
@@ -697,6 +746,9 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "UserRole");
+
+            migrationBuilder.DropTable(
+                name: "Certification");
 
             migrationBuilder.DropTable(
                 name: "Events");

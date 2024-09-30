@@ -21,7 +21,7 @@ namespace ModelLayer.Entities
         public virtual ICollection<Event>? Events { get; set; }
         public virtual ICollection<ShelterStaff>? Staffs { get; set; }
 
-        public virtual Donation? Donation { get; set; }
+        public virtual ICollection<Donation>? Donations { get; set; }
 
     }
 }
