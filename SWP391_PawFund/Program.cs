@@ -20,7 +20,7 @@ builder.Services.AddControllers();
 // Install DI and dbcontext
 builder.Services.InstallService(builder.Configuration);
 // Swagger config
-//builder.Services.ConfigureSwaggerServices("SWDProject");
+//builder.Services.ConfigureSwaggerServices("SWPProject");
 builder.Services.ConfigureAuthService(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -37,7 +37,7 @@ builder.Services.AddSwaggerGen(c =>
     //c.OperationFilter<SnakecasingParameOperationFilter>();
     c.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "FUES API",
+        Title = "PawFund API",
         Version = "v1"
     });
 

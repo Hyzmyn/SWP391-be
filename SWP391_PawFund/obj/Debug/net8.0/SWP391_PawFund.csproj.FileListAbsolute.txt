@@ -124,14 +124,6 @@ D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\De
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.pdb
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.genruntimeconfig.cache
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\ref\SWP391_PawFund.dll
-C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.csproj.AssemblyReference.cache
-C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.AssemblyInfoInputs.cache
-C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.AssemblyInfo.cs
-C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.csproj.CoreCompileInputs.cache
-C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.sourcelink.json
 C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\appsettings.json
 C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\SWP391_PawFund.exe
@@ -235,6 +227,14 @@ C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\ServiceL
 C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\ServiceLayer.pdb
 C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\ModelLayer.pdb
 C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\RepositoryLayer.pdb
+C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.csproj.AssemblyReference.cache
+C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.AssemblyInfoInputs.cache
+C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.AssemblyInfo.cs
+C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.sourcelink.json
 C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\staticwebassets\msbuild.SWP391_PawFund.Microsoft.AspNetCore.StaticWebAssets.props
@@ -249,3 +249,5 @@ C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\refint\S
 C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.pdb
 C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.genruntimeconfig.cache
 C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\ref\SWP391_PawFund.dll
+C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\SWP391_PawFund.xml
+C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.xml
