@@ -36,7 +36,7 @@ namespace SWP391_PawFund.Controllers
                    Amount = d.Amount,
                    Date = d.Date,
                    DonorId = d.DonorId,
-                   DonorName = d.User?.Username ?? string.Empty,
+                   DonorName = d.User.Username ?? string.Empty,
                    ShelterId = d.ShelterId,
                    ShelterName = d.Shelter?.Name ?? string.Empty
                });
