@@ -18,7 +18,7 @@ namespace SWP391_PawFund.AppStarts
             });
             services.AddDbContext<PawFundContext>(options =>
             {
-                var connectionString = configuration.GetConnectionString("DefaultConnectionString");
+                var connectionString = configuration.GetConnectionString("DefaultConnection");
                 var serverVersion = new MySqlServerVersion(new Version(8, 0, 2)); // Adjust the version to match your MySQL version
 
                 options.UseMySql(connectionString, serverVersion);
