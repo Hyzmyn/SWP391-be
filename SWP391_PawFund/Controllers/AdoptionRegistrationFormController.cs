@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 using ModelLayer.Entities;
 using ServiceLayer.Interfaces;
@@ -17,17 +18,20 @@ namespace SWP391_PawFund.Controllers
         private readonly IShelterService _shelterService;
         private readonly IUsersService _usersService;
         private readonly IPetService _petService;
+        private readonly IAuthServices _authServices;
 
-        public AdoptionRegistrationFormController(IAdoptionRegistrationFormService adoptionFormService, IUsersService usersService, IShelterService shelterService, IPetService petService)
+        public AdoptionRegistrationFormController(IAdoptionRegistrationFormService adoptionFormService, IUsersService usersService, IShelterService shelterService, IPetService petService,IAuthServices authServices)
         {
             _adoptionFormService = adoptionFormService;
             _usersService = usersService;
             _shelterService = shelterService;
             _petService = petService;
+            _authServices=authServices;
         }
 
         // GET: api/AdoptionRegistrationForm
         [HttpGet]
+        [Authorize]
         public ActionResult<IEnumerable<AdoptionRegistrationFormResponse>> GetAllForms()
         {
             var forms = _adoptionFormService.GetAllAdoptionForms();
@@ -48,12 +52,13 @@ namespace SWP391_PawFund.Controllers
 
         // GET: api/AdoptionRegistrationForm/{id}/detail
         [HttpGet("{id}/detail")]
+        [Authorize]
         public async Task<ActionResult<AdoptionRegistrationFormDetailResponse>> GetFormDetailById(int id)
         {
             var form = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
             if (form == null)
             {
-                return NotFound();
+                return NotFound(new { message = "Form not found." });
             }
 
             var adopter = await _usersService.GetUserByIdAsync(form.AdopterId);
@@ -112,6 +117,7 @@ namespace SWP391_PawFund.Controllers
 
         // POST: api/AdoptionRegistrationForm
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateForm([FromBody] AdoptionRegistrationFormRequest request)
         {
             if (!ModelState.IsValid)
@@ -136,6 +142,7 @@ namespace SWP391_PawFund.Controllers
 
         // PUT: api/AdoptionRegistrationForm/{id}
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> UpdateForm(int id, [FromBody] AdoptionRegistrationFormRequest request)
         {
             if (id != request.AdopterId)
@@ -146,7 +153,7 @@ namespace SWP391_PawFund.Controllers
             var existingForm = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
             if (existingForm == null)
             {
-                return NotFound();
+                return NotFound(new { message = "Form not found." });
             }
 
             existingForm.IdentityProof = request.IdentityProof;
@@ -163,12 +170,13 @@ namespace SWP391_PawFund.Controllers
 
         // DELETE: api/AdoptionRegistrationForm/{id}
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteForm(int id)
         {
             var form = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
             if (form == null)
             {
-                return NotFound();
+                return NotFound(new { message = "Form not found." });
             }
 
             await _adoptionFormService.DeleteAdoptionFormAsync(id);
