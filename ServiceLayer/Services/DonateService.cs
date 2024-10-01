@@ -30,7 +30,7 @@ namespace ServiceLayer.Services
         {
             if (id == null)
             {
-                throw new ArgumentException("Id annot be null or empty.", nameof(id));
+                throw new ArgumentException("Id cannot be null or empty.", nameof(id));
             }
 
             try
