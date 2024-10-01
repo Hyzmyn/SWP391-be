@@ -179,7 +179,7 @@ namespace RepositoryLayer
             );
 
             modelBuilder.Entity<Status>().HasData(
-                  new Status    
+                  new Status
                   {
                       Id = 1,
                       PetId = 1,
