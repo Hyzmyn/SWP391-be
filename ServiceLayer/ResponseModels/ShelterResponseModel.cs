@@ -8,7 +8,7 @@ namespace ServiceLayer.ResponseModels
 {
     public class ShelterResponseModel
     {
-        public int Id { get; set; }          // Id của shelter
+        public int Id { get; set; }          
         public string Name { get; set; } = null!;
         public string Location { get; set; } = null!;
         public string PhoneNumber { get; set; } = null!;
@@ -16,8 +16,8 @@ namespace ServiceLayer.ResponseModels
         public string Email { get; set; } = null!;
         public string Website { get; set; } = null!;
         public decimal DonationAmount { get; set; }
-        public ICollection<PetResponseModel>? Pets { get; set; }    // Danh sách các pet thuộc shelter
-        public ICollection<EventResponseModel>? Events { get; set; } // Danh sách các event thuộc shelter
+        public ICollection<PetResponseModel>? Pets { get; set; }    
+        public ICollection<EventResponseModel>? Events { get; set; }
     }
 
 }

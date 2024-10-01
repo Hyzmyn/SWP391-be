@@ -174,56 +174,55 @@ namespace RepositoryLayer
                 new Donation { Id = 2, DonorId = 7, ShelterId = 1, Amount = 200000 },
                 new Donation { Id = 3, DonorId = 8, ShelterId = 2, Amount = 543333 },
                 new Donation { Id = 4, DonorId = 9, ShelterId = 2, Amount = 632229 },
-                new Donation { Id = 5, DonorId = 7, ShelterId = 1, Amount = 760000 }
+                new Donation { Id = 5, DonorId = 7, ShelterId = 2, Amount = 760000 }
 
             );
-
             modelBuilder.Entity<Status>().HasData(
-                  new Status    
-                  {
-                      Id = 1,
-                      PetId = 1,
-                      Name = "Canine Parvovirus",
-                      Date = new DateTime(2024, 1, 15),
-                      Disease = "Parvovirus Infection",
-                      Vaccine = "Parvovirus Vaccine"
-                  },
-                  new Status
-                  {
-                      Id = 2,
-                      PetId = 3,
-                      Name = "Canine Distemper",
-                      Date = new DateTime(2024, 2, 20),
-                      Disease = "Distemper Virus",
-                      Vaccine = "Distemper Vaccine"
-                  },
-                  new Status
-                  {
-                      Id = 3,
-                      PetId = 5,
-                      Name = "Rabies",
-                      Date = new DateTime(2024, 3, 10),
-                      Disease = "Rabies Virus",
-                      Vaccine = "Rabies Vaccine"
-                  },
-                  new Status
-                  {
-                      Id = 4,
-                      PetId = 2,
-                      Name = "Feline Leukemia Virus",
-                      Date = new DateTime(2024, 4, 5),
-                      Disease = "FeLV",
-                      Vaccine = "FeLV Vaccine"
-                  },
-                  new Status
-                  {
-                      Id = 5,
-                      PetId = 4,
-                      Name = "Feline Immunodeficiency Virus",
-                      Date = new DateTime(2024, 5, 12),
-                      Disease = "FIV",
-                      Vaccine = "None"
-                  }
+                new Status
+                {
+                    Id = 1,
+                    PetId = 1, 
+                    Name = "Canine Parvovirus",
+                    Date = new DateTime(2024, 1, 15),
+                    Disease = "Parvovirus Infection",
+                    Vaccine = "Parvovirus Vaccine"
+                },
+                new Status
+                {
+                    Id = 2,
+                    PetId = 3, 
+                    Name = "Canine Distemper",
+                    Date = new DateTime(2024, 2, 20),
+                    Disease = "Distemper Virus",
+                    Vaccine = "Distemper Vaccine"
+                },
+                new Status
+                {
+                    Id = 3,
+                    PetId = 5, 
+                    Name = "Rabies",
+                    Date = new DateTime(2024, 3, 10),
+                    Disease = "Rabies Virus",
+                    Vaccine = "Rabies Vaccine"
+                },
+                new Status
+                {
+                    Id = 4,
+                    PetId = 2, 
+                    Name = "Feline Leukemia Virus",
+                    Date = new DateTime(2024, 4, 5),
+                    Disease = "FeLV",
+                    Vaccine = "FeLV Vaccine"
+                },
+                new Status
+                {
+                    Id = 5,
+                    PetId = 4, 
+                    Name = "Feline Immunodeficiency Virus",
+                    Date = new DateTime(2024, 5, 12),
+                    Disease = "FIV",
+                    Vaccine = "None" 
+                }
             );
         }
     }

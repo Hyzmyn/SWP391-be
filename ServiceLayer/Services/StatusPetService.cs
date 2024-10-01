@@ -31,7 +31,7 @@ namespace ServiceLayer.Services
         {
             return _unitOfWork.Repository<Status>()
                 .AsQueryable()
-                .Include(s => s.Pet) // Eager Load Pet
+                .Include(s => s.Pet)
                 .Where(s => s.Pet != null && s.Pet.Id == petId)
                 .ToList();
         }
@@ -41,7 +41,7 @@ namespace ServiceLayer.Services
         {
             return await _unitOfWork.Repository<Status>()
                 .AsQueryable()
-                .Include(s => s.Pet) // Eager Load Pet
+                .Include(s => s.Pet) 
                 .FirstOrDefaultAsync(s => s.Id == id);
         }
 
