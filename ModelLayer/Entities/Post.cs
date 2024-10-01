@@ -17,6 +17,7 @@ namespace ModelLayer.Entities
         public int PetId { get; set; }
 
         public virtual User? User { get; set; }
+        public virtual Pet? Pet { get; set; }
         public virtual ICollection<FeedBack>? FeedBacks { get; set; }
     }
 }
