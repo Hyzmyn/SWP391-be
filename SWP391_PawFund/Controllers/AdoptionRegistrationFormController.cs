@@ -58,7 +58,7 @@ namespace SWP391_PawFund.Controllers
             var form = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
             if (form == null)
             {
-                return NotFound();
+                return NotFound(new { message = "Form not found." });
             }
 
             var adopter = await _usersService.GetUserByIdAsync(form.AdopterId);
@@ -153,7 +153,7 @@ namespace SWP391_PawFund.Controllers
             var existingForm = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
             if (existingForm == null)
             {
-                return NotFound();
+                return NotFound(new { message = "Form not found." });
             }
 
             existingForm.IdentityProof = request.IdentityProof;
@@ -176,7 +176,7 @@ namespace SWP391_PawFund.Controllers
             var form = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
             if (form == null)
             {
-                return NotFound();
+                return NotFound(new { message = "Form not found." });
             }
 
             await _adoptionFormService.DeleteAdoptionFormAsync(id);

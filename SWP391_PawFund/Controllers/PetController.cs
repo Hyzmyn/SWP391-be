@@ -116,8 +116,8 @@ namespace SWP391_PawFund.Controllers
             var pet = await _petService.GetPetById(id);
             if (pet == null)
             {
-                return NotFound();
-            }          
+                return NotFound(new { message = "Pet not found." });
+            }
             try
             {
                 await _petService.DeletePetAsync(id);
@@ -136,11 +136,11 @@ namespace SWP391_PawFund.Controllers
             var pet = await _petService.GetPetById(id);
             if (pet == null)
             {
-                return NotFound();
+                return NotFound(new { message = "Pet not found." });
             }
 
             await _petService.UpdatePetStatus(pet, newStatus);
-            return NoContent();
+            return Ok(new { message = "Pet Status have been Updated successfully." });
         }
     }
 }
