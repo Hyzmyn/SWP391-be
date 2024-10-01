@@ -21,8 +21,8 @@ namespace ServiceLayer.ResponseModels
     }
     public class AdoptionRegistrationFormDetailResponse:AdoptionRegistrationFormResponse
     {
-        public UserDetailResponse Adopter { get; set; } // Chi tiết về người nhận nuôi
-        public PetDetailResponse Pet { get; set; } // Chi tiết về thú cưng
-        public UserDetailResponse ShelterStaff { get; set; } // Chi tiết về nhân viên trú ẩn
+        public UserDetailResponse Adopter { get; set; } 
+        public PetDetailResponse Pet { get; set; } 
+        public UserDetailResponse ShelterStaff { get; set; }
     }
 }

@@ -25,7 +25,6 @@ namespace ServiceLayer.ResponseModels
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        // Thêm các thuộc tính khác của Pet nếu cần
     }
 
 }
