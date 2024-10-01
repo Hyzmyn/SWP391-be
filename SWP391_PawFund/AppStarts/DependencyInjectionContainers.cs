@@ -38,6 +38,7 @@ namespace SWP391_PawFund.AppStarts
             services.AddScoped<IAdoptionRegistrationFormService, AdoptionRegistrationFormService>();
             services.AddScoped<ICertificationService, CertificationService>();
             services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IFeedbackService, FeedbackService>();
         }
     }
 }
