@@ -52,7 +52,7 @@ namespace SWP391_PawFund.Controllers
             var donation = await _donateService.GetDonationsByIdAsync(id);
             if (donation == null)
             {
-                return NotFound();
+                return NotFound(new { message = "Donation not found." });
             }
 
             var donor = await _usersService.GetUserByIdAsync(donation.DonorId);
@@ -206,11 +206,11 @@ namespace SWP391_PawFund.Controllers
             var donation = await _donateService.GetDonationsByIdAsync(id);
             if (donation == null)
             {
-                return NotFound();
+                return NotFound(new { message = "Donation not found." });
             }
 
             await _donateService.DeleteDonationAsync(id);
-            return NoContent();
+            return Ok(new { message = "Donation has been deleted successfully." });
         }
 
         // Lấy tổng donation theo ShelterId
