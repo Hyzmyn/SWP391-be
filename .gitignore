@@ -12,8 +12,8 @@
 mono_crash.*
 
 # Auto generated files (by Visual Studio or other build tools)
-bin/
-obj/
+**/bin/
+**/obj/
 *.log
 *.vspscc
 *.vssscc
