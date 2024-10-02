@@ -25,7 +25,6 @@ namespace ServiceLayer.ResponseModels
         public int UserID { get; set; }
     }
 
-    // PetDetailResponse: Dùng để trả về thông tin chi tiết của Pet
     public class PetDetailResponse : PetResponseModel
     {
         public string Description { get; set; } = null!;
