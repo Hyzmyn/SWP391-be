@@ -56,6 +56,18 @@ namespace RepositoryLayer
                     .ValueGeneratedOnAdd();
             }
 
+            modelBuilder.Entity<Certification>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.Certifications)
+                .HasForeignKey(c => c.UserId)
+                .OnDelete(DeleteBehavior.Restrict); 
+
+            modelBuilder.Entity<Certification>()
+                .HasOne(c => c.ShelterStaff)
+                .WithMany()
+                .HasForeignKey(c => c.ShelterStaffId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
