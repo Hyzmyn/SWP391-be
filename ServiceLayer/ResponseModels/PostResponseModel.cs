@@ -25,7 +25,7 @@ namespace ServiceLayer.ResponseModels
         public DateTime UpdateDate { get; set; }
         public int UserId { get; set; }
         public int PetId { get; set; }
-        public UserDetailResponse User { get; set; } = null!;
+        public UsersResponseModel User { get; set; } = null!;
         public IEnumerable<FeedBackResponseModel> FeedBacks { get; set; } = new List<FeedBackResponseModel>();
     }
 }

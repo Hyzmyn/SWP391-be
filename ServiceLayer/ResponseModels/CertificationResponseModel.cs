@@ -17,16 +17,9 @@ namespace ServiceLayer.ResponseModels
         public string? StaffName { get; set; } 
         public string? PetName { get; set; }   
     }
-    public class CertificationResponseDetail
+    public class CertificationResponseDetail:CertificationResponse
     {
-        public int Id { get; set; }
-        public string Image { get; set; }
-        public string Description { get; set; }
-        public DateTime Date { get; set; }
-        public int ShelterStaffId { get; set; }
-        public int PetId { get; set; }
-
-        public UserDetailResponse ShelterStaff { get; set; } = null!;
+        public UsersResponseModel ShelterStaff { get; set; } = null!;
         public PetDetailResponse Pet { get; set; } = null!;
     }
 
