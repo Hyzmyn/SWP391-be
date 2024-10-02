@@ -56,6 +56,18 @@ namespace RepositoryLayer
                     .ValueGeneratedOnAdd();
             }
 
+            modelBuilder.Entity<Certification>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.Certifications)
+                .HasForeignKey(c => c.UserId)
+                .OnDelete(DeleteBehavior.Restrict); 
+
+            modelBuilder.Entity<Certification>()
+                .HasOne(c => c.ShelterStaff)
+                .WithMany()
+                .HasForeignKey(c => c.ShelterStaffId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
@@ -174,12 +186,11 @@ namespace RepositoryLayer
                 new Donation { Id = 2, DonorId = 7, ShelterId = 1, Amount = 200000 },
                 new Donation { Id = 3, DonorId = 8, ShelterId = 2, Amount = 543333 },
                 new Donation { Id = 4, DonorId = 9, ShelterId = 2, Amount = 632229 },
-                new Donation { Id = 5, DonorId = 7, ShelterId = 1, Amount = 760000 }
+                new Donation { Id = 5, DonorId = 7, ShelterId = 2, Amount = 760000 }
 
             );
-
             modelBuilder.Entity<Status>().HasData(
-                  new Status    
+                  new Status
                   {
                       Id = 1,
                       PetId = 1,
