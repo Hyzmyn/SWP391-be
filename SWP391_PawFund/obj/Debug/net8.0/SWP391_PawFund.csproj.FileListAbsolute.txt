@@ -251,3 +251,5 @@ D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\De
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.pdb
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.genruntimeconfig.cache
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\ref\SWP391_PawFund.dll
+C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\SWP391_PawFund.xml
+C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.xml
