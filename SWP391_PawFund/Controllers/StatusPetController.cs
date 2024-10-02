@@ -158,7 +158,6 @@ namespace SWP391_PawFund.Controllers
             }
             catch (Exception ex)
             {
-                // Có thể ghi log lỗi ở đây nếu cần
                 return StatusCode(500, "An error occurred while updating the status.");
             }
 
@@ -181,7 +180,6 @@ namespace SWP391_PawFund.Controllers
             }
             catch (Exception ex)
             {
-                // Có thể ghi log lỗi ở đây nếu cần
                 return StatusCode(500, "An error occurred while deleting the status.");
             }
 
