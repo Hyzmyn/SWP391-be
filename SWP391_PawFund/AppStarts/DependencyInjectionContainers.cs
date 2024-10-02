@@ -3,6 +3,7 @@ using RepositoryLayer;
 using RepositoryLayer.Repositories;
 using RepositoryLayer.UnitOfWork;
 using ServiceLayer.Interfaces;
+using ServiceLayer.Mapping;
 using ServiceLayer.Services;
 
 namespace SWP391_PawFund.AppStarts
@@ -36,8 +37,12 @@ namespace SWP391_PawFund.AppStarts
             services.AddScoped<IStatusPetService, StatusPetService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAdoptionRegistrationFormService, AdoptionRegistrationFormService>();
-            services.AddScoped<ICertificationService, CertificationService>();
             services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IFeedbackService, FeedbackService>();
+            services.AddScoped<ICertificationService, CertificationService>();
+
+
+
         }
     }
 }

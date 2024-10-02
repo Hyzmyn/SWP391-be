@@ -1,13 +1,15 @@
-﻿using ModelLayer.Entities;
+﻿using ServiceLayer.RequestModels;
+using ServiceLayer.ResponseModels;
 
 namespace ServiceLayer.Interfaces
 {
     public interface ICertificationService
     {
-        Task CreateCertificate(Certification certification);
+        Task<bool> CertificationExistsAsync(int id);
+        Task<CertificationResponseDetail> CreateCertificateAsync(CertificationRequest request);
         Task DeleteCertificateAsync(int id);
-        IEnumerable<Certification> GetAllCertificate();
-        Task<Certification> GetCertificateByIdAsync(int certId);
-        Task UpdateCertificate(Certification certification);
+        IEnumerable<CertificationResponseDetail> GetAllCertificates();
+        Task<CertificationResponseDetail> GetCertificateByIdAsync(int id);
+        Task<CertificationResponseDetail> UpdateCertificateAsync(int id, CertificationRequest request);
     }
 }
