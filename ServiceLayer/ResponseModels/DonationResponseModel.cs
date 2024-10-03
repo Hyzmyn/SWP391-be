@@ -19,7 +19,7 @@ namespace ServiceLayer.ResponseModels
 
     public class DonationDetailResponseModel : DonationResponseModel
     {
-        public UserDetailResponse? Donor { get; set; }
+        public UsersResponseModel? Donor { get; set; }
         public ShelterResponseModel? Shelter { get; set; }
     }
 

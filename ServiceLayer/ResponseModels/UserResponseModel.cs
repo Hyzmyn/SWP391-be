@@ -17,8 +17,4 @@ namespace ServiceLayer.ResponseModels
 
     }
 
-    public class UserDetailResponse : UsersResponseModel
-    {
-        public double RatingCount { get; set; }
-    }
 }
