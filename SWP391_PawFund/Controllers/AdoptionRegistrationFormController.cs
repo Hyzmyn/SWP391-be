@@ -20,13 +20,13 @@ namespace SWP391_PawFund.Controllers
         private readonly IPetService _petService;
         private readonly IAuthServices _authServices;
 
-        public AdoptionRegistrationFormController(IAdoptionRegistrationFormService adoptionFormService, IUsersService usersService, IShelterService shelterService, IPetService petService,IAuthServices authServices)
+        public AdoptionRegistrationFormController(IAdoptionRegistrationFormService adoptionFormService, IUsersService usersService, IShelterService shelterService, IPetService petService, IAuthServices authServices)
         {
             _adoptionFormService = adoptionFormService;
             _usersService = usersService;
             _shelterService = shelterService;
             _petService = petService;
-            _authServices=authServices;
+            _authServices = authServices;
         }
 
         // GET: api/AdoptionRegistrationForm
@@ -74,7 +74,7 @@ namespace SWP391_PawFund.Controllers
                 Image = form.Image,
                 Condition = form.Condition,
                 Status = form.Status,
-                Adopter = adopter != null ? new UserDetailResponse
+                Adopter = adopter != null ? new UsersResponseModel
                 {
                     Id = adopter.Id,
                     Username = adopter.Username,
@@ -100,7 +100,7 @@ namespace SWP391_PawFund.Controllers
                     ShelterName = shelter?.Name, // Thêm tên shelter
                     UserName = adopter?.Username // Thêm tên người dùng
                 } : null,
-                ShelterStaff = shelterStaff != null ? new UserDetailResponse
+                ShelterStaff = shelterStaff != null ? new UsersResponseModel
                 {
                     Id = shelterStaff.Id,
                     Username = shelterStaff.Username,
