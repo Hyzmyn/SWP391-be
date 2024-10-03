@@ -79,7 +79,7 @@ namespace ServiceLayer.Services
                     UpdateDate = feedback.Post.UpdateDate,
                     UserId = feedback.Post.UserId,
                     PetId = feedback.Post.PetId,
-                    User = new UserDetailResponse
+                    User = new UsersResponseModel
                     {
                         Id = feedback.Post.User.Id,
                         Username = feedback.Post.User.Username,

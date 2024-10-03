@@ -12,7 +12,7 @@ namespace ModelLayer.Entities
         public int UserId { get; set; }
         public int ShelterId { get; set; }
 
-        public virtual User Users { get; set; }
+        public virtual User User { get; set; }
         public virtual Shelter? Shelter { get; set; }
     }
 }

@@ -91,7 +91,7 @@ namespace SWP391_PawFund.Controllers
                 return BadRequest(ModelState);
             }
             // Kiểm tra xem PetId có tồn tại không và lấy PetName
-            var pet =  _statusPetService.GetStatusesForPet(request.PetId);
+            var pet = _statusPetService.GetStatusesForPet(request.PetId);
             if (pet == null)
             {
                 return BadRequest($"Pet with ID {request.PetId} does not exist.");
@@ -102,7 +102,7 @@ namespace SWP391_PawFund.Controllers
                 Date = request.Date,
                 Disease = request.Disease,
                 Vaccine = request.Vaccine,
-                PetId=request.PetId
+                PetId = request.PetId
             };
 
             await _statusPetService.CreateStatusAsync(status);
@@ -143,7 +143,7 @@ namespace SWP391_PawFund.Controllers
                 return NotFound($"Status with ID {id} not found.");
             }
             // Kiểm tra xem PetId mới có tồn tại không
-            var pet =  _statusPetService.GetStatusesForPet(request.PetId);
+            var pet = _statusPetService.GetStatusesForPet(request.PetId);
             if (pet == null)
             {
                 return BadRequest($"Pet with ID {request.PetId} does not exist.");
