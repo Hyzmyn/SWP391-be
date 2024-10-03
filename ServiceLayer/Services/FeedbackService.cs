@@ -220,7 +220,7 @@ namespace ServiceLayer.Services
             existingFeedback.Description = request.Description;
             existingFeedback.Date = DateTime.UtcNow;
 
-            _unitOfWork.Repository<FeedBack>().Update(existingFeedback, existingFeedback.Id);
+            await _unitOfWork.Repository<FeedBack>().Update(existingFeedback, existingFeedback.Id);
             await _unitOfWork.CommitAsync();
 
             // Lấy lại Feedback vừa cập nhật để trả về response chi tiết

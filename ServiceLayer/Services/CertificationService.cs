@@ -29,9 +29,9 @@ namespace ServiceLayer.Services
         public IEnumerable<CertificationResponseDetail> GetAllCertificates()
         {
             var certifications = _unitOfWork.Repository<Certification>().GetAll()
-                .Include(c => c.User) // Assuming User is ShelterStaff
+                .Include(c => c.User) 
                 .Include(c => c.Pet)
-                    .ThenInclude(p => p.Shelter); // Assuming Pet has Shelter navigation property
+                .ThenInclude(p => p.Shelter); 
 
             var response = certifications.Select(c => new CertificationResponseDetail
             {
@@ -164,7 +164,6 @@ namespace ServiceLayer.Services
             await _unitOfWork.Repository<Certification>().InsertAsync(certification);
             await _unitOfWork.CommitAsync();
 
-            // Lấy lại Certification vừa tạo để trả về response chi tiết
             var createdCertification = await _unitOfWork.Repository<Certification>().GetAll()
                 .Include(c => c.User)
                 .Include(c => c.Pet)
@@ -231,28 +230,25 @@ namespace ServiceLayer.Services
                 throw new KeyNotFoundException($"Certification with ID {id} not found.");
             }
 
-            // Kiểm tra sự tồn tại của User (ShelterStaff)
             var shelterStaff = await _unitOfWork.Repository<User>().GetById(request.ShelterStaffId);
             if (shelterStaff == null)
             {
                 throw new KeyNotFoundException($"ShelterStaff with ID {request.ShelterStaffId} not found.");
             }
 
-            // Kiểm tra sự tồn tại của Pet
             var pet = await _unitOfWork.Repository<Pet>().GetById(request.PetId);
             if (pet == null)
             {
                 throw new KeyNotFoundException($"Pet with ID {request.PetId} not found.");
             }
 
-            // Cập nhật các thuộc tính thủ công
             existingCertification.Image = request.Image;
             existingCertification.Desciption = request.Description;
             existingCertification.Date = DateTime.UtcNow;
             existingCertification.UserId = request.ShelterStaffId;
             existingCertification.PetId = request.PetId;
 
-            _unitOfWork.Repository<Certification>().Update(existingCertification, existingCertification.Id);
+            await _unitOfWork.Repository<Certification>().Update(existingCertification, existingCertification.Id);
             await _unitOfWork.CommitAsync();
 
             // Lấy lại Certification vừa cập nhật để trả về response chi tiết

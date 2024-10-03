@@ -60,7 +60,6 @@ namespace ServiceLayer.Services
 
         public async Task<User> GetUserByUsernameAsync(string Username)
         {
-            // Truy vấn người dùng từ cơ sở dữ liệu theo tên người dùng
             var user = await _unitOfWork.Repository<User>()
                 .GetAll()
                 .Include(u => u.UserRoles)

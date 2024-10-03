@@ -9,7 +9,7 @@ namespace SWP391_PawFund.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize] 
+    //[Authorize] 
     public class FeedbackController : ControllerBase
     {
         private readonly IFeedbackService _feedbackService;
@@ -48,7 +48,7 @@ namespace SWP391_PawFund.Controllers
 
         // POST: api/Feedback
         [HttpPost]
-        [Authorize(Roles = "Admin, User")] // Chỉ Admin và User mới được tạo Feedback
+        //[Authorize(Roles = "Admin, User")] 
         public async Task<IActionResult> CreateFeedback([FromBody] FeedBackRequestModel request)
         {
             if (!ModelState.IsValid)
@@ -73,7 +73,7 @@ namespace SWP391_PawFund.Controllers
 
         // PUT: api/Feedback/{id}
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin, User")] // Chỉ Admin và User mới được cập nhật Feedback
+        //[Authorize(Roles = "Admin, User")] 
         public async Task<IActionResult> UpdateFeedback(int id, [FromBody] FeedBackRequestModel request)
         {
             if (!ModelState.IsValid)
@@ -98,7 +98,7 @@ namespace SWP391_PawFund.Controllers
 
         // DELETE: api/Feedback/{id}
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")] // Chỉ Admin mới được xóa Feedback
+        [Authorize(Roles = "Admin")] 
         public async Task<IActionResult> DeleteFeedback(int id)
         {
             try
