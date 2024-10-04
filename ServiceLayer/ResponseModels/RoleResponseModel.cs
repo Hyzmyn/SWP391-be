@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ServiceLayer.ResponseModels
 {
-    internal class RoleResponseModel
+    public class RoleResponseModel
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

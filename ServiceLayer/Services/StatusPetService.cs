@@ -51,7 +51,6 @@ namespace ServiceLayer.Services
             var existingStatus = await _unitOfWork.Repository<Status>().GetById(status.Id);
             if (existingStatus != null)
             {
-                existingStatus.Name = status.Name;
                 existingStatus.Date = status.Date;
                 existingStatus.Disease = status.Disease;
                 existingStatus.Vaccine = status.Vaccine;
