@@ -67,7 +67,7 @@ namespace SWP391_PawFund.Controllers
                 DonorName = donor?.Username ?? string.Empty,
                 ShelterId = donation.ShelterId,
                 ShelterName = shelter?.Name ?? string.Empty,
-                Donor = donor != null ? new UserDetailResponse
+                Donor = donor != null ? new UsersResponseModel
                 {
                     Id = donor.Id,
                     Username = donor.Username,

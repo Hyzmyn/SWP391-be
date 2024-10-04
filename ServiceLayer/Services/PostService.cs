@@ -55,7 +55,7 @@ namespace ServiceLayer.Services
                 throw new InvalidOperationException($"User with ID {post.UserId} does not exist.");
             }
 
-            var pet = await _unitOfWork.Repository<Pet>().GetById(post.PetId);
+            var pet = await _unitOfWork.Repository<Pet>().GetById((int)post.PetId);
             if (pet == null)
             {
                 throw new InvalidOperationException($"Pet with ID {post.PetId} does not exist.");
@@ -88,7 +88,7 @@ namespace ServiceLayer.Services
 
             if (post.PetId != existingPost.PetId)
             {
-                var pet = await _unitOfWork.Repository<Pet>().GetById(post.PetId);
+                var pet = await _unitOfWork.Repository<Pet>().GetById((int)post.PetId);
                 if (pet == null)
                 {
                     throw new InvalidOperationException($"Pet with ID {post.PetId} does not exist.");

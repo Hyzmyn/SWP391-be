@@ -23,7 +23,7 @@ namespace ServiceLayer.Mapping
                 .ForMember(dest => dest.ShelterStaff, opt => opt.MapFrom(src => src.User))
                 .ForMember(dest => dest.Pet, opt => opt.MapFrom(src => src.Pet));
 
-            CreateMap<User, UserDetailResponse>();
+            CreateMap<User, UsersResponseModel>();
             CreateMap<Pet, PetDetailResponse>();
 
             // DTO to Entity

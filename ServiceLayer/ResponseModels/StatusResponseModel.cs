@@ -9,7 +9,6 @@ namespace ServiceLayer.ResponseModels
     public class StatusResponseModel
     {
         public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
         public DateTime Date { get; set; }
         public string Disease { get; set; } = string.Empty;
         public string Vaccine { get; set; } = string.Empty;

@@ -79,7 +79,7 @@ namespace ServiceLayer.Services
             return user;
         }
 
-        public async Task<UserDetailResponse> GetUserProfile(int id)
+        public async Task<UsersResponseModel> GetUserProfile(int id)
         {
             var user = await _unitOfWork.Repository<User>().GetById(id);
 
@@ -88,7 +88,7 @@ namespace ServiceLayer.Services
                 throw new Exception($"User with ID {id} not found.");
             }
 
-            var responseModel = new UserDetailResponse
+            var responseModel = new UsersResponseModel
             {
                 Id = user.Id,
                 Username = user.Username,
