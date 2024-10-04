@@ -20,13 +20,13 @@ namespace SWP391_PawFund.Controllers
         private readonly IPetService _petService;
         private readonly IAuthServices _authServices;
 
-        public AdoptionRegistrationFormController(IAdoptionRegistrationFormService adoptionFormService, IUsersService usersService, IShelterService shelterService, IPetService petService,IAuthServices authServices)
+        public AdoptionRegistrationFormController(IAdoptionRegistrationFormService adoptionFormService, IUsersService usersService, IShelterService shelterService, IPetService petService, IAuthServices authServices)
         {
             _adoptionFormService = adoptionFormService;
             _usersService = usersService;
             _shelterService = shelterService;
             _petService = petService;
-            _authServices=authServices;
+            _authServices = authServices;
         }
 
         // GET: api/AdoptionRegistrationForm
@@ -38,10 +38,10 @@ namespace SWP391_PawFund.Controllers
             var response = forms.Select(form => new AdoptionRegistrationFormResponse
             {
                 Id = form.Id,
-                IdentityProof = form.IdentityProof,
+                SocialAccount = form.SocialAccount,
                 IncomeAmount = form.IncomeAmount,
-                Image = form.Image,
-                Condition = form.Condition,
+                IdentificationImage = form.IdentificationImage,
+                IdentificationImageBackSide = form.IdentificationImageBackSide,
                 AdopterId = form.AdopterId,
                 ShelterStaffId = form.ShelterStaffId,
                 PetId = form.PetId
@@ -69,12 +69,12 @@ namespace SWP391_PawFund.Controllers
             var response = new AdoptionRegistrationFormDetailResponse
             {
                 Id = form.Id,
-                IdentityProof = form.IdentityProof,
+                SocialAccount = form.SocialAccount,
                 IncomeAmount = form.IncomeAmount,
-                Image = form.Image,
-                Condition = form.Condition,
+                IdentificationImage = form.IdentificationImage,
+                IdentificationImageBackSide = form.IdentificationImageBackSide,
                 Status = form.Status,
-                Adopter = adopter != null ? new UserDetailResponse
+                Adopter = adopter != null ? new UsersResponseModel
                 {
                     Id = adopter.Id,
                     Username = adopter.Username,
@@ -100,7 +100,7 @@ namespace SWP391_PawFund.Controllers
                     ShelterName = shelter?.Name, // Thêm tên shelter
                     UserName = adopter?.Username // Thêm tên người dùng
                 } : null,
-                ShelterStaff = shelterStaff != null ? new UserDetailResponse
+                ShelterStaff = shelterStaff != null ? new UsersResponseModel
                 {
                     Id = shelterStaff.Id,
                     Username = shelterStaff.Username,
@@ -127,10 +127,10 @@ namespace SWP391_PawFund.Controllers
 
             var form = new AdoptionRegistrationForm
             {
-                IdentityProof = request.IdentityProof,
+                SocialAccount = request.SocialAccount,
                 IncomeAmount = request.IncomeAmount,
-                Image = request.Image,
-                Condition = request.Condition,
+                IdentificationImage = request.IdentificationImage,
+                IdentificationImageBackSide = request.IdentificationImageBackSide,
                 AdopterId = request.AdopterId,
                 ShelterStaffId = request.ShelterStaffId,
                 PetId = request.PetId
@@ -156,10 +156,10 @@ namespace SWP391_PawFund.Controllers
                 return NotFound(new { message = "Form not found." });
             }
 
-            existingForm.IdentityProof = request.IdentityProof;
+            existingForm.SocialAccount = request.SocialAccount;
             existingForm.IncomeAmount = request.IncomeAmount;
-            existingForm.Image = request.Image;
-            existingForm.Condition = request.Condition;
+            existingForm.IdentificationImage = request.IdentificationImage;
+            existingForm.IdentificationImageBackSide = request.IdentificationImageBackSide;
             existingForm.AdopterId = request.AdopterId;
             existingForm.ShelterStaffId = request.ShelterStaffId;
             existingForm.PetId = request.PetId;

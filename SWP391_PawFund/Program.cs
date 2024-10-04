@@ -9,13 +9,14 @@ using ServiceLayer.Interfaces;
 using ServiceLayer.Services;
 using System.Text;
 using SWP391_PawFund.AppStarts;
+using Twilio.Clients;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-
+builder.Services.AddHttpClient<ITwilioRestClient, TwilioClient>();
 
 // Install DI and dbcontext
 builder.Services.InstallService(builder.Configuration);

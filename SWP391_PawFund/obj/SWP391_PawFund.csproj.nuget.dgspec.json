@@ -239,6 +239,10 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[13.0.1, )"
+            },
+            "Twilio": {
+              "target": "Package",
+              "version": "[7.5.0, )"
             }
           },
           "imports": [
