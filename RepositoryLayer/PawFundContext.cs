@@ -23,6 +23,13 @@ namespace RepositoryLayer
         public virtual DbSet<Shelter> Shelters { get; set; }
         public virtual DbSet<ShelterStaff> ShelterStaffs { get; set; }
         public virtual DbSet<Status> Statuses { get; set; }
+        public virtual DbSet<AdoptionRegistrationForm> Forms { get; set; }
+        public virtual DbSet<Certification> Certifications { get; set; }
+        public virtual DbSet<EventUser> EventUsers { get; set; }
+        public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<SmsMessage> SmsMessages { get; set; }
+        public virtual DbSet<UserRole> UserRole { get; set; }
+
 
         public PawFundContext(DbContextOptions<PawFundContext> options) : base(options)
         {

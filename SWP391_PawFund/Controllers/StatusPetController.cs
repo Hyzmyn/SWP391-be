@@ -33,7 +33,6 @@ namespace SWP391_PawFund.Controllers
             var response = statuses.Select(s => new StatusResponseModel
             {
                 Id = s.Id,
-                Name = s.Name,
                 Date = s.Date,
                 Disease = s.Disease,
                 Vaccine = s.Vaccine,
@@ -58,7 +57,6 @@ namespace SWP391_PawFund.Controllers
             var response = new StatusDetailResponseModel
             {
                 Id = status.Id,
-                Name = status.Name,
                 Date = status.Date,
                 Disease = status.Disease,
                 Vaccine = status.Vaccine,
@@ -98,7 +96,6 @@ namespace SWP391_PawFund.Controllers
             }
             var status = new Status
             {
-                Name = request.Name,
                 Date = request.Date,
                 Disease = request.Disease,
                 Vaccine = request.Vaccine,
@@ -117,7 +114,6 @@ namespace SWP391_PawFund.Controllers
             var response = new StatusResponseModel
             {
                 Id = createdStatus.Id,
-                Name = createdStatus.Name,
                 Date = createdStatus.Date,
                 Disease = createdStatus.Disease,
                 Vaccine = createdStatus.Vaccine,
@@ -148,7 +144,6 @@ namespace SWP391_PawFund.Controllers
             {
                 return BadRequest($"Pet with ID {request.PetId} does not exist.");
             }
-            existingStatus.Name = request.Name;
             existingStatus.Date = request.Date;
             existingStatus.Disease = request.Disease;
             existingStatus.Vaccine = request.Vaccine;

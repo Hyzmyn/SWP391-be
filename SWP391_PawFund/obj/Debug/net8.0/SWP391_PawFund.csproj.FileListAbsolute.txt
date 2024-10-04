@@ -253,3 +253,5 @@ C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_P
 C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.pdb
 C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.genruntimeconfig.cache
 C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\ref\SWP391_PawFund.dll
+C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\ADMIN\Desktop\SWP391\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Twilio.dll
