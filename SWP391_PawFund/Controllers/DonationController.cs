@@ -4,6 +4,7 @@ using ServiceLayer.Interfaces;
 using ServiceLayer.RequestModels;
 using ServiceLayer.ResponseModels;
 using ServiceLayer.Services;
+using System.Drawing;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -30,15 +31,13 @@ namespace SWP391_PawFund.Controllers
         public ActionResult<IEnumerable<DonationResponseModel>> GetAllDonations()
         {
             var donations = _donateService.GetAllDonations()
-               .Select(d => new DonationResponseModel
+               .Select(d => new DonationDetailResponseModel
                {
                    Id = d.Id,
                    Amount = d.Amount,
                    Date = d.Date,
                    DonorId = d.DonorId,
-                   DonorName = d.User.Username ?? string.Empty,
                    ShelterId = d.ShelterId,
-                   ShelterName = d.Shelter?.Name ?? string.Empty
                });
             //var donations= _donateService.GetAllDonations();
             return Ok(donations);
@@ -64,9 +63,7 @@ namespace SWP391_PawFund.Controllers
                 Amount = donation.Amount,
                 Date = donation.Date,
                 DonorId = donation.DonorId,
-                DonorName = donor?.Username ?? string.Empty,
                 ShelterId = donation.ShelterId,
-                ShelterName = shelter?.Name ?? string.Empty,
                 Donor = donor != null ? new UsersResponseModel
                 {
                     Id = donor.Id,
@@ -93,26 +90,52 @@ namespace SWP391_PawFund.Controllers
         }
         // Lấy danh sách donations theo DonorId
         [HttpGet("by-donor/{donorId}")]
-        public ActionResult<IEnumerable<DonationResponseModel>> GetDonationsByDonorId(int donorId)
+        public async Task<ActionResult<IEnumerable<DonationDetailResponseModel>>> GetAllDonationsByDonorId(int donorId)
         {
-            var donations = _donateService.GetDonationsByDonorId(donorId);
-
-            if (donations == null || !donations.Any())
+            try
             {
-                return NotFound($"No donations found for DonorId {donorId}.");
+                var donations = await _donateService.GetDonationsByDonorId(donorId);
+
+                if (donations == null)
+                {
+                    return NotFound(new { message = $"No donations found for DonorId {donorId}." });
+                }
+
+                var response = donations.Select(d => new DonationDetailResponseModel
+                {
+                    Id = d.Id,
+                    Amount = d.Amount,
+                    Date = d.Date,
+                    DonorId = d.DonorId,
+                    ShelterId = d.ShelterId,
+                    Donor = d.User != null ? new UsersResponseModel
+                    {
+                        Id = d.User.Id,
+                        Username = d.User.Username,
+                        Email = d.User.Email,
+                        Location = d.User.Location,
+                        Phone = d.User.Phone,
+                        TotalDonation =(decimal) d.User.TotalDonation
+                    } : null,
+                    Shelter = d.Shelter != null ? new ShelterResponseModel
+                    {
+                        Id = d.Shelter.Id,
+                        Name = d.Shelter.Name,
+                        Location = d.Shelter.Location,
+                        PhoneNumber = d.Shelter.PhoneNumber,
+                        Capacity = d.Shelter.Capaxity, 
+                        Email = d.Shelter.Email,
+                        Website = d.Shelter.Website,
+                        DonationAmount =(decimal) d.Shelter.DonationAmount
+                    } : null
+                });
+
+                return Ok(response);
             }
-
-            var response = donations.Select(d => new DonationResponseModel
+            catch (Exception)
             {
-                Id = d.Id,
-                Amount = d.Amount,
-                Date = d.Date,
-                DonorId = d.DonorId,
-                DonorName = d.User?.Username ?? string.Empty,
-                ShelterName = d.Shelter?.Name ?? string.Empty
-            });
-
-            return Ok(response);
+                return StatusCode(500, new { message = "An error occurred while processing your request." });
+            }
         }
 
 
@@ -149,15 +172,33 @@ namespace SWP391_PawFund.Controllers
 
             await _donateService.CreateDonationAsync(donation);
 
-            var response = new DonationResponseModel
+            var response = new DonationDetailResponseModel
             {
                 Id = donation.Id,
                 Amount = donation.Amount,
                 Date = donation.Date,
                 DonorId = donation.DonorId,
                 ShelterId = donation.ShelterId,
-                DonorName = donor.Username,
-                ShelterName = shelter.Name
+                Donor = donor != null ? new UsersResponseModel
+                {
+                    Id = donor.Id,
+                    Username = donor.Username,
+                    Email = donor.Email,
+                    Location = donor.Location,
+                    Phone = donor.Phone,
+                    TotalDonation = (decimal)donor.TotalDonation
+                } : null,
+                Shelter = shelter != null ? new ShelterResponseModel
+                {
+                    Id = shelter.Id,
+                    Name = shelter.Name,
+                    Location = shelter.Location,
+                    PhoneNumber = shelter.PhoneNumber,
+                    Capacity = shelter.Capaxity,
+                    Email = shelter.Email,
+                    Website = shelter.Website,
+                    DonationAmount = (decimal)shelter.DonationAmount
+                } : null
             };
 
             return CreatedAtAction(nameof(GetDonationById), new { id = donation.Id }, response);
