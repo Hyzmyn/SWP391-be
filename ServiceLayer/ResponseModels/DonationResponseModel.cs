@@ -12,9 +12,9 @@ namespace ServiceLayer.ResponseModels
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
         public int DonorId { get; set; }
-        public string DonorName { get; set; } = string.Empty;
+        //public string DonorName { get; set; } = string.Empty;
         public int ShelterId { get; set; }
-        public string ShelterName { get; set; } = string.Empty;
+        //public string ShelterName { get; set; } = string.Empty;
     }
 
     public class DonationDetailResponseModel : DonationResponseModel
