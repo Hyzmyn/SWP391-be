@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ModelLayer.Entities;
 using RepositoryLayer.UnitOfWork;
+using ServiceLayer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ServiceLayer.Services
 {
-    public class UserRoleService
+    public class UserRoleService : IUserRoleService
     {
         private readonly IUnitOfWork _unitOfWork;
 
