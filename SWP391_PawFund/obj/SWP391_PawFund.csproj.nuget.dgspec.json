@@ -240,6 +240,14 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+            "FirebaseAdmin": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "Google.Cloud.Storage.V1": {
+              "target": "Package",
+              "version": "[4.10.0, )"
+            },
             "Twilio": {
               "target": "Package",
               "version": "[7.5.0, )"
@@ -311,9 +319,21 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "FirebaseAdmin": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "Google.Cloud.Storage.V1": {
+              "target": "Package",
+              "version": "[4.10.0, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[8.0.8, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
             },
             "Microsoft.AspNetCore.Mvc.Versioning": {
               "target": "Package",
