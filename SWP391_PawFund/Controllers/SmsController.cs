@@ -29,7 +29,7 @@ namespace SWP391_PawFund.Controllers
                     body: model.Message,
                     client: _client
                 );
-                return Ok("Success " + message.AccountSid);
+                return Ok("Success " + message.Sid);
             }
             catch (Exception ex)
             {
