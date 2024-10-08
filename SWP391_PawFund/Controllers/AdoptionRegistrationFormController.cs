@@ -85,7 +85,7 @@ namespace SWP391_PawFund.Controllers
                 } : null,
                 Pet = pet != null ? new PetDetailResponse
                 {
-                    Id = pet.Id,
+                    PetID = pet.Id,
                     Name = pet.Name,
                     Type = pet.Type,
                     Breed = pet.Breed,
