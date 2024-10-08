@@ -69,10 +69,6 @@ namespace ServiceLayer.Services
             return await _unitOfWork.Repository<AdoptionRegistrationForm>().GetById(adopterId);
         }
 
-        public async Task<ShelterStaff> GetShelterStaffByIdAsync(int shelterStaffId)
-        {
-            return await _unitOfWork.Repository<ShelterStaff>().GetById(shelterStaffId);
-        }
 
         public async Task<Pet> GetPetByIdAsync(int petId)
         {

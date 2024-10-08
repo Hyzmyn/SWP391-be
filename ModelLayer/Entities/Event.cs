@@ -17,6 +17,6 @@ namespace ModelLayer.Entities
 
         public virtual Shelter? Shelter { get; set; }
 
-        public virtual ICollection<EventUser>? EventUser { get; set; }
+        public virtual ICollection<User>? Users { get; set; }
     }
 }
