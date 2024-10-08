@@ -12,7 +12,7 @@ namespace ServiceLayer.Services
 {
     public class FileUploadService : IFileUploadService
     {
-        private readonly string _bucketName = "your-firebase-storage-bucket"; // Replace with your actual bucket name
+        private readonly string _bucketName = "pawfund-e7fdd.appspot.com";
 
         public async Task<string> UploadFileAsync(IFormFile file)
         {
@@ -33,7 +33,7 @@ namespace ServiceLayer.Services
                 // Upload the file to Firebase Cloud Storage
                 using (var stream = file.OpenReadStream())
                 {
-                    var storageObject = await storageClient.UploadObjectAsync(_bucketName, fileName, null, stream, new UploadObjectOptions
+                    await storageClient.UploadObjectAsync(_bucketName, fileName, null, stream, new UploadObjectOptions
                     {
                         PredefinedAcl = PredefinedObjectAcl.PublicRead
                     });

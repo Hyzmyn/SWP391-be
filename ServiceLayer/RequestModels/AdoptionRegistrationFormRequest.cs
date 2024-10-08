@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,8 @@ namespace ServiceLayer.RequestModels
     {
         public string SocialAccount { get; set; }
         public decimal IncomeAmount { get; set; }
-        public string IdentificationImage { get; set; }
-        public string IdentificationImageBackSide { get; set; }
+        public IFormFile IdentificationImage { get; set; } // Changed to IFormFile for image upload
+        public IFormFile IdentificationImageBackSide { get; set; } // Changed to IFormFile for image upload
         public int AdopterId { get; set; }
         public int ShelterStaffId { get; set; }
         public int PetId { get; set; }
