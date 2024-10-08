@@ -75,6 +75,18 @@ namespace RepositoryLayer
                 .HasForeignKey(c => c.ShelterStaffId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Donation>()
+                .HasOne(d => d.User)
+                .WithMany(u => u.Donations)  
+                .HasForeignKey(d => d.DonorId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Donation>()
+                .HasOne(d => d.Shelter)
+                .WithMany(s => s.Donations)  
+                .HasForeignKey(d => d.ShelterId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
