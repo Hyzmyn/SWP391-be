@@ -23,7 +23,7 @@ builder.Services.AddHttpClient<ITwilioRestClient, TwilioClient>();
 
 FirebaseApp.Create(new AppOptions()
 {
-    Credential = GoogleCredential.FromFile("firebase-adminsdk.json"), // Your downloaded key
+    Credential = GoogleCredential.FromFile("firebase-adminsdk.json"), 
 });
 
 builder.Services.Configure<FormOptions>(options =>

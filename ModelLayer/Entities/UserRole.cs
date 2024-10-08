@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModelLayer.Entities
 {
-    public class UserRole : BaseEntity
+    public class UserRole
     {
         public int UserId { get; set; }
         public int RoleId { get; set; }

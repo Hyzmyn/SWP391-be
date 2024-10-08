@@ -19,14 +19,22 @@ namespace SWP391_PawFund.Controllers
         private readonly IUsersService _usersService;
         private readonly IPetService _petService;
         private readonly IAuthServices _authServices;
+        private readonly IFileUploadService _fileUploadService;
 
-        public AdoptionRegistrationFormController(IAdoptionRegistrationFormService adoptionFormService, IUsersService usersService, IShelterService shelterService, IPetService petService, IAuthServices authServices)
+        public AdoptionRegistrationFormController(
+            IAdoptionRegistrationFormService adoptionFormService, 
+            IUsersService usersService, 
+            IShelterService shelterService, 
+            IPetService petService, 
+            IAuthServices authServices, 
+            IFileUploadService fileUploadService)
         {
             _adoptionFormService = adoptionFormService;
             _usersService = usersService;
             _shelterService = shelterService;
             _petService = petService;
             _authServices = authServices;
+            _fileUploadService = fileUploadService;
         }
 
         // GET: api/AdoptionRegistrationForm
@@ -71,7 +79,7 @@ namespace SWP391_PawFund.Controllers
                 Id = form.Id,
                 SocialAccount = form.SocialAccount,
                 IncomeAmount = form.IncomeAmount,
-                IdentificationImage = form.IdentificationImage,
+                IdentificationImage = form.IdentificationImage, 
                 IdentificationImageBackSide = form.IdentificationImageBackSide,
                 Status = form.Status,
                 Adopter = adopter != null ? new UsersResponseModel
@@ -95,10 +103,9 @@ namespace SWP391_PawFund.Controllers
                     Color = pet.Color,
                     Description = pet.Description,
                     AdoptionStatus = pet.AdoptionStatus,
-                    //Thiếu Status
                     Image = pet.Image,
-                    ShelterName = shelter?.Name, // Thêm tên shelter
-                    UserName = adopter?.Username // Thêm tên người dùng
+                    ShelterName = shelter?.Name, 
+                    UserName = adopter?.Username
                 } : null,
                 ShelterStaff = shelterStaff != null ? new UsersResponseModel
                 {
@@ -107,8 +114,6 @@ namespace SWP391_PawFund.Controllers
                     Email = shelterStaff.Email,
                     Phone = shelterStaff.Phone,
                     Location = shelterStaff.Location
-
-                    //Thiếu Role
                 } : null
             };
 
@@ -118,19 +123,23 @@ namespace SWP391_PawFund.Controllers
         // POST: api/AdoptionRegistrationForm
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> CreateForm([FromBody] AdoptionRegistrationFormRequest request)
+        public async Task<IActionResult> CreateForm([FromForm] AdoptionRegistrationFormRequest request)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            // Upload images to Firebase and get URLs
+            var identificationImageUrl = await _fileUploadService.UploadFileAsync(request.IdentificationImage);
+            var identificationImageBackSideUrl = await _fileUploadService.UploadFileAsync(request.IdentificationImageBackSide);
+
             var form = new AdoptionRegistrationForm
             {
                 SocialAccount = request.SocialAccount,
                 IncomeAmount = request.IncomeAmount,
-                IdentificationImage = request.IdentificationImage,
-                IdentificationImageBackSide = request.IdentificationImageBackSide,
+                IdentificationImage = identificationImageUrl, // Store the image URLs
+                IdentificationImageBackSide = identificationImageBackSideUrl,
                 AdopterId = request.AdopterId,
                 ShelterStaffId = request.ShelterStaffId,
                 PetId = request.PetId
@@ -156,10 +165,13 @@ namespace SWP391_PawFund.Controllers
                 return NotFound(new { message = "Form not found." });
             }
 
+            var identificationImageUrl = await _fileUploadService.UploadFileAsync(request.IdentificationImage);
+            var identificationImageBackSideUrl = await _fileUploadService.UploadFileAsync(request.IdentificationImageBackSide);
+
             existingForm.SocialAccount = request.SocialAccount;
             existingForm.IncomeAmount = request.IncomeAmount;
-            existingForm.IdentificationImage = request.IdentificationImage;
-            existingForm.IdentificationImageBackSide = request.IdentificationImageBackSide;
+            existingForm.IdentificationImage = identificationImageUrl;
+            existingForm.IdentificationImageBackSide = identificationImageBackSideUrl;
             existingForm.AdopterId = request.AdopterId;
             existingForm.ShelterStaffId = request.ShelterStaffId;
             existingForm.PetId = request.PetId;
