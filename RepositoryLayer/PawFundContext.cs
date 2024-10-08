@@ -21,11 +21,9 @@ namespace RepositoryLayer
         public virtual DbSet<Notification> Notifications { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Shelter> Shelters { get; set; }
-        public virtual DbSet<ShelterStaff> ShelterStaffs { get; set; }
         public virtual DbSet<Status> Statuses { get; set; }
         public virtual DbSet<AdoptionRegistrationForm> Forms { get; set; }
         public virtual DbSet<Certification> Certifications { get; set; }
-        public virtual DbSet<EventUser> EventUsers { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<SmsMessage> SmsMessages { get; set; }
         public virtual DbSet<UserRole> UserRole { get; set; }
@@ -38,7 +36,7 @@ namespace RepositoryLayer
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql(GetConnectionString(),
-                new MySqlServerVersion(new Version(8, 0, 2))); // Replace with your MySQL version
+                new MySqlServerVersion(new Version(8, 0, 2))); 
         }
 
         private string GetConnectionString()
@@ -48,13 +46,15 @@ namespace RepositoryLayer
                 .AddJsonFile("appsettings.json", true, true)
                 .Build();
 
-            return configuration.GetConnectionString("DefaultConnection"); // Replace this with your actual connection string key
+            return configuration.GetConnectionString("DefaultConnection"); 
         }
 
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             foreach (var entityType in modelBuilder.Model.GetEntityTypes()
                 .Where(e => typeof(BaseEntity).IsAssignableFrom(e.ClrType)))
             {
@@ -67,7 +67,7 @@ namespace RepositoryLayer
                 .HasOne(c => c.User)
                 .WithMany(u => u.Certifications)
                 .HasForeignKey(c => c.UserId)
-                .OnDelete(DeleteBehavior.Restrict); 
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Certification>()
                 .HasOne(c => c.ShelterStaff)
@@ -75,15 +75,40 @@ namespace RepositoryLayer
                 .HasForeignKey(c => c.ShelterStaffId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Shelter)
+                .WithMany(s => s.Users)
+                .HasForeignKey(u => u.ShelterId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Event)
+                .WithMany(e => e.Users)
+                .HasForeignKey(u => u.EventId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<UserRole>()
+                .HasKey(ur => new { ur.UserId, ur.RoleId });
+
+            modelBuilder.Entity<UserRole>()
+                .HasOne(ur => ur.User)
+                .WithMany(u => u.UserRoles)
+                .HasForeignKey(ur => ur.UserId);
+
+            modelBuilder.Entity<UserRole>()
+                .HasOne(ur => ur.Role)
+                .WithMany(r => r.UserRoles)
+                .HasForeignKey(ur => ur.RoleId);
+
             modelBuilder.Entity<Donation>()
                 .HasOne(d => d.User)
-                .WithMany(u => u.Donations)  
+                .WithMany(u => u.Donations)
                 .HasForeignKey(d => d.DonorId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Donation>()
                 .HasOne(d => d.Shelter)
-                .WithMany(s => s.Donations)  
+                .WithMany(s => s.Donations)
                 .HasForeignKey(d => d.ShelterId)
                 .OnDelete(DeleteBehavior.Cascade);
 
@@ -144,24 +169,23 @@ namespace RepositoryLayer
             );
 
             modelBuilder.Entity<UserRole>().HasData(
-                new UserRole { Id = 1, UserId = 1, RoleId = 1 },
-                new UserRole { Id = 2, UserId = 2, RoleId = 2 },
-                new UserRole { Id = 3, UserId = 3, RoleId = 2 },
-                new UserRole { Id = 4, UserId = 4, RoleId = 2 },
-                new UserRole { Id = 5, UserId = 5, RoleId = 2 },
-                new UserRole { Id = 6, UserId = 6, RoleId = 3 },
-                new UserRole { Id = 7, UserId = 7, RoleId = 3 },
-                new UserRole { Id = 8, UserId = 8, RoleId = 3 },
-                new UserRole { Id = 9, UserId = 9, RoleId = 3 },
-                new UserRole { Id = 10, UserId = 10, RoleId = 4 },
-                new UserRole { Id = 11, UserId = 11, RoleId = 4 },
-                new UserRole { Id = 12, UserId = 12, RoleId = 4 },
-                new UserRole { Id = 13, UserId = 13, RoleId = 4 },
-                new UserRole { Id = 14, UserId = 14, RoleId = 5 },
-                new UserRole { Id = 15, UserId = 15, RoleId = 5 },
-                new UserRole { Id = 16, UserId = 16, RoleId = 5 },
-                new UserRole { Id = 17, UserId = 17, RoleId = 5 }
-
+                new UserRole { UserId = 1, RoleId = 1 },
+                new UserRole { UserId = 2, RoleId = 2 },
+                new UserRole { UserId = 3, RoleId = 2 },
+                new UserRole { UserId = 4, RoleId = 2 },
+                new UserRole { UserId = 5, RoleId = 2 },
+                new UserRole { UserId = 6, RoleId = 3 },
+                new UserRole { UserId = 7, RoleId = 3 },
+                new UserRole { UserId = 8, RoleId = 3 },
+                new UserRole { UserId = 9, RoleId = 3 },
+                new UserRole { UserId = 10, RoleId = 4 },
+                new UserRole { UserId = 11, RoleId = 4 },
+                new UserRole { UserId = 12, RoleId = 4 },
+                new UserRole { UserId = 13, RoleId = 4 },
+                new UserRole { UserId = 14, RoleId = 5 },
+                new UserRole { UserId = 15, RoleId = 5 },
+                new UserRole { UserId = 16, RoleId = 5 },
+                new UserRole { UserId = 17, RoleId = 5 }
             );
 
             modelBuilder.Entity<Shelter>().HasData(
@@ -169,13 +193,6 @@ namespace RepositoryLayer
                 new Shelter { Id = 2, Name = "Shelter2", Location = "Ha Noi", PhoneNumber = "0987654321", Capaxity = 20, Email = "PetShelter2@email.com" }
             );
 
-            modelBuilder.Entity<ShelterStaff>().HasData(
-                new ShelterStaff { Id = 1, UserId = 2, ShelterId = 1 },
-                new ShelterStaff { Id = 2, UserId = 3, ShelterId = 1 },
-                new ShelterStaff { Id = 3, UserId = 4, ShelterId = 2 },
-                new ShelterStaff { Id = 4, UserId = 5, ShelterId = 2 }
-
-            );
 
             modelBuilder.Entity<Pet>().HasData(
                 new Pet { Id = 1, ShelterID = 1, Name = "Buddy", Type = "Dog", UserID = 17 },
