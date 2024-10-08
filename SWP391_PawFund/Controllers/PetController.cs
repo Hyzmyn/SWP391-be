@@ -87,7 +87,6 @@ namespace SWP391_PawFund.Controllers
                 return NotFound($"Pet with Id = {id} not found.");
             }
 
-            // Cập nhật thông tin pet với dữ liệu từ model
             existingPet.Name = updatedPet.Name;
             existingPet.Type = updatedPet.Type;
             existingPet.Breed = updatedPet.Breed;
@@ -103,7 +102,6 @@ namespace SWP391_PawFund.Controllers
                 existingPet.Image = updatedPet.Image;
             }
 
-            // Gọi service để cập nhật pet
             await _petService.UpdatePetAsync(existingPet);
             return Ok(new {message= "Pet updated successfully." });
         }
