@@ -270,33 +270,6 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("Events");
                 });
 
-            modelBuilder.Entity("ModelLayer.Entities.EventUser", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("EventId")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("EventUsers");
-                });
-
             modelBuilder.Entity("ModelLayer.Entities.FeedBack", b =>
                 {
                     b.Property<int>("Id")
@@ -660,59 +633,6 @@ namespace RepositoryLayer.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ModelLayer.Entities.ShelterStaff", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ShelterId")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ShelterId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("ShelterStaffs");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ShelterId = 1,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ShelterId = 1,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ShelterId = 2,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ShelterId = 2,
-                            UserId = 5
-                        });
-                });
-
             modelBuilder.Entity("ModelLayer.Entities.SmsMessage", b =>
                 {
                     b.Property<int>("Id")
@@ -827,6 +747,9 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
+                    b.Property<int?>("EventId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Image")
                         .HasColumnType("longtext");
 
@@ -840,7 +763,7 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("RoleId")
+                    b.Property<int?>("ShelterId")
                         .HasColumnType("int");
 
                     b.Property<bool?>("Status")
@@ -861,7 +784,9 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.HasIndex("RoleId");
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("ShelterId");
 
                     b.ToTable("Users");
 
@@ -870,250 +795,222 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Email = "Admin@email.com",
-                            Password = "$2a$11$HEdcESIZeg8iPt5K03YTXeHSfYsZBPJcj1nJ25Tlq80T6ZWklwW42",
+                            Password = "$2a$11$V34xqJY3cNZMQSXVTZtW3OneLHOZYb6nkMgeIlzKvbbVFdAzMT//y",
                             Username = "Admin"
                         },
                         new
                         {
                             Id = 2,
                             Email = "Staff1@email.com",
-                            Password = "$2a$11$9Nt5gWqFf11TDDYCTjav/eDZebLgNUXNEOE/.4fM/NPpX0NZ6q7Ca",
+                            Password = "$2a$11$W75o0owVdN.OkhIolSDnl.Er9nncYf5JvyyTpVIOHGapZGocPFH7G",
                             Username = "Staff1"
                         },
                         new
                         {
                             Id = 3,
                             Email = "Staff2@email.com",
-                            Password = "$2a$11$5pYWi5H0vBsxLABS10wp8eEkeWJrGDsrQA1klapzfQ3RNocbG4XMK",
+                            Password = "$2a$11$mEa4ZhZjWYrytI9CkBc3Cu5DVoiXgoeFZMkBeMYeohR3JWvhaivD6",
                             Username = "Staff2"
                         },
                         new
                         {
                             Id = 4,
                             Email = "Staff3@email.com",
-                            Password = "$2a$11$.GZm40VLBsQXxXR.YNEtYO31Irgo7H.FOe4Q1qhauunpuJtd7GQYe",
+                            Password = "$2a$11$AXhYpOW4h4S9vkQAGqSCreXy/KdeuvvhQ0o8tCkBaZCU2qlcKDyVS",
                             Username = "Staff3"
                         },
                         new
                         {
                             Id = 5,
                             Email = "Staff4@email.com",
-                            Password = "$2a$11$.6X83ijVKZb.wIb9g5KDiO8kfk3.FiyuTay6E9yXO/nEv983d7Z1G",
+                            Password = "$2a$11$vHU7fHA.rmVwbtXWhCTiXue8g6jytox19/Exx8fa7TLWGzS4Iroay",
                             Username = "Staff4"
                         },
                         new
                         {
                             Id = 6,
                             Email = "Donor1@email.com",
-                            Password = "$2a$11$dHhAQzG8//yVrbBW.dutBeRVgLeywv7xOoT4wB3pTOHs2jbZv1Ur2",
+                            Password = "$2a$11$vsaEyco90tITfmMo9cYKW.Nw82tFCDQsUnVk.o.bstbhCdQh5/xQi",
                             Username = "Donor1"
                         },
                         new
                         {
                             Id = 7,
                             Email = "Donor2@email.com",
-                            Password = "$2a$11$HKeHgcGgZ.TvWP7KS54lueE1l8tkeO3uOVpb.W22PKiza2h5hbks2",
+                            Password = "$2a$11$O6kfvlc93RR7y3GEhxk8euFT3ZiHRvLgp7HPj4HJ/MF3GxIfth7Qe",
                             Username = "Donor2"
                         },
                         new
                         {
                             Id = 8,
                             Email = "Donor3@email.com",
-                            Password = "$2a$11$xDTcaN27R4r0yGKr49NeD.8zUE/xY9b9537wfYZOkupH//3B6VS5e",
+                            Password = "$2a$11$edbssCB5AHgLtaynXfW4OuQaiNI6Bm92p5IaD2jHlutAiFxsHsxVO",
                             Username = "Donor3"
                         },
                         new
                         {
                             Id = 9,
                             Email = "Donor4@email.com",
-                            Password = "$2a$11$jwkggWBjlXQn9nXbNfwkYuyS.DZCI8cjHDEt8HEwmwQmo/41Ibvua",
+                            Password = "$2a$11$MNDZG0ODoL0QhSi9niUJrO4Pw91yScu.dXsHopeWxplkThVOZbfkG",
                             Username = "Donor4"
                         },
                         new
                         {
                             Id = 10,
                             Email = "Volunteer1@email.com",
-                            Password = "$2a$11$6I/PBwoVFxeaSl8oSPpiVebOpW27xw66uIH7uFKQAwbkBSUlCPWOa",
+                            Password = "$2a$11$BEDvZBgVWPs2qhfOfiYHrOMDIaxlWUXJce907aNjk9GyHYbbShMXK",
                             Username = "Volunteer1"
                         },
                         new
                         {
                             Id = 11,
                             Email = "Volunteer2@email.com",
-                            Password = "$2a$11$uypxRINCd3a4CIVtKM/2n.7wtXoq4Z6NRHSh2XIjMgMy5YhJlDIeK",
+                            Password = "$2a$11$aFQmlBO2AA4qtdKkZMgGOOfWEU9KSOuwsYJezyohy.DIUBqgpVJum",
                             Username = "Volunteer2"
                         },
                         new
                         {
                             Id = 12,
                             Email = "Volunteer3@email.com",
-                            Password = "$2a$11$HKtpEM0OySNFfshgP1KdI.jmdjJwEqryEpnHUIftK8JsJYoAf5YVu",
+                            Password = "$2a$11$iPEUUCw5AlBi4FoYLicL6uY33jskv0.a/039qDwhyeIw67kl9aiBC",
                             Username = "Volunteer3"
                         },
                         new
                         {
                             Id = 13,
                             Email = "Volunteer4@email.com",
-                            Password = "$2a$11$vZXgc36IQd7vaxk2RSrh1.PzoRQb.rQONpW9fZ2flbF5GgiTAjG2G",
+                            Password = "$2a$11$2BGIZh/6gT5jw4gi5nyVF.EZybCoRdUNk1qaO9qNgxSmUEj7d2cuC",
                             Username = "Volunteer4"
                         },
                         new
                         {
                             Id = 14,
                             Email = "Adopter1@email.com",
-                            Password = "$2a$11$.9w3j4eodbBxu57AloCBIe3p.CbcSw/uE6WIYS3tvMzGq02vKKmzG",
+                            Password = "$2a$11$GhUoN06FLEekjj4iOIxsTu7dILmYNd2w0/gJWRzCOHsS5Cb0bYejK",
                             Username = "Adopter1"
                         },
                         new
                         {
                             Id = 15,
                             Email = "Adopter2@email.com",
-                            Password = "$2a$11$DthV5SkZaYVIx/Rw1dxxY.LqsG9KZEvlSgtWPsqtpR3Frq50jDtOO",
+                            Password = "$2a$11$Mi.3HqtjYhvOvvOekfgcmOrg4UPIev1GZPr/YYaTz46yoqtcG5vfe",
                             Username = "Adopter2"
                         },
                         new
                         {
                             Id = 16,
                             Email = "Adopter3@email.com",
-                            Password = "$2a$11$jogTNbbwqfxZpQGoRHNiCuoR7ITPvD6FZxcPhEfk631CD1MdabCMG",
+                            Password = "$2a$11$nsHk4vyG9zQIJsP1elBHXOwaJry8z8Zi4ZHyMlHLl/mZXwEeEBY4a",
                             Username = "Adopter3"
                         },
                         new
                         {
                             Id = 17,
                             Email = "Adopter4@email.com",
-                            Password = "$2a$11$2baxGHgQJFZFofVKRrBlYevfRUUAu3YpCkAsdObQBhsXUOemxY69S",
+                            Password = "$2a$11$39kRC2C0fW/AqVioy6Pzp.V09x01c9vDItcRXDKTcT1vw2knXRsWi",
                             Username = "Adopter4"
                         });
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.UserRole", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
+                    b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("UserRole");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            RoleId = 1,
-                            UserId = 1
+                            UserId = 1,
+                            RoleId = 1
                         },
                         new
                         {
-                            Id = 2,
-                            RoleId = 2,
-                            UserId = 2
+                            UserId = 2,
+                            RoleId = 2
                         },
                         new
                         {
-                            Id = 3,
-                            RoleId = 2,
-                            UserId = 3
+                            UserId = 3,
+                            RoleId = 2
                         },
                         new
                         {
-                            Id = 4,
-                            RoleId = 2,
-                            UserId = 4
+                            UserId = 4,
+                            RoleId = 2
                         },
                         new
                         {
-                            Id = 5,
-                            RoleId = 2,
-                            UserId = 5
+                            UserId = 5,
+                            RoleId = 2
                         },
                         new
                         {
-                            Id = 6,
-                            RoleId = 3,
-                            UserId = 6
+                            UserId = 6,
+                            RoleId = 3
                         },
                         new
                         {
-                            Id = 7,
-                            RoleId = 3,
-                            UserId = 7
+                            UserId = 7,
+                            RoleId = 3
                         },
                         new
                         {
-                            Id = 8,
-                            RoleId = 3,
-                            UserId = 8
+                            UserId = 8,
+                            RoleId = 3
                         },
                         new
                         {
-                            Id = 9,
-                            RoleId = 3,
-                            UserId = 9
+                            UserId = 9,
+                            RoleId = 3
                         },
                         new
                         {
-                            Id = 10,
-                            RoleId = 4,
-                            UserId = 10
+                            UserId = 10,
+                            RoleId = 4
                         },
                         new
                         {
-                            Id = 11,
-                            RoleId = 4,
-                            UserId = 11
+                            UserId = 11,
+                            RoleId = 4
                         },
                         new
                         {
-                            Id = 12,
-                            RoleId = 4,
-                            UserId = 12
+                            UserId = 12,
+                            RoleId = 4
                         },
                         new
                         {
-                            Id = 13,
-                            RoleId = 4,
-                            UserId = 13
+                            UserId = 13,
+                            RoleId = 4
                         },
                         new
                         {
-                            Id = 14,
-                            RoleId = 5,
-                            UserId = 14
+                            UserId = 14,
+                            RoleId = 5
                         },
                         new
                         {
-                            Id = 15,
-                            RoleId = 5,
-                            UserId = 15
+                            UserId = 15,
+                            RoleId = 5
                         },
                         new
                         {
-                            Id = 16,
-                            RoleId = 5,
-                            UserId = 16
+                            UserId = 16,
+                            RoleId = 5
                         },
                         new
                         {
-                            Id = 17,
-                            RoleId = 5,
-                            UserId = 17
+                            UserId = 17,
+                            RoleId = 5
                         });
                 });
 
@@ -1191,25 +1088,6 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("Shelter");
                 });
 
-            modelBuilder.Entity("ModelLayer.Entities.EventUser", b =>
-                {
-                    b.HasOne("ModelLayer.Entities.Event", "Event")
-                        .WithMany("EventUser")
-                        .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ModelLayer.Entities.User", "User")
-                        .WithOne("EventUser")
-                        .HasForeignKey("ModelLayer.Entities.EventUser", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Event");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("ModelLayer.Entities.FeedBack", b =>
                 {
                     b.HasOne("ModelLayer.Entities.Post", "Post")
@@ -1274,25 +1152,6 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("ModelLayer.Entities.ShelterStaff", b =>
-                {
-                    b.HasOne("ModelLayer.Entities.Shelter", "Shelter")
-                        .WithMany("Staffs")
-                        .HasForeignKey("ShelterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ModelLayer.Entities.User", "User")
-                        .WithOne("ShelterStaff")
-                        .HasForeignKey("ModelLayer.Entities.ShelterStaff", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Shelter");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("ModelLayer.Entities.Status", b =>
                 {
                     b.HasOne("ModelLayer.Entities.Pet", "Pet")
@@ -1306,15 +1165,25 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("ModelLayer.Entities.User", b =>
                 {
-                    b.HasOne("Domain.Entities.Role", null)
+                    b.HasOne("ModelLayer.Entities.Event", "Event")
                         .WithMany("Users")
-                        .HasForeignKey("RoleId");
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("ModelLayer.Entities.Shelter", "Shelter")
+                        .WithMany("Users")
+                        .HasForeignKey("ShelterId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Event");
+
+                    b.Navigation("Shelter");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.UserRole", b =>
                 {
                     b.HasOne("Domain.Entities.Role", "Role")
-                        .WithMany()
+                        .WithMany("UserRoles")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1332,12 +1201,12 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("Domain.Entities.Role", b =>
                 {
-                    b.Navigation("Users");
+                    b.Navigation("UserRoles");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Event", b =>
                 {
-                    b.Navigation("EventUser");
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Pet", b =>
@@ -1362,7 +1231,7 @@ namespace RepositoryLayer.Migrations
 
                     b.Navigation("Pets");
 
-                    b.Navigation("Staffs");
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.User", b =>
@@ -1373,15 +1242,11 @@ namespace RepositoryLayer.Migrations
 
                     b.Navigation("Donations");
 
-                    b.Navigation("EventUser");
-
                     b.Navigation("Notifications");
 
                     b.Navigation("Pets");
 
                     b.Navigation("Posts");
-
-                    b.Navigation("ShelterStaff");
 
                     b.Navigation("UserRoles");
                 });
