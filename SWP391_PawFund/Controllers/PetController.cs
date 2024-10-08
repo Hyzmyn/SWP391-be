@@ -128,7 +128,7 @@ namespace SWP391_PawFund.Controllers
         }
 
         // PATCH: api/Pet/{id}/status
-        [HttpPatch("{id}/status")]
+        [HttpPatch("{id}/Update_Pet_AdopteStatus")]
         public async Task<IActionResult> UpdatePetStatus(int id, [FromQuery] int newStatus)
         {
             var pet = await _petService.GetPetById(id);

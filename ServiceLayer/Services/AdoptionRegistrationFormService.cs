@@ -1,4 +1,5 @@
-﻿using ModelLayer.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using ModelLayer.Entities;
 using RepositoryLayer.UnitOfWork;
 using ServiceLayer.Interfaces;
 using System;
@@ -18,16 +19,22 @@ namespace ServiceLayer.Services
             _unitOfWork = unitOfWork;
         }
 
-        // Get all adoption registration forms
+        // Get all adoption registration forms with related entities
         public IEnumerable<AdoptionRegistrationForm> GetAllAdoptionForms()
         {
-            return _unitOfWork.Repository<AdoptionRegistrationForm>().GetAll();
+            return _unitOfWork.Repository<AdoptionRegistrationForm>().GetAll()
+                .Include(form => form.User)
+                .Include(form => form.Pet)
+                .ToList();
         }
 
-        // Get a specific adoption form by ID
+        // Get a specific adoption form by ID with related entities
         public async Task<AdoptionRegistrationForm> GetAdoptionFormByIdAsync(int id)
         {
-            return await _unitOfWork.Repository<AdoptionRegistrationForm>().GetById(id);
+            return await _unitOfWork.Repository<AdoptionRegistrationForm>().GetAll()
+                .Include(form => form.User)
+                .Include(form => form.Pet)
+                .FirstOrDefaultAsync(form => form.Id == id);
         }
 
         // Create a new adoption form
@@ -40,7 +47,7 @@ namespace ServiceLayer.Services
         // Update an existing adoption form
         public async Task UpdateAdoptionFormAsync(AdoptionRegistrationForm form)
         {
-            await _unitOfWork.Repository<AdoptionRegistrationForm>().Update(form, form.Id);
+            _unitOfWork.Repository<AdoptionRegistrationForm>().Update(form, form.Id);
             await _unitOfWork.CommitAsync();
         }
 
@@ -60,19 +67,6 @@ namespace ServiceLayer.Services
         {
             var form = await _unitOfWork.Repository<AdoptionRegistrationForm>().GetById(id);
             return form != null;
-        }
-
-        // Các phương thức khác không thay đổi
-
-        public async Task<AdoptionRegistrationForm> GetAdopterByIdAsync(int adopterId)
-        {
-            return await _unitOfWork.Repository<AdoptionRegistrationForm>().GetById(adopterId);
-        }
-
-
-        public async Task<Pet> GetPetByIdAsync(int petId)
-        {
-            return await _unitOfWork.Repository<Pet>().GetById(petId);
         }
     }
 
