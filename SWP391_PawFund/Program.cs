@@ -10,6 +10,9 @@ using ServiceLayer.Services;
 using System.Text;
 using SWP391_PawFund.AppStarts;
 using Twilio.Clients;
+using FirebaseAdmin;
+using Google.Apis.Auth.OAuth2;
+using Microsoft.AspNetCore.Http.Features;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +20,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddHttpClient<ITwilioRestClient, TwilioClient>();
+
+FirebaseApp.Create(new AppOptions()
+{
+    Credential = GoogleCredential.FromFile("firebase-adminsdk.json"), 
+});
+
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = 104857600; // 100 MB file limit
+});
 
 // Install DI and dbcontext
 builder.Services.InstallService(builder.Configuration);
