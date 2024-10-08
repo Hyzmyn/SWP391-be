@@ -11,6 +11,6 @@ namespace ServiceLayer.Services
         decimal GetTotalDonationByDonor(int donorId);
         decimal GetTotalDonationByShelter(int shelterId);
         Task UpdateDonationAsync(Donation donation);
-        IEnumerable<Donation> GetDonationsByDonorId(int donorId);
+        Task<IEnumerable<Donation>> GetDonationsByDonorId(int donorId);
     }
 }
