@@ -35,6 +35,18 @@ builder.Services.Configure<FormOptions>(options =>
 // Install dependency injection and DbContext
 builder.Services.InstallService(builder.Configuration);
 
+
+// CORS configuration
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",
+        builder => builder
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials()
+        .WithOrigins("https://localhost:7293", "http://localhost:3000", "https://exchangeweb-fpt.netlify.app"));
+});
+
 // Configure JWT authentication
 var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"] ?? throw new ArgumentNullException("Jwt:Key not found in configuration"));
 
@@ -90,16 +102,6 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// CORS configuration
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("CorsPolicy",
-        builder => builder
-        .AllowAnyMethod()
-        .AllowAnyHeader()
-        .AllowCredentials()
-        .WithOrigins("https://localhost:7293", "http://localhost:3000", "https://exchangeweb-fpt.netlify.app"));
-});
 
 // Build the application
 var app = builder.Build();

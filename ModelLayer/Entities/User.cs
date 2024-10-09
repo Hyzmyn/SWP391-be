@@ -20,6 +20,8 @@ namespace ModelLayer.Entities
         public string? Image { get; set; }
         public int? ShelterId { get; set; }
         public int? EventId { get; set; }
+        public bool? Status { get; set; }
+
 
         public virtual Shelter? Shelter { get; set; }
         public virtual Event? Event { get; set; }
