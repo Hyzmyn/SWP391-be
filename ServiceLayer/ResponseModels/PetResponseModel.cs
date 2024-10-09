@@ -9,7 +9,7 @@ namespace ServiceLayer.ResponseModels
     // PetsResponseModel: Dùng để trả về thông tin cơ bản của Pet
     public class PetResponseModel
     {
-        public int Id { get; set; }
+        public int PetID { get; set; }
         public string Name { get; set; } = null!;
         public string Type { get; set; } = null!;
         public string Breed { get; set; } = null!;
