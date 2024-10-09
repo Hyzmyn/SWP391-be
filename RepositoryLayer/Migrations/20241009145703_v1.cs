@@ -25,7 +25,7 @@ namespace RepositoryLayer.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Status = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -51,7 +51,7 @@ namespace RepositoryLayer.Migrations
                     Website = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DonationAmount = table.Column<decimal>(type: "decimal(16,4)", nullable: true),
-                    Status = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -71,7 +71,7 @@ namespace RepositoryLayer.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Message = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Status = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -93,7 +93,7 @@ namespace RepositoryLayer.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Location = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Status = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -130,7 +130,8 @@ namespace RepositoryLayer.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ShelterId = table.Column<int>(type: "int", nullable: true),
                     EventId = table.Column<int>(type: "int", nullable: true),
-                    Status = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    Status = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -160,7 +161,7 @@ namespace RepositoryLayer.Migrations
                     Date = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     DonorId = table.Column<int>(type: "int", nullable: false),
                     ShelterId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -190,7 +191,7 @@ namespace RepositoryLayer.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Date = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -232,7 +233,7 @@ namespace RepositoryLayer.Migrations
                     StatusId = table.Column<int>(type: "int", nullable: true),
                     Image = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Status = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -290,7 +291,7 @@ namespace RepositoryLayer.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     ShelterStaffId = table.Column<int>(type: "int", nullable: false),
                     PetId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -332,8 +333,9 @@ namespace RepositoryLayer.Migrations
                     AdopterId = table.Column<int>(type: "int", nullable: false),
                     ShelterStaffId = table.Column<int>(type: "int", nullable: false),
                     PetId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: true),
-                    Status = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -366,7 +368,7 @@ namespace RepositoryLayer.Migrations
                     UpdateDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     PetId = table.Column<int>(type: "int", nullable: true),
-                    Status = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -397,7 +399,7 @@ namespace RepositoryLayer.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Vaccine = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Status = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -422,7 +424,7 @@ namespace RepositoryLayer.Migrations
                     Description = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Date = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    Status = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -444,85 +446,85 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.InsertData(
                 table: "Roles",
-                columns: new[] { "Id", "Name", "Status" },
+                columns: new[] { "Id", "IsDelete", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Admin", null },
-                    { 2, "ShelterStaff", null },
-                    { 3, "Donor", null },
-                    { 4, "Volunteer", null },
-                    { 5, "Adopter", null }
+                    { 1, null, "Admin" },
+                    { 2, null, "ShelterStaff" },
+                    { 3, null, "Donor" },
+                    { 4, null, "Volunteer" },
+                    { 5, null, "Adopter" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Shelters",
-                columns: new[] { "Id", "Capaxity", "DonationAmount", "Email", "Location", "Name", "PhoneNumber", "Status", "Website" },
+                columns: new[] { "Id", "Capaxity", "DonationAmount", "Email", "IsDelete", "Location", "Name", "PhoneNumber", "Website" },
                 values: new object[,]
                 {
-                    { 1, 20, null, "PetShelter1@email.com", "Tp. HCM", "Shelter1", "1234567890", null, null },
-                    { 2, 20, null, "PetShelter2@email.com", "Ha Noi", "Shelter2", "0987654321", null, null }
+                    { 1, 20, null, "PetShelter1@email.com", null, "Tp. HCM", "Shelter1", "1234567890", null },
+                    { 2, 20, null, "PetShelter2@email.com", null, "Ha Noi", "Shelter2", "0987654321", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Email", "EventId", "Image", "Location", "Password", "Phone", "ShelterId", "Status", "Token", "TotalDonation", "Username" },
+                columns: new[] { "Id", "Email", "EventId", "Image", "IsDelete", "Location", "Password", "Phone", "ShelterId", "Status", "Token", "TotalDonation", "Username" },
                 values: new object[,]
                 {
-                    { 1, "Admin@email.com", null, null, null, "$2a$11$V34xqJY3cNZMQSXVTZtW3OneLHOZYb6nkMgeIlzKvbbVFdAzMT//y", null, null, null, null, null, "Admin" },
-                    { 2, "Staff1@email.com", null, null, null, "$2a$11$W75o0owVdN.OkhIolSDnl.Er9nncYf5JvyyTpVIOHGapZGocPFH7G", null, null, null, null, null, "Staff1" },
-                    { 3, "Staff2@email.com", null, null, null, "$2a$11$mEa4ZhZjWYrytI9CkBc3Cu5DVoiXgoeFZMkBeMYeohR3JWvhaivD6", null, null, null, null, null, "Staff2" },
-                    { 4, "Staff3@email.com", null, null, null, "$2a$11$AXhYpOW4h4S9vkQAGqSCreXy/KdeuvvhQ0o8tCkBaZCU2qlcKDyVS", null, null, null, null, null, "Staff3" },
-                    { 5, "Staff4@email.com", null, null, null, "$2a$11$vHU7fHA.rmVwbtXWhCTiXue8g6jytox19/Exx8fa7TLWGzS4Iroay", null, null, null, null, null, "Staff4" },
-                    { 6, "Donor1@email.com", null, null, null, "$2a$11$vsaEyco90tITfmMo9cYKW.Nw82tFCDQsUnVk.o.bstbhCdQh5/xQi", null, null, null, null, null, "Donor1" },
-                    { 7, "Donor2@email.com", null, null, null, "$2a$11$O6kfvlc93RR7y3GEhxk8euFT3ZiHRvLgp7HPj4HJ/MF3GxIfth7Qe", null, null, null, null, null, "Donor2" },
-                    { 8, "Donor3@email.com", null, null, null, "$2a$11$edbssCB5AHgLtaynXfW4OuQaiNI6Bm92p5IaD2jHlutAiFxsHsxVO", null, null, null, null, null, "Donor3" },
-                    { 9, "Donor4@email.com", null, null, null, "$2a$11$MNDZG0ODoL0QhSi9niUJrO4Pw91yScu.dXsHopeWxplkThVOZbfkG", null, null, null, null, null, "Donor4" },
-                    { 10, "Volunteer1@email.com", null, null, null, "$2a$11$BEDvZBgVWPs2qhfOfiYHrOMDIaxlWUXJce907aNjk9GyHYbbShMXK", null, null, null, null, null, "Volunteer1" },
-                    { 11, "Volunteer2@email.com", null, null, null, "$2a$11$aFQmlBO2AA4qtdKkZMgGOOfWEU9KSOuwsYJezyohy.DIUBqgpVJum", null, null, null, null, null, "Volunteer2" },
-                    { 12, "Volunteer3@email.com", null, null, null, "$2a$11$iPEUUCw5AlBi4FoYLicL6uY33jskv0.a/039qDwhyeIw67kl9aiBC", null, null, null, null, null, "Volunteer3" },
-                    { 13, "Volunteer4@email.com", null, null, null, "$2a$11$2BGIZh/6gT5jw4gi5nyVF.EZybCoRdUNk1qaO9qNgxSmUEj7d2cuC", null, null, null, null, null, "Volunteer4" },
-                    { 14, "Adopter1@email.com", null, null, null, "$2a$11$GhUoN06FLEekjj4iOIxsTu7dILmYNd2w0/gJWRzCOHsS5Cb0bYejK", null, null, null, null, null, "Adopter1" },
-                    { 15, "Adopter2@email.com", null, null, null, "$2a$11$Mi.3HqtjYhvOvvOekfgcmOrg4UPIev1GZPr/YYaTz46yoqtcG5vfe", null, null, null, null, null, "Adopter2" },
-                    { 16, "Adopter3@email.com", null, null, null, "$2a$11$nsHk4vyG9zQIJsP1elBHXOwaJry8z8Zi4ZHyMlHLl/mZXwEeEBY4a", null, null, null, null, null, "Adopter3" },
-                    { 17, "Adopter4@email.com", null, null, null, "$2a$11$39kRC2C0fW/AqVioy6Pzp.V09x01c9vDItcRXDKTcT1vw2knXRsWi", null, null, null, null, null, "Adopter4" }
+                    { 1, "Admin@email.com", null, null, null, null, "$2a$11$zDBRHt1qIK9yU6VkGXLiFOdnpd9GRtJ9TZJNtat4JVmm.BdCx5OvS", null, null, null, null, null, "Admin" },
+                    { 2, "Staff1@email.com", null, null, null, null, "$2a$11$NhCrubYH6jdKhDgakl5K4u7PnMXbKPHB6OMnTslthhIj7qJrY3Loa", null, null, null, null, null, "Staff1" },
+                    { 3, "Staff2@email.com", null, null, null, null, "$2a$11$WhCqc4z00B3nZxTLmu9eNes3fSi7C.bYm/pRx4JTHVp8fn/HTRy.a", null, null, null, null, null, "Staff2" },
+                    { 4, "Staff3@email.com", null, null, null, null, "$2a$11$PosCJfUiL1hxTldAWkphIOdgZ2mXIegTWuG4lnSaR0sS7Ppce0soy", null, null, null, null, null, "Staff3" },
+                    { 5, "Staff4@email.com", null, null, null, null, "$2a$11$ZMj4KpQ7PN/0xOxvSom5zeT3CDUVg2MMgw46yxuIsRigPRZicks76", null, null, null, null, null, "Staff4" },
+                    { 6, "Donor1@email.com", null, null, null, null, "$2a$11$tgl.e.qyH42EWwLlG1vhD.FXUxtDUmHRYeb6RhsB/KmWT/GX7QJZC", null, null, null, null, null, "Donor1" },
+                    { 7, "Donor2@email.com", null, null, null, null, "$2a$11$8NWTXz/ByRtAS0Lvo6.ygeP.mR5K5hzbGVeH0yUtBLKfm6DrVRPbC", null, null, null, null, null, "Donor2" },
+                    { 8, "Donor3@email.com", null, null, null, null, "$2a$11$P.ouah5VHG8kkDI9Pa6WT.5Xw433Ld1ieDboOIHo2Y6YJHXHY0G5O", null, null, null, null, null, "Donor3" },
+                    { 9, "Donor4@email.com", null, null, null, null, "$2a$11$YR/CRLCZN.4v7Vnv7HRp6OpsEjb1/x2DkuEfuAS4fdWyPlqIzBnii", null, null, null, null, null, "Donor4" },
+                    { 10, "Volunteer1@email.com", null, null, null, null, "$2a$11$bHLFdHDiVlNoAX4/W75piOQmJxQWqiHD6ewnAEW.CaPVMbD3KW4JW", null, null, null, null, null, "Volunteer1" },
+                    { 11, "Volunteer2@email.com", null, null, null, null, "$2a$11$qtPDLT50XmDI170Pdrqmf.8HOsntLrU8d3NBOMUf.CmzeKKVD9rlS", null, null, null, null, null, "Volunteer2" },
+                    { 12, "Volunteer3@email.com", null, null, null, null, "$2a$11$SP1lEMdb1vpmJ6dEtwx3deSFKDDtemGUHpYSTMddT4ZBzSLHe7imC", null, null, null, null, null, "Volunteer3" },
+                    { 13, "Volunteer4@email.com", null, null, null, null, "$2a$11$OYwRJT9rLdp51vtceJab1OYpEeTEmSeunZ1kzobHRvOlwAFLoEsJm", null, null, null, null, null, "Volunteer4" },
+                    { 14, "Adopter1@email.com", null, null, null, null, "$2a$11$tx4i9ohn2kcvKBQCc.2jsO9BKvZLZhimrqylUuW55ChMO9Rfg5smO", null, null, null, null, null, "Adopter1" },
+                    { 15, "Adopter2@email.com", null, null, null, null, "$2a$11$Yzql66DKakGyqYd/FY9ev.mdlZYVvglggQ24zHDoQ8qwRKKbk5TbG", null, null, null, null, null, "Adopter2" },
+                    { 16, "Adopter3@email.com", null, null, null, null, "$2a$11$ez/NsI/lROCl20T0awwrZOSNs1QfOJP3rk4Ze5Toqb3EdoARBBZ8S", null, null, null, null, null, "Adopter3" },
+                    { 17, "Adopter4@email.com", null, null, null, null, "$2a$11$KOIliujsHevorNCTkOQ4Hu3LIHEOSN4otsA4MXwaufrPTJ67Z834O", null, null, null, null, null, "Adopter4" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Donations",
-                columns: new[] { "Id", "Amount", "Date", "DonorId", "ShelterId", "Status" },
+                columns: new[] { "Id", "Amount", "Date", "DonorId", "IsDelete", "ShelterId" },
                 values: new object[,]
                 {
-                    { 1, 100000m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, 1, null },
-                    { 2, 200000m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, 1, null },
-                    { 3, 543333m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 8, 2, null },
-                    { 4, 632229m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 9, 2, null },
-                    { 5, 760000m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, 2, null }
+                    { 1, 100000m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, null, 1 },
+                    { 2, 200000m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, null, 1 },
+                    { 3, 543333m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 8, null, 2 },
+                    { 4, 632229m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 9, null, 2 },
+                    { 5, 760000m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, null, 2 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Pets",
-                columns: new[] { "Id", "AdoptionStatus", "Age", "Breed", "Color", "Description", "Gender", "Image", "Name", "ShelterID", "Size", "Status", "StatusId", "Type", "UserID" },
+                columns: new[] { "Id", "AdoptionStatus", "Age", "Breed", "Color", "Description", "Gender", "Image", "IsDelete", "Name", "ShelterID", "Size", "StatusId", "Type", "UserID" },
                 values: new object[,]
                 {
-                    { 1, null, null, null, null, null, null, null, "Buddy", 1, null, null, null, "Dog", 17 },
-                    { 2, null, null, null, null, null, null, null, "Whiskers", 1, null, null, null, "Cat", 17 },
-                    { 3, null, null, null, null, null, null, null, "Max", 1, null, null, null, "Dog", 16 },
-                    { 4, null, null, null, null, null, null, null, "Luna", 1, null, null, null, "Cat", 14 },
-                    { 5, null, null, null, null, null, null, null, "Bella", 1, null, null, null, "Dog", null },
-                    { 6, null, null, null, null, null, null, null, "Lux", 1, null, null, null, "Cat", null },
-                    { 7, null, null, null, null, null, null, null, "Dono", 1, null, null, null, "Dog", null },
-                    { 8, null, null, null, null, null, null, null, "Linker", 1, null, null, null, "Cat", null },
-                    { 9, null, null, null, null, null, null, null, "Dawin", 1, null, null, null, "Dog", 15 },
-                    { 10, null, null, null, null, null, null, null, "Modor", 2, null, null, null, "Cat", null },
-                    { 11, null, null, null, null, null, null, null, "Pingking", 2, null, null, null, "Dog", null },
-                    { 12, null, null, null, null, null, null, null, "Seto", 2, null, null, null, "Cat", null },
-                    { 13, null, null, null, null, null, null, null, "kaiba", 2, null, null, null, "Dog", null },
-                    { 14, null, null, null, null, null, null, null, "Asuka", 2, null, null, null, "Cat", null },
-                    { 15, null, null, null, null, null, null, null, "Jax", 2, null, null, null, "Dog", null },
-                    { 16, null, null, null, null, null, null, null, "Jihn", 2, null, null, null, "Cat", null },
-                    { 18, null, null, null, null, null, null, null, "Kaisa", 2, null, null, null, "Dog", null },
-                    { 19, null, null, null, null, null, null, null, "Bump", 2, null, null, null, "Dog", null },
-                    { 20, null, null, null, null, null, null, null, "Rasko", 2, null, null, null, "Dog", null }
+                    { 1, null, null, null, null, null, null, null, null, "Buddy", 1, null, null, "Dog", 17 },
+                    { 2, null, null, null, null, null, null, null, null, "Whiskers", 1, null, null, "Cat", 17 },
+                    { 3, null, null, null, null, null, null, null, null, "Max", 1, null, null, "Dog", 16 },
+                    { 4, null, null, null, null, null, null, null, null, "Luna", 1, null, null, "Cat", 14 },
+                    { 5, null, null, null, null, null, null, null, null, "Bella", 1, null, null, "Dog", null },
+                    { 6, null, null, null, null, null, null, null, null, "Lux", 1, null, null, "Cat", null },
+                    { 7, null, null, null, null, null, null, null, null, "Dono", 1, null, null, "Dog", null },
+                    { 8, null, null, null, null, null, null, null, null, "Linker", 1, null, null, "Cat", null },
+                    { 9, null, null, null, null, null, null, null, null, "Dawin", 1, null, null, "Dog", 15 },
+                    { 10, null, null, null, null, null, null, null, null, "Modor", 2, null, null, "Cat", null },
+                    { 11, null, null, null, null, null, null, null, null, "Pingking", 2, null, null, "Dog", null },
+                    { 12, null, null, null, null, null, null, null, null, "Seto", 2, null, null, "Cat", null },
+                    { 13, null, null, null, null, null, null, null, null, "kaiba", 2, null, null, "Dog", null },
+                    { 14, null, null, null, null, null, null, null, null, "Asuka", 2, null, null, "Cat", null },
+                    { 15, null, null, null, null, null, null, null, null, "Jax", 2, null, null, "Dog", null },
+                    { 16, null, null, null, null, null, null, null, null, "Jihn", 2, null, null, "Cat", null },
+                    { 18, null, null, null, null, null, null, null, null, "Kaisa", 2, null, null, "Dog", null },
+                    { 19, null, null, null, null, null, null, null, null, "Bump", 2, null, null, "Dog", null },
+                    { 20, null, null, null, null, null, null, null, null, "Rasko", 2, null, null, "Dog", null }
                 });
 
             migrationBuilder.InsertData(
@@ -551,14 +553,14 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.InsertData(
                 table: "Statuses",
-                columns: new[] { "Id", "Date", "Disease", "PetId", "Status", "Vaccine" },
+                columns: new[] { "Id", "Date", "Disease", "IsDelete", "PetId", "Vaccine" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Parvovirus Infection", 1, null, "Parvovirus Vaccine" },
-                    { 2, new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Distemper Virus", 3, null, "Distemper Vaccine" },
-                    { 3, new DateTime(2024, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Rabies Virus", 5, null, "Rabies Vaccine" },
-                    { 4, new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "FeLV", 2, null, "FeLV Vaccine" },
-                    { 5, new DateTime(2024, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "FIV", 4, null, "None" }
+                    { 1, new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Parvovirus Infection", null, 1, "Parvovirus Vaccine" },
+                    { 2, new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Distemper Virus", null, 3, "Distemper Vaccine" },
+                    { 3, new DateTime(2024, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Rabies Virus", null, 5, "Rabies Vaccine" },
+                    { 4, new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "FeLV", null, 2, "FeLV Vaccine" },
+                    { 5, new DateTime(2024, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "FIV", null, 4, "None" }
                 });
 
             migrationBuilder.CreateIndex(

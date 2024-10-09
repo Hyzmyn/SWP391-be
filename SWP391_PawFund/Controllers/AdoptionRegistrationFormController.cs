@@ -77,7 +77,7 @@ namespace SWP391_PawFund.Controllers
 
                 var adopter = await _usersService.GetUserByIdAsync(form.AdopterId);
                 var pet = await _petService.GetPetById(form.PetId);
-                var shelterStaff = await _usersService.GetUserByIdAsync(form.ShelterStaffId);
+                var shelterStaff = await _usersService.GetUserByIdAsync((int)form.ShelterStaffId);
                 var shelter = pet != null ? await _shelterService.GetShelterByID(pet.ShelterID) : null;
 
                 var response = new AdoptionRegistrationFormDetailResponse
