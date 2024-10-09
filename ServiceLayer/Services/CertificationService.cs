@@ -41,19 +41,18 @@ namespace ServiceLayer.Services
                 Date = c.Date,
                 ShelterStaffID = c.UserId,
                 PetId = c.PetId,
-                //ShelterStaff = c.User != null ? new UsersResponseModel
-                //{
-                //    Id = c.User.Id,
-                //    Username = c.User.Username,
-                //    Email = c.User.Email,
-                //    Location = c.User.Location,
-                //    Phone = c.User.Phone,
-                //    TotalDonation = c.User.TotalDonation,
-                //    // RatingCount = c.User.RatingCount // Nếu cần
-                //} : null!,
+                ShelterStaff = c.User != null ? new UsersResponseModel
+                {
+                    Id = c.User.Id,
+                    Username = c.User.Username,
+                    Email = c.User.Email,
+                    Location = c.User.Location,
+                    Phone = c.User.Phone,
+                    TotalDonation =(decimal) c.User.TotalDonation,
+                } : null!,
                 Pet = c.Pet != null ? new PetDetailResponse
                 {
-                    Id = c.Pet.Id,
+                    PetID = c.Pet.Id,
                     Name = c.Pet.Name,
                     Type = c.Pet.Type,
                     Breed = c.Pet.Breed,
@@ -102,19 +101,18 @@ namespace ServiceLayer.Services
                 Date = certification.Date,
                 ShelterStaffID = certification.UserId,
                 PetId = certification.PetId,
-                //ShelterStaff = certification.User != null ? new UserDetailResponse
-                //{
-                //    Id = certification.User.Id,
-                //    Username = certification.User.Username,
-                //    Email = certification.User.Email,
-                //    Location = certification.User.Location,
-                //    Phone = certification.User.Phone,
-                //    TotalDonation = certification.User.TotalDonation,
-                //    RatingCount = certification.User.RatingCount
-                //} : null!,
+                ShelterStaff = certification.User != null ? new UsersResponseModel
+                {
+                    Id = certification.User.Id,
+                    Username = certification.User.Username,
+                    Email = certification.User.Email,
+                    Location = certification.User.Location,
+                    Phone = certification.User.Phone,
+                    TotalDonation =(decimal) certification.User.TotalDonation,
+                } : null!,
                 Pet = certification.Pet != null ? new PetDetailResponse
                 {
-                    Id = certification.Pet.Id,
+                    PetID = certification.Pet.Id,
                     Name = certification.Pet.Name,
                     Type = certification.Pet.Type,
                     Breed = certification.Pet.Breed,
@@ -184,19 +182,18 @@ namespace ServiceLayer.Services
                 Date = createdCertification.Date,
                 ShelterStaffID = createdCertification.UserId,
                 PetId = createdCertification.PetId,
-                //ShelterStaff = createdCertification.User != null ? new UserDetailResponse
-                //{
-                //    Id = createdCertification.User.Id,
-                //    Username = createdCertification.User.Username,
-                //    Email = createdCertification.User.Email,
-                //    Location = createdCertification.User.Location,
-                //    Phone = createdCertification.User.Phone,
-                //    TotalDonation = createdCertification.User.TotalDonation,
-                //    RatingCount = createdCertification.User.RatingCount
-                //} : null!,
+                ShelterStaff = createdCertification.User != null ? new UsersResponseModel
+                {
+                    Id = createdCertification.User.Id,
+                    Username = createdCertification.User.Username,
+                    Email = createdCertification.User.Email,
+                    Location = createdCertification.User.Location,
+                    Phone = createdCertification.User.Phone,
+                    TotalDonation =(decimal) createdCertification.User.TotalDonation,
+                } : null!,
                 Pet = createdCertification.Pet != null ? new PetDetailResponse
                 {
-                    Id = createdCertification.Pet.Id,
+                    PetID = createdCertification.Pet.Id,
                     Name = createdCertification.Pet.Name,
                     Type = createdCertification.Pet.Type,
                     Breed = createdCertification.Pet.Breed,
@@ -275,19 +272,18 @@ namespace ServiceLayer.Services
                 Date = updatedCertification.Date,
                 ShelterStaffID = updatedCertification.UserId,
                 PetId = updatedCertification.PetId,
-                //ShelterStaff = updatedCertification.User != null ? new UserDetailResponse
-                //{
-                //    Id = updatedCertification.User.Id,
-                //    Username = updatedCertification.User.Username,
-                //    Email = updatedCertification.User.Email,
-                //    Location = updatedCertification.User.Location,
-                //    Phone = updatedCertification.User.Phone,
-                //    TotalDonation = updatedCertification.User.TotalDonation,
-                //    RatingCount = updatedCertification.User.RatingCount
-                //} : null!,
+                ShelterStaff = updatedCertification.User != null ? new UsersResponseModel
+                {
+                    Id = updatedCertification.User.Id,
+                    Username = updatedCertification.User.Username,
+                    Email = updatedCertification.User.Email,
+                    Location = updatedCertification.User.Location,
+                    Phone = updatedCertification.User.Phone,
+                    TotalDonation = (decimal)updatedCertification.User.TotalDonation,
+                } : null!,
                 Pet = updatedCertification.Pet != null ? new PetDetailResponse
                 {
-                    Id = updatedCertification.Pet.Id,
+                    PetID = updatedCertification.Pet.Id,
                     Name = updatedCertification.Pet.Name,
                     Type = updatedCertification.Pet.Type,
                     Breed = updatedCertification.Pet.Breed,
