@@ -9,6 +9,6 @@ namespace Domain.Entities
 
         public int Id { get; set; }
 
-        public bool? Status { get; set; }
+        public bool? IsDelete { get; set; }
     }
 }
