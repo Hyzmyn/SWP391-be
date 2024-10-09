@@ -14,9 +14,10 @@ namespace ModelLayer.Entities
         public DateTime CreateDate { get; set; }
         public DateTime UpdateDate { get; set; }
         public int UserId { get; set; }
-        public int PetId { get; set; }
+        public int? PetId { get; set; }
 
         public virtual User? User { get; set; }
+        public virtual Pet? Pet { get; set; }
         public virtual ICollection<FeedBack>? FeedBacks { get; set; }
     }
 }
