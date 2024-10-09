@@ -16,6 +16,8 @@ namespace ServiceLayer.RequestModels
         public int AdopterId { get; set; }
         public int ShelterStaffId { get; set; }
         public int PetId { get; set; }
+        public bool Status { get; set; }
+
     }
 
 }
