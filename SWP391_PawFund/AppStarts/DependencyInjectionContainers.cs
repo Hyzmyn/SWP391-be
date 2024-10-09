@@ -5,6 +5,7 @@ using RepositoryLayer.UnitOfWork;
 using ServiceLayer.Interfaces;
 using ServiceLayer.Mapping;
 using ServiceLayer.Services;
+using Twilio.Clients;
 
 namespace SWP391_PawFund.AppStarts
 {
@@ -24,6 +25,7 @@ namespace SWP391_PawFund.AppStarts
 
                 options.UseMySql(connectionString, serverVersion);
             });
+            services.AddSingleton<ITwilioRestClient>(new TwilioRestClient("ACCOUNT_SID", "AUTH_TOKEN"));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
