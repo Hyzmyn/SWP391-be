@@ -19,8 +19,7 @@ namespace ModelLayer.Entities
 
         public virtual ICollection<Pet>? Pets { get; set; }
         public virtual ICollection<Event>? Events { get; set; }
-        public virtual ICollection<ShelterStaff>? Staffs { get; set; }
-
+        public virtual ICollection<User>? Users { get; set; }
         public virtual ICollection<Donation>? Donations { get; set; }
 
     }

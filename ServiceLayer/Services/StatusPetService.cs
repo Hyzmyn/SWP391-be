@@ -31,7 +31,7 @@ namespace ServiceLayer.Services
         {
             return _unitOfWork.Repository<Status>()
                 .AsQueryable()
-                .Include(s => s.Pet) // Eager Load Pet
+                .Include(s => s.Pet)
                 .Where(s => s.Pet != null && s.Pet.Id == petId)
                 .ToList();
         }
@@ -41,7 +41,7 @@ namespace ServiceLayer.Services
         {
             return await _unitOfWork.Repository<Status>()
                 .AsQueryable()
-                .Include(s => s.Pet) // Eager Load Pet
+                .Include(s => s.Pet) 
                 .FirstOrDefaultAsync(s => s.Id == id);
         }
 
@@ -51,7 +51,6 @@ namespace ServiceLayer.Services
             var existingStatus = await _unitOfWork.Repository<Status>().GetById(status.Id);
             if (existingStatus != null)
             {
-                existingStatus.Name = status.Name;
                 existingStatus.Date = status.Date;
                 existingStatus.Disease = status.Disease;
                 existingStatus.Vaccine = status.Vaccine;

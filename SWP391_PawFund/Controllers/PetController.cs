@@ -61,14 +61,11 @@ namespace SWP391_PawFund.Controllers
                 Color = petCreateRequest.Color,
                 Description = petCreateRequest.Description,
                 AdoptionStatus = petCreateRequest.AdoptionStatus,
-
-                //Thiếu Status
-
+                StatusId = petCreateRequest.StatusId,
                 Image = petCreateRequest.Image
             };
             await _petService.CreatePetAsync(pet);
 
-            // Trả về kết quả, bao gồm URL để truy xuất Pet mới được tạo
             return CreatedAtAction(nameof(GetPetById), new { id = pet.Id }, petCreateRequest);
         }
 
@@ -90,7 +87,6 @@ namespace SWP391_PawFund.Controllers
                 return NotFound($"Pet with Id = {id} not found.");
             }
 
-            // Cập nhật thông tin pet với dữ liệu từ model
             existingPet.Name = updatedPet.Name;
             existingPet.Type = updatedPet.Type;
             existingPet.Breed = updatedPet.Breed;
@@ -106,7 +102,6 @@ namespace SWP391_PawFund.Controllers
                 existingPet.Image = updatedPet.Image;
             }
 
-            // Gọi service để cập nhật pet
             await _petService.UpdatePetAsync(existingPet);
             return Ok(new {message= "Pet updated successfully." });
         }
@@ -119,25 +114,31 @@ namespace SWP391_PawFund.Controllers
             var pet = await _petService.GetPetById(id);
             if (pet == null)
             {
-                return NotFound();
+                return NotFound(new { message = "Pet not found." });
             }
-
-            await _petService.DeletePetAsync(id);
-            return NoContent();
+            try
+            {
+                await _petService.DeletePetAsync(id);
+                return Ok(new { message = "Pet have been Delete Successfully." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // PATCH: api/Pet/{id}/status
-        [HttpPatch("{id}/status")]
+        [HttpPatch("{id}/Update_Pet_AdopteStatus")]
         public async Task<IActionResult> UpdatePetStatus(int id, [FromQuery] int newStatus)
         {
             var pet = await _petService.GetPetById(id);
             if (pet == null)
             {
-                return NotFound();
+                return NotFound(new { message = "Pet not found." });
             }
 
             await _petService.UpdatePetStatus(pet, newStatus);
-            return NoContent();
+            return Ok(new { message = "Pet Status have been Updated successfully." });
         }
     }
 }

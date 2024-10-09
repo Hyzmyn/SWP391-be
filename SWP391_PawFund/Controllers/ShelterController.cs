@@ -33,7 +33,7 @@ namespace SWP391_PawFund.Controllers
             var shelter = await _shelterService.GetShelterByID(id);
             if (shelter == null)
             {
-                return NotFound();
+                return NotFound(new { message = "Shelter not found." });
             }
             return Ok(shelter);
         }
@@ -63,11 +63,11 @@ namespace SWP391_PawFund.Controllers
             var existingShelter = await _shelterService.GetShelterByID(id);
             if (existingShelter == null)
             {
-                return NotFound();
+                return NotFound(new { message = "Shelter not found." });
             }
 
             await _shelterService.UpdateShelter(shelter);
-            return NoContent();
+            return Ok(new { message = "Shelter have been Updated successfully." });
         }
 
         // DELETE: api/Shelter/{id}
@@ -77,11 +77,11 @@ namespace SWP391_PawFund.Controllers
             var shelter = await _shelterService.GetShelterByID(id);
             if (shelter == null)
             {
-                return NotFound();
+                return NotFound(new { message = "Shelter not found." });
             }
 
             await _shelterService.DeleteShelter(id);
-            return NoContent();
+            return Ok(new { message = "Shelter have been Deleted successfully." });
         }
     }
 }

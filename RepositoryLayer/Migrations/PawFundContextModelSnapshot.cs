@@ -22,21 +22,6 @@ namespace RepositoryLayer.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("CertificationUser", b =>
-                {
-                    b.Property<int>("CertificationsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CertificationsId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("CertificationUser");
-                });
-
             modelBuilder.Entity("Domain.Entities.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -45,12 +30,12 @@ namespace RepositoryLayer.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
 
                     b.HasKey("Id");
 
@@ -95,26 +80,29 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("AdopterId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Condition")
+                    b.Property<string>("IdentificationImage")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("IdentityProof")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Image")
+                    b.Property<string>("IdentificationImageBackSide")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<decimal>("IncomeAmount")
                         .HasColumnType("decimal(16, 4)");
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int>("PetId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ShelterStaffId")
+                    b.Property<int?>("ShelterStaffId")
                         .HasColumnType("int");
+
+                    b.Property<string>("SocialAccount")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<bool?>("Status")
                         .HasColumnType("tinyint(1)");
@@ -129,7 +117,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AdoptionRegistrationForm");
+                    b.ToTable("Forms");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Certification", b =>
@@ -151,14 +139,14 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int>("PetId")
                         .HasColumnType("int");
 
                     b.Property<int>("ShelterStaffId")
                         .HasColumnType("int");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -168,7 +156,11 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("PetId")
                         .IsUnique();
 
-                    b.ToTable("Certification");
+                    b.HasIndex("ShelterStaffId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Certifications");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Donation", b =>
@@ -188,20 +180,17 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("DonorId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ShelterId")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("Status")
+                    b.Property<bool?>("IsDelete")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("ShelterId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ShelterId");
+                    b.HasIndex("DonorId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("ShelterId");
 
                     b.ToTable("Donations");
 
@@ -244,7 +233,7 @@ namespace RepositoryLayer.Migrations
                             Amount = 760000m,
                             Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 7,
-                            ShelterId = 1
+                            ShelterId = 2
                         });
                 });
 
@@ -263,6 +252,9 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -274,41 +266,11 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("ShelterId")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ShelterId");
 
                     b.ToTable("Events");
-                });
-
-            modelBuilder.Entity("ModelLayer.Entities.EventUser", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("EventId")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("EventUser");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.FeedBack", b =>
@@ -326,11 +288,11 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("PostId")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("Status")
+                    b.Property<bool?>("IsDelete")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -338,6 +300,8 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("FeedBacks");
                 });
@@ -353,12 +317,12 @@ namespace RepositoryLayer.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Message")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -399,6 +363,9 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("longtext");
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -408,9 +375,6 @@ namespace RepositoryLayer.Migrations
 
                     b.Property<string>("Size")
                         .HasColumnType("longtext");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<int?>("StatusId")
                         .HasColumnType("int");
@@ -434,6 +398,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
+                            AdoptionStatus = "Avalable",
                             Name = "Buddy",
                             ShelterID = 1,
                             Type = "Dog",
@@ -442,6 +407,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 2,
+                            AdoptionStatus = "Avalable",
                             Name = "Whiskers",
                             ShelterID = 1,
                             Type = "Cat",
@@ -450,6 +416,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 3,
+                            AdoptionStatus = "Avalable",
                             Name = "Max",
                             ShelterID = 1,
                             Type = "Dog",
@@ -458,6 +425,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 4,
+                            AdoptionStatus = "Avalable",
                             Name = "Luna",
                             ShelterID = 1,
                             Type = "Cat",
@@ -466,6 +434,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 5,
+                            AdoptionStatus = "Avalable",
                             Name = "Bella",
                             ShelterID = 1,
                             Type = "Dog"
@@ -473,6 +442,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 6,
+                            AdoptionStatus = "Avalable",
                             Name = "Lux",
                             ShelterID = 1,
                             Type = "Cat"
@@ -480,6 +450,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 7,
+                            AdoptionStatus = "Avalable",
                             Name = "Dono",
                             ShelterID = 1,
                             Type = "Dog"
@@ -487,6 +458,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 8,
+                            AdoptionStatus = "Avalable",
                             Name = "Linker",
                             ShelterID = 1,
                             Type = "Cat"
@@ -494,6 +466,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 9,
+                            AdoptionStatus = "Avalable",
                             Name = "Dawin",
                             ShelterID = 1,
                             Type = "Dog",
@@ -502,6 +475,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 10,
+                            AdoptionStatus = "Avalable",
                             Name = "Modor",
                             ShelterID = 2,
                             Type = "Cat"
@@ -509,6 +483,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 11,
+                            AdoptionStatus = "Avalable",
                             Name = "Pingking",
                             ShelterID = 2,
                             Type = "Dog"
@@ -516,6 +491,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 12,
+                            AdoptionStatus = "Avalable",
                             Name = "Seto",
                             ShelterID = 2,
                             Type = "Cat"
@@ -523,6 +499,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 13,
+                            AdoptionStatus = "Avalable",
                             Name = "kaiba",
                             ShelterID = 2,
                             Type = "Dog"
@@ -530,6 +507,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 14,
+                            AdoptionStatus = "Avalable",
                             Name = "Asuka",
                             ShelterID = 2,
                             Type = "Cat"
@@ -537,6 +515,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 15,
+                            AdoptionStatus = "Avalable",
                             Name = "Jax",
                             ShelterID = 2,
                             Type = "Dog"
@@ -544,6 +523,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 16,
+                            AdoptionStatus = "Avalable",
                             Name = "Jihn",
                             ShelterID = 2,
                             Type = "Cat"
@@ -551,6 +531,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 18,
+                            AdoptionStatus = "Avalable",
                             Name = "Kaisa",
                             ShelterID = 2,
                             Type = "Dog"
@@ -558,6 +539,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 19,
+                            AdoptionStatus = "Avalable",
                             Name = "Bump",
                             ShelterID = 2,
                             Type = "Dog"
@@ -565,6 +547,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 20,
+                            AdoptionStatus = "Avalable",
                             Name = "Rasko",
                             ShelterID = 2,
                             Type = "Dog"
@@ -586,11 +569,11 @@ namespace RepositoryLayer.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("PetId")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("Status")
+                    b.Property<bool?>("IsDelete")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<int?>("PetId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -604,9 +587,11 @@ namespace RepositoryLayer.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PetId");
+
                     b.HasIndex("UserId");
 
-                    b.ToTable("Post");
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Shelter", b =>
@@ -627,6 +612,9 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -638,9 +626,6 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Website")
                         .HasColumnType("longtext");
@@ -670,7 +655,7 @@ namespace RepositoryLayer.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ModelLayer.Entities.ShelterStaff", b =>
+            modelBuilder.Entity("ModelLayer.Entities.SmsMessage", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -678,49 +663,24 @@ namespace RepositoryLayer.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ShelterId")
-                        .HasColumnType("int");
+                    b.Property<string>("From")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
-                    b.Property<bool?>("Status")
+                    b.Property<bool?>("IsDelete")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("To")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ShelterId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("ShelterStaffs");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ShelterId = 1,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ShelterId = 1,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ShelterId = 2,
-                            UserId = 4
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ShelterId = 2,
-                            UserId = 5
-                        });
+                    b.ToTable("SmsMessages");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Status", b =>
@@ -738,15 +698,11 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<int>("PetId")
                         .HasColumnType("int");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Vaccine")
                         .IsRequired()
@@ -764,7 +720,6 @@ namespace RepositoryLayer.Migrations
                             Id = 1,
                             Date = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disease = "Parvovirus Infection",
-                            Name = "Canine Parvovirus",
                             PetId = 1,
                             Vaccine = "Parvovirus Vaccine"
                         },
@@ -773,7 +728,6 @@ namespace RepositoryLayer.Migrations
                             Id = 2,
                             Date = new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disease = "Distemper Virus",
-                            Name = "Canine Distemper",
                             PetId = 3,
                             Vaccine = "Distemper Vaccine"
                         },
@@ -782,7 +736,6 @@ namespace RepositoryLayer.Migrations
                             Id = 3,
                             Date = new DateTime(2024, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disease = "Rabies Virus",
-                            Name = "Rabies",
                             PetId = 5,
                             Vaccine = "Rabies Vaccine"
                         },
@@ -791,7 +744,6 @@ namespace RepositoryLayer.Migrations
                             Id = 4,
                             Date = new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disease = "FeLV",
-                            Name = "Feline Leukemia Virus",
                             PetId = 2,
                             Vaccine = "FeLV Vaccine"
                         },
@@ -800,7 +752,6 @@ namespace RepositoryLayer.Migrations
                             Id = 5,
                             Date = new DateTime(2024, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disease = "FIV",
-                            Name = "Feline Immunodeficiency Virus",
                             PetId = 4,
                             Vaccine = "None"
                         });
@@ -818,8 +769,14 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
+                    b.Property<int?>("EventId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Image")
                         .HasColumnType("longtext");
+
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Location")
                         .HasColumnType("longtext");
@@ -831,7 +788,7 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("RoleId")
+                    b.Property<int?>("ShelterId")
                         .HasColumnType("int");
 
                     b.Property<bool?>("Status")
@@ -852,7 +809,9 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.HasIndex("RoleId");
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("ShelterId");
 
                     b.ToTable("Users");
 
@@ -861,266 +820,223 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Email = "Admin@email.com",
-                            Password = "$2a$11$LFfN8/Vo069p6DDYSzaoSePlTudPsdXCZDvtZC/wg6CyQZOEYoxX6",
+                            Password = "$2a$11$Ua/87G7AJjH6ED84lsh8OexZqViOz5Bhwzj51q9Rgf47Qoqq5L/l6",
                             Username = "Admin"
                         },
                         new
                         {
                             Id = 2,
                             Email = "Staff1@email.com",
-                            Password = "$2a$11$6RqsgS5iUrXvruYnG5OLX.ZAVPfbIqzVC.jyYyNy1KA2sF3w2uBHS",
+                            Password = "$2a$11$HJRliw1NarAusxFJXub8..4umcr8d7o0h6r4SJH7g3KneIrEAyBEG",
                             Username = "Staff1"
                         },
                         new
                         {
                             Id = 3,
                             Email = "Staff2@email.com",
-                            Password = "$2a$11$.ThIczEjiOnOtnO3oXjjZez/ZrlNsBf/VMIyxc9wA8Ka1KOmbAWnm",
+                            Password = "$2a$11$d7f3DvqM9K7lXp5zLwd2ruGjv6ZOunOaNepyBXb94lsUA4MpGNBSy",
                             Username = "Staff2"
                         },
                         new
                         {
                             Id = 4,
                             Email = "Staff3@email.com",
-                            Password = "$2a$11$dmOAVWB5Fn1MES7wBjwHoOdDZfIFOtryNb1Vup9zBLcjjlmyZijAu",
+                            Password = "$2a$11$6HYI38Av899uZMP/2NV7HuB0NKL/MpBSZWgFdDG4mKQSKs9s/mNzG",
                             Username = "Staff3"
                         },
                         new
                         {
                             Id = 5,
                             Email = "Staff4@email.com",
-                            Password = "$2a$11$Zu1MG2FuDQRFHYYenAfdXeYGddMvACAQkmLyETiL6ONpiozne77Ce",
+                            Password = "$2a$11$HFudrqSkBklYawxjsFCBUuBd11leZH8hwWC1rUdC1BBgiszxECpiq",
                             Username = "Staff4"
                         },
                         new
                         {
                             Id = 6,
                             Email = "Donor1@email.com",
-                            Password = "$2a$11$CFkH7WNAYNd3QOXuH.Ms9e92yKcw5VPmi8h0UXxFsE7o82Nq5Hfd.",
+                            Password = "$2a$11$UX.K6ICT.IdqIN76DUsvLOANhuSniWXdUoUgKl/2vAPXkloJc2Eqi",
                             Username = "Donor1"
                         },
                         new
                         {
                             Id = 7,
                             Email = "Donor2@email.com",
-                            Password = "$2a$11$RywSVhTNbbIvn7Vi2qT11uAiy.xY4rz6Bvria18DwS3v509WIJecG",
+                            Password = "$2a$11$zp36YIo.x2CJTkxOKDFlUu8hPs38T2o3t77BzssDvYO31Fil0Ut8q",
                             Username = "Donor2"
                         },
                         new
                         {
                             Id = 8,
                             Email = "Donor3@email.com",
-                            Password = "$2a$11$PJjEWAZNpS1HVKGuDZYELu0kaUpuSPQ4DGXp/5DMFmCEf1xbbMhW.",
+                            Password = "$2a$11$aaX1DUVMEQ2crLfsZWk7HOER9iNv5KRuyjFEA/7G.x0uqck70xLzm",
                             Username = "Donor3"
                         },
                         new
                         {
                             Id = 9,
                             Email = "Donor4@email.com",
-                            Password = "$2a$11$CIbZRFlGDlDvHuGf61MjY.gu4yyZq14uFGu.gYRRlgzuJGcnSyQ8e",
+                            Password = "$2a$11$64jaquZwk1u79tXgipGYdu9LneTSCuPjMHiEb0t5PUsXgK4TKCbPq",
                             Username = "Donor4"
                         },
                         new
                         {
                             Id = 10,
                             Email = "Volunteer1@email.com",
-                            Password = "$2a$11$.tiSSYmTB4n7Chsdtoe7pOh/UP39ptVYIbMLQTXjLZIDVsU6oAwfm",
+                            Password = "$2a$11$pyGpmT8B0Io0xrdUDmNv.Ou1yTejvPJr3mqRT/5jGqRjjICl4yNQ.",
                             Username = "Volunteer1"
                         },
                         new
                         {
                             Id = 11,
                             Email = "Volunteer2@email.com",
-                            Password = "$2a$11$MvkJAmTguwagTgkisaip3.cgk8.FHVo0uVxks2b/Me9a5DxSbcq9e",
+                            Password = "$2a$11$tIbFC6dy6qHIJshW3F9UD.Ue4i5jgld4NCspyPQxJ5ZrJia5Xb//K",
                             Username = "Volunteer2"
                         },
                         new
                         {
                             Id = 12,
                             Email = "Volunteer3@email.com",
-                            Password = "$2a$11$ciGkKA2jlTLf0byS3gpJN./.5rv7RxnLZ22A6/cFRahB1vXhgvqFi",
+                            Password = "$2a$11$cGbM0wTPt3nVanHvQNH6d.UWLkUAgq2zJ6HbQRYK.VIIhEOYji8gy",
                             Username = "Volunteer3"
                         },
                         new
                         {
                             Id = 13,
                             Email = "Volunteer4@email.com",
-                            Password = "$2a$11$qqLa7ZuPvf4XOpKIYp4eQuVJLqjD8M/UQ79WWl5KH7txLNgz6HipO",
+                            Password = "$2a$11$xLVv06jSqqTFY8jBAV419.QkOtWUJrdOmugdPTt/mcGkNMLgdqVhO",
                             Username = "Volunteer4"
                         },
                         new
                         {
                             Id = 14,
                             Email = "Adopter1@email.com",
-                            Password = "$2a$11$Ziwx1rkjvI3nDKG7tdZKte6LkGV4/8Dj89ihyWoB5ds4SFT679jo6",
+                            Password = "$2a$11$xII7FuOSrXCJt3/VrR5kf.58TWzoIcNtPoNSmVr2TInmDPp31YQtC",
                             Username = "Adopter1"
                         },
                         new
                         {
                             Id = 15,
                             Email = "Adopter2@email.com",
-                            Password = "$2a$11$9Dh6a6w.8K4nj5upfFao9eAPtymmx/p8XpKBelIryh7hhbTQh58iC",
+                            Password = "$2a$11$SCwBRwr9zNnkWamML0ap6eFgHOohA1Yzs4DwCy8QfTdgbJUBHy/Be",
                             Username = "Adopter2"
                         },
                         new
                         {
                             Id = 16,
                             Email = "Adopter3@email.com",
-                            Password = "$2a$11$Ira0TU.aBbbwr6NCjXu80ebM3JcMDk3y.kJWxBMvieoTVaoh6oerm",
+                            Password = "$2a$11$yQauwNOu63H7qyDhExS/AOB7HFGVLPmc9ipq6ykwvc46EOnHsLJ1a",
                             Username = "Adopter3"
                         },
                         new
                         {
                             Id = 17,
                             Email = "Adopter4@email.com",
-                            Password = "$2a$11$xfNvNd4V7QVvP.8ti9u4k.jJeM0yjFSmK2zKc2U.MkP1keM1eb2OC",
+                            Password = "$2a$11$5ufttzgIu2Mgj.RYFj9LPOPHC02O5RKKU3heCKRNO/oswhAWVolE.",
                             Username = "Adopter4"
                         });
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.UserRole", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
+                    b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("UserRole");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            RoleId = 1,
-                            UserId = 1
+                            UserId = 1,
+                            RoleId = 1
                         },
                         new
                         {
-                            Id = 2,
-                            RoleId = 2,
-                            UserId = 2
+                            UserId = 2,
+                            RoleId = 2
                         },
                         new
                         {
-                            Id = 3,
-                            RoleId = 2,
-                            UserId = 3
+                            UserId = 3,
+                            RoleId = 2
                         },
                         new
                         {
-                            Id = 4,
-                            RoleId = 2,
-                            UserId = 4
+                            UserId = 4,
+                            RoleId = 2
                         },
                         new
                         {
-                            Id = 5,
-                            RoleId = 2,
-                            UserId = 5
+                            UserId = 5,
+                            RoleId = 2
                         },
                         new
                         {
-                            Id = 6,
-                            RoleId = 3,
-                            UserId = 6
+                            UserId = 6,
+                            RoleId = 3
                         },
                         new
                         {
-                            Id = 7,
-                            RoleId = 3,
-                            UserId = 7
+                            UserId = 7,
+                            RoleId = 3
                         },
                         new
                         {
-                            Id = 8,
-                            RoleId = 3,
-                            UserId = 8
+                            UserId = 8,
+                            RoleId = 3
                         },
                         new
                         {
-                            Id = 9,
-                            RoleId = 3,
-                            UserId = 9
+                            UserId = 9,
+                            RoleId = 3
                         },
                         new
                         {
-                            Id = 10,
-                            RoleId = 4,
-                            UserId = 10
+                            UserId = 10,
+                            RoleId = 4
                         },
                         new
                         {
-                            Id = 11,
-                            RoleId = 4,
-                            UserId = 11
+                            UserId = 11,
+                            RoleId = 4
                         },
                         new
                         {
-                            Id = 12,
-                            RoleId = 4,
-                            UserId = 12
+                            UserId = 12,
+                            RoleId = 4
                         },
                         new
                         {
-                            Id = 13,
-                            RoleId = 4,
-                            UserId = 13
+                            UserId = 13,
+                            RoleId = 4
                         },
                         new
                         {
-                            Id = 14,
-                            RoleId = 5,
-                            UserId = 14
+                            UserId = 14,
+                            RoleId = 5
                         },
                         new
                         {
-                            Id = 15,
-                            RoleId = 5,
-                            UserId = 15
+                            UserId = 15,
+                            RoleId = 5
                         },
                         new
                         {
-                            Id = 16,
-                            RoleId = 5,
-                            UserId = 16
+                            UserId = 16,
+                            RoleId = 5
                         },
                         new
                         {
-                            Id = 17,
-                            RoleId = 5,
-                            UserId = 17
+                            UserId = 17,
+                            RoleId = 5
                         });
-                });
-
-            modelBuilder.Entity("CertificationUser", b =>
-                {
-                    b.HasOne("ModelLayer.Entities.Certification", null)
-                        .WithMany()
-                        .HasForeignKey("CertificationsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ModelLayer.Entities.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.AdoptionRegistrationForm", b =>
@@ -1148,20 +1064,38 @@ namespace RepositoryLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ModelLayer.Entities.User", "ShelterStaff")
+                        .WithMany()
+                        .HasForeignKey("ShelterStaffId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ModelLayer.Entities.User", "User")
+                        .WithMany("Certifications")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Pet");
+
+                    b.Navigation("ShelterStaff");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Donation", b =>
                 {
+                    b.HasOne("ModelLayer.Entities.User", "User")
+                        .WithMany("Donations")
+                        .HasForeignKey("DonorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("ModelLayer.Entities.Shelter", "Shelter")
                         .WithMany("Donations")
                         .HasForeignKey("ShelterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("ModelLayer.Entities.User", "User")
-                        .WithMany("Donations")
-                        .HasForeignKey("UserId");
 
                     b.Navigation("Shelter");
 
@@ -1179,32 +1113,23 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("Shelter");
                 });
 
-            modelBuilder.Entity("ModelLayer.Entities.EventUser", b =>
-                {
-                    b.HasOne("ModelLayer.Entities.Event", "Event")
-                        .WithMany("EventUser")
-                        .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ModelLayer.Entities.User", "User")
-                        .WithOne("EventUser")
-                        .HasForeignKey("ModelLayer.Entities.EventUser", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Event");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("ModelLayer.Entities.FeedBack", b =>
                 {
                     b.HasOne("ModelLayer.Entities.Post", "Post")
                         .WithMany("FeedBacks")
-                        .HasForeignKey("PostId");
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ModelLayer.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Post");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Notification", b =>
@@ -1237,32 +1162,19 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("ModelLayer.Entities.Post", b =>
                 {
+                    b.HasOne("ModelLayer.Entities.Pet", "Pet")
+                        .WithMany()
+                        .HasForeignKey("PetId");
+
                     b.HasOne("ModelLayer.Entities.User", "User")
                         .WithMany("Posts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Pet");
+
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("ModelLayer.Entities.ShelterStaff", b =>
-                {
-                    b.HasOne("ModelLayer.Entities.Shelter", "Shelter")
-                        .WithMany("Staffs")
-                        .HasForeignKey("ShelterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ModelLayer.Entities.User", "Users")
-                        .WithOne("ShelterStaff")
-                        .HasForeignKey("ModelLayer.Entities.ShelterStaff", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Shelter");
-
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Status", b =>
@@ -1278,15 +1190,25 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("ModelLayer.Entities.User", b =>
                 {
-                    b.HasOne("Domain.Entities.Role", null)
+                    b.HasOne("ModelLayer.Entities.Event", "Event")
                         .WithMany("Users")
-                        .HasForeignKey("RoleId");
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("ModelLayer.Entities.Shelter", "Shelter")
+                        .WithMany("Users")
+                        .HasForeignKey("ShelterId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Event");
+
+                    b.Navigation("Shelter");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.UserRole", b =>
                 {
                     b.HasOne("Domain.Entities.Role", "Role")
-                        .WithMany()
+                        .WithMany("UserRoles")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1304,12 +1226,12 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("Domain.Entities.Role", b =>
                 {
-                    b.Navigation("Users");
+                    b.Navigation("UserRoles");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Event", b =>
                 {
-                    b.Navigation("EventUser");
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Pet", b =>
@@ -1334,24 +1256,22 @@ namespace RepositoryLayer.Migrations
 
                     b.Navigation("Pets");
 
-                    b.Navigation("Staffs");
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.User", b =>
                 {
                     b.Navigation("AdoptionRegistrationForms");
 
-                    b.Navigation("Donations");
+                    b.Navigation("Certifications");
 
-                    b.Navigation("EventUser");
+                    b.Navigation("Donations");
 
                     b.Navigation("Notifications");
 
                     b.Navigation("Pets");
 
                     b.Navigation("Posts");
-
-                    b.Navigation("ShelterStaff");
 
                     b.Navigation("UserRoles");
                 });

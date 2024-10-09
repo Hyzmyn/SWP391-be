@@ -22,7 +22,10 @@ namespace ServiceLayer.Services
         // Lấy danh sách tất cả các donation
         public IEnumerable<Donation> GetAllDonations()
         {
-            return _unitOfWork.Repository<Donation>().GetAll();
+            return _unitOfWork.Repository<Donation>().GetAll()
+                 .Include(d => d.User)
+                 .Include(d => d.Shelter)
+                 .ToList();
         }
 
         // Lấy danh sách các donation theo danh sách IDs
@@ -35,7 +38,10 @@ namespace ServiceLayer.Services
 
             try
             {
-                return await _unitOfWork.Repository<Donation>().GetById(id);
+                return await _unitOfWork.Repository<Donation>().GetAll()
+                    .Include(d => d.User)
+                    .Include(d => d.Shelter)
+                    .FirstOrDefaultAsync(d => d.Id == id);
             }
             catch (Exception ex)
             {
@@ -88,7 +94,7 @@ namespace ServiceLayer.Services
         }
 
         // Lấy danh sách donations theo DonorId
-        public IEnumerable<Donation> GetDonationsByDonorId(int donorId)
+        public async Task< IEnumerable<Donation>> GetDonationsByDonorId(int donorId)
         {
             if (donorId <= 0)
             {
@@ -97,10 +103,11 @@ namespace ServiceLayer.Services
 
             try
             {
-                return _unitOfWork.Repository<Donation>()
-                    .AsQueryable()
+                return await _unitOfWork.Repository<Donation>().GetAll()
                     .Where(d => d.DonorId == donorId)
-                    .ToList();
+                    .Include(d => d.User)
+                    .Include(d => d.Shelter)
+                    .ToListAsync();
             }
             catch (Exception ex)
             {
