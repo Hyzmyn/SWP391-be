@@ -39,6 +39,18 @@ builder.Services.ConfigureAuthService(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
+    // Add CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",
+        builder => builder
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials()
+        .WithOrigins("https://localhost:7130", "http://localhost:3000")
+        );
+});
+
 //builder.Services.AddSwaggerGen(c =>
 //{
 //	var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
@@ -89,17 +101,7 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
-// Add CORS
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("CorsPolicy",
-        builder => builder
-        .AllowAnyMethod()
-        .AllowAnyHeader()
-        .AllowCredentials()
-        .WithOrigins("https://localhost:7293", "http://localhost:3000", "https://exchangeweb-fpt.netlify.app")
-        );
-});
+
 
 var configuration = builder.Configuration;
 var app = builder.Build();
