@@ -30,12 +30,12 @@ namespace RepositoryLayer.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
 
                     b.HasKey("Id");
 
@@ -91,6 +91,9 @@ namespace RepositoryLayer.Migrations
                     b.Property<decimal>("IncomeAmount")
                         .HasColumnType("decimal(16, 4)");
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int>("PetId")
                         .HasColumnType("int");
 
@@ -136,14 +139,14 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int>("PetId")
                         .HasColumnType("int");
 
                     b.Property<int>("ShelterStaffId")
                         .HasColumnType("int");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -177,11 +180,11 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("DonorId")
                         .HasColumnType("int");
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int>("ShelterId")
                         .HasColumnType("int");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
 
                     b.HasKey("Id");
 
@@ -249,6 +252,9 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -259,9 +265,6 @@ namespace RepositoryLayer.Migrations
 
                     b.Property<int>("ShelterId")
                         .HasColumnType("int");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
 
                     b.HasKey("Id");
 
@@ -285,11 +288,11 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int>("PostId")
                         .HasColumnType("int");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -314,12 +317,12 @@ namespace RepositoryLayer.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Message")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -360,6 +363,9 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("longtext");
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -369,9 +375,6 @@ namespace RepositoryLayer.Migrations
 
                     b.Property<string>("Size")
                         .HasColumnType("longtext");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<int?>("StatusId")
                         .HasColumnType("int");
@@ -547,11 +550,11 @@ namespace RepositoryLayer.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int?>("PetId")
                         .HasColumnType("int");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -590,6 +593,9 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -601,9 +607,6 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Website")
                         .HasColumnType("longtext");
@@ -645,12 +648,12 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Message")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("To")
                         .IsRequired()
@@ -676,11 +679,11 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int>("PetId")
                         .HasColumnType("int");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Vaccine")
                         .IsRequired()
@@ -753,6 +756,9 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("longtext");
 
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Location")
                         .HasColumnType("longtext");
 
@@ -795,119 +801,119 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Email = "Admin@email.com",
-                            Password = "$2a$11$V34xqJY3cNZMQSXVTZtW3OneLHOZYb6nkMgeIlzKvbbVFdAzMT//y",
+                            Password = "$2a$11$zDBRHt1qIK9yU6VkGXLiFOdnpd9GRtJ9TZJNtat4JVmm.BdCx5OvS",
                             Username = "Admin"
                         },
                         new
                         {
                             Id = 2,
                             Email = "Staff1@email.com",
-                            Password = "$2a$11$W75o0owVdN.OkhIolSDnl.Er9nncYf5JvyyTpVIOHGapZGocPFH7G",
+                            Password = "$2a$11$NhCrubYH6jdKhDgakl5K4u7PnMXbKPHB6OMnTslthhIj7qJrY3Loa",
                             Username = "Staff1"
                         },
                         new
                         {
                             Id = 3,
                             Email = "Staff2@email.com",
-                            Password = "$2a$11$mEa4ZhZjWYrytI9CkBc3Cu5DVoiXgoeFZMkBeMYeohR3JWvhaivD6",
+                            Password = "$2a$11$WhCqc4z00B3nZxTLmu9eNes3fSi7C.bYm/pRx4JTHVp8fn/HTRy.a",
                             Username = "Staff2"
                         },
                         new
                         {
                             Id = 4,
                             Email = "Staff3@email.com",
-                            Password = "$2a$11$AXhYpOW4h4S9vkQAGqSCreXy/KdeuvvhQ0o8tCkBaZCU2qlcKDyVS",
+                            Password = "$2a$11$PosCJfUiL1hxTldAWkphIOdgZ2mXIegTWuG4lnSaR0sS7Ppce0soy",
                             Username = "Staff3"
                         },
                         new
                         {
                             Id = 5,
                             Email = "Staff4@email.com",
-                            Password = "$2a$11$vHU7fHA.rmVwbtXWhCTiXue8g6jytox19/Exx8fa7TLWGzS4Iroay",
+                            Password = "$2a$11$ZMj4KpQ7PN/0xOxvSom5zeT3CDUVg2MMgw46yxuIsRigPRZicks76",
                             Username = "Staff4"
                         },
                         new
                         {
                             Id = 6,
                             Email = "Donor1@email.com",
-                            Password = "$2a$11$vsaEyco90tITfmMo9cYKW.Nw82tFCDQsUnVk.o.bstbhCdQh5/xQi",
+                            Password = "$2a$11$tgl.e.qyH42EWwLlG1vhD.FXUxtDUmHRYeb6RhsB/KmWT/GX7QJZC",
                             Username = "Donor1"
                         },
                         new
                         {
                             Id = 7,
                             Email = "Donor2@email.com",
-                            Password = "$2a$11$O6kfvlc93RR7y3GEhxk8euFT3ZiHRvLgp7HPj4HJ/MF3GxIfth7Qe",
+                            Password = "$2a$11$8NWTXz/ByRtAS0Lvo6.ygeP.mR5K5hzbGVeH0yUtBLKfm6DrVRPbC",
                             Username = "Donor2"
                         },
                         new
                         {
                             Id = 8,
                             Email = "Donor3@email.com",
-                            Password = "$2a$11$edbssCB5AHgLtaynXfW4OuQaiNI6Bm92p5IaD2jHlutAiFxsHsxVO",
+                            Password = "$2a$11$P.ouah5VHG8kkDI9Pa6WT.5Xw433Ld1ieDboOIHo2Y6YJHXHY0G5O",
                             Username = "Donor3"
                         },
                         new
                         {
                             Id = 9,
                             Email = "Donor4@email.com",
-                            Password = "$2a$11$MNDZG0ODoL0QhSi9niUJrO4Pw91yScu.dXsHopeWxplkThVOZbfkG",
+                            Password = "$2a$11$YR/CRLCZN.4v7Vnv7HRp6OpsEjb1/x2DkuEfuAS4fdWyPlqIzBnii",
                             Username = "Donor4"
                         },
                         new
                         {
                             Id = 10,
                             Email = "Volunteer1@email.com",
-                            Password = "$2a$11$BEDvZBgVWPs2qhfOfiYHrOMDIaxlWUXJce907aNjk9GyHYbbShMXK",
+                            Password = "$2a$11$bHLFdHDiVlNoAX4/W75piOQmJxQWqiHD6ewnAEW.CaPVMbD3KW4JW",
                             Username = "Volunteer1"
                         },
                         new
                         {
                             Id = 11,
                             Email = "Volunteer2@email.com",
-                            Password = "$2a$11$aFQmlBO2AA4qtdKkZMgGOOfWEU9KSOuwsYJezyohy.DIUBqgpVJum",
+                            Password = "$2a$11$qtPDLT50XmDI170Pdrqmf.8HOsntLrU8d3NBOMUf.CmzeKKVD9rlS",
                             Username = "Volunteer2"
                         },
                         new
                         {
                             Id = 12,
                             Email = "Volunteer3@email.com",
-                            Password = "$2a$11$iPEUUCw5AlBi4FoYLicL6uY33jskv0.a/039qDwhyeIw67kl9aiBC",
+                            Password = "$2a$11$SP1lEMdb1vpmJ6dEtwx3deSFKDDtemGUHpYSTMddT4ZBzSLHe7imC",
                             Username = "Volunteer3"
                         },
                         new
                         {
                             Id = 13,
                             Email = "Volunteer4@email.com",
-                            Password = "$2a$11$2BGIZh/6gT5jw4gi5nyVF.EZybCoRdUNk1qaO9qNgxSmUEj7d2cuC",
+                            Password = "$2a$11$OYwRJT9rLdp51vtceJab1OYpEeTEmSeunZ1kzobHRvOlwAFLoEsJm",
                             Username = "Volunteer4"
                         },
                         new
                         {
                             Id = 14,
                             Email = "Adopter1@email.com",
-                            Password = "$2a$11$GhUoN06FLEekjj4iOIxsTu7dILmYNd2w0/gJWRzCOHsS5Cb0bYejK",
+                            Password = "$2a$11$tx4i9ohn2kcvKBQCc.2jsO9BKvZLZhimrqylUuW55ChMO9Rfg5smO",
                             Username = "Adopter1"
                         },
                         new
                         {
                             Id = 15,
                             Email = "Adopter2@email.com",
-                            Password = "$2a$11$Mi.3HqtjYhvOvvOekfgcmOrg4UPIev1GZPr/YYaTz46yoqtcG5vfe",
+                            Password = "$2a$11$Yzql66DKakGyqYd/FY9ev.mdlZYVvglggQ24zHDoQ8qwRKKbk5TbG",
                             Username = "Adopter2"
                         },
                         new
                         {
                             Id = 16,
                             Email = "Adopter3@email.com",
-                            Password = "$2a$11$nsHk4vyG9zQIJsP1elBHXOwaJry8z8Zi4ZHyMlHLl/mZXwEeEBY4a",
+                            Password = "$2a$11$ez/NsI/lROCl20T0awwrZOSNs1QfOJP3rk4Ze5Toqb3EdoARBBZ8S",
                             Username = "Adopter3"
                         },
                         new
                         {
                             Id = 17,
                             Email = "Adopter4@email.com",
-                            Password = "$2a$11$39kRC2C0fW/AqVioy6Pzp.V09x01c9vDItcRXDKTcT1vw2knXRsWi",
+                            Password = "$2a$11$KOIliujsHevorNCTkOQ4Hu3LIHEOSN4otsA4MXwaufrPTJ67Z834O",
                             Username = "Adopter4"
                         });
                 });
