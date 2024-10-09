@@ -87,41 +87,7 @@ namespace SWP391_PawFund.Controllers
                     IncomeAmount = form.IncomeAmount,
                     IdentificationImage = form.IdentificationImage,
                     IdentificationImageBackSide = form.IdentificationImageBackSide,
-                    Status = form.Status,
-                    Adopter = adopter != null ? new UsersResponseModel
-                    {
-                        Id = adopter.Id,
-                        Username = adopter.Username,
-                        Email = adopter.Email,
-                        Phone = adopter.Phone,
-                        Location = adopter.Location,
-                        TotalDonation = adopter.TotalDonation ?? 0m
-                    } : null,
-                    Pet = pet != null ? new PetDetailResponse
-                    {
-                        PetID = pet.Id,
-                        Name = pet.Name,
-                        Type = pet.Type,
-                        Breed = pet.Breed,
-                        Gender = pet.Gender,
-                        Age = pet.Age ?? 0,
-                        Size = pet.Size,
-                        Color = pet.Color,
-                        Description = pet.Description,
-                        AdoptionStatus = pet.AdoptionStatus,
-                        Image = pet.Image,
-                        ShelterName = shelter?.Name,
-                        UserName = adopter?.Username
-                    } : null,
-                    ShelterStaff = shelterStaff != null ? new UsersResponseModel
-                    {
-                        Id = shelterStaff.Id,
-                        Username = shelterStaff.Username,
-                        Email = shelterStaff.Email,
-                        Phone = shelterStaff.Phone,
-                        Location = shelterStaff.Location,
-                        TotalDonation = shelterStaff.TotalDonation ?? 0m
-                    } : null
+                    Status = form.Status
                 };
 
                 return Ok(response);
@@ -161,7 +127,8 @@ namespace SWP391_PawFund.Controllers
                 IdentificationImageBackSide = identificationImageBackSideUrl,
                 AdopterId = request.AdopterId,
                 ShelterStaffId = request.ShelterStaffId,
-                PetId = request.PetId
+                PetId = request.PetId,
+                Status = false
             };
 
             await _adoptionFormService.CreateAdoptionFormAsync(form);
@@ -214,6 +181,7 @@ namespace SWP391_PawFund.Controllers
             existingForm.AdopterId = request.AdopterId;
             existingForm.ShelterStaffId = request.ShelterStaffId;
             existingForm.PetId = request.PetId;
+            existingForm.Status = request.Status;
 
             await _adoptionFormService.UpdateAdoptionFormAsync(existingForm);
 
