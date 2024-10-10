@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepositoryLayer;
 
@@ -11,9 +12,11 @@ using RepositoryLayer;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(PawFundContext))]
-    partial class PawFundContextModelSnapshot : ModelSnapshot
+    [Migration("20241010031941_v3")]
+    partial class v3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -199,7 +202,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Amount = 100000m,
-                            Date = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 6,
                             ShelterId = 1
                         },
@@ -207,7 +210,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 2,
                             Amount = 200000m,
-                            Date = new DateTime(2024, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 7,
                             ShelterId = 1
                         },
@@ -215,7 +218,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 3,
                             Amount = 543333m,
-                            Date = new DateTime(2024, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 8,
                             ShelterId = 2
                         },
@@ -223,7 +226,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 4,
                             Amount = 632229m,
-                            Date = new DateTime(2024, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 9,
                             ShelterId = 2
                         },
@@ -231,7 +234,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 5,
                             Amount = 760000m,
-                            Date = new DateTime(2024, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 7,
                             ShelterId = 2
                         });
@@ -838,14 +841,14 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Email = "Admin@email.com",
-                            Password = "$2a$11$nt2XVm.unTmvIovpno1qi.0YIoDlvrlyoKRLEx2wAouQvvyISRvHu",
+                            Password = "$2a$11$yyj4lY8lWmqYkWj8qbnl6eJ5NEn0mrF/vcD8F8xG8COxPetlRvVbe",
                             Username = "Admin"
                         },
                         new
                         {
                             Id = 2,
                             Email = "Staff1@email.com",
-                            Password = "$2a$11$13A4WJQMV9z9iP9OU6kJrOTmOIpYE3MdpbdYiyM82uRYxIgww2R0S",
+                            Password = "$2a$11$Wp63FPUIYtDvP9N9Y1NsOeA/8sdtL.BEZeDWi9IHYFLNdCsytoz06",
                             ShelterId = 1,
                             Username = "Staff1"
                         },
@@ -853,7 +856,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 3,
                             Email = "Staff2@email.com",
-                            Password = "$2a$11$CjWBDtZg8vl8NWl2JiH./eLjtlxEppII25lIEKbk55JkO6CJoLNv.",
+                            Password = "$2a$11$i8xuWRw3qGR50Dw8gilSreOJfB/fS/v10nX31hKzhdQPTcB.nt8DW",
                             ShelterId = 1,
                             Username = "Staff2"
                         },
@@ -861,7 +864,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 4,
                             Email = "Staff3@email.com",
-                            Password = "$2a$11$fU4SXHKPEIhly2.vucI0Yex2Ioiw8rlgem4bqtyO4/xmr460bScfC",
+                            Password = "$2a$11$5690Hl.GtsVavCUccLbqfOEhKU1GnBN2j3OjxElL3nRxtm0OZZ6yW",
                             ShelterId = 2,
                             Username = "Staff3"
                         },
@@ -869,7 +872,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 5,
                             Email = "Staff4@email.com",
-                            Password = "$2a$11$NIke2bCFfClflaa3A0V1Juzt.BOLxpNW7sw5k32shhdjui5PvFyjK",
+                            Password = "$2a$11$ftrdAp774z9/yknsy1gS4et49OhxD5bjC9N7UzkyCMa5cqT9V9YKO",
                             ShelterId = 2,
                             Username = "Staff4"
                         },
@@ -877,84 +880,84 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 6,
                             Email = "Donor1@email.com",
-                            Password = "$2a$11$PB.u6J4NtJc3d7gtNEbeZ.caoTt9w7VsZHC68GcmL/SwZxse7SP/C",
+                            Password = "$2a$11$Gkf3CbUvV9cza4grXytwleqe5RaMXV/2PHjJ361Szz1XVG8XqezCG",
                             Username = "Donor1"
                         },
                         new
                         {
                             Id = 7,
                             Email = "Donor2@email.com",
-                            Password = "$2a$11$Ciert.jgjB28AbJ6UWToTemE19IJcxfF1JuxDYUbBuj91BJ/.IpjC",
+                            Password = "$2a$11$JrOt89N1DFD6cJ84EhGduuxl90mGzTp.jeYO5Uq.L/e3DdBy1vWGS",
                             Username = "Donor2"
                         },
                         new
                         {
                             Id = 8,
                             Email = "Donor3@email.com",
-                            Password = "$2a$11$bQp7KpaA2b0ek1hVdJ2gEO4TU48mcwhr9lUirpy6DCbaX4/9fAsOO",
+                            Password = "$2a$11$yOWlQpT4P3l4W0M0M1sbaOKhdkfZYahuaRYl4Plk0xDO4iTVz6rHm",
                             Username = "Donor3"
                         },
                         new
                         {
                             Id = 9,
                             Email = "Donor4@email.com",
-                            Password = "$2a$11$6oIX1SfyX0mrJu6vaeOgtODvLXetqZOCE6Va8NPcpUbwl2uab3WUO",
+                            Password = "$2a$11$.jJyZOelBEWiVOLH4G1V3u6RcPTiKT3MFuG2ZRxZNjdO8XfH9GZ8q",
                             Username = "Donor4"
                         },
                         new
                         {
                             Id = 10,
                             Email = "Volunteer1@email.com",
-                            Password = "$2a$11$ZBP8pgynk06zXoqyrfQdpuvbwwhK2lT/BhgIPUVIrMtGD2LZXD.u6",
+                            Password = "$2a$11$ty5F3AOmZHJNRUKYpm59O.8jJBTjzPTocnc9aK/vfYze8C.Gkb8SK",
                             Username = "Volunteer1"
                         },
                         new
                         {
                             Id = 11,
                             Email = "Volunteer2@email.com",
-                            Password = "$2a$11$6ghGIz8F7X4d0.vDtgbdqe76LNI4YmfUEAeiQXwc6tgXRgNGDR9Lm",
+                            Password = "$2a$11$YVJoDMH4X3Aa7SXxqE3NSeHfnUvhxJb87JpjpF/M9KsSMdddXuaJ2",
                             Username = "Volunteer2"
                         },
                         new
                         {
                             Id = 12,
                             Email = "Volunteer3@email.com",
-                            Password = "$2a$11$no.wjKypFrmFzAYdGY0UwOS899Y97pr9kA6IVpq.DKfDWHf74jSqC",
+                            Password = "$2a$11$qPLqvz3yt99XNVcJiyP.lOho06uQA5zVqj4x46hYnbaZN95gHbLwy",
                             Username = "Volunteer3"
                         },
                         new
                         {
                             Id = 13,
                             Email = "Volunteer4@email.com",
-                            Password = "$2a$11$6NuPUVRAOGkpDFCcVgL7Xump1VhBh4sAVc7jW6J8G9pyxFMbgL7kS",
+                            Password = "$2a$11$XQSL5VOAcd4o.4YA05kFWevm8wB04IDKRzU3lmQP2jz.NqutfCyfa",
                             Username = "Volunteer4"
                         },
                         new
                         {
                             Id = 14,
                             Email = "Adopter1@email.com",
-                            Password = "$2a$11$vhe/FDcyJJ1/lJlcmbudAO8Gib0ULVS6svf1ioIGm4uB9M/ycUNT6",
+                            Password = "$2a$11$ISV5PYV1iec1LJTSkWwA5.sIzy1yHX6mnuV/gALpWlEBR5jcZ/UKq",
                             Username = "Adopter1"
                         },
                         new
                         {
                             Id = 15,
                             Email = "Adopter2@email.com",
-                            Password = "$2a$11$fVN5y4BCfUY4SryUUJhKX.VELYp7uq0Q0zrk3F62PGa1CJc7RDqJe",
+                            Password = "$2a$11$udSeVCH4SAO/M3ZM0EEH4O692A7IqNT7f6rbOmeg0G2WtWvmkkWJm",
                             Username = "Adopter2"
                         },
                         new
                         {
                             Id = 16,
                             Email = "Adopter3@email.com",
-                            Password = "$2a$11$cA8nitmERx5wPhfSpT0wu.aHqc5EnkEfaHDkNXSq5osm9l874.tTa",
+                            Password = "$2a$11$tudIyI.WkAiYZgVJ.WblIuoJmlsTBg8XPT7L6MK2ZpTn5ZYarVOjS",
                             Username = "Adopter3"
                         },
                         new
                         {
                             Id = 17,
                             Email = "Adopter4@email.com",
-                            Password = "$2a$11$yiPJzYpg3W8WxS7Jv0Vdx.0rSBJFYjnZ5NtpLzfZfIJNeu92esvCO",
+                            Password = "$2a$11$DJdznZiHAP/3vfSz3nz09.hQESbwW689TH0U9MMqSQQGu4eX58hWO",
                             Username = "Adopter4"
                         });
                 });
