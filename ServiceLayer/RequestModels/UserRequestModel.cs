@@ -14,9 +14,11 @@ namespace ServiceLayer.RequestModels
         public string Phone { get; set; }
         public string Location { get; set; }
         public string Token { get; set; }
-        public decimal TotalDonation { get; set; }
+        public decimal? TotalDonation { get; set; }
         public string? Image { get; set; }
     }
+
+
     public class UserCreateRequestModel
     {
         public string Username { get; set; } = null!;

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepositoryLayer;
 
@@ -11,9 +12,11 @@ using RepositoryLayer;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(PawFundContext))]
-    partial class PawFundContextModelSnapshot : ModelSnapshot
+    [Migration("20241010031941_v3")]
+    partial class v3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -199,7 +202,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Amount = 100000m,
-                            Date = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 6,
                             ShelterId = 1
                         },
@@ -207,7 +210,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 2,
                             Amount = 200000m,
-                            Date = new DateTime(2024, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 7,
                             ShelterId = 1
                         },
@@ -215,7 +218,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 3,
                             Amount = 543333m,
-                            Date = new DateTime(2024, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 8,
                             ShelterId = 2
                         },
@@ -223,7 +226,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 4,
                             Amount = 632229m,
-                            Date = new DateTime(2024, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 9,
                             ShelterId = 2
                         },
@@ -231,7 +234,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 5,
                             Amount = 760000m,
-                            Date = new DateTime(2024, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 7,
                             ShelterId = 2
                         });
@@ -838,14 +841,14 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Email = "Admin@email.com",
-                            Password = "$2a$11$CbgxKC3XbhXpdkdhWaUhceJ2ecYPtdgx4L.vcazEF4fMaXjjjHvpG",
+                            Password = "$2a$11$yyj4lY8lWmqYkWj8qbnl6eJ5NEn0mrF/vcD8F8xG8COxPetlRvVbe",
                             Username = "Admin"
                         },
                         new
                         {
                             Id = 2,
                             Email = "Staff1@email.com",
-                            Password = "$2a$11$KqMZeuVhLV/RBRrCNWGAj.Ow7PZOhA6BGjwLmRj/3sPYC9PSnxG0C",
+                            Password = "$2a$11$Wp63FPUIYtDvP9N9Y1NsOeA/8sdtL.BEZeDWi9IHYFLNdCsytoz06",
                             ShelterId = 1,
                             Username = "Staff1"
                         },
@@ -853,7 +856,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 3,
                             Email = "Staff2@email.com",
-                            Password = "$2a$11$4PMJIMsPTlTHeXUyJwxsd.EOTTdM/IOPIrVS/sEQAlbWnlUcKwZJ6",
+                            Password = "$2a$11$i8xuWRw3qGR50Dw8gilSreOJfB/fS/v10nX31hKzhdQPTcB.nt8DW",
                             ShelterId = 1,
                             Username = "Staff2"
                         },
@@ -861,7 +864,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 4,
                             Email = "Staff3@email.com",
-                            Password = "$2a$11$Zp9RNaFvYSkGKfXvZxmTeejVIzPmc.NG.Hhv.Jqe6LOz21fDb4yB.",
+                            Password = "$2a$11$5690Hl.GtsVavCUccLbqfOEhKU1GnBN2j3OjxElL3nRxtm0OZZ6yW",
                             ShelterId = 2,
                             Username = "Staff3"
                         },
@@ -869,7 +872,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 5,
                             Email = "Staff4@email.com",
-                            Password = "$2a$11$terg0yGYTmwPjInQBQbnBOdDAp/2GFv56RGAm1B0fZ41IMPIqGkFi",
+                            Password = "$2a$11$ftrdAp774z9/yknsy1gS4et49OhxD5bjC9N7UzkyCMa5cqT9V9YKO",
                             ShelterId = 2,
                             Username = "Staff4"
                         },
@@ -877,87 +880,84 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 6,
                             Email = "Donor1@email.com",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
-                            Location = "HCM",
-                            Password = "$2a$11$.SlkZSt2d3JvRABIe7m3cOIuoVA0vsLs2ySIA/xYSwIcsdnLyyJgm",
-                            Phone = "123456789",
+                            Password = "$2a$11$Gkf3CbUvV9cza4grXytwleqe5RaMXV/2PHjJ361Szz1XVG8XqezCG",
                             Username = "Donor1"
                         },
                         new
                         {
                             Id = 7,
                             Email = "Donor2@email.com",
-                            Password = "$2a$11$RJaj74pEBU30NGU1BP.0oO2BHYhAMfLsadldFPXX.WK8iB/pA92Ma",
+                            Password = "$2a$11$JrOt89N1DFD6cJ84EhGduuxl90mGzTp.jeYO5Uq.L/e3DdBy1vWGS",
                             Username = "Donor2"
                         },
                         new
                         {
                             Id = 8,
                             Email = "Donor3@email.com",
-                            Password = "$2a$11$0DYpAsK/vHAzWTFN.xZYju1oSzbOH8mekfyoa7zZjrwOaA86zo9o2",
+                            Password = "$2a$11$yOWlQpT4P3l4W0M0M1sbaOKhdkfZYahuaRYl4Plk0xDO4iTVz6rHm",
                             Username = "Donor3"
                         },
                         new
                         {
                             Id = 9,
                             Email = "Donor4@email.com",
-                            Password = "$2a$11$dSf5HOieCKOrIgenQkT8L.wDCP8m3lEe6UaMzJAynkckC7qyKHI8W",
+                            Password = "$2a$11$.jJyZOelBEWiVOLH4G1V3u6RcPTiKT3MFuG2ZRxZNjdO8XfH9GZ8q",
                             Username = "Donor4"
                         },
                         new
                         {
                             Id = 10,
                             Email = "Volunteer1@email.com",
-                            Password = "$2a$11$nU6MXz5w2N6KLcBruePDK.P8jBd0nv1JNNFv87tVzpBSmt3ylFQhe",
+                            Password = "$2a$11$ty5F3AOmZHJNRUKYpm59O.8jJBTjzPTocnc9aK/vfYze8C.Gkb8SK",
                             Username = "Volunteer1"
                         },
                         new
                         {
                             Id = 11,
                             Email = "Volunteer2@email.com",
-                            Password = "$2a$11$ZW3Gfily8GRY8F.Oy9SxT.vBtTQjwcWc.9BVTdJfN66aPhh7JoYC2",
+                            Password = "$2a$11$YVJoDMH4X3Aa7SXxqE3NSeHfnUvhxJb87JpjpF/M9KsSMdddXuaJ2",
                             Username = "Volunteer2"
                         },
                         new
                         {
                             Id = 12,
                             Email = "Volunteer3@email.com",
-                            Password = "$2a$11$CwU7PoT.XZ2PPNQGJc203esyZkM00YTzP9.7Uqhm.JHNo14seLHXK",
+                            Password = "$2a$11$qPLqvz3yt99XNVcJiyP.lOho06uQA5zVqj4x46hYnbaZN95gHbLwy",
                             Username = "Volunteer3"
                         },
                         new
                         {
                             Id = 13,
                             Email = "Volunteer4@email.com",
-                            Password = "$2a$11$4vljYf8KOxvudirOt0NGGO00C7UHx7rjHKzGonHqGwgLitRICz4/i",
+                            Password = "$2a$11$XQSL5VOAcd4o.4YA05kFWevm8wB04IDKRzU3lmQP2jz.NqutfCyfa",
                             Username = "Volunteer4"
                         },
                         new
                         {
                             Id = 14,
                             Email = "Adopter1@email.com",
-                            Password = "$2a$11$7MU1QvhZIo1EiuhTJN63AeZIA5xYER.5eeX.eulOnMZ3T6478Rdru",
+                            Password = "$2a$11$ISV5PYV1iec1LJTSkWwA5.sIzy1yHX6mnuV/gALpWlEBR5jcZ/UKq",
                             Username = "Adopter1"
                         },
                         new
                         {
                             Id = 15,
                             Email = "Adopter2@email.com",
-                            Password = "$2a$11$zRlUt5evu2IZN0Svmz6VrO2sgudZ9BB9dh7Jwbu.Z6469784TsflG",
+                            Password = "$2a$11$udSeVCH4SAO/M3ZM0EEH4O692A7IqNT7f6rbOmeg0G2WtWvmkkWJm",
                             Username = "Adopter2"
                         },
                         new
                         {
                             Id = 16,
                             Email = "Adopter3@email.com",
-                            Password = "$2a$11$Zck8oAiKjmC5E6BEclyjse1fbQ1Cn2xa4Y2yw6RdtJfGOauUpbyZy",
+                            Password = "$2a$11$tudIyI.WkAiYZgVJ.WblIuoJmlsTBg8XPT7L6MK2ZpTn5ZYarVOjS",
                             Username = "Adopter3"
                         },
                         new
                         {
                             Id = 17,
                             Email = "Adopter4@email.com",
-                            Password = "$2a$11$yKfbgpKDTOuUzEBBYLRriuImTzhQ8JG6n5MQAxTl.oNrllg0vMTAa",
+                            Password = "$2a$11$DJdznZiHAP/3vfSz3nz09.hQESbwW689TH0U9MMqSQQGu4eX58hWO",
                             Username = "Adopter4"
                         });
                 });
@@ -1009,33 +1009,13 @@ namespace RepositoryLayer.Migrations
                         },
                         new
                         {
-                            UserId = 6,
-                            RoleId = 4
-                        },
-                        new
-                        {
                             UserId = 7,
                             RoleId = 3
                         },
                         new
                         {
-                            UserId = 7,
-                            RoleId = 5
-                        },
-                        new
-                        {
                             UserId = 8,
                             RoleId = 3
-                        },
-                        new
-                        {
-                            UserId = 8,
-                            RoleId = 4
-                        },
-                        new
-                        {
-                            UserId = 8,
-                            RoleId = 5
                         },
                         new
                         {
@@ -1049,33 +1029,13 @@ namespace RepositoryLayer.Migrations
                         },
                         new
                         {
-                            UserId = 10,
-                            RoleId = 3
-                        },
-                        new
-                        {
                             UserId = 11,
                             RoleId = 4
                         },
                         new
                         {
-                            UserId = 11,
-                            RoleId = 5
-                        },
-                        new
-                        {
                             UserId = 12,
                             RoleId = 4
-                        },
-                        new
-                        {
-                            UserId = 12,
-                            RoleId = 3
-                        },
-                        new
-                        {
-                            UserId = 12,
-                            RoleId = 5
                         },
                         new
                         {
@@ -1094,33 +1054,13 @@ namespace RepositoryLayer.Migrations
                         },
                         new
                         {
-                            UserId = 15,
-                            RoleId = 3
-                        },
-                        new
-                        {
                             UserId = 16,
                             RoleId = 5
                         },
                         new
                         {
-                            UserId = 16,
-                            RoleId = 4
-                        },
-                        new
-                        {
                             UserId = 17,
                             RoleId = 5
-                        },
-                        new
-                        {
-                            UserId = 17,
-                            RoleId = 4
-                        },
-                        new
-                        {
-                            UserId = 17,
-                            RoleId = 3
                         });
                 });
 

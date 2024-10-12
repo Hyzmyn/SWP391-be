@@ -10,7 +10,7 @@ namespace ServiceLayer.Interfaces
 {
     public interface IUsersService
     {
-        IEnumerable<User> GetUsers();
+        Task<IEnumerable<User>> GetUsersAsync();
         Task<User> GetUserByIdAsync(int id);
         Task CreateUserAsync(User user);
         Task UpdateUserAsync(User user);
