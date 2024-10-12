@@ -18,29 +18,30 @@ namespace SWP391_PawFund.Controllers
 
         // GET: api/UserRole/Role/{roleId}
         [HttpGet("Role/{userId}/Roles")]
-        public ActionResult<IEnumerable<UserRoleResponseModel>> GetRoles(int userId)
+        public async Task<ActionResult<UserRoleResponseModel>> GetRoles(int userId)
         {
             if (userId <= 0)
             {
                 return BadRequest("Invalid user ID");
             }
 
-
-            var role = _userRoleService.GetRolesOfUser(userId);
+            // Await the async method
+            var role = await _userRoleService.GetRolesOfUserAsync(userId);
 
             if (role == null || !role.Any())
             {
                 return NotFound($"No roles found for UserId {userId}.");
             }
 
-            var response = role.Select(s => new UserRoleResponseModel
+            var response = new UserRoleResponseModel
             {
                 UserId = userId,
                 Roles = role.ToList()
-            });
+            };
 
             return Ok(response);
         }
+
 
         [HttpGet("User/{userId}/HasRole/{roleName}")]
         public ActionResult<bool> UserHasRole(int userId, string roleName)
