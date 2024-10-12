@@ -5,6 +5,7 @@ using RepositoryLayer.Models;
 using RepositoryLayer.Utils;
 using ServiceLayer.Interfaces;
 using ServiceLayer.RequestModels;
+using ServiceLayer.ResponseModels;
 
 namespace SWP391_PawFund.Controllers
 {
@@ -14,22 +15,56 @@ namespace SWP391_PawFund.Controllers
     {
         private readonly IUsersService _userService;
         private readonly IAuthServices _authService;
+        private readonly IUserRoleService _userRoleService;
 
-        public UsersController(IUsersService userService, IAuthServices authServices)
+        public UsersController(IUsersService userService, IAuthServices authServices, IUserRoleService userRoleService)
         {
             _userService = userService;
             _authService = authServices;
-
+            _userRoleService = userRoleService;
         }
 
         // GET: api/Users
         [HttpGet]
         [Authorize]
-        public ActionResult<IEnumerable<UserViewModel>> GetUsers()
+        public async Task<ActionResult<IEnumerable<DetailUserViewModel>>> GetUsers()
         {
-            var users = _userService.GetUsers();
-            return Ok(users);
+            try
+            {
+                var users = await _userService.GetUsersAsync();  // Get users asynchronously
+
+                var userViewModels = new List<DetailUserViewModel>();
+
+                foreach (var user in users)
+                {
+                    // Fetch roles for each user
+                    var roles = await _userRoleService.GetRolesOfUserAsync(user.Id);
+
+                    // Create a UserViewModel with roles
+                    var userViewModel = new DetailUserViewModel
+                    {
+                        Username = user.Username,
+                        Email = user.Email,
+                        Password = user.Password,
+                        Phone = user.Phone,
+                        Location = user.Location,
+                        Token = user.Token,
+                        TotalDonation = user.TotalDonation,
+                        Image = user.Image,
+                        Roles = roles.ToList() 
+                    };
+
+                    userViewModels.Add(userViewModel);
+                }
+
+                return Ok(userViewModels);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
+
 
 
         // GET: api/Users/5
