@@ -19,14 +19,15 @@ namespace ServiceLayer.Services
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<string> GetRolesOfUser(int userId)
+        public async Task<IEnumerable<string>> GetRolesOfUserAsync(int userId)
         {
-            return _unitOfWork.Repository<UserRole>()
+            return await _unitOfWork.Repository<UserRole>()
                 .AsQueryable()
+                .AsNoTracking()
                 .Where(s => s.UserId == userId)
                 .Include(s => s.Role)
                 .Select(s => s.Role.Name)
-                .ToList();
+                .ToListAsync();
         }
 
         public bool UserHasRole(int userId, string roleName)

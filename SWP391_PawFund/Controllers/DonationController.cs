@@ -31,7 +31,7 @@ namespace SWP391_PawFund.Controllers
         public ActionResult<IEnumerable<DonationResponseModel>> GetAllDonations()
         {
             var donations = _donateService.GetAllDonations()
-               .Select(d => new DonationDetailResponseModel
+               .Select(d => new DonationResponseModel
                {
                    Id = d.Id,
                    Amount = d.Amount,
@@ -141,7 +141,7 @@ namespace SWP391_PawFund.Controllers
 
 
         // Thêm donation mới
-        [HttpPost]
+        [HttpPost("CreateDonate")]
         public async Task<IActionResult> CreateDonation([FromBody] DonationCreateRequestModel request)
         {
             if (!ModelState.IsValid)
@@ -207,7 +207,7 @@ namespace SWP391_PawFund.Controllers
 
 
         // Cập nhật donation
-        [HttpPut("{id}")]
+        [HttpPut("Update_Donate/{id}")]
         public async Task<IActionResult> UpdateDonation(int id, [FromBody] DonationUpdateRequestModel request)
         {
             var existingDonation = await _donateService.GetDonationsByIdAsync(id);
@@ -241,7 +241,7 @@ namespace SWP391_PawFund.Controllers
 
 
         // Xóa donation theo Id
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete_Donate/{id}")]
         public async Task<IActionResult> DeleteDonation(int id)
         {
             var donation = await _donateService.GetDonationsByIdAsync(id);
@@ -255,7 +255,7 @@ namespace SWP391_PawFund.Controllers
         }
 
         // Lấy tổng donation theo ShelterId
-        [HttpGet("shelter/{shelterId}/total")]
+        [HttpGet("Shelter/{shelterId}/Total")]
         public ActionResult<TotalShelterDonationResponseModel> GetTotalDonationByShelter(int shelterId)
         {
             var totalDonation = _donateService.GetTotalDonationByShelter(shelterId);
@@ -267,7 +267,7 @@ namespace SWP391_PawFund.Controllers
         }
 
         // Lấy tổng donation theo DonorId (accountId)
-        [HttpGet("donor/{donorId}/total")]
+        [HttpGet("Donor/{donorId}/Total")]
         public ActionResult<TotalDonorDonationResponseModel> GetTotalDonationByDonor(int donorId)
         {
             var totalDonation = _donateService.GetTotalDonationByDonor(donorId);
