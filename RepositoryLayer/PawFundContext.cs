@@ -149,10 +149,10 @@ namespace RepositoryLayer
 
             modelBuilder.Entity<User>().HasData(
                 new User { Id = 1, Username = "Admin", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 2, Username = "Staff1", Email = "Staff1@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 3, Username = "Staff2", Email = "Staff2@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 4, Username = "Staff3", Email = "Staff3@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 5, Username = "Staff4", Email = "Staff4@email.com", Password = PasswordTools.HashPassword("123456") },
+                new User { Id = 2, Username = "Staff1", Email = "Staff1@email.com", Password = PasswordTools.HashPassword("123456"), ShelterId = 1 },
+                new User { Id = 3, Username = "Staff2", Email = "Staff2@email.com", Password = PasswordTools.HashPassword("123456"), ShelterId = 1 },
+                new User { Id = 4, Username = "Staff3", Email = "Staff3@email.com", Password = PasswordTools.HashPassword("123456"), ShelterId = 2 },
+                new User { Id = 5, Username = "Staff4", Email = "Staff4@email.com", Password = PasswordTools.HashPassword("123456"), ShelterId = 2 },
                 new User { Id = 6, Username = "Donor1", Email = "Donor1@email.com", Password = PasswordTools.HashPassword("123456") },
                 new User { Id = 7, Username = "Donor2", Email = "Donor2@email.com", Password = PasswordTools.HashPassword("123456") },
                 new User { Id = 8, Username = "Donor3", Email = "Donor3@email.com", Password = PasswordTools.HashPassword("123456") },
@@ -195,25 +195,25 @@ namespace RepositoryLayer
 
 
             modelBuilder.Entity<Pet>().HasData(
-                new Pet { Id = 1, ShelterID = 1, Name = "Buddy", Type = "Dog", UserID = 17 },
-                new Pet { Id = 2, ShelterID = 1, Name = "Whiskers", Type = "Cat", UserID = 17 },
-                new Pet { Id = 3, ShelterID = 1, Name = "Max", Type = "Dog", UserID = 16 },
-                new Pet { Id = 4, ShelterID = 1, Name = "Luna", Type = "Cat", UserID = 14 },
-                new Pet { Id = 5, ShelterID = 1, Name = "Bella", Type = "Dog" },
-                new Pet { Id = 6, ShelterID = 1, Name = "Lux", Type = "Cat" },
-                new Pet { Id = 7, ShelterID = 1, Name = "Dono", Type = "Dog" },
-                new Pet { Id = 8, ShelterID = 1, Name = "Linker", Type = "Cat" },
-                new Pet { Id = 9, ShelterID = 1, Name = "Dawin", Type = "Dog", UserID = 15 },
-                new Pet { Id = 10, ShelterID = 2, Name = "Modor", Type = "Cat" },
-                new Pet { Id = 11, ShelterID = 2, Name = "Pingking", Type = "Dog" },
-                new Pet { Id = 12, ShelterID = 2, Name = "Seto", Type = "Cat" },
-                new Pet { Id = 13, ShelterID = 2, Name = "kaiba", Type = "Dog" },
-                new Pet { Id = 14, ShelterID = 2, Name = "Asuka", Type = "Cat" },
-                new Pet { Id = 15, ShelterID = 2, Name = "Jax", Type = "Dog" },
-                new Pet { Id = 16, ShelterID = 2, Name = "Jihn", Type = "Cat" },
-                new Pet { Id = 18, ShelterID = 2, Name = "Kaisa", Type = "Dog" },
-                new Pet { Id = 19, ShelterID = 2, Name = "Bump", Type = "Dog" },
-                new Pet { Id = 20, ShelterID = 2, Name = "Rasko", Type = "Dog" }
+                new Pet { Id = 1, ShelterID = 1, Name = "Buddy", AdoptionStatus = "Avalable", Type = "Dog", UserID = 17 },
+                new Pet { Id = 2, ShelterID = 1, Name = "Whiskers", AdoptionStatus = "Avalable",  Type = "Cat", UserID = 17 },
+                new Pet { Id = 3, ShelterID = 1, Name = "Max", AdoptionStatus = "Avalable", Type = "Dog", UserID = 16 },
+                new Pet { Id = 4, ShelterID = 1, Name = "Luna", AdoptionStatus = "Avalable", Type = "Cat", UserID = 14 },
+                new Pet { Id = 5, ShelterID = 1, Name = "Bella", AdoptionStatus = "Avalable", Type = "Dog" },
+                new Pet { Id = 6, ShelterID = 1, Name = "Lux", AdoptionStatus = "Avalable", Type = "Cat" },
+                new Pet { Id = 7, ShelterID = 1, Name = "Dono", AdoptionStatus = "Avalable", Type = "Dog" },
+                new Pet { Id = 8, ShelterID = 1, Name = "Linker", AdoptionStatus = "Avalable", Type = "Cat" },
+                new Pet { Id = 9, ShelterID = 1, Name = "Dawin", AdoptionStatus = "Avalable", Type = "Dog", UserID = 15 },
+                new Pet { Id = 10, ShelterID = 2, Name = "Modor", AdoptionStatus = "Avalable", Type = "Cat" },
+                new Pet { Id = 11, ShelterID = 2, Name = "Pingking", AdoptionStatus = "Avalable", Type = "Dog" },
+                new Pet { Id = 12, ShelterID = 2, Name = "Seto", AdoptionStatus = "Avalable", Type = "Cat" },
+                new Pet { Id = 13, ShelterID = 2, Name = "kaiba", AdoptionStatus = "Avalable", Type = "Dog" },
+                new Pet { Id = 14, ShelterID = 2, Name = "Asuka", AdoptionStatus = "Avalable", Type = "Cat" },
+                new Pet { Id = 15, ShelterID = 2, Name = "Jax", AdoptionStatus = "Avalable", Type = "Dog" },
+                new Pet { Id = 16, ShelterID = 2, Name = "Jihn", AdoptionStatus = "Avalable", Type = "Cat" },
+                new Pet { Id = 18, ShelterID = 2, Name = "Kaisa", AdoptionStatus = "Avalable", Type = "Dog" },
+                new Pet { Id = 19, ShelterID = 2, Name = "Bump", AdoptionStatus = "Avalable", Type = "Dog" },
+                new Pet { Id = 20, ShelterID = 2, Name = "Rasko", AdoptionStatus = "Avalable", Type = "Dog" }
 
 
             );
