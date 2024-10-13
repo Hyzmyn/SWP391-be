@@ -19,7 +19,6 @@ namespace SWP391_PawFund.Controllers
         {
             _userService = userService;
             _authService = authServices;
-
         }
 
         // GET: api/Users
@@ -159,6 +158,6 @@ namespace SWP391_PawFund.Controllers
         private async Task<bool> UserExists(int id)
         {
             return await _userService.UserExistsAsync(id);
-        }
+        }   
     }
 }
