@@ -21,7 +21,7 @@ namespace SWP391_PawFund.Controllers
 
 		// GET: api/Events
 		[HttpGet]
-		[Authorize]
+		
 		public async Task<ActionResult<IEnumerable<EventResponseModel>>> GetEvents()
 		{
 			var events = await _eventService.GetAllEventsAsync();
