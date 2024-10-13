@@ -14,7 +14,7 @@ namespace ServiceLayer.RequestModels
         public IFormFile IdentificationImage { get; set; } // Changed to IFormFile for image upload
         public IFormFile IdentificationImageBackSide { get; set; } // Changed to IFormFile for image upload
         public int AdopterId { get; set; }
-        public int ShelterStaffId { get; set; }
+        public int? ShelterStaffId { get; set; }
         public int PetId { get; set; }
         public bool Status { get; set; }
 
