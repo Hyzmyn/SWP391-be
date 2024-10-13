@@ -14,7 +14,7 @@ namespace ServiceLayer.ResponseModels
         public string IdentificationImage { get; set; }
         public string IdentificationImageBackSide { get; set; }
         public int AdopterId { get; set; }
-        public int ShelterStaffId { get; set; }
+        public int? ShelterStaffId { get; set; }
         public int PetId { get; set; }
 
         public bool? Status { get; set; }
