@@ -57,7 +57,6 @@ namespace ServiceLayer.Services
             if (existingPet != null)
             {
                 // Cập nhật StatusId mới
-                existingPet.StatusId = newStatusId;
 
                 // Nếu cần cập nhật trạng thái liên quan khác, có thể thêm ở đây
                 // Ví dụ cập nhật AdoptionStatus

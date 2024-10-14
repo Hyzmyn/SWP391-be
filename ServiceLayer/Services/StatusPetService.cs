@@ -27,14 +27,14 @@ namespace ServiceLayer.Services
         }
 
         // Lấy thông tin tất cả Status của một Pet
-        public IEnumerable<Status> GetStatusesForPet(int petId)
-        {
-            return _unitOfWork.Repository<Status>()
-                .AsQueryable()
-                .Include(s => s.Pet)
-                .Where(s => s.Pet != null && s.Pet.Id == petId)
-                .ToList();
-        }
+        //public IEnumerable<Status> GetStatusesForPet(int petId)
+        //{
+        //    return _unitOfWork.Repository<Status>()
+        //        .AsQueryable()
+        //        .Include(s => s.Pet)
+        //        .Where(s => s.Pet != null && s.Pet.Id == petId)
+        //        .ToList();
+        //}
 
         // Lấy Status theo ID
         public async Task<Status> GetStatusByIdAsync(int id)
@@ -54,7 +54,7 @@ namespace ServiceLayer.Services
                 existingStatus.Date = status.Date;
                 existingStatus.Disease = status.Disease;
                 existingStatus.Vaccine = status.Vaccine;
-                existingStatus.PetId = status.PetId;
+                //existingStatus.PetId = status.PetId;
 
                 await _unitOfWork.Repository<Status>().Update(existingStatus, status.Id);
                 await _unitOfWork.CommitAsync();
