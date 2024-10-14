@@ -100,6 +100,19 @@ namespace RepositoryLayer
                 .WithMany(r => r.UserRoles)
                 .HasForeignKey(ur => ur.RoleId);
 
+            modelBuilder.Entity<PetStatus>()
+                .HasKey(ur => new { ur.PetId, ur.StatusId });
+
+            modelBuilder.Entity<PetStatus>()
+                .HasOne(p => p.Pet)
+                .WithMany(u => u.Statuses)
+                .HasForeignKey(p => p.PetId);
+
+            modelBuilder.Entity<PetStatus>()
+                .HasOne(ur => ur.Status)
+                .WithMany(r => r.Pet)
+                .HasForeignKey(p => p.StatusId);
+
             modelBuilder.Entity<Donation>()
                 .HasOne(d => d.User)
                 .WithMany(u => u.Donations)
@@ -242,7 +255,6 @@ namespace RepositoryLayer
                 new Status
                 {
                     Id = 1,
-                    PetId = 1,
                     Date = new DateTime(2024, 1, 15),
                     Disease = "Parvovirus Infection",
                     Vaccine = "Parvovirus Vaccine"
@@ -250,7 +262,6 @@ namespace RepositoryLayer
                 new Status
                 {
                     Id = 2,
-                    PetId = 3,
                     Date = new DateTime(2024, 2, 20),
                     Disease = "Distemper Virus",
                     Vaccine = "Distemper Vaccine"
@@ -258,7 +269,6 @@ namespace RepositoryLayer
                 new Status
                 {
                     Id = 3,
-                    PetId = 5,
                     Date = new DateTime(2024, 3, 10),
                     Disease = "Rabies Virus",
                     Vaccine = "Rabies Vaccine"
@@ -266,7 +276,6 @@ namespace RepositoryLayer
                 new Status
                 {
                     Id = 4,
-                    PetId = 2,
                     Date = new DateTime(2024, 4, 5),
                     Disease = "FeLV",
                     Vaccine = "FeLV Vaccine"
@@ -274,12 +283,19 @@ namespace RepositoryLayer
                 new Status
                 {
                     Id = 5,
-                    PetId = 4,
                     Date = new DateTime(2024, 5, 12),
                     Disease = "FIV",
                     Vaccine = "None"
                 }
             );
+            modelBuilder.Entity<PetStatus>().HasData(
+                new PetStatus { PetId = 1, StatusId = 1},
+                new PetStatus { PetId = 3, StatusId = 2},
+                new PetStatus { PetId = 5, StatusId = 3},
+                new PetStatus { PetId = 2, StatusId = 4},
+                new PetStatus { PetId = 4, StatusId = 5}
+                
+                );
         }
     }
 }

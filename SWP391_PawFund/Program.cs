@@ -107,12 +107,29 @@ var app = builder.Build();
 
 
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
+//// Configure the HTTP request pipeline.
+//if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
+
+if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "HomeHunt API V1");
+        c.RoutePrefix = string.Empty;
+    });
+}
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
