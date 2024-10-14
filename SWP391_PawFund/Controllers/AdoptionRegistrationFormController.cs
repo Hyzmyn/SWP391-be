@@ -10,31 +10,31 @@ using ServiceLayer.ResponseModels;
 
 namespace SWP391_PawFund.Controllers
 {
-    [Route("api/AdoptionRegistrationForm")]
+    [Route("api/Form")]
     [ApiController]
-    public class AdoptionRegistrationFormController : ControllerBase
+    public class FormController : ControllerBase
     {
         private readonly IAdoptionRegistrationFormService _adoptionFormService;
-        private readonly IShelterService _shelterService;
-        private readonly IUsersService _usersService;
-        private readonly IPetService _petService;
+        //private readonly IShelterService _shelterService;
+        //private readonly IUsersService _usersService;
+        //private readonly IPetService _petService;
         private readonly IAuthServices _authServices;
         private readonly IFileUploadService _fileUploadService;
-        private readonly ILogger<AdoptionRegistrationFormController> _logger;
+        private readonly ILogger<FormController> _logger;
 
-        public AdoptionRegistrationFormController(
+        public FormController(
             IAdoptionRegistrationFormService adoptionFormService,
             IUsersService usersService,
             IShelterService shelterService,
             IPetService petService,
             IAuthServices authServices,
             IFileUploadService fileUploadService,
-            ILogger<AdoptionRegistrationFormController> logger)
+            ILogger<FormController> logger)
         {
             _adoptionFormService = adoptionFormService;
-            _usersService = usersService;
-            _shelterService = shelterService;
-            _petService = petService;
+            //_usersService = usersService;
+            //_shelterService = shelterService;
+            //_petService = petService;
             _authServices = authServices;
             _fileUploadService = fileUploadService;
             _logger = logger;
@@ -65,7 +65,7 @@ namespace SWP391_PawFund.Controllers
 
         [HttpGet("{id}/detail")]
         [Authorize]
-        public async Task<ActionResult<AdoptionRegistrationFormDetailResponse>> GetFormDetailById(int id)
+        public async Task<ActionResult<AdoptionRegistrationFormResponse>> GetFormDetailById(int id)
         {
             try
             {
@@ -75,12 +75,12 @@ namespace SWP391_PawFund.Controllers
                     return NotFound(new { message = "Form not found." });
                 }
 
-                var adopter = await _usersService.GetUserByIdAsync(form.AdopterId);
-                var pet = await _petService.GetPetById(form.PetId);
-                var shelterStaff = await _usersService.GetUserByIdAsync((int)form.ShelterStaffId);
-                var shelter = pet != null ? await _shelterService.GetShelterByID(pet.ShelterID) : null;
+                //var adopter = await _usersService.GetUserByIdAsync(form.AdopterId);
+                //var pet = await _petService.GetPetById(form.PetId);
+                //var shelterStaff = await _usersService.GetUserByIdAsync((int)form.ShelterStaffId);
+                //var shelter = pet != null ? await _shelterService.GetShelterByID(pet.ShelterID) : null;
 
-                var response = new AdoptionRegistrationFormDetailResponse
+                var response = new AdoptionRegistrationFormResponse
                 {
                     Id = form.Id,
                     SocialAccount = form.SocialAccount,
@@ -106,16 +106,15 @@ namespace SWP391_PawFund.Controllers
 
 
         // POST: api/AdoptionRegistrationForm
-        [HttpPost("Create_Adopte_Form")]
+        [HttpPost]
         [Authorize]
-        public async Task<IActionResult> CreateForm([FromForm] AdoptionRegistrationFormRequest request)
+        public async Task<IActionResult> CreateForm([FromForm] FormCreateRequest request)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            // Upload images to Firebase or any file storage and get URLs
             var identificationImageUrl = await _fileUploadService.UploadFileAsync(request.IdentificationImage);
             var identificationImageBackSideUrl = await _fileUploadService.UploadFileAsync(request.IdentificationImageBackSide);
 
@@ -123,10 +122,9 @@ namespace SWP391_PawFund.Controllers
             {
                 SocialAccount = request.SocialAccount,
                 IncomeAmount = request.IncomeAmount,
-                IdentificationImage = identificationImageUrl, // Store the image URLs
+                IdentificationImage = identificationImageUrl, 
                 IdentificationImageBackSide = identificationImageBackSideUrl,
                 AdopterId = request.AdopterId,
-                ShelterStaffId = request.ShelterStaffId,
                 PetId = request.PetId,
                 Status = false
             };
@@ -141,7 +139,6 @@ namespace SWP391_PawFund.Controllers
                 IdentificationImage = form.IdentificationImage,
                 IdentificationImageBackSide = form.IdentificationImageBackSide,
                 AdopterId = form.AdopterId,
-                ShelterStaffId = form.ShelterStaffId,
                 PetId = form.PetId
             };
 
@@ -149,9 +146,9 @@ namespace SWP391_PawFund.Controllers
         }
 
         // PUT: api/AdoptionRegistrationForm/{id}
-        [HttpPut("Update_Adopte_Form/{id}")]
+        [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> UpdateForm(int id, [FromForm] AdoptionRegistrationFormRequest request)
+        public async Task<IActionResult> UpdateForm(int id, [FromForm] FormUpdateRequest request)
         {
             if (!ModelState.IsValid)
             {
@@ -189,7 +186,7 @@ namespace SWP391_PawFund.Controllers
         }
 
         // DELETE: api/AdoptionRegistrationForm/{id}
-        [HttpDelete("Remove_Adopte_Form/{id}")]
+        [HttpDelete("{id}")]
         [Authorize]
         public async Task<IActionResult> DeleteForm(int id)
         {

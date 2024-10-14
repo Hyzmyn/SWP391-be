@@ -61,7 +61,7 @@ namespace SWP391_PawFund.Controllers
                 Color = petCreateRequest.Color,
                 Description = petCreateRequest.Description,
                 AdoptionStatus = petCreateRequest.AdoptionStatus,
-                StatusId = petCreateRequest.StatusId,
+                //StatusId = petCreateRequest.StatusId,
                 Image = petCreateRequest.Image
             };
             await _petService.CreatePetAsync(pet);

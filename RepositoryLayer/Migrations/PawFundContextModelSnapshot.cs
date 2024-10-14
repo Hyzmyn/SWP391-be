@@ -199,7 +199,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Amount = 100000m,
-                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 6,
                             ShelterId = 1
                         },
@@ -207,7 +207,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 2,
                             Amount = 200000m,
-                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2024, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 7,
                             ShelterId = 1
                         },
@@ -215,7 +215,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 3,
                             Amount = 543333m,
-                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2024, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 8,
                             ShelterId = 2
                         },
@@ -223,7 +223,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 4,
                             Amount = 632229m,
-                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2024, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 9,
                             ShelterId = 2
                         },
@@ -231,7 +231,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 5,
                             Amount = 760000m,
-                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2024, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 7,
                             ShelterId = 2
                         });
@@ -324,6 +324,10 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -376,9 +380,6 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("Size")
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("StatusId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -398,7 +399,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Adopted",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "Buddy",
                             ShelterID = 1,
                             Type = "Dog",
@@ -407,16 +409,17 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 2,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Available",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "Whiskers",
                             ShelterID = 1,
-                            Type = "Cat",
-                            UserID = 17
+                            Type = "Cat"
                         },
                         new
                         {
                             Id = 3,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Adopted",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "Max",
                             ShelterID = 1,
                             Type = "Dog",
@@ -425,7 +428,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 4,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Adopted",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "Luna",
                             ShelterID = 1,
                             Type = "Cat",
@@ -434,7 +438,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 5,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Available",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "Bella",
                             ShelterID = 1,
                             Type = "Dog"
@@ -442,7 +447,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 6,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Available",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "Lux",
                             ShelterID = 1,
                             Type = "Cat"
@@ -450,7 +456,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 7,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Available",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "Dono",
                             ShelterID = 1,
                             Type = "Dog"
@@ -458,7 +465,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 8,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Available",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "Linker",
                             ShelterID = 1,
                             Type = "Cat"
@@ -466,7 +474,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 9,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Adopted",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "Dawin",
                             ShelterID = 1,
                             Type = "Dog",
@@ -475,7 +484,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 10,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Available",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "Modor",
                             ShelterID = 2,
                             Type = "Cat"
@@ -483,7 +493,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 11,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Available",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "Pingking",
                             ShelterID = 2,
                             Type = "Dog"
@@ -491,7 +502,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 12,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Available",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "Seto",
                             ShelterID = 2,
                             Type = "Cat"
@@ -499,7 +511,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 13,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Available",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "kaiba",
                             ShelterID = 2,
                             Type = "Dog"
@@ -507,7 +520,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 14,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Available",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "Asuka",
                             ShelterID = 2,
                             Type = "Cat"
@@ -515,7 +529,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 15,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Available",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "Jax",
                             ShelterID = 2,
                             Type = "Dog"
@@ -523,7 +538,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 16,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Available",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "Jihn",
                             ShelterID = 2,
                             Type = "Cat"
@@ -531,7 +547,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 18,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Available",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "Kaisa",
                             ShelterID = 2,
                             Type = "Dog"
@@ -539,7 +556,8 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 19,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Available",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "Bump",
                             ShelterID = 2,
                             Type = "Dog"
@@ -547,10 +565,53 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 20,
-                            AdoptionStatus = "Avalable",
+                            AdoptionStatus = "Available",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
                             Name = "Rasko",
                             ShelterID = 2,
                             Type = "Dog"
+                        });
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.PetStatus", b =>
+                {
+                    b.Property<int>("PetId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StatusId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PetId", "StatusId");
+
+                    b.HasIndex("StatusId");
+
+                    b.ToTable("PetStatus");
+
+                    b.HasData(
+                        new
+                        {
+                            PetId = 1,
+                            StatusId = 1
+                        },
+                        new
+                        {
+                            PetId = 3,
+                            StatusId = 2
+                        },
+                        new
+                        {
+                            PetId = 5,
+                            StatusId = 3
+                        },
+                        new
+                        {
+                            PetId = 2,
+                            StatusId = 4
+                        },
+                        new
+                        {
+                            PetId = 4,
+                            StatusId = 5
                         });
                 });
 
@@ -569,6 +630,9 @@ namespace RepositoryLayer.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("Image")
+                        .HasColumnType("longtext");
+
                     b.Property<bool?>("IsDelete")
                         .HasColumnType("tinyint(1)");
 
@@ -579,7 +643,7 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("UserId")
@@ -701,16 +765,11 @@ namespace RepositoryLayer.Migrations
                     b.Property<bool?>("IsDelete")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("PetId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Vaccine")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PetId");
 
                     b.ToTable("Statuses");
 
@@ -720,7 +779,6 @@ namespace RepositoryLayer.Migrations
                             Id = 1,
                             Date = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disease = "Parvovirus Infection",
-                            PetId = 1,
                             Vaccine = "Parvovirus Vaccine"
                         },
                         new
@@ -728,7 +786,6 @@ namespace RepositoryLayer.Migrations
                             Id = 2,
                             Date = new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disease = "Distemper Virus",
-                            PetId = 3,
                             Vaccine = "Distemper Vaccine"
                         },
                         new
@@ -736,7 +793,6 @@ namespace RepositoryLayer.Migrations
                             Id = 3,
                             Date = new DateTime(2024, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disease = "Rabies Virus",
-                            PetId = 5,
                             Vaccine = "Rabies Vaccine"
                         },
                         new
@@ -744,7 +800,6 @@ namespace RepositoryLayer.Migrations
                             Id = 4,
                             Date = new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disease = "FeLV",
-                            PetId = 2,
                             Vaccine = "FeLV Vaccine"
                         },
                         new
@@ -752,7 +807,6 @@ namespace RepositoryLayer.Migrations
                             Id = 5,
                             Date = new DateTime(2024, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disease = "FIV",
-                            PetId = 4,
                             Vaccine = "None"
                         });
                 });
@@ -820,119 +874,126 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Email = "Admin@email.com",
-                            Password = "$2a$11$Ua/87G7AJjH6ED84lsh8OexZqViOz5Bhwzj51q9Rgf47Qoqq5L/l6",
+                            Password = "$2a$11$6Df9REFMYfzXf.pCDHLCz.zFdbYkCoYEsNWPCzN8RirJAOtEvEoNe",
                             Username = "Admin"
                         },
                         new
                         {
                             Id = 2,
                             Email = "Staff1@email.com",
-                            Password = "$2a$11$HJRliw1NarAusxFJXub8..4umcr8d7o0h6r4SJH7g3KneIrEAyBEG",
+                            Password = "$2a$11$Lw./lyBFXqte0hmPbaxeruBqDnAbH4sxQ8P681M6JH6lKYypWzwqW",
+                            ShelterId = 1,
                             Username = "Staff1"
                         },
                         new
                         {
                             Id = 3,
                             Email = "Staff2@email.com",
-                            Password = "$2a$11$d7f3DvqM9K7lXp5zLwd2ruGjv6ZOunOaNepyBXb94lsUA4MpGNBSy",
+                            Password = "$2a$11$Vvg/B6pcanQrp9U1SI.20uw1q.GuqBNANDjbC0Sk4W0kXri0i8eBW",
+                            ShelterId = 1,
                             Username = "Staff2"
                         },
                         new
                         {
                             Id = 4,
                             Email = "Staff3@email.com",
-                            Password = "$2a$11$6HYI38Av899uZMP/2NV7HuB0NKL/MpBSZWgFdDG4mKQSKs9s/mNzG",
+                            Password = "$2a$11$GYiaq6UcFBUqZMfcKXMOf.Y3dwCOcAjKrS969xnstnGHEpdX99yIq",
+                            ShelterId = 2,
                             Username = "Staff3"
                         },
                         new
                         {
                             Id = 5,
                             Email = "Staff4@email.com",
-                            Password = "$2a$11$HFudrqSkBklYawxjsFCBUuBd11leZH8hwWC1rUdC1BBgiszxECpiq",
+                            Password = "$2a$11$duT5XcZhr7NoSoylWmFxCugPOZew95DLb4ZVp1TtLzbErHr.xqTGO",
+                            ShelterId = 2,
                             Username = "Staff4"
                         },
                         new
                         {
                             Id = 6,
                             Email = "Donor1@email.com",
-                            Password = "$2a$11$UX.K6ICT.IdqIN76DUsvLOANhuSniWXdUoUgKl/2vAPXkloJc2Eqi",
+                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png",
+                            Location = "HCM",
+                            Password = "$2a$11$FAZUVtHDawaY/3JtFy8kve0AWJCBCzy0XB7oo48vTPat3cUC.lc7O",
+                            Phone = "123456789",
                             Username = "Donor1"
                         },
                         new
                         {
                             Id = 7,
                             Email = "Donor2@email.com",
-                            Password = "$2a$11$zp36YIo.x2CJTkxOKDFlUu8hPs38T2o3t77BzssDvYO31Fil0Ut8q",
+                            Password = "$2a$11$wHhdHos4n.uroORcs5RsmO.dQO/gD0irtiFaQCbDhG//GMfKfpOJ2",
                             Username = "Donor2"
                         },
                         new
                         {
                             Id = 8,
                             Email = "Donor3@email.com",
-                            Password = "$2a$11$aaX1DUVMEQ2crLfsZWk7HOER9iNv5KRuyjFEA/7G.x0uqck70xLzm",
+                            Password = "$2a$11$I/UxYH77SZ6VzFhSlCsyR.n3rQS4rY1FQj3r2oKtClasmMYySVWPe",
                             Username = "Donor3"
                         },
                         new
                         {
                             Id = 9,
                             Email = "Donor4@email.com",
-                            Password = "$2a$11$64jaquZwk1u79tXgipGYdu9LneTSCuPjMHiEb0t5PUsXgK4TKCbPq",
+                            Password = "$2a$11$T.npYc.k3b0wmwwf06xSJOcm/NRmhnqbN77eTkAaTYzc9u8wud05C",
                             Username = "Donor4"
                         },
                         new
                         {
                             Id = 10,
                             Email = "Volunteer1@email.com",
-                            Password = "$2a$11$pyGpmT8B0Io0xrdUDmNv.Ou1yTejvPJr3mqRT/5jGqRjjICl4yNQ.",
+                            Password = "$2a$11$tKLrM7SXyYWq.dOCosSr/.XfHHuJCxVzfwZ094XqbhC0mXCkjwcw.",
                             Username = "Volunteer1"
                         },
                         new
                         {
                             Id = 11,
                             Email = "Volunteer2@email.com",
-                            Password = "$2a$11$tIbFC6dy6qHIJshW3F9UD.Ue4i5jgld4NCspyPQxJ5ZrJia5Xb//K",
+                            Password = "$2a$11$I5TSBc7ridTuZ1ngczmRNu0MZWBarqnQxdWDSDSw/LCqKtDJi68PC",
                             Username = "Volunteer2"
                         },
                         new
                         {
                             Id = 12,
                             Email = "Volunteer3@email.com",
-                            Password = "$2a$11$cGbM0wTPt3nVanHvQNH6d.UWLkUAgq2zJ6HbQRYK.VIIhEOYji8gy",
+                            Password = "$2a$11$u.lYCJ6Sgq7jhMqkBphcheGEH3SjbxM98Kk2I/VpNppylDcApQCPq",
                             Username = "Volunteer3"
                         },
                         new
                         {
                             Id = 13,
                             Email = "Volunteer4@email.com",
-                            Password = "$2a$11$xLVv06jSqqTFY8jBAV419.QkOtWUJrdOmugdPTt/mcGkNMLgdqVhO",
+                            Password = "$2a$11$77V8Kurtw5pSjT.MMo.JlODaEEOoSgBYFDfnWdWvGJxKdmJg0NsvO",
                             Username = "Volunteer4"
                         },
                         new
                         {
                             Id = 14,
                             Email = "Adopter1@email.com",
-                            Password = "$2a$11$xII7FuOSrXCJt3/VrR5kf.58TWzoIcNtPoNSmVr2TInmDPp31YQtC",
+                            Password = "$2a$11$XIcra6blDRFQNQQSntLTTevsCDe7YGRcJx3yj6SQlyvSCrxEwpG7i",
                             Username = "Adopter1"
                         },
                         new
                         {
                             Id = 15,
                             Email = "Adopter2@email.com",
-                            Password = "$2a$11$SCwBRwr9zNnkWamML0ap6eFgHOohA1Yzs4DwCy8QfTdgbJUBHy/Be",
+                            Password = "$2a$11$.5p.FIzfjV/iiE/lf8FnjuEM76P2eK.hZbQzQjSUwLj61ipg8j30C",
                             Username = "Adopter2"
                         },
                         new
                         {
                             Id = 16,
                             Email = "Adopter3@email.com",
-                            Password = "$2a$11$yQauwNOu63H7qyDhExS/AOB7HFGVLPmc9ipq6ykwvc46EOnHsLJ1a",
+                            Password = "$2a$11$GormX4h1yPq4y/Mfy7KLJel/LYKhokJgQQGT2d5rqiIsfB2T0VASu",
                             Username = "Adopter3"
                         },
                         new
                         {
                             Id = 17,
                             Email = "Adopter4@email.com",
-                            Password = "$2a$11$5ufttzgIu2Mgj.RYFj9LPOPHC02O5RKKU3heCKRNO/oswhAWVolE.",
+                            Password = "$2a$11$sN4d/M9akZre4pK3ahA3xu87ZBtwmn4oX6C7epU1nlbjpHxYghZwS",
                             Username = "Adopter4"
                         });
                 });
@@ -984,13 +1045,33 @@ namespace RepositoryLayer.Migrations
                         },
                         new
                         {
+                            UserId = 6,
+                            RoleId = 4
+                        },
+                        new
+                        {
                             UserId = 7,
                             RoleId = 3
                         },
                         new
                         {
+                            UserId = 7,
+                            RoleId = 5
+                        },
+                        new
+                        {
                             UserId = 8,
                             RoleId = 3
+                        },
+                        new
+                        {
+                            UserId = 8,
+                            RoleId = 4
+                        },
+                        new
+                        {
+                            UserId = 8,
+                            RoleId = 5
                         },
                         new
                         {
@@ -1004,13 +1085,33 @@ namespace RepositoryLayer.Migrations
                         },
                         new
                         {
+                            UserId = 10,
+                            RoleId = 3
+                        },
+                        new
+                        {
                             UserId = 11,
                             RoleId = 4
                         },
                         new
                         {
+                            UserId = 11,
+                            RoleId = 5
+                        },
+                        new
+                        {
                             UserId = 12,
                             RoleId = 4
+                        },
+                        new
+                        {
+                            UserId = 12,
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            UserId = 12,
+                            RoleId = 5
                         },
                         new
                         {
@@ -1029,13 +1130,33 @@ namespace RepositoryLayer.Migrations
                         },
                         new
                         {
+                            UserId = 15,
+                            RoleId = 3
+                        },
+                        new
+                        {
                             UserId = 16,
                             RoleId = 5
                         },
                         new
                         {
+                            UserId = 16,
+                            RoleId = 4
+                        },
+                        new
+                        {
                             UserId = 17,
                             RoleId = 5
+                        },
+                        new
+                        {
+                            UserId = 17,
+                            RoleId = 4
+                        },
+                        new
+                        {
+                            UserId = 17,
+                            RoleId = 3
                         });
                 });
 
@@ -1160,6 +1281,25 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("ModelLayer.Entities.PetStatus", b =>
+                {
+                    b.HasOne("ModelLayer.Entities.Pet", "Pet")
+                        .WithMany("Statuses")
+                        .HasForeignKey("PetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ModelLayer.Entities.Status", "Status")
+                        .WithMany("Pet")
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pet");
+
+                    b.Navigation("Status");
+                });
+
             modelBuilder.Entity("ModelLayer.Entities.Post", b =>
                 {
                     b.HasOne("ModelLayer.Entities.Pet", "Pet")
@@ -1175,17 +1315,6 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("Pet");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("ModelLayer.Entities.Status", b =>
-                {
-                    b.HasOne("ModelLayer.Entities.Pet", "Pet")
-                        .WithMany("Statuses")
-                        .HasForeignKey("PetId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Pet");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.User", b =>
@@ -1257,6 +1386,11 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("Pets");
 
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.Status", b =>
+                {
+                    b.Navigation("Pet");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.User", b =>

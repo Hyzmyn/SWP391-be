@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServiceLayer.RequestModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,4 +18,8 @@ namespace ServiceLayer.ResponseModels
 
     }
 
+    public class DetailUserViewModel : UserViewModel
+    {
+        public List<string> Roles { get; set; }
+    }
 }
