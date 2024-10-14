@@ -9,6 +9,7 @@ namespace ModelLayer.Entities
 {
     public class Notification : BaseEntity
     {
+        public string Title { get; set; }
         public string Message { get; set; }
         public DateTime Date { get; set; }
         public int UserId { get; set; }

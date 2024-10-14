@@ -7,7 +7,7 @@ namespace ServiceLayer.Interfaces
         Task CreateStatusAsync(Status status);
         Task DeleteStatusAsync(int id);
         Task<Status> GetStatusByIdAsync(int id);
-        IEnumerable<Status> GetStatusesForPet(int petId);
+        //IEnumerable<Status> GetStatusesForPet(int petId);
         Task UpdateStatusAsync(Status status);
     }
 }

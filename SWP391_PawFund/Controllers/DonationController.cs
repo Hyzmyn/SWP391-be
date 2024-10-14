@@ -34,7 +34,7 @@ namespace SWP391_PawFund.Controllers
         public ActionResult<IEnumerable<DonationResponseModel>> GetAllDonations()
         {
             var donations = _donateService.GetAllDonations()
-               .Select(d => new DonationDetailResponseModel
+               .Select(d => new DonationResponseModel
                {
                    Id = d.Id,
                    Amount = d.Amount,

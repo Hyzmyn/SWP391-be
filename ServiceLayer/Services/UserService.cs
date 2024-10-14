@@ -20,9 +20,11 @@ namespace ServiceLayer.Services
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<User> GetUsers()
+        public async Task<IEnumerable<User>> GetUsersAsync()
         {
-            return _unitOfWork.Repository<User>().GetAll();
+            return await _unitOfWork.Repository<User>()
+                .AsQueryable()
+                .ToListAsync();  // Make it asynchronous
         }
 
         public async Task<User> GetUserByIdAsync(int id)
