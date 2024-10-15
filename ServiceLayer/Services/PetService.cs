@@ -7,6 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ServiceLayer.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using ServiceLayer.RequestModels;
+using System.Net;
+using ServiceLayer.ResponseModels;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace ServiceLayer.Services
 {
@@ -16,66 +21,218 @@ namespace ServiceLayer.Services
         private readonly PawFundContext _content;
         public PetService(IUnitOfWork unitOfWork) { _unitOfWork = unitOfWork; }
 
-        public IEnumerable<Pet> GetPets()
+        // Lấy tất cả các Pet
+        public async Task<IEnumerable<PetResponseModel>> GetAllPetsAsync()
         {
-            return _unitOfWork.Repository<Pet>().GetAll();
+            var pets = await _unitOfWork.Repository<Pet>()
+                .AsQueryable()
+                .Include(p => p.Statuses)
+                    .ThenInclude(ps => ps.Status)
+                .ToListAsync();
 
+            var petResponses = new List<PetResponseModel>();
+
+            foreach (var pet in pets)
+            {
+                var petResponse = new PetResponseModel
+                {
+                    PetID = pet.Id,
+                    ShelterID = pet.ShelterID,
+                    UserID = pet.UserID,
+                    Name = pet.Name,
+                    Type = pet.Type,
+                    Breed = pet.Breed,
+                    Gender = pet.Gender,
+                    Age = pet.Age,
+                    Size = pet.Size,
+                    Color = pet.Color,
+                    Description = pet.Description,
+                    AdoptionStatus = pet.AdoptionStatus,
+                    Image = pet.Image,
+                    Statuses = pet.Statuses?.Select(ps => new StatusResponseModel
+                    {
+                        StatusId = ps.Status.Id,
+                        Disease = ps.Status.Disease,
+                        Vaccine = ps.Status.Vaccine
+                    }).ToList()
+                };
+
+                petResponses.Add(petResponse);
+            }
+
+            return petResponses;
         }
 
-        public async Task<Pet> GetPetById(int id)
+
+        // Lấy Pet theo ID
+        public async Task<PetResponseModel> GetPetByIdAsync(int id)
         {
-            return await _unitOfWork.Repository<Pet>().GetById(id);
+            var pet = await _unitOfWork.Repository<Pet>()
+                .AsQueryable()
+                .Include(p => p.Statuses)
+                    .ThenInclude(ps => ps.Status)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (pet == null)
+                throw new Exception($"Không tìm thấy Pet với ID {id}.");
+
+            var petResponse = new PetResponseModel
+            {
+                PetID = pet.Id,
+                ShelterID = pet.ShelterID,
+                UserID = pet.UserID,
+                Name = pet.Name,
+                Type = pet.Type,
+                Breed = pet.Breed,
+                Gender = pet.Gender,
+                Age = pet.Age,
+                Size = pet.Size,
+                Color = pet.Color,
+                Description = pet.Description,
+                AdoptionStatus = pet.AdoptionStatus,
+                Image = pet.Image,
+                Statuses = pet.Statuses?.Select(ps => new StatusResponseModel
+                {
+                    StatusId = ps.Status.Id,
+                    Date = DateTime.UtcNow,
+                    Disease = ps.Status.Disease,
+                    Vaccine = ps.Status.Vaccine
+                }).ToList()
+            };
+
+            return petResponse;
         }
 
-        public async Task CreatePetAsync(Pet pet)
+        // Tạo mới Pet
+        public async Task<PetResponseModel> CreatePetAsync(PetCreateRequestModel createPetRequest)
         {
+            var pet = new Pet
+            {
+                ShelterID = createPetRequest.ShelterID,
+                UserID = createPetRequest.UserID,
+                Name = createPetRequest.Name,
+                Type = createPetRequest.Type,
+                Breed = createPetRequest.Breed,
+                Gender = createPetRequest.Gender,
+                Age = createPetRequest.Age,
+                Size = createPetRequest.Size,
+                Color = createPetRequest.Color,
+                Description = createPetRequest.Description,
+                AdoptionStatus = createPetRequest.AdoptionStatus,
+                Image = createPetRequest.Image
+            };
+
             await _unitOfWork.Repository<Pet>().InsertAsync(pet);
             await _unitOfWork.CommitAsync();
+
+            // Trả về Pet đã được tạo với thông tin mới
+            return await GetPetByIdAsync(pet.Id);
         }
 
-        public async Task UpdatePetAsync(Pet pet)
+
+        // Cập nhật Pet
+        public async Task<PetResponseModel> UpdatePetAsync(int id, PetUpdateRequestModel updatePetRequest)
         {
-            await _unitOfWork.Repository<Pet>().Update(pet, pet.Id);
+            var existingPet = await _unitOfWork.Repository<Pet>().GetById(id);
+            if (existingPet == null)
+                throw new Exception($"Không tìm thấy Pet với ID {id}.");
+
+            // Cập nhật các thuộc tính
+            existingPet.ShelterID = updatePetRequest.ShelterID;
+            existingPet.UserID = updatePetRequest.UserID;
+            existingPet.Name = updatePetRequest.Name;
+            existingPet.Type = updatePetRequest.Type;
+            existingPet.Breed = updatePetRequest.Breed;
+            existingPet.Gender = updatePetRequest.Gender;
+            existingPet.Age = updatePetRequest.Age;
+            existingPet.Size = updatePetRequest.Size;
+            existingPet.Color = updatePetRequest.Color;
+            existingPet.Description = updatePetRequest.Description;
+            existingPet.AdoptionStatus = updatePetRequest.AdoptionStatus;
+            existingPet.Image = updatePetRequest.Image;
+
+            _unitOfWork.Repository<Pet>().Update(existingPet, id);
+            await _unitOfWork.CommitAsync();
+
+            // Trả về Pet đã được cập nhật
+            return await GetPetByIdAsync(id);
+        }
+
+        // Xóa Pet
+        public async Task<bool> DeletePetAsync(int id)
+        {
+            var pet = await _unitOfWork.Repository<Pet>().GetById(id);
+            if (pet == null)
+                throw new Exception($"Không tìm thấy Pet với ID {id}.");
+
+            _unitOfWork.Repository<Pet>().Delete(pet);
+            await _unitOfWork.CommitAsync();
+
+            return true;
+        }
+
+
+        // Cập nhật Status của Pet
+        public async Task UpdatePetStatusAsync(int petId, int statusId, StatusUpdateRequestModel updateStatusRequest)
+        {
+            var petStatus = await _unitOfWork.Repository<PetStatus>()
+                .AsQueryable()
+                .Include(ps => ps.Status)
+                .FirstOrDefaultAsync(ps => ps.PetId == petId && ps.StatusId == statusId);
+
+            if (petStatus == null)
+                throw new Exception($"Không tìm thấy Status với ID {statusId} cho Pet với ID {petId}.");
+
+            // Cập nhật thông tin Status
+            petStatus.Status.Disease = updateStatusRequest.Disease;
+            petStatus.Status.Vaccine = updateStatusRequest.Vaccine;
+            petStatus.Status.Date = DateTime.UtcNow;
+
+            _unitOfWork.Repository<Status>().Update(petStatus.Status, petStatus.StatusId);
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task DeletePetAsync(int id)
+        // Thêm Status vào Pet
+        public async Task AddStatusToPetAsync(int petId, CreatePetStatusRequest createPetStatusRequest)
         {
-            var pet = await _unitOfWork.Repository<Pet>().GetById(id);
-            if (pet != null)
+            var pet = await _unitOfWork.Repository<Pet>()
+                .AsQueryable()
+                .Include(p => p.Statuses)
+                .FirstOrDefaultAsync(p => p.Id == petId);
+
+            if (pet == null)
+                throw new Exception($"Không tìm thấy Pet với ID {petId}.");
+
+            // Kiểm tra xem Status đã tồn tại cho Pet này chưa
+            if (pet.Statuses.Any(ps => ps.StatusId == createPetStatusRequest.StatusId))
+                throw new Exception($"Status với ID {createPetStatusRequest.StatusId} đã tồn tại cho Pet với ID {petId}.");
+
+            var petStatus = new PetStatus
             {
-                _unitOfWork.Repository<Pet>().Delete(pet);
-                await _unitOfWork.CommitAsync();
-            }
+                PetId = petId,
+                StatusId = createPetStatusRequest.StatusId
+            };
+
+            await _unitOfWork.Repository<PetStatus>().InsertAsync(petStatus);
+            await _unitOfWork.CommitAsync();
         }
 
-        public async Task UpdatePetStatus(Pet pet, int newStatusId)
+
+
+        // Xóa Status khỏi Pet
+        public async Task RemoveStatusFromPetAsync(int petId, int statusId)
         {
-            // Lấy Pet từ database theo ID
-            var existingPet = await _unitOfWork.Repository<Pet>().GetById(pet.Id);
+            var repository = _unitOfWork.Repository<PetStatus>();
 
-            if (existingPet != null)
-            {
-                // Cập nhật StatusId mới
+            var petStatus = await repository
+                .AsQueryable()
+                .FirstOrDefaultAsync(ps => ps.PetId == petId && ps.StatusId == statusId);
 
-                // Nếu cần cập nhật trạng thái liên quan khác, có thể thêm ở đây
-                // Ví dụ cập nhật AdoptionStatus
-                if (newStatusId == 1) // Ví dụ: 1 là trạng thái "Available for Adoption"
-                {
-                    existingPet.AdoptionStatus = "Available";
-                }
-                else if (newStatusId == 2) // Ví dụ: 2 là trạng thái "Adopted"
-                {
-                    existingPet.AdoptionStatus = "Adopted";
-                }
-                await _unitOfWork.Repository<Pet>().Update(existingPet, existingPet.Id);
-                await _unitOfWork.CommitAsync();
-            }
-            else
-            {
-                throw new Exception($"Pet with ID {pet.Id} not found.");
-            }
+            if (petStatus == null)
+                throw new Exception($"Không tìm thấy Status với ID {statusId} cho Pet với ID {petId}.");
+
+            repository.Delete(petStatus);
+            await _unitOfWork.CommitAsync();
         }
-
     }
 }

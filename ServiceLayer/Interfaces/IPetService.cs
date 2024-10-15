@@ -1,14 +1,19 @@
 ﻿using ModelLayer.Entities;
+using ServiceLayer.RequestModels;
+using ServiceLayer.ResponseModels;
+using System.Net;
 
 namespace ServiceLayer.Interfaces
 {
     public interface IPetService
     {
-        Task CreatePetAsync(Pet pet);
-        Task DeletePetAsync(int id);
-        Task<Pet> GetPetById(int id);
-        IEnumerable<Pet> GetPets();
-        Task UpdatePetAsync(Pet pet);
-        Task UpdatePetStatus(Pet pet,int newStatus);
+        Task<IEnumerable<PetResponseModel>> GetAllPetsAsync();
+        Task<PetResponseModel> GetPetByIdAsync(int id);
+        Task<PetResponseModel> CreatePetAsync(PetCreateRequestModel createPetRequest);
+        Task<PetResponseModel> UpdatePetAsync(int id, PetUpdateRequestModel updatePetRequest);
+        Task<bool> DeletePetAsync(int id);
+        Task AddStatusToPetAsync(int petId, CreatePetStatusRequest createPetStatusRequest);
+        Task UpdatePetStatusAsync(int petId, int statusId, StatusUpdateRequestModel updateStatusRequest);
+        Task RemoveStatusFromPetAsync(int petId, int statusId);
     }
 }

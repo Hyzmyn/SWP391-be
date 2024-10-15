@@ -2,6 +2,8 @@
 using ModelLayer.Entities;
 using RepositoryLayer.UnitOfWork;
 using ServiceLayer.Interfaces;
+using ServiceLayer.RequestModels;
+using ServiceLayer.ResponseModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,65 +21,138 @@ namespace ServiceLayer.Services
             _unitOfWork = unitOfWork;
         }
 
-        // Tạo mới Status
-        public async Task CreateStatusAsync(Status status)
+
+        // lấy tất cả Status
+        public async Task<IEnumerable<StatusResponseModel>> GetAllStatusAsync()
         {
-            await _unitOfWork.Repository<Status>().InsertAsync(status);
-            await _unitOfWork.CommitAsync();
+            var statuses = await _unitOfWork.Repository<Status>()
+                .AsQueryable()
+                .ToListAsync();
+
+            var statusResponses = statuses.Select(status => new StatusResponseModel
+            {
+                StatusId = status.Id,
+                Date = status.Date,
+                Disease = status.Disease,
+                Vaccine = status.Vaccine
+            });
+
+            return statusResponses;
         }
 
-        // Lấy thông tin tất cả Status của một Pet
-        //public IEnumerable<Status> GetStatusesForPet(int petId)
-        //{
-        //    return _unitOfWork.Repository<Status>()
-        //        .AsQueryable()
-        //        .Include(s => s.Pet)
-        //        .Where(s => s.Pet != null && s.Pet.Id == petId)
-        //        .ToList();
-        //}
+        // Lấy tất cả các Status cho một Pet cụ thể
+        public async Task<IEnumerable<StatusResponseModel>> GetStatusesForPetAsync(int petId)
+        {
+            var statuses = await _unitOfWork.Repository<PetStatus>()
+                .AsQueryable()
+                .Where(ps => ps.PetId == petId)
+                .Include(ps => ps.Status)
+                .Select(ps => ps.Status)
+                .ToListAsync();
+
+            var statusResponses = statuses.Select(status => new StatusResponseModel
+            {
+                StatusId = status.Id,
+                Date = status.Date,
+                Disease = status.Disease,
+                Vaccine = status.Vaccine
+            });
+
+            return statusResponses;
+        }
 
         // Lấy Status theo ID
-        public async Task<Status> GetStatusByIdAsync(int id)
+        public async Task<StatusResponseModel> GetStatusByIdAsync(int id)
         {
-            return await _unitOfWork.Repository<Status>()
+            var status = await _unitOfWork.Repository<Status>()
                 .AsQueryable()
-                .Include(s => s.Pet) 
                 .FirstOrDefaultAsync(s => s.Id == id);
+
+            if (status == null)
+                throw new Exception($"Không tìm thấy Status với ID {id}.");
+
+            var statusResponse = new StatusResponseModel
+            {
+                StatusId = status.Id,
+                Date = status.Date,
+                Disease = status.Disease,
+                Vaccine = status.Vaccine
+            };
+
+            return statusResponse;
         }
 
-        // Cập nhật thông tin Status
-        public async Task UpdateStatusAsync(Status status)
+        // Tạo mới Status
+        public async Task<StatusResponseModel> CreateStatusAsync(StatusCreateRequest createStatusRequest)
         {
-            var existingStatus = await _unitOfWork.Repository<Status>().GetById(status.Id);
-            if (existingStatus != null)
+            var status = new Status
             {
-                existingStatus.Date = status.Date;
-                existingStatus.Disease = status.Disease;
-                existingStatus.Vaccine = status.Vaccine;
-                //existingStatus.PetId = status.PetId;
+                Date = DateTime.UtcNow,
+                Disease = createStatusRequest.Disease,
+                Vaccine = createStatusRequest.Vaccine
+            };
 
-                await _unitOfWork.Repository<Status>().Update(existingStatus, status.Id);
-                await _unitOfWork.CommitAsync();
-            }
-            else
+            await _unitOfWork.Repository<Status>().InsertAsync(status);
+            await _unitOfWork.CommitAsync();
+
+            // Liên kết Status với Pet nếu cần
+            var petStatus = new PetStatus
             {
-                throw new Exception("Status not found");
-            }
+                PetId = createStatusRequest.PetId,
+                StatusId = status.Id
+            };
+
+            await _unitOfWork.Repository<PetStatus>().InsertAsync(petStatus);
+            await _unitOfWork.CommitAsync();
+
+            var statusResponse = new StatusResponseModel
+            {
+                StatusId = status.Id,
+                Date = status.Date,
+                Disease = status.Disease,
+                Vaccine = status.Vaccine
+            };
+
+            return statusResponse;
+        }
+
+        // Cập nhật Status
+        public async Task<StatusResponseModel> UpdateStatusAsync(int id, StatusUpdateRequestModel updateStatusRequest)
+        {
+            var existingStatus = await _unitOfWork.Repository<Status>().GetById(id);
+            if (existingStatus == null)
+                throw new Exception($"Không tìm thấy Status với ID {id}.");
+
+            // Cập nhật các thuộc tính
+            existingStatus.Date = updateStatusRequest.Date;
+            existingStatus.Disease = updateStatusRequest.Disease;
+            existingStatus.Vaccine = updateStatusRequest.Vaccine;
+
+            _unitOfWork.Repository<Status>().Update(existingStatus, id);
+            await _unitOfWork.CommitAsync();
+
+            var statusResponse = new StatusResponseModel
+            {
+                StatusId = existingStatus.Id,
+                Date = existingStatus.Date,
+                Disease = existingStatus.Disease,
+                Vaccine = existingStatus.Vaccine
+            };
+
+            return statusResponse;
         }
 
         // Xóa Status
-        public async Task DeleteStatusAsync(int id)
+        public async Task<bool> DeleteStatusAsync(int id)
         {
             var status = await _unitOfWork.Repository<Status>().GetById(id);
-            if (status != null)
-            {
-                _unitOfWork.Repository<Status>().Delete(status);
-                await _unitOfWork.CommitAsync();
-            }
-            else
-            {
-                throw new Exception($"Status with ID {id} not found.");
-            }
+            if (status == null)
+                throw new Exception($"Không tìm thấy Status với ID {id}.");
+
+            _unitOfWork.Repository<Status>().Delete(status);
+            await _unitOfWork.CommitAsync();
+
+            return true;
         }
     }
 
