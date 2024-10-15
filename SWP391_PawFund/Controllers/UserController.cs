@@ -79,7 +79,7 @@ namespace SWP391_PawFund.Controllers
         {
             try
             {
-                var user = await _userService.GetUserProfile(id);
+                var user = await _userService.GetUserByIdAsync(id);
                 return Ok(user);
             }
             catch (Exception ex)
@@ -92,7 +92,7 @@ namespace SWP391_PawFund.Controllers
         // PUT: api/Users/5
         [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> UserUpdate(int id, UserUpdateRequestModel userModel)
+        public async Task<IActionResult> UserUpdate(int id, [FromForm] UserUpdateRequestModel userModel)
         {
             try
             {
@@ -180,9 +180,14 @@ namespace SWP391_PawFund.Controllers
         // POST: api/Users
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<User>> CreateUser(UserCreateRequestModel userModel)
+        public async Task<ActionResult<User>> CreateUser([FromForm] UserCreateRequestModel userModel)
         {
-            string userImage = await _fileUploadService.UploadFileAsync(userModel.Image);
+            string userImage = null;
+
+            if (userModel.Image != null) 
+            {
+                userImage = await _fileUploadService.UploadFileAsync(userModel.Image);
+            }
 
             var user = new User
             {
@@ -192,6 +197,7 @@ namespace SWP391_PawFund.Controllers
                 Image = userImage,
                 Location = userModel.Location,
                 Phone = userModel.Phone,
+                ShelterId = userModel.ShelterId,
                 Status = userModel.Status
             };
 
@@ -212,7 +218,7 @@ namespace SWP391_PawFund.Controllers
                 }
             }
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return Ok(new { message = "User created successfully." });
         }
 
         // DELETE: api/Users/5
