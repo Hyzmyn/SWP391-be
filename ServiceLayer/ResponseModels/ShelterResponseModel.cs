@@ -8,16 +8,20 @@ namespace ServiceLayer.ResponseModels
 {
     public class ShelterResponseModel
     {
-        public int Id { get; set; }          
-        public string Name { get; set; } = null!;
-        public string Location { get; set; } = null!;
-        public string PhoneNumber { get; set; } = null!;
-        public int Capacity { get; set; }
-        public string Email { get; set; } = null!;
-        public string Website { get; set; } = null!;
-        public decimal DonationAmount { get; set; }
-        public ICollection<PetResponseModel>? Pets { get; set; }    
-        public ICollection<EventResponseModel>? Events { get; set; }
+        public int Id { get; set; }  // Thêm ID để nhận diện Shelter
+        public string Name { get; set; }
+        public string Location { get; set; }
+        public string PhoneNumber { get; set; }
+        public int Capaxity { get; set; }
+        public string Email { get; set; }
+        public string? Website { get; set; }
+        public decimal? DonationAmount { get; set; }
+
+        // Thông tin thêm về các quan hệ liên kết có thể có
+        public List<PetResponseModel>? Pets { get; set; }
+        public List<EventResponseModel>? Events { get; set; }
+        public List<UsersResponseModel>? Users { get; set; }
+        public List<DonationResponseModel>? Donations { get; set; }
     }
 
 }
