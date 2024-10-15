@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ModelLayer.Entities;
 using ServiceLayer.Interfaces;
 using ServiceLayer.RequestModels;
@@ -18,11 +20,16 @@ namespace SWP391_PawFund.Controllers
         private readonly IDonateService _donateService;
         private readonly IUsersService _usersService;
         private readonly IShelterService _shelterService;
-        public DonationController(IDonateService donateService, IUsersService usersService, IShelterService shelterService)
+        private readonly IVnPayService _vpnPayService;
+
+        public object TempData { get; private set; }
+
+        public DonationController(IDonateService donateService, IUsersService usersService, IShelterService shelterService, IVnPayService vnPayservice, IVnPayService vpnPayService)
         {
             _donateService = donateService;
             _usersService = usersService;
             _shelterService = shelterService;
+            _vpnPayService = vpnPayService;
         }
 
 
@@ -115,7 +122,7 @@ namespace SWP391_PawFund.Controllers
                         Email = d.User.Email,
                         Location = d.User.Location,
                         Phone = d.User.Phone,
-                        TotalDonation =(decimal) d.User.TotalDonation
+                        TotalDonation = (decimal)d.User.TotalDonation
                     } : null,
                     Shelter = d.Shelter != null ? new ShelterResponseModel
                     {
@@ -123,10 +130,10 @@ namespace SWP391_PawFund.Controllers
                         Name = d.Shelter.Name,
                         Location = d.Shelter.Location,
                         PhoneNumber = d.Shelter.PhoneNumber,
-                        Capacity = d.Shelter.Capaxity, 
+                        Capacity = d.Shelter.Capaxity,
                         Email = d.Shelter.Email,
                         Website = d.Shelter.Website,
-                        DonationAmount =(decimal) d.Shelter.DonationAmount
+                        DonationAmount = (decimal)d.Shelter.DonationAmount
                     } : null
                 });
 
@@ -142,11 +149,31 @@ namespace SWP391_PawFund.Controllers
 
         // Thêm donation mới
         [HttpPost]
-        public async Task<IActionResult> CreateDonation([FromBody] DonationCreateRequestModel request)
+        public async Task<IActionResult> CreateDonation([FromBody] DonationCreateRequestModel request, string payment = "VnPay")
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            if (payment == "Thanh toán VNPay")
+            {
+                var user = await _usersService.GetUserByIdAsync(request.DonorId);
+                if (user == null)
+                {
+                    return NotFound(new { message = "Donor not found." });
+                }
+
+                var vnPayModel = new VnPaymentRequestModel
+                {
+                    Amount = request.Amount,
+                    CreatedDate = DateTime.Now,
+                    Description = $"ID khách hàng:{request.DonorId}, Donate:{request.Amount}",
+                    FullName = user.Username,
+                    OrderId = new Random().Next(1000, 100000)
+                };
+
+                return Redirect(_vpnPayService.CreatePaymentUrl(HttpContext, vnPayModel));
             }
 
             var donor = await _usersService.GetUserByIdAsync(request.DonorId);
@@ -179,7 +206,7 @@ namespace SWP391_PawFund.Controllers
                 Date = donation.Date,
                 DonorId = donation.DonorId,
                 ShelterId = donation.ShelterId,
-                Donor = donor != null ? new UsersResponseModel
+                Donor = new UsersResponseModel
                 {
                     Id = donor.Id,
                     Username = donor.Username,
@@ -187,8 +214,8 @@ namespace SWP391_PawFund.Controllers
                     Location = donor.Location,
                     Phone = donor.Phone,
                     TotalDonation = (decimal)donor.TotalDonation
-                } : null,
-                Shelter = shelter != null ? new ShelterResponseModel
+                },
+                Shelter = new ShelterResponseModel
                 {
                     Id = shelter.Id,
                     Name = shelter.Name,
@@ -198,11 +225,12 @@ namespace SWP391_PawFund.Controllers
                     Email = shelter.Email,
                     Website = shelter.Website,
                     DonationAmount = (decimal)shelter.DonationAmount
-                } : null
+                }
             };
 
             return CreatedAtAction(nameof(GetDonationById), new { id = donation.Id }, response);
         }
+
 
 
 
@@ -276,6 +304,35 @@ namespace SWP391_PawFund.Controllers
                 DonorId = donorId,
                 TotalDonation = totalDonation
             });
+        }
+
+
+		[HttpPost("vnpay")]
+		public IActionResult PaymentCalls()
+		{
+            var payload = new VnPaymentRequestModel
+            {
+                OrderId = 112,
+                FullName = "Nguyen Binh",
+                Description = "Demo",
+                Amount = 1100000,
+				CreatedDate = DateTime.UtcNow.AddHours(7)
+
+		};
+            var url = _vpnPayService.CreatePaymentUrl(HttpContext, payload);
+			return Ok(url);
+		}
+		[HttpGet("vnpay/api")]
+		//[Authorize]
+        public IActionResult PaymentCallBack()
+        {
+            var response = _vpnPayService.PaymentExecute(Request.Query);
+            if (response == null || response?.VnPayResponseCode != "00")
+            {
+                return StatusCode(500, new { message = $"Lỗi thanh toán VNPay: {response?.VnPayResponseCode ?? "unknown error"}" });
+            }
+
+            return Ok(response);
         }
     }
 }
