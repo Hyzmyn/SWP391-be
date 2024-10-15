@@ -20,114 +20,147 @@ namespace ServiceLayer.Services
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<Shelter> GetShelter()
+
+        /// <summary>
+        /// Lấy tất cả các Shelter bao gồm các Pets và Status của từng Pet.
+        /// </summary>
+        /// <returns>Danh sách các Shelter.</returns>
+        public async Task<IEnumerable<Shelter>> GetAllSheltersAsync()
         {
-            return _unitOfWork.Repository<Shelter>().GetAll();
+            return await _unitOfWork.Repository<Shelter>()
+                .GetAll()
+                .Include(s => s.Pets)
+                    .ThenInclude(p => p.Statuses)
+                        .ThenInclude(ps => ps.Status) // Bao gồm thông tin Status từ PetStatus
+                .Include(s => s.Users)
+                .Include(s => s.Events)
+                .Include(s => s.Donations)
+                .ToListAsync();
         }
 
-        public async Task<Shelter> GetShelterByID(int shelterId)
+        /// <summary>
+        /// Lấy Shelter theo ID bao gồm các Pets và Status của từng Pet.
+        /// </summary>
+        /// <param name="shelterId">ID của Shelter.</param>
+        /// <returns>Shelter nếu tìm thấy; ngược lại, null.</returns>
+        public async Task<Shelter?> GetShelterByIdAsync(int shelterId)
         {
-            return await _unitOfWork.Repository<Shelter>().GetById(shelterId);
+            return await _unitOfWork.Repository<Shelter>()
+                .GetAll()
+                .Include(s => s.Pets)
+                    .ThenInclude(p => p.Statuses)
+                        .ThenInclude(ps => ps.Status) // Bao gồm thông tin Status từ PetStatus
+                .Include(s => s.Users)
+                .Include(s => s.Events)
+                .Include(s => s.Donations)
+                .FirstOrDefaultAsync(s => s.Id == shelterId);
         }
 
-        public async Task CreateShelter(Shelter shelter)
+        /// <summary>
+        /// Lấy Shelter liên kết với một User cụ thể nếu User có vai trò "ShelterStaff".
+        /// </summary>
+        /// <param name="userId">ID của User.</param>
+        /// <returns>Shelter nếu tìm thấy và User có quyền truy cập; ngược lại, null.</returns>
+        public async Task<Shelter?> GetShelterByUserIdAsync(int userId)
         {
-            try
-            {
-                await _unitOfWork.Repository<Shelter>().InsertAsync(shelter);
-                await _unitOfWork.CommitAsync();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
-        public async Task UpdateShelter(Shelter shelter)
-        {
-            try
-            {
-                var check = await _unitOfWork.Repository<Shelter>().GetById(shelter.Id);
-                if (check != null)
-                {
-                    await _unitOfWork.Repository<Shelter>().Update(shelter, shelter.Id);
-                    await _unitOfWork.CommitAsync();
-                }
-                else
-                {
-                    throw new Exception("Account not found ! Can not Update");
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            await _unitOfWork.CommitAsync();
-        }
-
-        public async Task DeleteShelter(int id)
-        {
-            try
-            {
-                var shelter = await _unitOfWork.Repository<Shelter>().GetById(id);
-                if (shelter != null)
-                {
-                    _unitOfWork.Repository<Shelter>().Delete(shelter);
-                    await _unitOfWork.CommitAsync();
-                }
-                else
-                {
-                    throw new Exception("Shelter not found");
-                }
-            }
-            catch (Exception ex) { throw ex; }
-
-        }
-        // Phương thức mới
-        public async Task<Shelter?> GetShelterByUserIDAsync(int userId)
-        {
-            var user = await _unitOfWork.Repository<User>().GetAll()
+            var user = await _unitOfWork.Repository<User>()
+                .GetAll()
                 .Include(u => u.UserRoles)
                     .ThenInclude(ur => ur.Role)
                 .FirstOrDefaultAsync(u => u.Id == userId);
 
             if (user == null)
             {
-                throw new ArgumentException("User not found.", nameof(userId));
+                return null;
             }
 
-            // Kiểm tra xem người dùng có vai trò ShelterStaff không
+            // Kiểm tra xem người dùng có vai trò "ShelterStaff" không
             bool isShelterStaff = user.UserRoles.Any(ur => ur.Role.Name.Equals("ShelterStaff", StringComparison.OrdinalIgnoreCase));
 
-            if (!isShelterStaff)
+            if (!isShelterStaff || !user.ShelterId.HasValue)
             {
                 return null;
             }
 
-            if (user.ShelterId == null)
+            // Lấy Shelter dựa trên ShelterId của người dùng
+            return await _unitOfWork.Repository<Shelter>()
+                .GetAll()
+                .Include(s => s.Pets)
+                    .ThenInclude(p => p.Statuses)
+                        .ThenInclude(ps => ps.Status) // Bao gồm thông tin Status từ PetStatus
+                .Include(s => s.Users)
+                .Include(s => s.Events)
+                .Include(s => s.Donations)
+                .FirstOrDefaultAsync(s => s.Id == user.ShelterId.Value);
+        }
+
+        /// <summary>
+        /// Tạo một Shelter mới.
+        /// </summary>
+        /// <param name="shelter">Thông tin Shelter mới.</param>
+        /// <returns>Shelter đã được tạo.</returns>
+        public async Task<Shelter> CreateShelterAsync(Shelter shelter)
+        {
+            if (shelter == null)
             {
-                return null;
+                throw new ArgumentNullException(nameof(shelter));
             }
 
-            // Lấy Shelter dựa trên ShelterId của người dùng và chuyển đổi thành ShelterDto
-            var shelterDto = await _unitOfWork.Repository<Shelter>().GetAll()
-                .Where(s => s.Id == user.ShelterId.Value)
-                .Select(s => new Shelter
-                {
-                    Id = s.Id,
-                    Name = s.Name,
-                    Location = s.Location,
-                    PhoneNumber = s.PhoneNumber,
-                    Capaxity = s.Capaxity,
-                    Email = s.Email,
-                    Website = s.Website,
-                    DonationAmount = s.DonationAmount
-                })
-                .FirstOrDefaultAsync();
+            await _unitOfWork.Repository<Shelter>().InsertAsync(shelter);
+            await _unitOfWork.CommitAsync();
+            return shelter;
+        }
 
-            return shelterDto;
+        /// <summary>
+        /// Cập nhật thông tin của một Shelter.
+        /// </summary>
+        /// <param name="shelter">Thông tin Shelter cần cập nhật.</param>
+        /// <returns>Shelter đã được cập nhật.</returns>
+        public async Task<Shelter> UpdateShelterAsync(Shelter shelter)
+        {
+            if (shelter == null)
+            {
+                throw new ArgumentNullException(nameof(shelter));
+            }
+
+            var existingShelter = await _unitOfWork.Repository<Shelter>().GetById(shelter.Id);
+            if (existingShelter == null)
+            {
+                throw new KeyNotFoundException($"Shelter with ID {shelter.Id} not found.");
+            }
+
+            // Cập nhật các thuộc tính cần thiết
+            existingShelter.Name = shelter.Name;
+            existingShelter.Location = shelter.Location;
+            existingShelter.PhoneNumber = shelter.PhoneNumber;
+            existingShelter.Capaxity = shelter.Capaxity;
+            existingShelter.Email = shelter.Email;
+            existingShelter.Website = shelter.Website;
+            existingShelter.DonationAmount = shelter.DonationAmount;
+
+            _unitOfWork.Repository<Shelter>().Update(existingShelter, existingShelter.Id);
+            await _unitOfWork.CommitAsync();
+
+            return existingShelter;
+        }
+
+        /// <summary>
+        /// Xóa một Shelter theo ID.
+        /// </summary>
+        /// <param name="shelterId">ID của Shelter cần xóa.</param>
+        /// <returns>True nếu xóa thành công; ngược lại, false.</returns>
+        public async Task<bool> DeleteShelterAsync(int shelterId)
+        {
+            var shelter = await _unitOfWork.Repository<Shelter>().GetById(shelterId);
+            if (shelter == null)
+            {
+                return false;
+            }
+
+            _unitOfWork.Repository<Shelter>().Delete(shelter);
+            await _unitOfWork.CommitAsync();
+
+            return true;
         }
     }
 }
