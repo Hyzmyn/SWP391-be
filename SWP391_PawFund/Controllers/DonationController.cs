@@ -58,7 +58,7 @@ namespace SWP391_PawFund.Controllers
             }
 
             var donor = await _usersService.GetUserByIdAsync(donation.DonorId);
-            var shelter = await _shelterService.GetShelterByID(donation.ShelterId);
+            var shelter = await _shelterService.GetShelterByIdAsync(donation.ShelterId);
 
             var response = new DonationDetailResponseModel
             {
@@ -82,7 +82,7 @@ namespace SWP391_PawFund.Controllers
                     Name = shelter.Name,
                     Location = shelter.Location,
                     PhoneNumber = shelter.PhoneNumber,
-                    Capacity = shelter.Capaxity,
+                    Capaxity = shelter.Capaxity,
                     Email = shelter.Email,
                     Website = shelter.Website,
                     DonationAmount = (decimal)shelter.DonationAmount
@@ -126,7 +126,7 @@ namespace SWP391_PawFund.Controllers
                         Name = d.Shelter.Name,
                         Location = d.Shelter.Location,
                         PhoneNumber = d.Shelter.PhoneNumber,
-                        Capacity = d.Shelter.Capaxity,
+                        Capaxity = d.Shelter.Capaxity,
                         Email = d.Shelter.Email,
                         Website = d.Shelter.Website,
                         DonationAmount = (decimal)d.Shelter.DonationAmount
@@ -163,7 +163,7 @@ namespace SWP391_PawFund.Controllers
 
                 // Lấy thông tin User và Shelter đã được cập nhật
                 var donor = await _usersService.GetUserByIdAsync(request.DonorId);
-                var shelter = await _shelterService.GetShelterByID(request.ShelterId);
+                var shelter = await _shelterService.GetShelterByIdAsync(request.ShelterId);
 
                 var response = new DonationDetailResponseModel
                 {
@@ -187,7 +187,7 @@ namespace SWP391_PawFund.Controllers
                         Name = shelter.Name,
                         Location = shelter.Location,
                         PhoneNumber = shelter.PhoneNumber,
-                        Capacity = shelter.Capaxity,
+                        Capaxity = shelter.Capaxity,
                         Email = shelter.Email,
                         Website = shelter.Website,
                         DonationAmount = shelter.DonationAmount ?? 0m
@@ -220,7 +220,7 @@ namespace SWP391_PawFund.Controllers
             }
 
             var donor = await _usersService.GetUserByIdAsync(request.DonorId);
-            var shelter = await _shelterService.GetShelterByID(request.ShelterId);
+            var shelter = await _shelterService.GetShelterByIdAsync(request.ShelterId);
 
             if (donor == null)
             {
