@@ -47,21 +47,28 @@ namespace SWP391_PawFund.Controllers
         
         public ActionResult<IEnumerable<AdoptionRegistrationFormResponse>> GetAllForms()
         {
-            var forms = _adoptionFormService.GetAllAdoptionForms();
-
-            var response = forms.Select(form => new AdoptionRegistrationFormResponse
+            try
             {
-                Id = form.Id,
-                SocialAccount = form.SocialAccount,
-                IncomeAmount = form.IncomeAmount,
-                IdentificationImage = form.IdentificationImage,
-                IdentificationImageBackSide = form.IdentificationImageBackSide,
-                AdopterId = form.AdopterId,
-                ShelterStaffId = form.ShelterStaffId,
-                PetId = form.PetId
-            }).ToList();
+                var forms = _adoptionFormService.GetAllAdoptionForms();
 
-            return Ok(response);
+                var response = forms.Select(form => new AdoptionRegistrationFormResponse
+                {
+                    Id = form.Id,
+                    SocialAccount = form.SocialAccount,
+                    IncomeAmount = form.IncomeAmount,
+                    IdentificationImage = form.IdentificationImage,
+                    IdentificationImageBackSide = form.IdentificationImageBackSide,
+                    AdopterId = form.AdopterId,
+                    ShelterStaffId = form.ShelterStaffId,
+                    PetId = form.PetId
+                }).ToList();
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = ex });
+            }
         }
 
         [HttpGet("{id}")]
@@ -153,60 +160,67 @@ namespace SWP391_PawFund.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateForm(int id, [FromForm] FormUpdateRequest request)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                var form = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
+                if (form == null)
+                {
+                    return NotFound(new { message = "Form not found." });
+                }
+
+                if (request.IdentificationImage != null)
+                {
+                    form.IdentificationImage = await _fileUploadService.UploadFileAsync(request.IdentificationImage);
+                }
+
+                if (request.IdentificationImageBackSide != null)
+                {
+                    form.IdentificationImageBackSide = await _fileUploadService.UploadFileAsync(request.IdentificationImageBackSide);
+                }
+
+                if (request.SocialAccount != null)
+                {
+                    form.SocialAccount = request.SocialAccount;
+                }
+
+                if (request.IncomeAmount.HasValue)
+                {
+                    form.IncomeAmount = (decimal)request.IncomeAmount;
+                }
+
+                if (request.AdopterId.HasValue)
+                {
+                    form.AdopterId = request.AdopterId.Value;
+                }
+
+                if (request.ShelterStaffId.HasValue)
+                {
+                    form.ShelterStaffId = request.ShelterStaffId.Value;
+                }
+
+                if (request.PetId.HasValue)
+                {
+                    form.PetId = request.PetId.Value;
+                }
+
+                if (request.Status.HasValue)
+                {
+                    form.Status = request.Status;
+                }
+
+                await _adoptionFormService.UpdateAdoptionFormAsync(form);
+
+                return Ok(new { message = "Form has been updated successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message =  ex });
             }
 
-            var form = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
-            if (form == null)
-            {
-                return NotFound(new { message = "Form not found." });
-            }
-
-            if (request.IdentificationImage != null)
-            {
-                form.IdentificationImage = await _fileUploadService.UploadFileAsync(request.IdentificationImage);
-            }
-
-            if (request.IdentificationImageBackSide != null)
-            {
-                form.IdentificationImageBackSide = await _fileUploadService.UploadFileAsync(request.IdentificationImageBackSide);
-            }
-
-            if (request.SocialAccount != null)
-            {
-                form.SocialAccount = request.SocialAccount;
-            }
-
-            if (request.IncomeAmount.HasValue)
-            {
-                form.IncomeAmount = (decimal)request.IncomeAmount;
-            }
-
-            if (request.AdopterId.HasValue)
-            {
-                form.AdopterId = request.AdopterId.Value;
-            }
-
-            if (request.ShelterStaffId.HasValue)
-            {
-                form.ShelterStaffId = request.ShelterStaffId.Value;
-            }
-
-            if (request.PetId.HasValue)
-            {
-                form.PetId = request.PetId.Value;
-            }
-
-            if (request.Status.HasValue)
-            {
-                form.Status = request.Status;
-            }
-
-            await _adoptionFormService.UpdateAdoptionFormAsync(form);
-
-            return Ok(new { message = "Form has been updated successfully." });
         }
 
         // DELETE: api/AdoptionRegistrationForm/{id}
@@ -214,14 +228,21 @@ namespace SWP391_PawFund.Controllers
         
         public async Task<IActionResult> DeleteForm(int id)
         {
-            var form = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
-            if (form == null)
+            try
             {
-                return NotFound(new { message = "Form not found." });
-            }
+                var form = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
+                if (form == null)
+                {
+                    return NotFound(new { message = "Form not found." });
+                }
 
-            await _adoptionFormService.DeleteAdoptionFormAsync(id);
-            return Ok(new { message = "Form has been deleted successfully." });
+                await _adoptionFormService.DeleteAdoptionFormAsync(id);
+                return Ok(new { message = "Form has been deleted successfully." });
+            }
+            catch (Exception ex) 
+            {
+                return StatusCode(500, new { message =  ex });
+            }
         }
     }
 
