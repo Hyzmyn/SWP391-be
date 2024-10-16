@@ -214,8 +214,11 @@ namespace RepositoryLayer
             );
 
             modelBuilder.Entity<Shelter>().HasData(
-                new Shelter { Id = 1, Name = "Shelter1", Location = "Tp. HCM", PhoneNumber = "1234567890", Capaxity = 20, Email = "PetShelter1@email.com" },
-                new Shelter { Id = 2, Name = "Shelter2", Location = "Ha Noi", PhoneNumber = "0987654321", Capaxity = 20, Email = "PetShelter2@email.com" }
+                new Shelter { Id = 1, Name = "Shelter1", Location = "Quận 1", PhoneNumber = "1234567890", Capaxity = 20, Email = "PetShelter1@email.com" },
+                new Shelter { Id = 2, Name = "Shelter2", Location = "Bình Dương", PhoneNumber = "0987654321", Capaxity = 20, Email = "PetShelter2@email.com" },
+                new Shelter { Id = 3, Name = "Shelter3", Location = "Thủ Đức", PhoneNumber = "821638713", Capaxity = 20, Email = "PetShelter3@email.com" },
+                new Shelter { Id = 4, Name = "Shelter4", Location = "Quận 9", PhoneNumber = "8437587353", Capaxity = 20, Email = "PetShelter4@email.com" }
+
             );
 
 
