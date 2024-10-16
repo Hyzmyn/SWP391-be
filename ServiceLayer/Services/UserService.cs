@@ -84,11 +84,31 @@ namespace ServiceLayer.Services
         public async Task<UsersResponseModel> GetUserProfile(int id)
         {
             var user = await _unitOfWork.Repository<User>().GetById(id);
+            Shelter shelter = null;
+            Event eventEntity = null;  // Renamed Event to eventEntity to avoid naming conflict
 
             if (user == null)
             {
                 throw new Exception($"User with ID {id} not found.");
             }
+
+            if (user.ShelterId != null)
+            {
+                shelter = await _unitOfWork.Repository<Shelter>().GetById((int)user.ShelterId);
+            }
+
+            if (user.EventId != null)
+            {
+                eventEntity = await _unitOfWork.Repository<Event>().GetById((int)user.EventId);
+            }
+
+            var roles = await _unitOfWork.Repository<UserRole>()
+                .AsQueryable()
+                .AsNoTracking()
+                .Where(s => s.UserId == id)
+                .Include(s => s.Role)
+                .Select(s => s.Role.Name)
+                .ToListAsync();
 
             var responseModel = new UsersResponseModel
             {
@@ -97,11 +117,16 @@ namespace ServiceLayer.Services
                 Email = user.Email,
                 Location = user.Location,
                 Phone = user.Phone,
-                TotalDonation = (decimal)user.TotalDonation,
+                TotalDonation = user.TotalDonation ?? 0, 
+                Image = user.Image ?? string.Empty,
+                Shelter = shelter?.Name ?? "No Shelter",  
+                Event = eventEntity?.Name ?? "No Event",  
+                Roles = roles.ToList()  
             };
 
             return responseModel;
         }
+
 
     }
 }

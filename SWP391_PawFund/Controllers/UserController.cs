@@ -53,7 +53,6 @@ namespace SWP391_PawFund.Controllers
                         Password = user.Password,
                         Phone = user.Phone,
                         Location = user.Location,
-                        Token = user.Token,
                         TotalDonation = user.TotalDonation,
                         Image = user.Image,
                         Roles = roles.ToList()
@@ -75,11 +74,11 @@ namespace SWP391_PawFund.Controllers
         // GET: api/Users/5
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<UsersResponseModel>> GetUser(int id)
         {
             try
             {
-                var user = await _userService.GetUserByIdAsync(id);
+                var user = await _userService.GetUserProfile(id);
                 return Ok(user);
             }
             catch (Exception ex)
@@ -182,43 +181,50 @@ namespace SWP391_PawFund.Controllers
         [Authorize]
         public async Task<ActionResult<User>> CreateUser([FromForm] UserCreateRequestModel userModel)
         {
-            string userImage = null;
-
-            if (userModel.Image != null) 
+            try
             {
-                userImage = await _fileUploadService.UploadFileAsync(userModel.Image);
-            }
+                string userImage = null;
 
-            var user = new User
-            {
-                Username = userModel.Username,
-                Password = userModel.Password,
-                Email = userModel.Email,
-                Image = userImage,
-                Location = userModel.Location,
-                Phone = userModel.Phone,
-                ShelterId = userModel.ShelterId,
-                Status = userModel.Status
-            };
-
-            // Save the user
-            await _userService.CreateUserAsync(user);
-
-            // Add roles to the user
-            if (userModel.RoleIds.Any())
-            {
-                foreach (var roleId in userModel.RoleIds)
+                if (userModel.Image != null)
                 {
-                    var userRole = new UserRole
-                    {
-                        UserId = user.Id,
-                        RoleId = roleId
-                    };
-                    await _userRoleService.AddRoleAsync(userRole);
+                    userImage = await _fileUploadService.UploadFileAsync(userModel.Image);
                 }
-            }
 
-            return Ok(new { message = "User created successfully." });
+                var user = new User
+                {
+                    Username = userModel.Username,
+                    Password = PasswordTools.HashPassword(userModel.Password),
+                    Email = userModel.Email,
+                    Image = userImage,
+                    Location = userModel.Location,
+                    Phone = userModel.Phone,
+                    ShelterId = userModel.ShelterId,
+                    Status = userModel.Status
+                };
+
+                // Save the user
+                await _userService.CreateUserAsync(user);
+
+                // Add roles to the user
+                if (userModel.RoleIds.Any())
+                {
+                    foreach (var roleId in userModel.RoleIds)
+                    {
+                        var userRole = new UserRole
+                        {
+                            UserId = user.Id,
+                            RoleId = roleId
+                        };
+                        await _userRoleService.AddRoleAsync(userRole);
+                    }
+                }
+
+                return Ok(new { message = "User created successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = ex });
+            }
         }
 
         // DELETE: api/Users/5
@@ -226,14 +232,22 @@ namespace SWP391_PawFund.Controllers
         [Authorize]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var user = await _userService.GetUserByIdAsync(id);
-            if (user == null)
+            try
             {
-                return NotFound();
+                var user = await _userService.GetUserByIdAsync(id);
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                await _userService.DeleteUserAsync(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = $"Error message: {ex}" });
             }
 
-            await _userService.DeleteUserAsync(id);
-            return NoContent();
         }
     }
 }

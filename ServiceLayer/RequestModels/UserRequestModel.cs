@@ -16,7 +16,6 @@ namespace ServiceLayer.RequestModels
         public string Phone { get; set; }
         public string Location { get; set; }
         public int? ShelterId { get; set; }
-        public string? Token { get; set; }
         public decimal? TotalDonation { get; set; }
         public string? Image { get; set; }
     }

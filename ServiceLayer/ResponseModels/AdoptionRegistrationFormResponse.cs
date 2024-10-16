@@ -20,8 +20,8 @@ namespace ServiceLayer.ResponseModels
     }
     public class AdoptionRegistrationFormDetailResponse:AdoptionRegistrationFormResponse
     {
-        public UsersResponseModel Adopter { get; set; } 
-        public PetDetailResponse Pet { get; set; } 
-        public UsersResponseModel ShelterStaff { get; set; }
+        //public UsersResponseModel Adopter { get; set; } 
+        //public PetDetailResponse Pet { get; set; } 
+        //public UsersResponseModel ShelterStaff { get; set; }
     }
 }

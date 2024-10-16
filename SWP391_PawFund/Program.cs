@@ -22,10 +22,23 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddHttpClient<ITwilioRestClient, TwilioClient>();
 
-FirebaseApp.Create(new AppOptions()
+//FirebaseApp.Create(new AppOptions()
+//{
+//    Credential = GoogleCredential.FromFile("firebase-adminsdk.json"),
+//});
+
+var firebaseConfig = Environment.GetEnvironmentVariable("FIREBASE_CONFIG");
+if (!string.IsNullOrEmpty(firebaseConfig))
 {
-    Credential = GoogleCredential.FromFile("firebase-adminsdk.json"),
-});
+    // Parse the config and initialize Firebase
+    var credential = GoogleCredential.FromJson(firebaseConfig);
+
+    FirebaseApp.Create(new AppOptions()
+    {
+        Credential = credential
+    });
+}
+
 
 builder.Services.Configure<FormOptions>(options =>
 {
