@@ -15,6 +15,7 @@ namespace ServiceLayer.RequestModels
         public string Password { get; set; }
         public string Phone { get; set; }
         public string Location { get; set; }
+        public int? ShelterId { get; set; }
         public string? Token { get; set; }
         public decimal? TotalDonation { get; set; }
         public string? Image { get; set; }
@@ -28,9 +29,9 @@ namespace ServiceLayer.RequestModels
         public string Email { get; set; } = null!;
         public string Location { get; set; } = null!;
         public string Phone { get; set; } = null!;
-        public bool Status { get; set; }
-        public IFormFile Image { get; set; }
-        public int ShelterId { get; set; }
+        public bool? Status { get; set; }
+        public IFormFile? Image { get; set; }
+        public int? ShelterId { get; set; }
         public List<int> RoleIds { get; set; } = new List<int>();
     }
 
@@ -40,8 +41,8 @@ namespace ServiceLayer.RequestModels
         public string Location { get; set; } = null!;
         public string Phone { get; set; } = null!;
         public bool? Status { get; set; }  
-        public IFormFile Image { get; set; }  
-        public int ShelterId { get; set; }
+        public IFormFile? Image { get; set; }
+        public int? ShelterId { get; set; }
         public List<int>? RoleIds { get; set; }
     }
 }

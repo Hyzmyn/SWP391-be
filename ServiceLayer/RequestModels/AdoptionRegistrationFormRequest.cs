@@ -19,14 +19,14 @@ namespace ServiceLayer.RequestModels
     }
     public class FormUpdateRequest
     {
-        public string SocialAccount { get; set; }
-        public decimal IncomeAmount { get; set; }
-        public IFormFile IdentificationImage { get; set; }
-        public IFormFile IdentificationImageBackSide { get; set; }
-        public int AdopterId { get; set; }
+        public string? SocialAccount { get; set; }
+        public decimal? IncomeAmount { get; set; }
+        public IFormFile? IdentificationImage { get; set; }
+        public IFormFile? IdentificationImageBackSide { get; set; }
+        public int? AdopterId { get; set; }
         public int? ShelterStaffId { get; set; }
-        public int PetId { get; set; }
-        public bool Status { get; set; }
+        public int? PetId { get; set; }
+        public bool? Status { get; set; }
 
     }
 
