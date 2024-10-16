@@ -1,5 +1,6 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,13 +9,20 @@ namespace ServiceLayer.RequestModels
 {
     public class ShelterRequestModel
     {
-        public string Name { get; set; } = null!;
-        public string Location { get; set; } = null!;
-        public string PhoneNumber { get; set; } = null!;
-        public int Capacity { get; set; }
-        public string Email { get; set; } = null!;
-        public string Website { get; set; } = null!;
-        public decimal DonationAmount { get; set; }
+        public string Name { get; set; }
+
+        public string Location { get; set; }
+
+        public string PhoneNumber { get; set; }
+
+        public int Capaxity { get; set; }
+
+        [EmailAddress(ErrorMessage = "Please enter a valid email address.")]
+        public string Email { get; set; }
+
+        public string? Website { get; set; }
+
+        public decimal? DonationAmount { get; set; }
     }
 
 }

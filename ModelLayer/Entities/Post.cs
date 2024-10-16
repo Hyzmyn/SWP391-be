@@ -11,8 +11,9 @@ namespace ModelLayer.Entities
     {
         public string Title { get; set; }
         public string Content { get; set; }
+        public string? Image { get; set; }
         public DateTime CreateDate { get; set; }
-        public DateTime UpdateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
         public int UserId { get; set; }
         public int? PetId { get; set; }
 
