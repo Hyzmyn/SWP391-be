@@ -18,11 +18,14 @@ namespace SWP391_PawFund.Controllers
         private readonly IDonateService _donateService;
         private readonly IUsersService _usersService;
         private readonly IShelterService _shelterService;
-        public DonationController(IDonateService donateService, IUsersService usersService, IShelterService shelterService)
+        private readonly ILogger<DonationController> _logger;
+
+        public DonationController(IDonateService donateService, IUsersService usersService, IShelterService shelterService, ILogger<DonationController> logger)
         {
             _donateService = donateService;
             _usersService = usersService;
             _shelterService = shelterService;
+            _logger = logger;
         }
 
 
@@ -55,7 +58,7 @@ namespace SWP391_PawFund.Controllers
             }
 
             var donor = await _usersService.GetUserByIdAsync(donation.DonorId);
-            var shelter = await _shelterService.GetShelterByID(donation.ShelterId);
+            var shelter = await _shelterService.GetShelterByIdAsync(donation.ShelterId);
 
             var response = new DonationDetailResponseModel
             {
@@ -79,7 +82,7 @@ namespace SWP391_PawFund.Controllers
                     Name = shelter.Name,
                     Location = shelter.Location,
                     PhoneNumber = shelter.PhoneNumber,
-                    Capacity = shelter.Capaxity,
+                    Capaxity = shelter.Capaxity,
                     Email = shelter.Email,
                     Website = shelter.Website,
                     DonationAmount = (decimal)shelter.DonationAmount
@@ -115,7 +118,7 @@ namespace SWP391_PawFund.Controllers
                         Email = d.User.Email,
                         Location = d.User.Location,
                         Phone = d.User.Phone,
-                        TotalDonation =(decimal) d.User.TotalDonation
+                        TotalDonation = (decimal)d.User.TotalDonation
                     } : null,
                     Shelter = d.Shelter != null ? new ShelterResponseModel
                     {
@@ -123,10 +126,10 @@ namespace SWP391_PawFund.Controllers
                         Name = d.Shelter.Name,
                         Location = d.Shelter.Location,
                         PhoneNumber = d.Shelter.PhoneNumber,
-                        Capacity = d.Shelter.Capaxity, 
+                        Capaxity = d.Shelter.Capaxity,
                         Email = d.Shelter.Email,
                         Website = d.Shelter.Website,
-                        DonationAmount =(decimal) d.Shelter.DonationAmount
+                        DonationAmount = (decimal)d.Shelter.DonationAmount
                     } : null
                 });
 
@@ -137,78 +140,78 @@ namespace SWP391_PawFund.Controllers
                 return StatusCode(500, new { message = "An error occurred while processing your request." });
             }
         }
-
-
-
         // Thêm donation mới
         [HttpPost("CreateDonate")]
-        public async Task<IActionResult> CreateDonation([FromBody] DonationCreateRequestModel request)
+        public async Task<IActionResult> CreateDonation([FromForm] DonationCreateRequestModel request)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var donor = await _usersService.GetUserByIdAsync(request.DonorId);
-            var shelter = await _shelterService.GetShelterByID(request.ShelterId);
-
-            if (donor == null)
+            try
             {
-                return NotFound(new { message = "Donor not found." });
-            }
-
-            if (shelter == null)
-            {
-                return NotFound(new { message = "Shelter not found." });
-            }
-
-            var donation = new Donation
-            {
-                Amount = request.Amount,
-                Date = request.Date,
-                DonorId = request.DonorId,
-                ShelterId = request.ShelterId
-            };
-
-            await _donateService.CreateDonationAsync(donation);
-
-            var response = new DonationDetailResponseModel
-            {
-                Id = donation.Id,
-                Amount = donation.Amount,
-                Date = donation.Date,
-                DonorId = donation.DonorId,
-                ShelterId = donation.ShelterId,
-                Donor = donor != null ? new UsersResponseModel
+                var donation = new Donation
                 {
-                    Id = donor.Id,
-                    Username = donor.Username,
-                    Email = donor.Email,
-                    Location = donor.Location,
-                    Phone = donor.Phone,
-                    TotalDonation = (decimal)donor.TotalDonation
-                } : null,
-                Shelter = shelter != null ? new ShelterResponseModel
-                {
-                    Id = shelter.Id,
-                    Name = shelter.Name,
-                    Location = shelter.Location,
-                    PhoneNumber = shelter.PhoneNumber,
-                    Capacity = shelter.Capaxity,
-                    Email = shelter.Email,
-                    Website = shelter.Website,
-                    DonationAmount = (decimal)shelter.DonationAmount
-                } : null
-            };
+                    Amount = request.Amount,
+                    Date = DateTime.UtcNow,
+                    DonorId = request.DonorId,
+                    ShelterId = request.ShelterId
+                };
 
-            return CreatedAtAction(nameof(GetDonationById), new { id = donation.Id }, response);
+                await _donateService.CreateDonationAsync(donation);
+
+                // Lấy thông tin User và Shelter đã được cập nhật
+                var donor = await _usersService.GetUserByIdAsync(request.DonorId);
+                var shelter = await _shelterService.GetShelterByIdAsync(request.ShelterId);
+
+                var response = new DonationDetailResponseModel
+                {
+                    Id = donation.Id,
+                    Amount = donation.Amount,
+                    Date = donation.Date,
+                    DonorId = donation.DonorId,
+                    ShelterId = donation.ShelterId,
+                    Donor = donor != null ? new UsersResponseModel
+                    {
+                        Id = donor.Id,
+                        Username = donor.Username,
+                        Email = donor.Email,
+                        Location = donor.Location,
+                        Phone = donor.Phone,
+                        TotalDonation = donor.TotalDonation ?? 0m
+                    } : null,
+                    Shelter = shelter != null ? new ShelterResponseModel
+                    {
+                        Id = shelter.Id,
+                        Name = shelter.Name,
+                        Location = shelter.Location,
+                        PhoneNumber = shelter.PhoneNumber,
+                        Capaxity = shelter.Capaxity,
+                        Email = shelter.Email,
+                        Website = shelter.Website,
+                        DonationAmount = shelter.DonationAmount ?? 0m
+                    } : null
+                };
+
+                return CreatedAtAction(nameof(GetDonationById), new { id = donation.Id }, response);
+            }
+            catch (ArgumentException ex)
+            {
+                _logger.LogError(ex, "Error creating donation: {Message}", ex.Message);
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Unexpected error creating donation.");
+                return StatusCode(500, new { message = "An unexpected error occurred while creating the donation." });
+            }
         }
-
 
 
         // Cập nhật donation
         [HttpPut("Update_Donate/{id}")]
-        public async Task<IActionResult> UpdateDonation(int id, [FromBody] DonationUpdateRequestModel request)
+        public async Task<IActionResult> UpdateDonation(int id, [FromForm] DonationUpdateRequestModel request)
         {
             var existingDonation = await _donateService.GetDonationsByIdAsync(id);
             if (existingDonation == null)
@@ -217,7 +220,7 @@ namespace SWP391_PawFund.Controllers
             }
 
             var donor = await _usersService.GetUserByIdAsync(request.DonorId);
-            var shelter = await _shelterService.GetShelterByID(request.ShelterId);
+            var shelter = await _shelterService.GetShelterByIdAsync(request.ShelterId);
 
             if (donor == null)
             {
@@ -230,7 +233,7 @@ namespace SWP391_PawFund.Controllers
             }
 
             existingDonation.Amount = request.Amount;
-            existingDonation.Date = request.Date;
+            existingDonation.Date = DateTime.UtcNow;
             existingDonation.DonorId = request.DonorId;
             existingDonation.ShelterId = request.ShelterId;
 

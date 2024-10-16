@@ -30,73 +30,73 @@ namespace SWP391_PawFund.Controllers
         }
 
         // GET: api/Certification/{id}
-        [HttpGet("{id}")]
-        public async Task<ActionResult<CertificationResponseDetail>> GetCertificateById(int id)
-        {
-            try
-            {
-                var certificate = await _certificationService.GetCertificateByIdAsync(id);
-                return Ok(certificate);
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, new { message = "An error occurred while processing your request." });
-            }
-        }
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<CertificationResponseDetail>> GetCertificateById(int id)
+        //{
+        //    try
+        //    {
+        //        var certificate = await _certificationService.GetCertificateByIdAsync(id);
+        //        return Ok(certificate);
+        //    }
+        //    catch (KeyNotFoundException ex)
+        //    {
+        //        return NotFound(new { message = ex.Message });
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return StatusCode(500, new { message = "An error occurred while processing your request." });
+        //    }
+        //}
 
-        // POST: api/Certification
-        [HttpPost]
-        [Authorize(Roles = "Admin, ShelterStaff")] // Chỉ Admin và ShelterStaff mới được tạo Certification
-        public async Task<IActionResult> CreateCertificate([FromBody] CertificationRequest request)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// POST: api/Certification
+        //[HttpPost]
+        //[Authorize(Roles = "Admin, ShelterStaff")] // Chỉ Admin và ShelterStaff mới được tạo Certification
+        //public async Task<IActionResult> CreateCertificate([FromForm] CertificationRequest request)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            try
-            {
-                var createdCertification = await _certificationService.CreateCertificateAsync(request);
-                return CreatedAtAction(nameof(GetCertificateById), new { id = createdCertification.Id }, createdCertification);
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, new { message = "An error occurred while creating the certification." });
-            }
-        }
+        //    try
+        //    {
+        //        var createdCertification = await _certificationService.CreateCertificateAsync(request);
+        //        return CreatedAtAction(nameof(GetCertificateById), new { id = createdCertification.Id }, createdCertification);
+        //    }
+        //    catch (KeyNotFoundException ex)
+        //    {
+        //        return NotFound(new { message = ex.Message });
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return StatusCode(500, new { message = "An error occurred while creating the certification." });
+        //    }
+        //}
 
-        // PUT: api/Certification/{id}
-        [HttpPut("{id}")]
-        [Authorize(Roles = "Admin, ShelterStaff")] // Chỉ Admin và ShelterStaff mới được cập nhật Certification
-        public async Task<IActionResult> UpdateCertificate(int id, [FromBody] CertificationRequest request)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// PUT: api/Certification/{id}
+        //[HttpPut("{id}")]
+        //[Authorize(Roles = "Admin, ShelterStaff")] // Chỉ Admin và ShelterStaff mới được cập nhật Certification
+        //public async Task<IActionResult> UpdateCertificate(int id, [FromForm] CertificationRequest request)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            try
-            {
-                var updatedCertification = await _certificationService.UpdateCertificateAsync(id, request);
-                return Ok(updatedCertification);
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, new { message = "An error occurred while updating the certification." });
-            }
-        }
+        //    try
+        //    {
+        //        var updatedCertification = await _certificationService.UpdateCertificateAsync(id, request);
+        //        return Ok(updatedCertification);
+        //    }
+        //    catch (KeyNotFoundException ex)
+        //    {
+        //        return NotFound(new { message = ex.Message });
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return StatusCode(500, new { message = "An error occurred while updating the certification." });
+        //    }
+        //}
 
         // DELETE: api/Certification/{id}
         [HttpDelete("{id}")]

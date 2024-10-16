@@ -22,10 +22,23 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddHttpClient<ITwilioRestClient, TwilioClient>();
 
-FirebaseApp.Create(new AppOptions()
+//FirebaseApp.Create(new AppOptions()
+//{
+//    Credential = GoogleCredential.FromFile("firebase-adminsdk.json"),
+//});
+
+var firebaseConfig = Environment.GetEnvironmentVariable("FIREBASE_CONFIG");
+if (!string.IsNullOrEmpty(firebaseConfig))
 {
-    Credential = GoogleCredential.FromFile("firebase-adminsdk.json"),
-});
+    // Parse the config and initialize Firebase
+    var credential = GoogleCredential.FromJson(firebaseConfig);
+
+    FirebaseApp.Create(new AppOptions()
+    {
+        Credential = credential
+    });
+}
+
 
 builder.Services.Configure<FormOptions>(options =>
 {
@@ -107,12 +120,29 @@ var app = builder.Build();
 
 
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
+//// Configure the HTTP request pipeline.
+//if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
+
+if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "HomeHunt API V1");
+        c.RoutePrefix = string.Empty;
+    });
+}
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

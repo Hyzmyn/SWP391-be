@@ -6,6 +6,8 @@ using RepositoryLayer.Utils;
 using ServiceLayer.Interfaces;
 using ServiceLayer.RequestModels;
 using ServiceLayer.ResponseModels;
+using ServiceLayer.Services;
+using Twilio.Http;
 
 namespace SWP391_PawFund.Controllers
 {
@@ -16,12 +18,14 @@ namespace SWP391_PawFund.Controllers
         private readonly IUsersService _userService;
         private readonly IAuthServices _authService;
         private readonly IUserRoleService _userRoleService;
+        private readonly IFileUploadService _fileUploadService;
 
-        public UsersController(IUsersService userService, IAuthServices authServices, IUserRoleService userRoleService)
+        public UsersController(IUsersService userService, IAuthServices authServices, IUserRoleService userRoleService, IFileUploadService fileUploadService)
         {
             _userService = userService;
             _authService = authServices;
             _userRoleService = userRoleService;
+            _fileUploadService = fileUploadService;
         }
 
         // GET: api/Users
@@ -43,15 +47,15 @@ namespace SWP391_PawFund.Controllers
                     // Create a UserViewModel with roles
                     var userViewModel = new DetailUserViewModel
                     {
+                        Id = user.Id,
                         Username = user.Username,
                         Email = user.Email,
                         Password = user.Password,
                         Phone = user.Phone,
                         Location = user.Location,
-                        Token = user.Token,
                         TotalDonation = user.TotalDonation,
                         Image = user.Image,
-                        Roles = roles.ToList() 
+                        Roles = roles.ToList()
                     };
 
                     userViewModels.Add(userViewModel);
@@ -70,20 +74,7 @@ namespace SWP391_PawFund.Controllers
         // GET: api/Users/5
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<User>> GetUser(int id)
-        {
-            var user = await _userService.GetUserByIdAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(user);
-        }
-
-        [HttpGet("GetUserProfile/{id}")]
-        [Authorize]
-        public async Task<ActionResult<User>> GetUserProfile(int id)
+        public async Task<ActionResult<UsersResponseModel>> GetUser(int id)
         {
             try
             {
@@ -96,10 +87,11 @@ namespace SWP391_PawFund.Controllers
             }
         }
 
+
         // PUT: api/Users/5
         [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> PutUser(int id, UserUpdateRequestModel userModel)
+        public async Task<IActionResult> UserUpdate(int id, [FromForm] UserUpdateRequestModel userModel)
         {
             try
             {
@@ -109,9 +101,39 @@ namespace SWP391_PawFund.Controllers
                     return NotFound(new { message = "User ID not found." });
                 }
 
-                user.Location = userModel.Location;
-                user.Phone = userModel.Phone;
-                user.Username = userModel.Username;
+                // Update only if the value is provided (non-null or default)
+                if (userModel.Image != null && userModel.Image.Length > 0)
+                {
+                    string userImage = await _fileUploadService.UploadFileAsync(userModel.Image);
+                    user.Image = userImage;
+                }
+                if (!string.IsNullOrWhiteSpace(userModel.Location))
+                {
+                    user.Location = userModel.Location;
+                }
+                if (!string.IsNullOrWhiteSpace(userModel.Phone))
+                {
+                    user.Phone = userModel.Phone;
+                }
+                if (!string.IsNullOrWhiteSpace(userModel.Username))
+                {
+                    user.Username = userModel.Username;
+                }
+
+                // Update ShelterId if it's not 0 (assuming 0 is a default value)
+                if (userModel.ShelterId != 0)
+                {
+                    user.ShelterId = userModel.ShelterId;
+                }
+
+                // For Status, since it's a bool, we assume it's always provided. If you want it to be optional, change it to `bool?` in the model.
+                user.Status = userModel.Status;
+
+                // Update roles if provided
+                if (userModel.RoleIds != null && userModel.RoleIds.Any())
+                {
+                    await _userRoleService.UpdateRolesAsync(id, userModel.RoleIds);
+                }
 
                 await _userService.UpdateUserAsync(user);
 
@@ -157,22 +179,52 @@ namespace SWP391_PawFund.Controllers
         // POST: api/Users
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<User>> PostUser(UserCreateRequestModel userModel)
+        public async Task<ActionResult<User>> CreateUser([FromForm] UserCreateRequestModel userModel)
         {
-            // Map properties from userModel to create a new user entity
-            var user = new User
+            try
             {
-                //Field = userModel.Field,
-                Username = userModel.Username,
-                Password = userModel.Password,
-                Email = userModel.Email,
-                Location = userModel.Location,
-                Phone = userModel.Phone,
-                Status = userModel.Status
-            };
+                string userImage = null;
 
-            await _userService.CreateUserAsync(user);
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+                if (userModel.Image != null)
+                {
+                    userImage = await _fileUploadService.UploadFileAsync(userModel.Image);
+                }
+
+                var user = new User
+                {
+                    Username = userModel.Username,
+                    Password = PasswordTools.HashPassword(userModel.Password),
+                    Email = userModel.Email,
+                    Image = userImage,
+                    Location = userModel.Location,
+                    Phone = userModel.Phone,
+                    ShelterId = userModel.ShelterId,
+                    Status = userModel.Status
+                };
+
+                // Save the user
+                await _userService.CreateUserAsync(user);
+
+                // Add roles to the user
+                if (userModel.RoleIds.Any())
+                {
+                    foreach (var roleId in userModel.RoleIds)
+                    {
+                        var userRole = new UserRole
+                        {
+                            UserId = user.Id,
+                            RoleId = roleId
+                        };
+                        await _userRoleService.AddRoleAsync(userRole);
+                    }
+                }
+
+                return Ok(new { message = "User created successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = ex });
+            }
         }
 
         // DELETE: api/Users/5
@@ -180,20 +232,22 @@ namespace SWP391_PawFund.Controllers
         [Authorize]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var user = await _userService.GetUserByIdAsync(id);
-            if (user == null)
+            try
             {
-                return NotFound();
+                var user = await _userService.GetUserByIdAsync(id);
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                await _userService.DeleteUserAsync(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = $"Error message: {ex}" });
             }
 
-            await _userService.DeleteUserAsync(id);
-            return NoContent();
-        }
-
-
-        private async Task<bool> UserExists(int id)
-        {
-            return await _userService.UserExistsAsync(id);
         }
     }
 }

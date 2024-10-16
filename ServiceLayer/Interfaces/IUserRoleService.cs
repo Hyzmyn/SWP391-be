@@ -16,6 +16,9 @@ namespace ServiceLayer.Interfaces
         Task AddRoleAsync(UserRole role);
 
         Task RemoveRoleAsync(int id);
-            
+
+        Task UpdateRolesAsync(int userId, List<int> newRoleIds);
+
+
     }
 }
