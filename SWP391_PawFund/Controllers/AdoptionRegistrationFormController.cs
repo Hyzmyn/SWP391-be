@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Query.Internal;
+using Microsoft.Extensions.Logging;
 using ModelLayer.Entities;
 using ServiceLayer.Interfaces;
 using ServiceLayer.RequestModels;
@@ -43,28 +44,35 @@ namespace SWP391_PawFund.Controllers
 
         // GET: api/AdoptionRegistrationForm
         [HttpGet]
-        [Authorize]
+        
         public ActionResult<IEnumerable<AdoptionRegistrationFormResponse>> GetAllForms()
         {
-            var forms = _adoptionFormService.GetAllAdoptionForms();
-
-            var response = forms.Select(form => new AdoptionRegistrationFormResponse
+            try
             {
-                Id = form.Id,
-                SocialAccount = form.SocialAccount,
-                IncomeAmount = form.IncomeAmount,
-                IdentificationImage = form.IdentificationImage,
-                IdentificationImageBackSide = form.IdentificationImageBackSide,
-                AdopterId = form.AdopterId,
-                ShelterStaffId = form.ShelterStaffId,
-                PetId = form.PetId
-            }).ToList();
+                var forms = _adoptionFormService.GetAllAdoptionForms();
 
-            return Ok(response);
+                var response = forms.Select(form => new AdoptionRegistrationFormResponse
+                {
+                    Id = form.Id,
+                    SocialAccount = form.SocialAccount,
+                    IncomeAmount = form.IncomeAmount,
+                    IdentificationImage = form.IdentificationImage,
+                    IdentificationImageBackSide = form.IdentificationImageBackSide,
+                    AdopterId = form.AdopterId,
+                    ShelterStaffId = form.ShelterStaffId,
+                    PetId = form.PetId
+                }).ToList();
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = ex });
+            }
         }
 
-        [HttpGet("{id}/detail")]
-        [Authorize]
+        [HttpGet("{id}")]
+        
         public async Task<ActionResult<AdoptionRegistrationFormResponse>> GetFormDetailById(int id)
         {
             try
@@ -87,6 +95,9 @@ namespace SWP391_PawFund.Controllers
                     IncomeAmount = form.IncomeAmount,
                     IdentificationImage = form.IdentificationImage,
                     IdentificationImageBackSide = form.IdentificationImageBackSide,
+                    AdopterId = form.AdopterId, 
+                    ShelterStaffId = form.ShelterStaffId, 
+                    PetId = form.PetId,
                     Status = form.Status
                 };
 
@@ -107,7 +118,7 @@ namespace SWP391_PawFund.Controllers
 
         // POST: api/AdoptionRegistrationForm
         [HttpPost]
-        [Authorize]
+        
         public async Task<IActionResult> CreateForm([FromForm] FormCreateRequest request)
         {
             if (!ModelState.IsValid)
@@ -147,57 +158,91 @@ namespace SWP391_PawFund.Controllers
 
         // PUT: api/AdoptionRegistrationForm/{id}
         [HttpPut("{id}")]
-        [Authorize]
         public async Task<IActionResult> UpdateForm(int id, [FromForm] FormUpdateRequest request)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                var form = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
+                if (form == null)
+                {
+                    return NotFound(new { message = "Form not found." });
+                }
+
+                if (request.IdentificationImage != null)
+                {
+                    form.IdentificationImage = await _fileUploadService.UploadFileAsync(request.IdentificationImage);
+                }
+
+                if (request.IdentificationImageBackSide != null)
+                {
+                    form.IdentificationImageBackSide = await _fileUploadService.UploadFileAsync(request.IdentificationImageBackSide);
+                }
+
+                if (request.SocialAccount != null)
+                {
+                    form.SocialAccount = request.SocialAccount;
+                }
+
+                if (request.IncomeAmount.HasValue)
+                {
+                    form.IncomeAmount = (decimal)request.IncomeAmount;
+                }
+
+                if (request.AdopterId.HasValue)
+                {
+                    form.AdopterId = request.AdopterId.Value;
+                }
+
+                if (request.ShelterStaffId.HasValue)
+                {
+                    form.ShelterStaffId = request.ShelterStaffId.Value;
+                }
+
+                if (request.PetId.HasValue)
+                {
+                    form.PetId = request.PetId.Value;
+                }
+
+                if (request.Status.HasValue)
+                {
+                    form.Status = request.Status;
+                }
+
+                await _adoptionFormService.UpdateAdoptionFormAsync(form);
+
+                return Ok(new { message = "Form has been updated successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message =  ex });
             }
 
-            var existingForm = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
-            if (existingForm == null)
-            {
-                return NotFound(new { message = "Form not found." });
-            }
-
-            // Upload new images if provided
-            if (request.IdentificationImage != null)
-            {
-                existingForm.IdentificationImage = await _fileUploadService.UploadFileAsync(request.IdentificationImage);
-            }
-
-            if (request.IdentificationImageBackSide != null)
-            {
-                existingForm.IdentificationImageBackSide = await _fileUploadService.UploadFileAsync(request.IdentificationImageBackSide);
-            }
-
-            // Update other fields
-            existingForm.SocialAccount = request.SocialAccount;
-            existingForm.IncomeAmount = request.IncomeAmount;
-            existingForm.AdopterId = request.AdopterId;
-            existingForm.ShelterStaffId = request.ShelterStaffId;
-            existingForm.PetId = request.PetId;
-            existingForm.Status = request.Status;
-
-            await _adoptionFormService.UpdateAdoptionFormAsync(existingForm);
-
-            return Ok(new { message = "Form has been updated successfully." });
         }
 
         // DELETE: api/AdoptionRegistrationForm/{id}
         [HttpDelete("{id}")]
-        [Authorize]
+        
         public async Task<IActionResult> DeleteForm(int id)
         {
-            var form = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
-            if (form == null)
+            try
             {
-                return NotFound(new { message = "Form not found." });
-            }
+                var form = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
+                if (form == null)
+                {
+                    return NotFound(new { message = "Form not found." });
+                }
 
-            await _adoptionFormService.DeleteAdoptionFormAsync(id);
-            return Ok(new { message = "Form has been deleted successfully." });
+                await _adoptionFormService.DeleteAdoptionFormAsync(id);
+                return Ok(new { message = "Form has been deleted successfully." });
+            }
+            catch (Exception ex) 
+            {
+                return StatusCode(500, new { message =  ex });
+            }
         }
     }
 
