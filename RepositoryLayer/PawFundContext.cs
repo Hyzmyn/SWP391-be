@@ -26,7 +26,8 @@ namespace RepositoryLayer
         public virtual DbSet<Certification> Certifications { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<SmsMessage> SmsMessages { get; set; }
-        public virtual DbSet<UserRole> UserRole { get; set; }
+        public virtual DbSet<UserRole> UserRoles { get; set; }
+        public virtual DbSet<PetStatus> PetStatuses { get; set; }
 
 
         public PawFundContext(DbContextOptions<PawFundContext> options) : base(options)
@@ -131,19 +132,23 @@ namespace RepositoryLayer
 
             modelBuilder.Entity<AdoptionRegistrationForm>()
                 .Property(a => a.IncomeAmount)
-                .HasColumnType("decimal(16, 4)");
+                .HasColumnType("decimal(18, 4)");
 
             modelBuilder.Entity<Donation>()
                 .Property(a => a.Amount)
-                .HasColumnType("decimal(16, 4)");
+                .HasColumnType("decimal(18, 4)");
 
             modelBuilder.Entity<User>()
                 .Property(a => a.TotalDonation)
-                .HasColumnType("decimal(16, 4)");
+                .HasColumnType("decimal(18, 4)");
+
+            modelBuilder.Entity<User>()
+                .Property(a => a.wallet)
+                .HasColumnType("decimal(18, 4)");
 
             modelBuilder.Entity<Shelter>()
                 .Property(a => a.DonationAmount)
-                .HasColumnType("decimal(16, 4)");
+                .HasColumnType("decimal(18, 4)");
 
             modelBuilder.Entity<Certification>()
                 .HasOne(c => c.Pet)
@@ -166,7 +171,7 @@ namespace RepositoryLayer
                 new User { Id = 3, Username = "Staff2", Email = "Staff2@email.com", Password = PasswordTools.HashPassword("123456"), ShelterId = 1 },
                 new User { Id = 4, Username = "Staff3", Email = "Staff3@email.com", Password = PasswordTools.HashPassword("123456"), ShelterId = 2 },
                 new User { Id = 5, Username = "Staff4", Email = "Staff4@email.com", Password = PasswordTools.HashPassword("123456"), ShelterId = 2 },
-                new User { Id = 6, Username = "Donor1", Email = "Donor1@email.com", Password = PasswordTools.HashPassword("123456"), Phone = "123456789", Location = "HCM", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png" },
+                new User { Id = 6, Username = "Donor1", Email = "Donor1@email.com", Password = PasswordTools.HashPassword("123456"), Phone = "123456789", Location = "HCM", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png" },
                 new User { Id = 7, Username = "Donor2", Email = "Donor2@email.com", Password = PasswordTools.HashPassword("123456") },
                 new User { Id = 8, Username = "Donor3", Email = "Donor3@email.com", Password = PasswordTools.HashPassword("123456") },
                 new User { Id = 9, Username = "Donor4", Email = "Donor4@email.com", Password = PasswordTools.HashPassword("123456") },
@@ -214,34 +219,34 @@ namespace RepositoryLayer
             );
 
             modelBuilder.Entity<Shelter>().HasData(
-                new Shelter { Id = 1, Name = "Shelter1", Location = "Quận 1", PhoneNumber = "1234567890", Capaxity = 20, Email = "PetShelter1@email.com" },
-                new Shelter { Id = 2, Name = "Shelter2", Location = "Bình Dương", PhoneNumber = "0987654321", Capaxity = 20, Email = "PetShelter2@email.com" },
-                new Shelter { Id = 3, Name = "Shelter3", Location = "Thủ Đức", PhoneNumber = "821638713", Capaxity = 20, Email = "PetShelter3@email.com" },
-                new Shelter { Id = 4, Name = "Shelter4", Location = "Quận 9", PhoneNumber = "8437587353", Capaxity = 20, Email = "PetShelter4@email.com" }
+                new Shelter { Id = 1, Name = "Shelter1", Location = "Quận 1", PhoneNumber = "1234567890", Capacity = 20, Email = "PetShelter1@email.com" },
+                new Shelter { Id = 2, Name = "Shelter2", Location = "Bình Dương", PhoneNumber = "0987654321", Capacity = 20, Email = "PetShelter2@email.com" },
+                new Shelter { Id = 3, Name = "Shelter3", Location = "Thủ Đức", PhoneNumber = "821638713", Capacity = 20, Email = "PetShelter3@email.com" },
+                new Shelter { Id = 4, Name = "Shelter4", Location = "Quận 9", PhoneNumber = "8437587353", Capacity = 20, Email = "PetShelter4@email.com" }
 
             );
 
 
             modelBuilder.Entity<Pet>().HasData(
-                new Pet { Id = 1, ShelterID = 1, Name = "Buddy", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Adopted", Type = "Dog", UserID = 17 },
-                new Pet { Id = 2, ShelterID = 1, Name = "Whiskers", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Available", Type = "Cat" },
-                new Pet { Id = 3, ShelterID = 1, Name = "Max", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Adopted", Type = "Dog", UserID = 16 },
-                new Pet { Id = 4, ShelterID = 1, Name = "Luna", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Adopted", Type = "Cat", UserID = 14 },
-                new Pet { Id = 5, ShelterID = 1, Name = "Bella", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Available", Type = "Dog" },
-                new Pet { Id = 6, ShelterID = 1, Name = "Lux", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Available", Type = "Cat" },
-                new Pet { Id = 7, ShelterID = 1, Name = "Dono", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Available", Type = "Dog" },
-                new Pet { Id = 8, ShelterID = 1, Name = "Linker", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Available", Type = "Cat" },
-                new Pet { Id = 9, ShelterID = 1, Name = "Dawin", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Adopted", Type = "Dog", UserID = 15 },
-                new Pet { Id = 10, ShelterID = 2, Name = "Modor", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Available", Type = "Cat" },
-                new Pet { Id = 11, ShelterID = 2, Name = "Pingking", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Available", Type = "Dog" },
-                new Pet { Id = 12, ShelterID = 2, Name = "Seto", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Available", Type = "Cat" },
-                new Pet { Id = 13, ShelterID = 2, Name = "kaiba", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Available", Type = "Dog" },
-                new Pet { Id = 14, ShelterID = 2, Name = "Asuka", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Available", Type = "Cat" },
-                new Pet { Id = 15, ShelterID = 2, Name = "Jax", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Available", Type = "Dog" },
-                new Pet { Id = 16, ShelterID = 2, Name = "Jihn", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Available", Type = "Cat" },
-                new Pet { Id = 18, ShelterID = 2, Name = "Kaisa", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Available", Type = "Dog" },
-                new Pet { Id = 19, ShelterID = 2, Name = "Bump", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Available", Type = "Dog" },
-                new Pet { Id = 20, ShelterID = 2, Name = "Rasko", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", AdoptionStatus = "Available", Type = "Dog" }
+                new Pet { Id = 1, ShelterID = 1, Name = "Buddy", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Adopted", Type = "Dog", UserID = 17 },
+                new Pet { Id = 2, ShelterID = 1, Name = "Whiskers", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
+                new Pet { Id = 3, ShelterID = 1, Name = "Max", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Adopted", Type = "Dog", UserID = 16 },
+                new Pet { Id = 4, ShelterID = 1, Name = "Luna", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Adopted", Type = "Cat", UserID = 14 },
+                new Pet { Id = 5, ShelterID = 1, Name = "Bella", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
+                new Pet { Id = 6, ShelterID = 1, Name = "Lux", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
+                new Pet { Id = 7, ShelterID = 1, Name = "Dono", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
+                new Pet { Id = 8, ShelterID = 1, Name = "Linker", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
+                new Pet { Id = 9, ShelterID = 1, Name = "Dawin", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Adopted", Type = "Dog", UserID = 15 },
+                new Pet { Id = 10, ShelterID = 2, Name = "Modor", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
+                new Pet { Id = 11, ShelterID = 2, Name = "Pingking", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
+                new Pet { Id = 12, ShelterID = 2, Name = "Seto", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
+                new Pet { Id = 13, ShelterID = 2, Name = "kaiba", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
+                new Pet { Id = 14, ShelterID = 2, Name = "Asuka", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
+                new Pet { Id = 15, ShelterID = 2, Name = "Jax", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
+                new Pet { Id = 16, ShelterID = 2, Name = "Jihn", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
+                new Pet { Id = 18, ShelterID = 2, Name = "Kaisa", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
+                new Pet { Id = 19, ShelterID = 2, Name = "Bump", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
+                new Pet { Id = 20, ShelterID = 2, Name = "Rasko", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" }
 
 
             );

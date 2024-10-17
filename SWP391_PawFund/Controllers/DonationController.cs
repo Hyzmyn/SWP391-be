@@ -82,7 +82,7 @@ namespace SWP391_PawFund.Controllers
                     Name = shelter.Name,
                     Location = shelter.Location,
                     PhoneNumber = shelter.PhoneNumber,
-                    Capaxity = shelter.Capaxity,
+                    Capacity = shelter.Capacity,
                     Email = shelter.Email,
                     Website = shelter.Website,
                     DonationAmount = (decimal)shelter.DonationAmount
@@ -126,7 +126,7 @@ namespace SWP391_PawFund.Controllers
                         Name = d.Shelter.Name,
                         Location = d.Shelter.Location,
                         PhoneNumber = d.Shelter.PhoneNumber,
-                        Capaxity = d.Shelter.Capaxity,
+                        Capacity = d.Shelter.Capacity,
                         Email = d.Shelter.Email,
                         Website = d.Shelter.Website,
                         DonationAmount = (decimal)d.Shelter.DonationAmount
@@ -187,7 +187,7 @@ namespace SWP391_PawFund.Controllers
                         Name = shelter.Name,
                         Location = shelter.Location,
                         PhoneNumber = shelter.PhoneNumber,
-                        Capaxity = shelter.Capaxity,
+                        Capacity = shelter.Capacity,
                         Email = shelter.Email,
                         Website = shelter.Website,
                         DonationAmount = shelter.DonationAmount ?? 0m
