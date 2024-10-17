@@ -129,7 +129,7 @@ namespace SWP391_PawFund.Controllers
                 }
                 if (await _adoptionFormService.FormExistsAsync(request.PetId))
                 {
-                    return StatusCode(500, new { message = "Form Exist" });
+                    return StatusCode(500, new { message = "Pet is pending for Affirmation" });
                 }
 
                 var identificationImageUrl = await _fileUploadService.UploadFileAsync(request.IdentificationImage);
@@ -143,7 +143,7 @@ namespace SWP391_PawFund.Controllers
                     IdentificationImageBackSide = identificationImageBackSideUrl,
                     AdopterId = request.AdopterId,
                     PetId = request.PetId,
-                    Status = false
+                    Status = null
                 };
 
                 await _adoptionFormService.CreateAdoptionFormAsync(form);
