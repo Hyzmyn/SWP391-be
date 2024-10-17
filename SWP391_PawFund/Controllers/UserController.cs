@@ -223,7 +223,7 @@ namespace SWP391_PawFund.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = ex });
+                return BadRequest(ex.Message);
             }
         }
 
