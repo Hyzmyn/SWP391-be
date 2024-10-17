@@ -19,7 +19,7 @@ namespace SWP391_PawFund.Controllers
             _statusPetService = statusPetService;
         }
 
-        [HttpGet("all")]
+        [HttpGet]
         public async Task<IActionResult> GetAllStatus()
         {
             var statuses = await _statusPetService.GetAllStatusAsync();
