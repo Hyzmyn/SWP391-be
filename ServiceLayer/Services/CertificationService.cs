@@ -24,14 +24,15 @@ namespace ServiceLayer.Services
             _unitOfWork = unitOfWork;
             _petService = petService;
         }
-
-        // Services/CertificationService.cs
+        // Lấy tất cả chứng nhận
         public IEnumerable<CertificationResponseDetail> GetAllCertificates()
         {
             var certifications = _unitOfWork.Repository<Certification>().GetAll()
-                .Include(c => c.User) // Assuming User is ShelterStaff
+                .Include(c => c.User) // Giả định User là ShelterStaff
                 .Include(c => c.Pet)
-                    .ThenInclude(p => p.Shelter); // Assuming Pet has Shelter navigation property
+                    .ThenInclude(p => p.Shelter)
+                .Include(c => c.Pet.Statuses)
+                    .ThenInclude(p => p.Status);
 
             var response = certifications.Select(c => new CertificationResponseDetail
             {
@@ -48,7 +49,7 @@ namespace ServiceLayer.Services
                     Email = c.User.Email,
                     Location = c.User.Location,
                     Phone = c.User.Phone,
-                    TotalDonation =(decimal) c.User.TotalDonation,
+                    TotalDonation = (decimal)c.User.TotalDonation,
                 } : null!,
                 Pet = c.Pet != null ? new PetDetailResponse
                 {
@@ -65,6 +66,12 @@ namespace ServiceLayer.Services
                     ShelterID = c.Pet.ShelterID,
                     UserID = (int)c.Pet.UserID,
                     Description = c.Pet.Description,
+                    Statuses = c.Pet.Statuses.Select(ps => new StatusResponseModel
+                    {
+                        StatusId = ps.StatusId,
+                        Disease = ps.Status.Disease,
+                        Vaccine = ps.Status.Vaccine,
+                    }).ToList(),
                     ShelterName = c.Pet.Shelter != null ? c.Pet.Shelter.Name : null
                 } : null!
             });
@@ -72,236 +79,264 @@ namespace ServiceLayer.Services
             return response;
         }
 
+        // Lấy chứng nhận theo ID
+        public async Task<CertificationResponseDetail> GetCertificateByIdAsync(int id)
+        {
+            if (id <= 0)
+            {
+                throw new ArgumentException("Id phải lớn hơn 0.", nameof(id));
+            }
 
-        // Lấy Certification theo ID
-        //public async Task<CertificationResponseDetail> GetCertificateByIdAsync(int id)
-        //{
-        //    if (id <= 0)
-        //    {
-        //        throw new ArgumentException("Id must be greater than zero.", nameof(id));
-        //    }
+            var certification = await _unitOfWork.Repository<Certification>().GetAll()
+                .Include(c => c.User)
+                .Include(c => c.Pet)
+                    .ThenInclude(p => p.Shelter)
+                .Include(c => c.Pet.Statuses)
+                    .ThenInclude(ps => ps.Status)
+                .FirstOrDefaultAsync(c => c.Id == id);
 
-        //    var certification = await _unitOfWork.Repository<Certification>().GetAll()
-        //        .Include(c => c.User)
-        //        .Include(c => c.Pet)
-        //            .ThenInclude(p => p.Shelter)
-        //        .FirstOrDefaultAsync(c => c.Id == id);
+            if (certification == null)
+            {
+                throw new KeyNotFoundException($"CertificationID {id} không tìm thấy.");
+            }
 
-        //    if (certification == null)
-        //    {
-        //        throw new KeyNotFoundException($"Certification with ID {id} not found.");
-        //    }
+            var response = new CertificationResponseDetail
+            {
+                Id = certification.Id,
+                Image = certification.Image,
+                Description = certification.Desciption,
+                Date = certification.Date,
+                ShelterStaffID = certification.UserId,
+                PetId = certification.PetId,
+                ShelterStaff = certification.User != null ? new UsersResponseModel
+                {
+                    Id = certification.User.Id,
+                    Username = certification.User.Username,
+                    Email = certification.User.Email,
+                    Location = certification.User.Location,
+                    Phone = certification.User.Phone,
+                    TotalDonation = (decimal)certification.User.TotalDonation,
+                } : null!,
+                Pet = certification.Pet != null ? new PetDetailResponse
+                {
+                    PetID = certification.Pet.Id,
+                    Name = certification.Pet.Name,
+                    Type = certification.Pet.Type,
+                    Breed = certification.Pet.Breed,
+                    Gender = certification.Pet.Gender,
+                    Age = certification.Pet.Age,
+                    Size = certification.Pet.Size,
+                    Color = certification.Pet.Color,
+                    AdoptionStatus = certification.Pet.AdoptionStatus,
+                    Image = certification.Pet.Image,
+                    ShelterID = certification.Pet.ShelterID,
+                    UserID = certification.Pet.UserID,
+                    Description = certification.Pet.Description,
+                    Statuses = certification.Pet.Statuses.Select(ps => new StatusResponseModel
+                    {
+                        StatusId = ps.StatusId,
+                        Disease = ps.Status.Disease,
+                        Vaccine = ps.Status.Vaccine
+                    }).ToList(),
+                    ShelterName = certification.Pet.Shelter?.Name
+                } : null!
+            };
 
-        //    var response = new CertificationResponseDetail
-        //    {
-        //        Id = certification.Id,
-        //        Image = certification.Image,
-        //        Description = certification.Desciption,
-        //        Date = certification.Date,
-        //        ShelterStaffID = certification.UserId,
-        //        PetId = certification.PetId,
-        //        ShelterStaff = certification.User != null ? new UsersResponseModel
-        //        {
-        //            Id = certification.User.Id,
-        //            Username = certification.User.Username,
-        //            Email = certification.User.Email,
-        //            Location = certification.User.Location,
-        //            Phone = certification.User.Phone,
-        //            TotalDonation =(decimal) certification.User.TotalDonation,
-        //        } : null!,
-        //        Pet = certification.Pet != null ? new PetDetailResponse
-        //        {
-        //            PetID = certification.Pet.Id,
-        //            Name = certification.Pet.Name,
-        //            Type = certification.Pet.Type,
-        //            Breed = certification.Pet.Breed,
-        //            Gender = certification.Pet.Gender,
-        //            Age =(int) certification.Pet.Age,
-        //            Size = certification.Pet.Size,
-        //            Color = certification.Pet.Color,
-        //            AdoptionStatus = certification.Pet.AdoptionStatus,
-        //            Image = certification.Pet.Image,
-        //            ShelterID = certification.Pet.ShelterID,
-        //            UserID = (int)certification.Pet.UserID,
-        //            Description = certification.Pet.Description,
-        //            StatusId = (int)certification.Pet.StatusId,
-        //            ShelterName = certification.Pet.Shelter != null ? certification.Pet.Shelter.Name : null
-        //        } : null!
-        //    };
+            return response;
+        }
 
-        //    return response;
-        //}
+        // Tạo mới chứng nhận
+        public async Task<CertificationResponseDetail> CreateCertificateAsync(CertificationRequest request)
+        {
+            var shelterStaff = await _unitOfWork.Repository<User>()
+                .GetAll()
+                .Include(u => u.UserRoles)
+                    .ThenInclude(ur => ur.Role)
+                .FirstOrDefaultAsync(u => u.Id == request.ShelterStaffId);
 
-        // Tạo mới Certification
-        //public async Task<CertificationResponseDetail> CreateCertificateAsync(CertificationRequest request)
-        //{
-        //    // Kiểm tra sự tồn tại của User (ShelterStaff)
-        //    var shelterStaff = await _unitOfWork.Repository<User>().GetById(request.ShelterStaffId);
-        //    if (shelterStaff == null)
-        //    {
-        //        throw new KeyNotFoundException($"ShelterStaff with ID {request.ShelterStaffId} not found.");
-        //    }
+            if (shelterStaff == null || !shelterStaff.UserRoles.Any(ur => ur.Role.Name == "Staff"))
+            {
+                throw new UnauthorizedAccessException("User không có quyền truy cập, yêu cầu role là 'Staff'.");
+            }
 
-        //    // Kiểm tra sự tồn tại của Pet
-        //    var pet = await _unitOfWork.Repository<Pet>().GetById(request.PetId);
-        //    if (pet == null)
-        //    {
-        //        throw new KeyNotFoundException($"Pet with ID {request.PetId} not found.");
-        //    }
+            // Kiểm tra sự tồn tại của Pet
+            var pet = await _unitOfWork.Repository<Pet>().GetById(request.PetId);
+            if (pet == null)
+            {
+                throw new KeyNotFoundException($"Pet với ID {request.PetId} không tìm thấy.");
+            }
 
-        //    var certification = new Certification
-        //    {
-        //        Image = request.Image,
-        //        Desciption = request.Description,
-        //        Date = DateTime.UtcNow,
-        //        UserId = request.ShelterStaffId,
-        //        PetId = request.PetId
-        //    };
+            var certification = new Certification
+            {
+                Image = request.Image,
+                Desciption = request.Description,
+                Date = DateTime.UtcNow,
+                UserId = request.ShelterStaffId,
+                PetId = request.PetId
+            };
 
-        //    await _unitOfWork.Repository<Certification>().InsertAsync(certification);
-        //    await _unitOfWork.CommitAsync();
+            await _unitOfWork.Repository<Certification>().InsertAsync(certification);
+            await _unitOfWork.CommitAsync();
 
-        //    // Lấy lại Certification vừa tạo để trả về response chi tiết
-        //    var createdCertification = await _unitOfWork.Repository<Certification>().GetAll()
-        //        .Include(c => c.User)
-        //        .Include(c => c.Pet)
-        //            .ThenInclude(p => p.Shelter)
-        //        .FirstOrDefaultAsync(c => c.Id == certification.Id);
+            // Lấy lại Certification vừa tạo để trả về response chi tiết
+            var createdCertification = await _unitOfWork.Repository<Certification>().GetAll()
+                .Include(c => c.User)
+                .Include(c => c.Pet)
+                    .ThenInclude(p => p.Shelter)
+                .Include(c => c.Pet.Statuses) // Include Pet Statuses
+                    .ThenInclude(ps => ps.Status)
+                .FirstOrDefaultAsync(c => c.Id == certification.Id);
 
-        //    if (createdCertification == null)
-        //    {
-        //        throw new ApplicationException("An error occurred while retrieving the created certification.");
-        //    }
+            if (createdCertification == null)
+            {
+                throw new ApplicationException("Có lỗi xảy ra khi truy xuất chứng nhận đã tạo.");
+            }
 
-        //    var response = new CertificationResponseDetail
-        //    {
-        //        Id = createdCertification.Id,
-        //        Image = createdCertification.Image,
-        //        Description = createdCertification.Desciption,
-        //        Date = createdCertification.Date,
-        //        ShelterStaffID = createdCertification.UserId,
-        //        PetId = createdCertification.PetId,
-        //        ShelterStaff = createdCertification.User != null ? new UsersResponseModel
-        //        {
-        //            Id = createdCertification.User.Id,
-        //            Username = createdCertification.User.Username,
-        //            Email = createdCertification.User.Email,
-        //            Location = createdCertification.User.Location,
-        //            Phone = createdCertification.User.Phone,
-        //            TotalDonation =(decimal) createdCertification.User.TotalDonation,
-        //        } : null!,
-        //        Pet = createdCertification.Pet != null ? new PetDetailResponse
-        //        {
-        //            PetID = createdCertification.Pet.Id,
-        //            Name = createdCertification.Pet.Name,
-        //            Type = createdCertification.Pet.Type,
-        //            Breed = createdCertification.Pet.Breed,
-        //            Gender = createdCertification.Pet.Gender,
-        //            Age = (int)createdCertification.Pet.Age,
-        //            Size = createdCertification.Pet.Size,
-        //            Color = createdCertification.Pet.Color,
-        //            AdoptionStatus = createdCertification.Pet.AdoptionStatus,
-        //            Image = createdCertification.Pet.Image,
-        //            ShelterID = createdCertification.Pet.ShelterID,
-        //            UserID =(int) createdCertification.Pet.UserID,
-        //            Description = createdCertification.Pet.Description,
-        //            StatusId =(int) createdCertification.Pet.StatusId,
-        //            ShelterName = createdCertification.Pet.Shelter != null ? createdCertification.Pet.Shelter.Name : null
-        //        } : null!
-        //    };
+            var response = new CertificationResponseDetail
+            {
+                Id = createdCertification.Id,
+                Image = createdCertification.Image,
+                Description = createdCertification.Desciption,
+                Date = createdCertification.Date,
+                ShelterStaffID = createdCertification.UserId,
+                PetId = createdCertification.PetId,
+                ShelterStaff = createdCertification.User != null ? new UsersResponseModel
+                {
+                    Id = createdCertification.User.Id,
+                    Username = createdCertification.User.Username,
+                    Email = createdCertification.User.Email,
+                    Location = createdCertification.User.Location,
+                    Phone = createdCertification.User.Phone,
+                    TotalDonation = (decimal)createdCertification.User.TotalDonation,
+                } : null!,
+                Pet = createdCertification.Pet != null ? new PetDetailResponse
+                {
+                    PetID = createdCertification.Pet.Id,
+                    Name = createdCertification.Pet.Name,
+                    Type = createdCertification.Pet.Type,
+                    Breed = createdCertification.Pet.Breed,
+                    Gender = createdCertification.Pet.Gender,
+                    Age = createdCertification.Pet.Age ?? 0,
+                    Size = createdCertification.Pet.Size,
+                    Color = createdCertification.Pet.Color,
+                    AdoptionStatus = createdCertification.Pet.AdoptionStatus,
+                    Image = createdCertification.Pet.Image,
+                    ShelterID = createdCertification.Pet.ShelterID,
+                    UserID = createdCertification.Pet.UserID ?? 0,
+                    Description = createdCertification.Pet.Description,
+                    Statuses = createdCertification.Pet.Statuses?.Select(s => new StatusResponseModel
+                    {
+                        StatusId = s.StatusId,
+                        Disease = s.Status?.Disease,
+                        Vaccine = s.Status?.Vaccine
+                    }).ToList(), // Trả về danh sách Status
+                    ShelterName = createdCertification.Pet.Shelter?.Name
+                } : null!
+            };
 
-        //    return response;
-        //}
+            return response;
+        }
 
-        // Cập nhật Certification
-        //public async Task<CertificationResponseDetail> UpdateCertificateAsync(int id, CertificationRequest request)
-        //{
-        //    if (id <= 0)
-        //    {
-        //        throw new ArgumentException("Id must be greater than zero.", nameof(id));
-        //    }
+        // Cập nhật chứng nhận
+        public async Task<CertificationResponseDetail> UpdateCertificateAsync(int id, CertificationRequest request)
+        {
+            if (id <= 0)
+            {
+                throw new ArgumentException("Id phải lớn hơn 0.", nameof(id));
+            }
 
-        //    var existingCertification = await _unitOfWork.Repository<Certification>().GetById(id);
-        //    if (existingCertification == null)
-        //    {
-        //        throw new KeyNotFoundException($"Certification with ID {id} not found.");
-        //    }
+            var existingCertification = await _unitOfWork.Repository<Certification>().GetById(id);
+            if (existingCertification == null)
+            {
+                throw new KeyNotFoundException($"Chứng nhận với ID {id} không tìm thấy.");
+            }
 
-        //    // Kiểm tra sự tồn tại của User (ShelterStaff)
-        //    var shelterStaff = await _unitOfWork.Repository<User>().GetById(request.ShelterStaffId);
-        //    if (shelterStaff == null)
-        //    {
-        //        throw new KeyNotFoundException($"ShelterStaff with ID {request.ShelterStaffId} not found.");
-        //    }
+            var shelterStaff = await _unitOfWork.Repository<User>()
+                .GetAll()
+                .Include(u => u.UserRoles)
+                    .ThenInclude(ur => ur.Role)
+                .FirstOrDefaultAsync(u => u.Id == request.ShelterStaffId);
 
-        //    // Kiểm tra sự tồn tại của Pet
-        //    var pet = await _unitOfWork.Repository<Pet>().GetById(request.PetId);
-        //    if (pet == null)
-        //    {
-        //        throw new KeyNotFoundException($"Pet with ID {request.PetId} not found.");
-        //    }
+            if (shelterStaff == null || !shelterStaff.UserRoles.Any(ur => ur.Role.Name == "Staff"))
+            {
+                throw new UnauthorizedAccessException("User không có quyền truy cập, yêu cầu role là 'Staff'.");
+            }
 
-        //    // Cập nhật các thuộc tính thủ công
-        //    existingCertification.Image = request.Image;
-        //    existingCertification.Desciption = request.Description;
-        //    existingCertification.Date = DateTime.UtcNow;
-        //    existingCertification.UserId = request.ShelterStaffId;
-        //    existingCertification.PetId = request.PetId;
+            // Kiểm tra sự tồn tại của Pet
+            var pet = await _unitOfWork.Repository<Pet>().GetById(request.PetId);
+            if (pet == null)
+            {
+                throw new KeyNotFoundException($"Pet với ID {request.PetId} không tìm thấy.");
+            }
 
-        //    _unitOfWork.Repository<Certification>().Update(existingCertification, existingCertification.Id);
-        //    await _unitOfWork.CommitAsync();
+            // Cập nhật các thuộc tính thủ công
+            existingCertification.Image = request.Image;
+            existingCertification.Desciption = request.Description;
+            existingCertification.Date = DateTime.UtcNow;
+            existingCertification.UserId = request.ShelterStaffId;
+            existingCertification.PetId = request.PetId;
 
-        //    // Lấy lại Certification vừa cập nhật để trả về response chi tiết
-        //    var updatedCertification = await _unitOfWork.Repository<Certification>().GetAll()
-        //        .Include(c => c.User)
-        //        .Include(c => c.Pet)
-        //            .ThenInclude(p => p.Shelter)
-        //        .FirstOrDefaultAsync(c => c.Id == existingCertification.Id);
+            _unitOfWork.Repository<Certification>().Update(existingCertification, existingCertification.Id);
+            await _unitOfWork.CommitAsync();
 
-        //    if (updatedCertification == null)
-        //    {
-        //        throw new ApplicationException("An error occurred while retrieving the updated certification.");
-        //    }
+            var updatedCertification = await _unitOfWork.Repository<Certification>().GetAll()
+                .Include(c => c.User)
+                .Include(c => c.Pet)
+                    .ThenInclude(p => p.Shelter)
+                .Include(c => c.Pet.Statuses) // Include Pet Statuses
+                    .ThenInclude(ps => ps.Status)
+                .FirstOrDefaultAsync(c => c.Id == existingCertification.Id);
 
-        //    var response = new CertificationResponseDetail
-        //    {
-        //        Id = updatedCertification.Id,
-        //        Image = updatedCertification.Image,
-        //        Description = updatedCertification.Desciption,
-        //        Date = updatedCertification.Date,
-        //        ShelterStaffID = updatedCertification.UserId,
-        //        PetId = updatedCertification.PetId,
-        //        ShelterStaff = updatedCertification.User != null ? new UsersResponseModel
-        //        {
-        //            Id = updatedCertification.User.Id,
-        //            Username = updatedCertification.User.Username,
-        //            Email = updatedCertification.User.Email,
-        //            Location = updatedCertification.User.Location,
-        //            Phone = updatedCertification.User.Phone,
-        //            TotalDonation = (decimal)updatedCertification.User.TotalDonation,
-        //        } : null!,
-        //        Pet = updatedCertification.Pet != null ? new PetDetailResponse
-        //        {
-        //            PetID = updatedCertification.Pet.Id,
-        //            Name = updatedCertification.Pet.Name,
-        //            Type = updatedCertification.Pet.Type,
-        //            Breed = updatedCertification.Pet.Breed,
-        //            Gender = updatedCertification.Pet.Gender,
-        //            Age =(int) updatedCertification.Pet.Age,
-        //            Size = updatedCertification.Pet.Size,
-        //            Color = updatedCertification.Pet.Color,
-        //            AdoptionStatus = updatedCertification.Pet.AdoptionStatus,
-        //            Image = updatedCertification.Pet.Image,
-        //            ShelterID = updatedCertification.Pet.ShelterID,
-        //            UserID = (int)  updatedCertification.Pet.UserID,
-        //            Description = updatedCertification.Pet.Description,
-        //            StatusId = (int)updatedCertification.Pet.StatusId,
-        //            ShelterName = updatedCertification.Pet.Shelter != null ? updatedCertification.Pet.Shelter.Name : null
-        //        } : null!
-        //    };
+            if (updatedCertification == null)
+            {
+                throw new ApplicationException("Có lỗi xảy ra khi truy xuất chứng nhận đã cập nhật.");
+            }
 
-        //    return response;
-        //}
+            var response = new CertificationResponseDetail
+            {
+                Id = updatedCertification.Id,
+                Image = updatedCertification.Image,
+                Description = updatedCertification.Desciption,
+                Date = updatedCertification.Date,
+                ShelterStaffID = updatedCertification.UserId,
+                PetId = updatedCertification.PetId,
+                ShelterStaff = updatedCertification.User != null ? new UsersResponseModel
+                {
+                    Id = updatedCertification.User.Id,
+                    Username = updatedCertification.User.Username,
+                    Email = updatedCertification.User.Email,
+                    Location = updatedCertification.User.Location,
+                    Phone = updatedCertification.User.Phone,
+                    TotalDonation = (decimal)updatedCertification.User.TotalDonation,
+                } : null!,
+                Pet = updatedCertification.Pet != null ? new PetDetailResponse
+                {
+                    PetID = updatedCertification.Pet.Id,
+                    Name = updatedCertification.Pet.Name,
+                    Type = updatedCertification.Pet.Type,
+                    Breed = updatedCertification.Pet.Breed,
+                    Gender = updatedCertification.Pet.Gender,
+                    Age = updatedCertification.Pet.Age ?? 0,
+                    Size = updatedCertification.Pet.Size,
+                    Color = updatedCertification.Pet.Color,
+                    AdoptionStatus = updatedCertification.Pet.AdoptionStatus,
+                    Image = updatedCertification.Pet.Image,
+                    ShelterID = updatedCertification.Pet.ShelterID,
+                    UserID = updatedCertification.Pet.UserID ?? 0,
+                    Description = updatedCertification.Pet.Description,
+                    Statuses = updatedCertification.Pet.Statuses?.Select(s => new StatusResponseModel
+                    {
+                        StatusId = s.StatusId,
+                        Disease = s.Status?.Disease,
+                        Vaccine = s.Status?.Vaccine
+                    }).ToList(), // Trả về danh sách Status
+                    ShelterName = updatedCertification.Pet.Shelter?.Name
+                } : null!
+            };
+
+            return response;
+        }
+
 
         // Xóa Certification
         public async Task DeleteCertificateAsync(int id)
