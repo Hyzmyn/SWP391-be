@@ -6,7 +6,7 @@ namespace ServiceLayer.Interfaces
     {
         Task CreateAdoptionFormAsync(AdoptionRegistrationForm form);
         Task DeleteAdoptionFormAsync(int id);
-        Task<bool> FormExistsAsync(int id);
+        Task<bool> FormExistsAsync(int petid)
         Task<AdoptionRegistrationForm> GetAdoptionFormByIdAsync(int id);
         IEnumerable<AdoptionRegistrationForm> GetAllAdoptionForms();
         Task UpdateAdoptionFormAsync(AdoptionRegistrationForm form);

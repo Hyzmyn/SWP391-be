@@ -3,12 +3,56 @@
   "WorkspaceRootPath": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\controllers\\adoptionregistrationformcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\adoptionregistrationformcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\controllers\\donationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\donationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\appstarts\\dependencyinjectioncontainers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\appstarts\\dependencyinjectioncontainers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\controllers\\certificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\certificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\firebase-adminsdk.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\firebase-adminsdk.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\repositorylayer\\pawfundcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|solutionrelative:repositorylayer\\pawfundcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\responsemodels\\shelterresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\responsemodels\\shelterresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\modellayer\\entities\\shelter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\shelter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\modellayer\\entities\\status.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\status.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\repositorylayer\\migrations\\20241014164657_v7.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|solutionrelative:repositorylayer\\migrations\\20241014164657_v7.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\repositorylayer\\models\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|solutionrelative:repositorylayer\\models\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,10 +63,6 @@
       "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\firebase-adminsdk.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\firebase-adminsdk.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\interfaces\\iuserroleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\interfaces\\iuserroleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -31,16 +71,8 @@
       "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\appstarts\\dependencyinjectioncontainers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\appstarts\\dependencyinjectioncontainers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\services\\userroleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\services\\userroleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\repositorylayer\\pawfundcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|solutionrelative:repositorylayer\\pawfundcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\controllers\\userrolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -49,10 +81,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\requestmodels\\userrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\requestmodels\\userrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\modellayer\\enum\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\enum\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\modellayer\\entities\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -75,16 +103,8 @@
       "RelativeMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|solutionrelative:repositorylayer\\repositories\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\controllers\\certificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\certificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\controllers\\adoptionregistrationformcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\adoptionregistrationformcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\requestmodels\\adoptionregistrationformrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -103,16 +123,8 @@
       "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\services\\shelterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\responsemodels\\shelterresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\responsemodels\\shelterresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\responsemodels\\roleresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\responsemodels\\roleresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\controllers\\donationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\donationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\responsemodels\\petresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -139,10 +151,6 @@
       "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\responsemodels\\postresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\repositorylayer\\migrations\\20241014164657_v7.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|solutionrelative:repositorylayer\\migrations\\20241014164657_v7.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\services\\certificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\services\\certificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -163,10 +171,6 @@
       "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\repositorylayer\\models\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|solutionrelative:repositorylayer\\models\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\services\\eventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\services\\eventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -178,11 +182,35 @@
       "DocumentGroups": [
         {
           "DockedWidth": 160,
-          "SelectedChildIndex": 28,
+          "SelectedChildIndex": 36,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
+              "Title": "Status.cs",
+              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Status.cs",
+              "RelativeDocumentMoniker": "ModelLayer\\Entities\\Status.cs",
+              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Status.cs",
+              "RelativeToolTip": "ModelLayer\\Entities\\Status.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T03:48:23.085Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Shelter.cs",
+              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Shelter.cs",
+              "RelativeDocumentMoniker": "ModelLayer\\Entities\\Shelter.cs",
+              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Shelter.cs",
+              "RelativeToolTip": "ModelLayer\\Entities\\Shelter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T03:44:48.944Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "AuthService.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Services\\AuthService.cs",
@@ -190,12 +218,11 @@
               "RelativeToolTip": "ServiceLayer\\Services\\AuthService.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAgwA8AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T14:23:03.386Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-16T14:23:03.386Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 6,
               "Title": "PawFundContext.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\RepositoryLayer\\PawFundContext.cs",
               "RelativeDocumentMoniker": "RepositoryLayer\\PawFundContext.cs",
@@ -207,7 +234,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 19,
               "Title": "UserRequestModel.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\RequestModels\\UserRequestModel.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\RequestModels\\UserRequestModel.cs",
@@ -219,19 +246,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Role.cs",
-              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Enum\\Role.cs",
-              "RelativeDocumentMoniker": "ModelLayer\\Enum\\Role.cs",
-              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Enum\\Role.cs",
-              "RelativeToolTip": "ModelLayer\\Enum\\Role.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T10:39:45.245Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 24,
               "Title": "IGenericRepository.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\RepositoryLayer\\Repositories\\IGenericRepository.cs",
               "RelativeDocumentMoniker": "RepositoryLayer\\Repositories\\IGenericRepository.cs",
@@ -243,7 +258,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "firebase-adminsdk.json",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\firebase-adminsdk.json",
               "RelativeDocumentMoniker": "SWP391_PawFund\\firebase-adminsdk.json",
@@ -256,7 +271,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 28,
               "Title": "AdoptionRegistrationForm.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\AdoptionRegistrationForm.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\AdoptionRegistrationForm.cs",
@@ -268,7 +283,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 26,
               "Title": "AdoptionRegistrationFormRequest.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\RequestModels\\AdoptionRegistrationFormRequest.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\RequestModels\\AdoptionRegistrationFormRequest.cs",
@@ -280,7 +295,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 30,
               "Title": "RoleResponseModel.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\ResponseModels\\RoleResponseModel.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\ResponseModels\\RoleResponseModel.cs",
@@ -292,7 +307,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 29,
               "Title": "ShelterService.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\ShelterService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Services\\ShelterService.cs",
@@ -304,20 +319,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 1,
               "Title": "DonationController.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\DonationController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\DonationController.cs",
               "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\DonationController.cs",
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\DonationController.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAWwI8AAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAIA7wEgAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-15T14:24:10.855Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 31,
               "Title": "PetResponseModel.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\ResponseModels\\PetResponseModel.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\ResponseModels\\PetResponseModel.cs",
@@ -329,7 +344,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 22,
               "Title": "ShelterController.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\ShelterController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\ShelterController.cs",
@@ -337,24 +352,23 @@
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\ShelterController.cs",
               "ViewState": "AgIAAAgBAAAAAAAAAIAwwCABAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-15T08:04:01.799Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-15T08:04:01.799Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 7,
               "Title": "ShelterResponseModel.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\ResponseModels\\ShelterResponseModel.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\ResponseModels\\ShelterResponseModel.cs",
               "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\ResponseModels\\ShelterResponseModel.cs",
               "RelativeToolTip": "ServiceLayer\\ResponseModels\\ShelterResponseModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-15T15:22:16.865Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 32,
               "Title": "Pet.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Pet.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\Pet.cs",
@@ -366,7 +380,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 33,
               "Title": "Post.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Post.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\Post.cs",
@@ -378,7 +392,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 20,
               "Title": "Role.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Role.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\Role.cs",
@@ -390,7 +404,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 34,
               "Title": "StatusPetService.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\StatusPetService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Services\\StatusPetService.cs",
@@ -402,7 +416,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 35,
               "Title": "PetController.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\PetController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\PetController.cs",
@@ -410,12 +424,11 @@
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\PetController.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAAwCcAAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-14T16:42:11.651Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-14T16:42:11.651Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "DependencyInjectionContainers.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\AppStarts\\DependencyInjectionContainers.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\AppStarts\\DependencyInjectionContainers.cs",
@@ -428,7 +441,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 36,
               "Title": "PostResponseModel.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\ResponseModels\\PostResponseModel.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\ResponseModels\\PostResponseModel.cs",
@@ -440,7 +453,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 23,
               "Title": "AdoptionRegistrationFormResponse.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\ResponseModels\\AdoptionRegistrationFormResponse.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\ResponseModels\\AdoptionRegistrationFormResponse.cs",
@@ -452,7 +465,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 10,
               "Title": "20241014164657_v7.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\RepositoryLayer\\Migrations\\20241014164657_v7.cs",
               "RelativeDocumentMoniker": "RepositoryLayer\\Migrations\\20241014164657_v7.cs",
@@ -464,7 +477,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "ICertificationService.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Interfaces\\ICertificationService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Interfaces\\ICertificationService.cs",
@@ -476,20 +489,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 3,
               "Title": "CertificationController.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\CertificationController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\CertificationController.cs",
               "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\CertificationController.cs",
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\CertificationController.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAAwGIAAAALAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGIAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-14T16:45:19.382Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 21,
               "Title": "UserRole.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\UserRole.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\UserRole.cs",
@@ -501,7 +514,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 40,
               "Title": "FeedBack.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\FeedBack.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\FeedBack.cs",
@@ -513,7 +526,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 39,
               "Title": "FeedbackService.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\FeedbackService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Services\\FeedbackService.cs",
@@ -525,20 +538,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 12,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Program.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Program.cs",
               "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Program.cs",
               "RelativeToolTip": "SWP391_PawFund\\Program.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-14T04:21:08.856Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-14T04:21:08.856Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 41,
               "Title": "Notification.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Notification.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\Notification.cs",
@@ -550,7 +562,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 14,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\AuthController.cs",
@@ -558,12 +570,11 @@
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-14T03:51:33.293Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-14T03:51:33.293Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "CertificationService.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\CertificationService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Services\\CertificationService.cs",
@@ -575,7 +586,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 25,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\appsettings.json",
               "RelativeDocumentMoniker": "SWP391_PawFund\\appsettings.json",
@@ -587,7 +598,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "EventService.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\EventService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Services\\EventService.cs",
@@ -599,7 +610,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 15,
               "Title": "IUserRoleService.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Interfaces\\IUserRoleService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Interfaces\\IUserRoleService.cs",
@@ -607,25 +618,24 @@
               "RelativeToolTip": "ServiceLayer\\Interfaces\\IUserRoleService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-13T11:11:03.904Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-13T11:11:03.904Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 0,
               "Title": "AdoptionRegistrationFormController.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\AdoptionRegistrationFormController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\AdoptionRegistrationFormController.cs",
               "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\AdoptionRegistrationFormController.cs",
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\AdoptionRegistrationFormController.cs",
-              "ViewState": "AgIAAJAAAAAAAAAAAAAowEYAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAgwHoAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-13T10:38:40.239Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 11,
               "Title": "UserDto.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\RepositoryLayer\\Models\\UserDto.cs",
               "RelativeDocumentMoniker": "RepositoryLayer\\Models\\UserDto.cs",
@@ -637,7 +647,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 27,
               "Title": "AdoptionRegistrationFormService.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\AdoptionRegistrationFormService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Services\\AdoptionRegistrationFormService.cs",
@@ -649,20 +659,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\UserController.cs",
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\UserController.cs",
-              "ViewState": "AgIAALsAAAAAAAAAAAAYwOEAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAMQAAAAAAAAAAAAYwN8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-13T10:00:58.967Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 18,
               "Title": "UserRoleController.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\UserRoleController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\UserRoleController.cs",
@@ -670,12 +680,11 @@
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\UserRoleController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-13T10:13:07.806Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-13T10:13:07.806Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 17,
               "Title": "UserRoleService.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\UserRoleService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Services\\UserRoleService.cs",
@@ -687,7 +696,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 16,
               "Title": "UserService.cs",
               "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Services\\UserService.cs",
@@ -695,7 +704,8 @@
               "RelativeToolTip": "ServiceLayer\\Services\\UserService.cs",
               "ViewState": "AgIAAGYAAAAAAAAAAAAWwH8AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-13T10:02:43.699Z"
+              "WhenOpened": "2024-10-13T10:02:43.699Z",
+              "EditorCaption": ""
             }
           ]
         }
