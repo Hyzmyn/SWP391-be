@@ -15,7 +15,7 @@ namespace ServiceLayer.RequestModels
 
         public string PhoneNumber { get; set; }
 
-        public int Capaxity { get; set; }
+        public int Capacity { get; set; }
 
         [EmailAddress(ErrorMessage = "Please enter a valid email address.")]
         public string Email { get; set; }

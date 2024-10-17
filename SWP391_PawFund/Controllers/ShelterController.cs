@@ -33,7 +33,7 @@ namespace SWP391_PawFund.Controllers
                 Name = s.Name,
                 Location = s.Location,
                 PhoneNumber = s.PhoneNumber,
-                Capaxity = s.Capaxity,
+                Capacity = s.Capacity,
                 Email = s.Email,
                 Website = s.Website,
                 DonationAmount = s.DonationAmount,
@@ -90,7 +90,7 @@ namespace SWP391_PawFund.Controllers
                 Name = shelter.Name,
                 Location = shelter.Location,
                 PhoneNumber = shelter.PhoneNumber,
-                Capaxity = shelter.Capaxity,
+                Capacity = shelter.Capacity,
                 Email = shelter.Email,
                 Website = shelter.Website,
                 DonationAmount = shelter.DonationAmount,
@@ -150,7 +150,7 @@ namespace SWP391_PawFund.Controllers
                     Name = shelter.Name,
                     Location = shelter.Location,
                     PhoneNumber = shelter.PhoneNumber,
-                    Capaxity = shelter.Capaxity,
+                    Capacity = shelter.Capacity,
                     Email = shelter.Email,
                     Website = shelter.Website,
                     DonationAmount = shelter.DonationAmount,
@@ -220,7 +220,7 @@ namespace SWP391_PawFund.Controllers
                 Name = shelterRequest.Name,
                 Location = shelterRequest.Location,
                 PhoneNumber = shelterRequest.PhoneNumber,
-                Capaxity = shelterRequest.Capaxity,
+                Capacity = shelterRequest.Capacity,
                 Email = shelterRequest.Email,
                 Website = shelterRequest.Website,
                 DonationAmount = shelterRequest.DonationAmount,
@@ -238,7 +238,7 @@ namespace SWP391_PawFund.Controllers
                 Name = createdShelter.Name,
                 Location = createdShelter.Location,
                 PhoneNumber = createdShelter.PhoneNumber,
-                Capaxity = createdShelter.Capaxity,
+                Capacity = createdShelter.Capacity,
                 Email = createdShelter.Email,
                 Website = createdShelter.Website,
                 DonationAmount = createdShelter.DonationAmount,
@@ -269,7 +269,7 @@ namespace SWP391_PawFund.Controllers
             existingShelter.Name = shelterRequest.Name;
             existingShelter.Location = shelterRequest.Location;
             existingShelter.PhoneNumber = shelterRequest.PhoneNumber;
-            existingShelter.Capaxity = shelterRequest.Capaxity;
+            existingShelter.Capacity = shelterRequest.Capacity;
             existingShelter.Email = shelterRequest.Email;
             existingShelter.Website = shelterRequest.Website;
             existingShelter.DonationAmount = shelterRequest.DonationAmount;
@@ -282,7 +282,7 @@ namespace SWP391_PawFund.Controllers
                 Name = updatedShelter.Name,
                 Location = updatedShelter.Location,
                 PhoneNumber = updatedShelter.PhoneNumber,
-                Capaxity = updatedShelter.Capaxity,
+                Capacity = updatedShelter.Capacity,
                 Email = updatedShelter.Email,
                 Website = updatedShelter.Website,
                 DonationAmount = updatedShelter.DonationAmount,
