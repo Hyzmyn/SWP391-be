@@ -133,7 +133,7 @@ namespace ServiceLayer.Services
             existingShelter.Name = shelter.Name;
             existingShelter.Location = shelter.Location;
             existingShelter.PhoneNumber = shelter.PhoneNumber;
-            existingShelter.Capaxity = shelter.Capaxity;
+            existingShelter.Capacity = shelter.Capacity;
             existingShelter.Email = shelter.Email;
             existingShelter.Website = shelter.Website;
             existingShelter.DonationAmount = shelter.DonationAmount;

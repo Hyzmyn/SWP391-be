@@ -17,6 +17,7 @@ namespace ModelLayer.Entities
         public string? Location { get; set; }
         public string? Token { get; set; }
         public decimal? TotalDonation { get; set; }
+        public decimal? wallet { get; set; }
         public string? Image { get; set; }
         public int? ShelterId { get; set; }
         public int? EventId { get; set; }
