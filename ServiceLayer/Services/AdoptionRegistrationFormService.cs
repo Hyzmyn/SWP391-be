@@ -63,10 +63,10 @@ namespace ServiceLayer.Services
         }
 
         // Check if an adoption form exists by ID
-        public async Task<bool> FormExistsAsync(int id)
+        public async Task<bool> FormExistsAsync(int petid)
         {
-            var form = await _unitOfWork.Repository<AdoptionRegistrationForm>().GetById(id);
-            return form != null;
+            var form = await _unitOfWork.Repository<AdoptionRegistrationForm>().GetWhere(p => p.PetId == petid && p.Status == null);
+            return form.Any(); 
         }
     }
 
