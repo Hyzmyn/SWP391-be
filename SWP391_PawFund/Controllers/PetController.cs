@@ -19,7 +19,6 @@ namespace SWP391_PawFund.Controllers
             _petService = petService;
         }
 
-        // GET: api/Pet
         [HttpGet]
         public async Task<IActionResult> GetAllPets()
         {
@@ -27,32 +26,28 @@ namespace SWP391_PawFund.Controllers
             return Ok(pets);
         }
 
-        // GET: api/Pet/5
-        [HttpGet("Get-PetByID/{id}")]
+        [HttpGet("ID/{id}")]
         public async Task<IActionResult> GetPetById(int id)
         {
             var pet = await _petService.GetPetByIdAsync(id);
             return Ok(pet);
         }
 
-        // POST: api/Pet
-        [HttpPost("Create-Pet")]
+        [HttpPost("Create")]
         public async Task<IActionResult> CreatePet([FromForm] PetCreateRequestModel createPetRequest)
         {
             var createdPet = await _petService.CreatePetAsync(createPetRequest);
             return CreatedAtAction(nameof(GetPetById), new { id = createdPet.PetID }, createdPet);
         }
 
-        // PUT: api/Pet/5
-        [HttpPut("Update-Pet/{id}")]
+        [HttpPut("Update/{id}")]
         public async Task<IActionResult> UpdatePet(int id, [FromForm] PetUpdateRequestModel updatePetRequest)
         {
             var updatedPet = await _petService.UpdatePetAsync(id, updatePetRequest);
             return Ok(updatedPet);
         }
 
-        // DELETE: api/Pet/5
-        [HttpDelete("Remove-Pet/{id}")]
+        [HttpDelete("Remove/{id}")]
         public async Task<IActionResult> DeletePet(int id)
         {
             await _petService.DeletePetAsync(id);
