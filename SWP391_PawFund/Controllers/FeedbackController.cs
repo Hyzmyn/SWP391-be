@@ -9,7 +9,7 @@ namespace SWP391_PawFund.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize] 
+     
     public class FeedbackController : ControllerBase
     {
         private readonly IFeedbackService _feedbackService;
@@ -47,9 +47,9 @@ namespace SWP391_PawFund.Controllers
         }
 
         // POST: api/Feedback
-        [HttpPost("Create_FeedBack")]
-        [Authorize(Roles = "Admin, User")] // Chỉ Admin và User mới được tạo Feedback
-        public async Task<IActionResult> CreateFeedback([FromForm] FeedBackRequestModel request)
+        [HttpPost]
+       // [Authorize(Roles = "Admin, User")] // Chỉ Admin và User mới được tạo Feedback
+        public async Task<IActionResult> CreateFeedback([FromBody] FeedBackRequestModel request)
         {
             if (!ModelState.IsValid)
             {
@@ -72,9 +72,9 @@ namespace SWP391_PawFund.Controllers
         }
 
         // PUT: api/Feedback/{id}
-        [HttpPut("Update_FeedBack/{id}")]
-        [Authorize(Roles = "Admin, User")] // Chỉ Admin và User mới được cập nhật Feedback
-        public async Task<IActionResult> UpdateFeedback(int id, [FromForm] FeedBackRequestModel request)
+        [HttpPut("{id}")]
+       // [Authorize(Roles = "Admin, User")] // Chỉ Admin và User mới được cập nhật Feedback
+        public async Task<IActionResult> UpdateFeedback(int id, [FromBody] FeedBackRequestModel request)
         {
             if (!ModelState.IsValid)
             {
@@ -97,8 +97,8 @@ namespace SWP391_PawFund.Controllers
         }
 
         // DELETE: api/Feedback/{id}
-        [HttpDelete("Remove_FeedBack/{id}")]
-        [Authorize(Roles = "Admin")] // Chỉ Admin mới được xóa Feedback
+        [HttpDelete("{id}")]
+        //[Authorize(Roles = "Admin")] // Chỉ Admin mới được xóa Feedback
         public async Task<IActionResult> DeleteFeedback(int id)
         {
             try
