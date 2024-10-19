@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ModelLayer.Entities;
+using RepositoryLayer;
 using ServiceLayer.Interfaces;
 using ServiceLayer.RequestModels;
 using ServiceLayer.ResponseModels;
@@ -307,21 +308,53 @@ namespace SWP391_PawFund.Controllers
         }
 
 
-		[HttpPost("vnpay")]
-		public IActionResult PaymentCalls()
-		{
-            var payload = new VnPaymentRequestModel
-            {
-                OrderId = 112,
-                FullName = "Nguyen Binh",
-                Description = "Demo",
-                Amount = 1100000,
-				CreatedDate = DateTime.UtcNow.AddHours(7)
+		//[HttpPost("vnpay")]
+		//public IActionResult PaymentCalls()
+		//{
+		//    var payload = new VnPaymentRequestModel
+		//    {
+		//        OrderId = 112,
+		//        FullName = "Nguyen Binh",
+		//        Description = "Ung ho cho meo",
+		//        Amount = 11000,
+		//        CreatedDate = DateTime.UtcNow.AddHours(7)
 
-		};
-            var url = _vpnPayService.CreatePaymentUrl(HttpContext, payload);
+		//    };
+		//    var url = _vpnPayService.CreatePaymentUrl(HttpContext, payload);
+		//    return Ok(url);
+		//}
+
+
+		
+
+		private static int currentOrderId = 1;
+		
+		[HttpPost("vnpay")]
+		public IActionResult PaymentCalls([FromBody] VnPaymentRequestModel requestModel)
+		{
+			// Tăng OrderId mỗi khi có người mới
+			currentOrderId += 1;
+
+			// Khởi tạo payload với các giá trị từ requestModel
+			var payload = new VnPaymentRequestModel
+			{
+				//OrderId = currentOrderId, 
+				FullName = requestModel.FullName, 
+				Description = requestModel.Description, 
+				Amount = requestModel.Amount, 
+				CreatedDate = DateTime.UtcNow.AddHours(7) // Đặt thời gian hiện tại (UTC+7)
+			};
+
+			// Tạo URL thanh toán
+			var url = _vpnPayService.CreatePaymentUrl(HttpContext, payload);
+
+			// Trả về link thanh toán
 			return Ok(url);
 		}
+
+
+
+
 		[HttpGet("vnpay/api")]
 		//[Authorize]
         public IActionResult PaymentCallBack()
