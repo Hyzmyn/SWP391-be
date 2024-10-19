@@ -7,16 +7,26 @@ using System.Threading.Tasks;
 
 namespace ServiceLayer.RequestModels
 {
-    public class AdoptionRegistrationFormRequest
+    public class FormCreateRequest
     {
         public string SocialAccount { get; set; }
         public decimal IncomeAmount { get; set; }
-        public IFormFile IdentificationImage { get; set; } // Changed to IFormFile for image upload
-        public IFormFile IdentificationImageBackSide { get; set; } // Changed to IFormFile for image upload
+        public IFormFile IdentificationImage { get; set; } 
+        public IFormFile IdentificationImageBackSide { get; set; } 
         public int AdopterId { get; set; }
-        public int? ShelterStaffId { get; set; }
         public int PetId { get; set; }
-        public bool Status { get; set; }
+
+    }
+    public class FormUpdateRequest
+    {
+        public string? SocialAccount { get; set; }
+        public decimal? IncomeAmount { get; set; }
+        public IFormFile? IdentificationImage { get; set; }
+        public IFormFile? IdentificationImageBackSide { get; set; }
+        public int? AdopterId { get; set; }
+        public int? ShelterStaffId { get; set; }
+        public int? PetId { get; set; }
+        public bool? Status { get; set; }
 
     }
 

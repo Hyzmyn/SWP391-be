@@ -14,13 +14,17 @@ namespace ServiceLayer.ResponseModels
         public DateTime Date { get; set; }
         public int ShelterStaffID { get; set; }
         public int PetId { get; set; }
-        public string? StaffName { get; set; } 
-        public string? PetName { get; set; }   
+        public string? StaffName { get; set; }
+        public string? PetName { get; set; }
     }
-    public class CertificationResponseDetail:CertificationResponse
+    public class CertificationResponseDetail : CertificationResponse
     {
         public UsersResponseModel ShelterStaff { get; set; } = null!;
         public PetDetailResponse Pet { get; set; } = null!;
     }
-
+    public class DeleteCertificationResponse
+    {
+        public int Id { get; set; }
+        public string Message { get; set; }
+    }
 }

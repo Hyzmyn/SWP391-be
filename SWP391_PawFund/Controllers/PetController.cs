@@ -2,6 +2,7 @@
 using ModelLayer.Entities;
 using ServiceLayer.Interfaces;
 using ServiceLayer.RequestModels;
+using ServiceLayer.ResponseModels;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,127 +19,63 @@ namespace SWP391_PawFund.Controllers
             _petService = petService;
         }
 
-        // GET: api/Pet
         [HttpGet]
-        public ActionResult<IEnumerable<Pet>> GetAllPets()
+        public async Task<IActionResult> GetAllPets()
         {
-            var pets = _petService.GetPets();
+            var pets = await _petService.GetAllPetsAsync();
             return Ok(pets);
         }
 
-        // GET: api/Pet/{id}
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Pet>> GetPetById(int id)
+        [HttpGet("ID/{id}")]
+        public async Task<IActionResult> GetPetById(int id)
         {
-            var pet = await _petService.GetPetById(id);
-            if (pet == null)
-            {
-                return NotFound();
-            }
+            var pet = await _petService.GetPetByIdAsync(id);
             return Ok(pet);
         }
 
-        // POST: api/Pet
-        [HttpPost]
-        public async Task<IActionResult> CreatePet([FromBody] PetCreateRequestModel petCreateRequest)
+        [HttpPost("Create")]
+        public async Task<IActionResult> CreatePet([FromForm] PetCreateRequestModel createPetRequest)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            // Tạo một thực thể Pet mới từ PetCreateRequestModel
-            var pet = new Pet
-            {
-                ShelterID = petCreateRequest.ShelterID,
-                UserID = petCreateRequest.UserID,
-                Name = petCreateRequest.Name,
-                Type = petCreateRequest.Type,
-                Breed = petCreateRequest.Breed,
-                Gender = petCreateRequest.Gender,
-                Age = petCreateRequest.Age,
-                Size = petCreateRequest.Size,
-                Color = petCreateRequest.Color,
-                Description = petCreateRequest.Description,
-                AdoptionStatus = petCreateRequest.AdoptionStatus,
-                StatusId = petCreateRequest.StatusId,
-                Image = petCreateRequest.Image
-            };
-            await _petService.CreatePetAsync(pet);
-
-            return CreatedAtAction(nameof(GetPetById), new { id = pet.Id }, petCreateRequest);
+            var createdPet = await _petService.CreatePetAsync(createPetRequest);
+            return CreatedAtAction(nameof(GetPetById), new { id = createdPet.PetID }, createdPet);
         }
 
-
-        // PUT: api/Pet/{id}
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePet(int id, [FromBody] PetUpdateRequestModel updatedPet)
+        [HttpPut("Update/{id}")]
+        public async Task<IActionResult> UpdatePet(int id, [FromForm] PetUpdateRequestModel updatePetRequest)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            // Lấy pet hiện có từ database bằng id
-            var existingPet = await _petService.GetPetById(id);
-
-            if (existingPet == null)
-            {
-                return NotFound($"Pet with Id = {id} not found.");
-            }
-
-            existingPet.Name = updatedPet.Name;
-            existingPet.Type = updatedPet.Type;
-            existingPet.Breed = updatedPet.Breed;
-            existingPet.Gender = updatedPet.Gender;
-            existingPet.Age = updatedPet.Age;
-            existingPet.Size = updatedPet.Size;
-            existingPet.Color = updatedPet.Color;
-            existingPet.Description = updatedPet.Description;
-            existingPet.AdoptionStatus = updatedPet.AdoptionStatus;
-
-            if (!string.IsNullOrEmpty(updatedPet.Image))
-            {
-                existingPet.Image = updatedPet.Image;
-            }
-
-            await _petService.UpdatePetAsync(existingPet);
-            return Ok(new {message= "Pet updated successfully." });
+            var updatedPet = await _petService.UpdatePetAsync(id, updatePetRequest);
+            return Ok(updatedPet);
         }
 
-
-        // DELETE: api/Pet/{id}
-        [HttpDelete("{id}")]
+        [HttpDelete("Remove/{id}")]
         public async Task<IActionResult> DeletePet(int id)
         {
-            var pet = await _petService.GetPetById(id);
-            if (pet == null)
-            {
-                return NotFound(new { message = "Pet not found." });
-            }
-            try
-            {
-                await _petService.DeletePetAsync(id);
-                return Ok(new { message = "Pet have been Delete Successfully." });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            await _petService.DeletePetAsync(id);
+            return NoContent();
         }
 
-        // PATCH: api/Pet/{id}/status
-        [HttpPatch("{id}/Update_Pet_AdopteStatus")]
-        public async Task<IActionResult> UpdatePetStatus(int id, [FromQuery] int newStatus)
+        // POST: api/Pet/5/statuses
+        [HttpPost("{petId}/statuses")]
+        public async Task<IActionResult> AddStatusToPet(int petId, [FromForm] CreatePetStatusRequest createPetStatusRequest)
         {
-            var pet = await _petService.GetPetById(id);
-            if (pet == null)
-            {
-                return NotFound(new { message = "Pet not found." });
-            }
+            await _petService.AddStatusToPetAsync(petId, createPetStatusRequest);
+            return NoContent();
+        }
 
-            await _petService.UpdatePetStatus(pet, newStatus);
-            return Ok(new { message = "Pet Status have been Updated successfully." });
+        // PUT: api/Pet/5/statuses/3
+        [HttpPut("{petId}/statuses/{statusId}")]
+        public async Task<IActionResult> UpdatePetStatus(int petId, int statusId, [FromForm] StatusUpdateRequestModel updateStatusRequest)
+        {
+            await _petService.UpdatePetStatusAsync(petId, statusId, updateStatusRequest);
+            return NoContent();
+        }
+
+        // DELETE: api/Pet/5/statuses/3
+        [HttpDelete("{petId}/statuses/{statusId}")]
+        public async Task<IActionResult> RemoveStatusFromPet(int petId, int statusId)
+        {
+            await _petService.RemoveStatusFromPetAsync(petId, statusId);
+            return NoContent();
         }
     }
 }

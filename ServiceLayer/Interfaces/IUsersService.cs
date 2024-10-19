@@ -10,7 +10,7 @@ namespace ServiceLayer.Interfaces
 {
     public interface IUsersService
     {
-        IEnumerable<User> GetUsers();
+        Task<IEnumerable<User>> GetUsersAsync();
         Task<User> GetUserByIdAsync(int id);
         Task CreateUserAsync(User user);
         Task UpdateUserAsync(User user);
@@ -19,6 +19,8 @@ namespace ServiceLayer.Interfaces
         Task<User> GetUserByUsernameAsync(string username);
         Task<User> GetUserByEmailAsync(string email);
         Task<UsersResponseModel> GetUserProfile(int id);
+
+
     }
 
 }

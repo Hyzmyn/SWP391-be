@@ -39,7 +39,7 @@ namespace SWP391_PawFund.Controllers
         public ActionResult<IEnumerable<DonationResponseModel>> GetAllDonations()
         {
             var donations = _donateService.GetAllDonations()
-               .Select(d => new DonationDetailResponseModel
+               .Select(d => new DonationResponseModel
                {
                    Id = d.Id,
                    Amount = d.Amount,
@@ -63,7 +63,7 @@ namespace SWP391_PawFund.Controllers
             }
 
             var donor = await _usersService.GetUserByIdAsync(donation.DonorId);
-            var shelter = await _shelterService.GetShelterByID(donation.ShelterId);
+            var shelter = await _shelterService.GetShelterByIdAsync(donation.ShelterId);
 
             var response = new DonationDetailResponseModel
             {
@@ -87,7 +87,7 @@ namespace SWP391_PawFund.Controllers
                     Name = shelter.Name,
                     Location = shelter.Location,
                     PhoneNumber = shelter.PhoneNumber,
-                    Capacity = shelter.Capaxity,
+                    Capacity = shelter.Capacity,
                     Email = shelter.Email,
                     Website = shelter.Website,
                     DonationAmount = (decimal)shelter.DonationAmount
@@ -145,9 +145,6 @@ namespace SWP391_PawFund.Controllers
                 return StatusCode(500, new { message = "An error occurred while processing your request." });
             }
         }
-
-
-
         // Thêm donation mới
         [HttpPost]
         public async Task<IActionResult> CreateDonation([FromBody] DonationCreateRequestModel request, string payment = "VnPay")
@@ -229,15 +226,61 @@ namespace SWP391_PawFund.Controllers
                 }
             };
 
-            return CreatedAtAction(nameof(GetDonationById), new { id = donation.Id }, response);
+                await _donateService.CreateDonationAsync(donation);
+
+                // Lấy thông tin User và Shelter đã được cập nhật
+                var donor = await _usersService.GetUserByIdAsync(request.DonorId);
+                var shelter = await _shelterService.GetShelterByIdAsync(request.ShelterId);
+
+                var response = new DonationDetailResponseModel
+                {
+                    Id = donation.Id,
+                    Amount = donation.Amount,
+                    Date = donation.Date,
+                    DonorId = donation.DonorId,
+                    ShelterId = donation.ShelterId,
+                    Donor = donor != null ? new UsersResponseModel
+                    {
+                        Id = donor.Id,
+                        Username = donor.Username,
+                        Email = donor.Email,
+                        Location = donor.Location,
+                        Phone = donor.Phone,
+                        TotalDonation = donor.TotalDonation ?? 0m
+                    } : null,
+                    Shelter = shelter != null ? new ShelterResponseModel
+                    {
+                        Id = shelter.Id,
+                        Name = shelter.Name,
+                        Location = shelter.Location,
+                        PhoneNumber = shelter.PhoneNumber,
+                        Capacity = shelter.Capacity,
+                        Email = shelter.Email,
+                        Website = shelter.Website,
+                        DonationAmount = shelter.DonationAmount ?? 0m
+                    } : null
+                };
+
+                return CreatedAtAction(nameof(GetDonationById), new { id = donation.Id }, response);
+            }
+            catch (ArgumentException ex)
+            {
+                _logger.LogError(ex, "Error creating donation: {Message}", ex.Message);
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Unexpected error creating donation.");
+                return StatusCode(500, new { message = "An unexpected error occurred while creating the donation." });
+            }
         }
 
 
 
 
         // Cập nhật donation
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateDonation(int id, [FromBody] DonationUpdateRequestModel request)
+        [HttpPut("Update_Donate/{id}")]
+        public async Task<IActionResult> UpdateDonation(int id, [FromForm] DonationUpdateRequestModel request)
         {
             var existingDonation = await _donateService.GetDonationsByIdAsync(id);
             if (existingDonation == null)
@@ -246,7 +289,7 @@ namespace SWP391_PawFund.Controllers
             }
 
             var donor = await _usersService.GetUserByIdAsync(request.DonorId);
-            var shelter = await _shelterService.GetShelterByID(request.ShelterId);
+            var shelter = await _shelterService.GetShelterByIdAsync(request.ShelterId);
 
             if (donor == null)
             {
@@ -259,7 +302,7 @@ namespace SWP391_PawFund.Controllers
             }
 
             existingDonation.Amount = request.Amount;
-            existingDonation.Date = request.Date;
+            existingDonation.Date = DateTime.UtcNow;
             existingDonation.DonorId = request.DonorId;
             existingDonation.ShelterId = request.ShelterId;
 
@@ -270,7 +313,7 @@ namespace SWP391_PawFund.Controllers
 
 
         // Xóa donation theo Id
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete_Donate/{id}")]
         public async Task<IActionResult> DeleteDonation(int id)
         {
             var donation = await _donateService.GetDonationsByIdAsync(id);
@@ -284,7 +327,7 @@ namespace SWP391_PawFund.Controllers
         }
 
         // Lấy tổng donation theo ShelterId
-        [HttpGet("shelter/{shelterId}/total")]
+        [HttpGet("Shelter/{shelterId}/Total")]
         public ActionResult<TotalShelterDonationResponseModel> GetTotalDonationByShelter(int shelterId)
         {
             var totalDonation = _donateService.GetTotalDonationByShelter(shelterId);
@@ -296,7 +339,7 @@ namespace SWP391_PawFund.Controllers
         }
 
         // Lấy tổng donation theo DonorId (accountId)
-        [HttpGet("donor/{donorId}/total")]
+        [HttpGet("Donor/{donorId}/Total")]
         public ActionResult<TotalDonorDonationResponseModel> GetTotalDonationByDonor(int donorId)
         {
             var totalDonation = _donateService.GetTotalDonationByDonor(donorId);
