@@ -9,11 +9,10 @@ namespace ModelLayer.Entities
 {
     public class Status : BaseEntity
     {
-        public int PetId { get; set; }
         public DateTime Date { get; set; }
         public string Disease { get; set; }
         public string Vaccine { get; set; }
 
-        public virtual Pet? Pet { get; set; }
+        public virtual ICollection<PetStatus>? Pet { get; set; }
     }
 }

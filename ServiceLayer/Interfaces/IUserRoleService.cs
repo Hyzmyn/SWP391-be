@@ -9,13 +9,16 @@ namespace ServiceLayer.Interfaces
 {
     public interface IUserRoleService
     {
-        IEnumerable<string> GetRolesOfUser(int userId);
+        Task<IEnumerable<string>> GetRolesOfUserAsync(int userId);
 
         bool UserHasRole(int userId, string roleName);
 
         Task AddRoleAsync(UserRole role);
 
         Task RemoveRoleAsync(int id);
-            
+
+        Task UpdateRolesAsync(int userId, List<int> newRoleIds);
+
+
     }
 }

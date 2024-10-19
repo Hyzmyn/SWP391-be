@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServiceLayer.RequestModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,15 @@ namespace ServiceLayer.ResponseModels
         public string Location { get; set; } = null!;
         public string Phone { get; set; } = null!;
         public decimal TotalDonation { get; set; }
+        public string Image { get; set; }
+        public string Shelter { get; set; }
+        public string Event { get; set; }
+        public List<string> Roles { get; set; }
 
     }
 
+    public class DetailUserViewModel : UserViewModel
+    {
+        public List<string> Roles { get; set; }
+    }
 }

@@ -12,7 +12,7 @@ namespace ServiceLayer.ResponseModels
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime CreateDate { get; set; }
-        public DateTime UpdateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
         public int UserId { get; set; }
         public int PetId { get; set; }
     }
@@ -22,7 +22,7 @@ namespace ServiceLayer.ResponseModels
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime CreateDate { get; set; }
-        public DateTime UpdateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
         public int UserId { get; set; }
         public int? PetId { get; set; }
         public UsersResponseModel User { get; set; } = null!;

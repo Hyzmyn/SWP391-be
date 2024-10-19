@@ -20,14 +20,13 @@ namespace ModelLayer.Entities
         public string? Color { get; set; }
         public string? Description { get; set; }
         public string? AdoptionStatus { get; set; }
-        public int? StatusId { get; set; }
         public string? Image { get; set; }
 
         public virtual User? User { get; set; }
         public virtual AdoptionRegistrationForm? AdoptionRegistrationForm { get; set; }
         public virtual Certification? Certification { get; set; }
         public virtual Shelter? Shelter { get; set; }
-        public virtual ICollection<Status>? Statuses { get; set; }
+        public virtual ICollection<PetStatus>? Statuses { get; set; }
 
     }
 }

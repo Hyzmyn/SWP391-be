@@ -1,13 +1,16 @@
 ﻿using ModelLayer.Entities;
+using ServiceLayer.RequestModels;
+using ServiceLayer.ResponseModels;
 
 namespace ServiceLayer.Interfaces
 {
     public interface IStatusPetService
     {
-        Task CreateStatusAsync(Status status);
-        Task DeleteStatusAsync(int id);
-        Task<Status> GetStatusByIdAsync(int id);
-        IEnumerable<Status> GetStatusesForPet(int petId);
-        Task UpdateStatusAsync(Status status);
+        Task<IEnumerable<StatusResponseModel>> GetAllStatusAsync();
+        Task<IEnumerable<StatusResponseModel>> GetStatusesForPetAsync(int petId);
+        Task<StatusResponseModel> GetStatusByIdAsync(int id);
+        Task<StatusResponseModel> CreateStatusAsync(StatusCreateRequest createStatusRequest);
+        Task<StatusResponseModel> UpdateStatusAsync(int id, StatusUpdateRequestModel updateStatusRequest);
+        Task<bool> DeleteStatusAsync(int id);
     }
 }
