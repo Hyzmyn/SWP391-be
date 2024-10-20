@@ -29,4 +29,22 @@ namespace ServiceLayer.ResponseModels
 
 		public List<UsersResponseModel>? Users { get; set; }
 	}
+	public class EventWithUserResponseModel
+	{
+		public EventResponseModel Event { get; set; }
+		public UserResponseModel User { get; set; }
+	}
+
+	public class UserResponseModel
+	{
+		public int Id { get; set; }
+		public string Username { get; set; }
+		public string Email { get; set; }
+		public string Phone { get; set; }
+		public string Location { get; set; }
+		public decimal? TotalDonation { get; set; }
+		public decimal? Wallet { get; set; }
+		public string Image { get; set; }
+		public bool? Status { get; set; }
+	}
 }
