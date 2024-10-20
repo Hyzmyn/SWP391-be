@@ -55,7 +55,20 @@ namespace SWP391_PawFund.Controllers
 			return Ok(eventResponses);
 		}
 
-
+		[HttpPost("adduser")]
+		[Authorize]
+		public async Task<ActionResult<EventWithUserResponseModel>> AddUserToEvent(AddUserToEventRequestModel request)
+		{
+			try
+			{
+				var result = await _eventService.AddUserToEventAsync(request);
+				return Ok(result);
+			}
+			catch (Exception ex)
+			{
+				return BadRequest(new { message = ex.Message });
+			}
+		}
 
 
 
@@ -107,6 +120,7 @@ namespace SWP391_PawFund.Controllers
 				return BadRequest(new { message = ex.Message });
 			}
 		}
+
 
 		// DELETE: api/Events/5
 		[HttpDelete("{id}")]
