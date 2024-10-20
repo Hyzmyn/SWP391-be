@@ -22,7 +22,7 @@ namespace SWP391_PawFund.Controllers
             _logger = logger;
         }
 
-        [HttpGet("Get_All_Shelter")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<ShelterResponseModel>>> GetAllShelters()
         {
             var shelters = await _shelterService.GetAllSheltersAsync();
@@ -252,7 +252,7 @@ namespace SWP391_PawFund.Controllers
         }
 
 
-        [HttpPut("Update_Shelter/{id}")]
+        [HttpPut("Update/{id}")]
         public async Task<ActionResult<ShelterResponseModel>> UpdateShelter(int id, [FromForm] ShelterRequestModel shelterRequest)
         {
             if (!ModelState.IsValid)
@@ -324,7 +324,7 @@ namespace SWP391_PawFund.Controllers
             return Ok(shelterResponse);
         }
 
-        [HttpDelete("Remove_Shelter/{id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteShelter(int id)
         {
             var isDeleted = await _shelterService.DeleteShelterAsync(id);

@@ -141,11 +141,6 @@ D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\De
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.pdb
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.genruntimeconfig.cache
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\ref\SWP391_PawFund.dll
-C:\Users\dtori\Desktop\DeleteThis\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.csproj.AssemblyReference.cache
-C:\Users\dtori\Desktop\DeleteThis\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\dtori\Desktop\DeleteThis\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.AssemblyInfoInputs.cache
-C:\Users\dtori\Desktop\DeleteThis\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.AssemblyInfo.cs
-C:\Users\dtori\Desktop\DeleteThis\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.csproj.CoreCompileInputs.cache
-C:\Users\dtori\Desktop\DeleteThis\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\dtori\Desktop\DeleteThis\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\dtori\Desktop\DeleteThis\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.sourcelink.json
+D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
