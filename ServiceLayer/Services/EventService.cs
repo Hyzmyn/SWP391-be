@@ -1,4 +1,5 @@
-﻿using ModelLayer.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using ModelLayer.Entities;
 using RepositoryLayer.UnitOfWork;
 using ServiceLayer.Interfaces;
 using ServiceLayer.RequestModels;
@@ -31,8 +32,91 @@ namespace ServiceLayer.Services
 				Location = e.Location
 			});
 
+
+
 			return await Task.FromResult(response);
+
 		}
+
+		public async Task<IEnumerable<EventResponseModels>> GetAllEventsWithUsersAsync()
+		{
+			var events = await _unitOfWork.Repository<Event>()
+				.GetAll()
+				.Include(e => e.Users)
+				.ToListAsync();
+
+			var response = events.Select(e => new EventResponseModels
+			{
+				Id = e.Id,
+				ShelterId = e.ShelterId,
+				Name = e.Name,
+				Date = e.Date,
+				Description = e.Description,
+				Location = e.Location,
+				Users = e.Users?.Select(u => new UsersResponseModel
+				{
+					Id = u.Id,
+					Username = u.Username,
+					Email = u.Email,
+					Location = u.Location ?? string.Empty,
+					Phone = u.Phone ?? string.Empty
+				}).ToList()
+			});
+
+			return response;
+		}
+		public async Task<EventWithUserResponseModel> AddUserToEventAsync(AddUserToEventRequestModel request)
+		{
+			var eventEntity = await _unitOfWork.Repository<Event>()
+				.GetAll()
+				.Include(e => e.Users)
+				.FirstOrDefaultAsync(e => e.Id == request.EventId);
+
+			if (eventEntity == null)
+			{
+				throw new Exception($"Event with ID {request.EventId} not found.");
+			}
+
+			var user = await _unitOfWork.Repository<User>().GetById(request.UserId);
+
+			if (user == null)
+			{
+				throw new Exception($"User with ID {request.UserId} not found.");
+			}
+
+			if (eventEntity.Users == null)
+			{
+				eventEntity.Users = new List<User>();
+			}
+
+			if (!eventEntity.Users.Any(u => u.Id == user.Id))
+			{
+				eventEntity.Users.Add(user);
+				await _unitOfWork.CommitAsync();
+			}
+
+			return new EventWithUserResponseModel
+			{
+				Event = new EventResponseModel
+				{
+					Id = eventEntity.Id,
+					ShelterId = eventEntity.ShelterId,
+					Name = eventEntity.Name,
+					Date = eventEntity.Date,
+					Description = eventEntity.Description,
+					Location = eventEntity.Location
+				},
+				User = new UserResponseModel
+				{
+					Id = user.Id,
+					Username = user.Username,
+					Email = user.Email,
+					Phone = user.Phone,
+					Location = user.Location
+				}
+			};
+		}
+
 		public async Task<EventResponseModel> GetEventByIdAsync(int id)
 		{
 			var eventEntity = await _unitOfWork.Repository<Event>().GetById(id);

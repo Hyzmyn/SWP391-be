@@ -34,7 +34,11 @@ namespace RepositoryLayer
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		public PawFundContext()
+		{
+		}
+
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql(GetConnectionString(),
                 new MySqlServerVersion(new Version(8, 0, 2)));

@@ -24,4 +24,10 @@ namespace ServiceLayer.RequestModels
 		public string Location { get; set; } = null!;
 	}
 
+	public class AddUserToEventRequestModel
+	{
+		public int EventId { get; set; }
+		public int UserId { get; set; }
+	}
+
 }

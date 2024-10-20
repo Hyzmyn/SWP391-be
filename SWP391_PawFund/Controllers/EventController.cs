@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ModelLayer.Entities;
 using ServiceLayer.Interfaces;
 using ServiceLayer.RequestModels;
 using ServiceLayer.ResponseModels;
@@ -21,12 +22,56 @@ namespace SWP391_PawFund.Controllers
 
 		// GET: api/Events
 		[HttpGet]
-		
+
 		public async Task<ActionResult<IEnumerable<EventResponseModel>>> GetEvents()
 		{
 			var events = await _eventService.GetAllEventsAsync();
 			return Ok(events);
+
 		}
+
+		[HttpGet("events")]
+		public async Task<ActionResult<IEnumerable<EventResponseModels>>> GetAllEvents()
+		{
+			var events = await _eventService.GetAllEventsWithUsersAsync();
+			var eventResponses = events.Select(e => new EventResponseModels
+			{
+				Id = e.Id,
+				ShelterId = e.ShelterId,
+				Name = e.Name,
+				Date = e.Date,
+				Description = e.Description,
+				Location = e.Location,
+				Users = e.Users?.Select(u => new UsersResponseModel
+				{
+					Id = u.Id,
+					Username = u.Username,
+					Email = u.Email,
+					Location = u.Location ?? string.Empty,
+					Phone = u.Phone ?? string.Empty
+				}).ToList()
+			}).ToList();
+
+			return Ok(eventResponses);
+		}
+
+		[HttpPost("adduser")]
+		[Authorize]
+		public async Task<ActionResult<EventWithUserResponseModel>> AddUserToEvent(AddUserToEventRequestModel request)
+		{
+			try
+			{
+				var result = await _eventService.AddUserToEventAsync(request);
+				return Ok(result);
+			}
+			catch (Exception ex)
+			{
+				return BadRequest(new { message = ex.Message });
+			}
+		}
+
+
+
 
 		// GET: api/Events/5
 		[HttpGet("{id}")]
@@ -75,6 +120,7 @@ namespace SWP391_PawFund.Controllers
 				return BadRequest(new { message = ex.Message });
 			}
 		}
+
 
 		// DELETE: api/Events/5
 		[HttpDelete("{id}")]

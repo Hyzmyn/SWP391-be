@@ -1,4 +1,5 @@
-﻿using ServiceLayer.RequestModels;
+﻿using ModelLayer.Entities;
+using ServiceLayer.RequestModels;
 using ServiceLayer.ResponseModels;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace ServiceLayer.Interfaces
 		Task CreateEventAsync(CreateEventRequestModel request);
 		Task UpdateEventAsync(int id, UpdateEventRequestModel request);
 		Task DeleteEventAsync(int id);
+		Task<IEnumerable<EventResponseModels>> GetAllEventsWithUsersAsync(); // New method
+		Task<EventWithUserResponseModel> AddUserToEventAsync(AddUserToEventRequestModel request);
 
 	}
 }
