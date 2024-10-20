@@ -1,45 +1,72 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\",
+  "WorkspaceRootPath": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dell\\desktop\\swp_be_binh\\swp391-be\\swp391_pawfund\\controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\servicelayer\\requestmodels\\eventrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\requestmodels\\eventrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\firebase-adminsdk.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\firebase-adminsdk.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\servicelayer\\services\\eventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\services\\eventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\repositorylayer\\pawfundcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|solutionrelative:repositorylayer\\pawfundcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\servicelayer\\interfaces\\ieventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\interfaces\\ieventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\services\\adoptionregistrationformservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\services\\adoptionregistrationformservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\servicelayer\\responsemodels\\eventresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\responsemodels\\eventresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\requestmodels\\adoptionregistrationformrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\requestmodels\\adoptionregistrationformrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dell\\desktop\\swp_be_binh\\swp391-be\\servicelayer\\interfaces\\iusersservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\controllers\\adoptionregistrationformcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\adoptionregistrationformcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\8.0.403\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\interfaces\\iusersservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\interfaces\\iusersservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dell\\desktop\\swp_be_binh\\swp391-be\\servicelayer\\requestmodels\\userrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\requestmodels\\userrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\interfaces\\ieventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\interfaces\\ieventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\modellayer\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\modellayer\\entities\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\modellayer\\entities\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\modellayer\\entities\\shelter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\requestmodels\\eventrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\requestmodels\\eventrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\services\\eventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\services\\eventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\responsemodels\\eventresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\responsemodels\\eventresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\requestmodels\\userrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\requestmodels\\userrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\modellayer\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\modellayer\\entities\\shelter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\shelter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -49,149 +76,211 @@
       "VerticalTabListWidth": 237,
       "DocumentGroups": [
         {
-          "DockedWidth": 100,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            }
-          ]
-        },
-        {
           "DockedWidth": 92,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "EventResponseModel.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\ResponseModels\\EventResponseModel.cs",
-              "RelativeDocumentMoniker": "ServiceLayer\\ResponseModels\\EventResponseModel.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\ResponseModels\\EventResponseModel.cs",
-              "RelativeToolTip": "ServiceLayer\\ResponseModels\\EventResponseModel.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAA/wCMAAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T07:30:58.089Z",
-              "EditorCaption": ""
+              "DocumentIndex": 1,
+              "Title": "firebase-adminsdk.json",
+              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\firebase-adminsdk.json",
+              "RelativeDocumentMoniker": "SWP391_PawFund\\firebase-adminsdk.json",
+              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\firebase-adminsdk.json",
+              "RelativeToolTip": "SWP391_PawFund\\firebase-adminsdk.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-20T14:21:54.129Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "EventController.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\SWP391_PawFund\\Controllers\\EventController.cs",
-              "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\EventController.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\SWP391_PawFund\\Controllers\\EventController.cs",
-              "RelativeToolTip": "SWP391_PawFund\\Controllers\\EventController.cs",
-              "ViewState": "AQIAAC8AAAAAAAAAAAASwDoAAAAMAAAA",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Program.cs",
+              "RelativeDocumentMoniker": "SWP391_PawFund\\Program.cs",
+              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Program.cs",
+              "RelativeToolTip": "SWP391_PawFund\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T07:27:30.56Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EventRequestModel.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\RequestModels\\EventRequestModel.cs",
-              "RelativeDocumentMoniker": "ServiceLayer\\RequestModels\\EventRequestModel.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\RequestModels\\EventRequestModel.cs",
-              "RelativeToolTip": "ServiceLayer\\RequestModels\\EventRequestModel.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAA2wB4AAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T07:47:37.069Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IUsersService.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\Interfaces\\IUsersService.cs",
-              "RelativeDocumentMoniker": "ServiceLayer\\Interfaces\\IUsersService.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\Interfaces\\IUsersService.cs",
-              "RelativeToolTip": "ServiceLayer\\Interfaces\\IUsersService.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T09:53:40.025Z",
+              "WhenOpened": "2024-10-20T14:20:05.365Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "EventService.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\Services\\EventService.cs",
-              "RelativeDocumentMoniker": "ServiceLayer\\Services\\EventService.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\Services\\EventService.cs",
-              "RelativeToolTip": "ServiceLayer\\Services\\EventService.cs",
-              "ViewState": "AQIAAF0AAAAAAAAAAAAqwHUAAAADAAAA",
+              "Title": "PawFundContext.cs",
+              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\RepositoryLayer\\PawFundContext.cs",
+              "RelativeDocumentMoniker": "RepositoryLayer\\PawFundContext.cs",
+              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\RepositoryLayer\\PawFundContext.cs",
+              "RelativeToolTip": "RepositoryLayer\\PawFundContext.cs",
+              "ViewState": "AgIAAJcAAAAAAAAAAAAwwKgAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T07:35:49.065Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T13:50:48.38Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "IEventService.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\Interfaces\\IEventService.cs",
-              "RelativeDocumentMoniker": "ServiceLayer\\Interfaces\\IEventService.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\Interfaces\\IEventService.cs",
-              "RelativeToolTip": "ServiceLayer\\Interfaces\\IEventService.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABMAAABbAAAA",
+              "Title": "AdoptionRegistrationFormService.cs",
+              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\AdoptionRegistrationFormService.cs",
+              "RelativeDocumentMoniker": "ServiceLayer\\Services\\AdoptionRegistrationFormService.cs",
+              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\AdoptionRegistrationFormService.cs",
+              "RelativeToolTip": "ServiceLayer\\Services\\AdoptionRegistrationFormService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABoAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T08:00:00.935Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T13:48:28.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AdoptionRegistrationFormRequest.cs",
+              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\RequestModels\\AdoptionRegistrationFormRequest.cs",
+              "RelativeDocumentMoniker": "ServiceLayer\\RequestModels\\AdoptionRegistrationFormRequest.cs",
+              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\RequestModels\\AdoptionRegistrationFormRequest.cs",
+              "RelativeToolTip": "ServiceLayer\\RequestModels\\AdoptionRegistrationFormRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T13:48:23.412Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AdoptionRegistrationFormController.cs",
+              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\AdoptionRegistrationFormController.cs",
+              "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\AdoptionRegistrationFormController.cs",
+              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\AdoptionRegistrationFormController.cs",
+              "RelativeToolTip": "SWP391_PawFund\\Controllers\\AdoptionRegistrationFormController.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAnwDMAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T13:41:06.211Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "UserRequestModel.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\RequestModels\\UserRequestModel.cs",
-              "RelativeDocumentMoniker": "ServiceLayer\\RequestModels\\UserRequestModel.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\RequestModels\\UserRequestModel.cs",
-              "RelativeToolTip": "ServiceLayer\\RequestModels\\UserRequestModel.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAA7wAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T09:56:08.315Z",
-              "EditorCaption": ""
+              "Title": "Microsoft.PackageDependencyResolution.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\8.0.403\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\8.0.403\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "ViewState": "AgIAAOsAAAAAAAAAAAAnwAkBAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2024-10-20T13:34:34.077Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ModelLayer\\Entities\\User.cs",
-              "RelativeDocumentMoniker": "ModelLayer\\Entities\\User.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ModelLayer\\Entities\\User.cs",
-              "RelativeToolTip": "ModelLayer\\Entities\\User.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAcwCYAAAABAAAA",
+              "DocumentIndex": 13,
+              "Title": "EventResponseModel.cs",
+              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\ResponseModels\\EventResponseModel.cs",
+              "RelativeDocumentMoniker": "ServiceLayer\\ResponseModels\\EventResponseModel.cs",
+              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\ResponseModels\\EventResponseModel.cs",
+              "RelativeToolTip": "ServiceLayer\\ResponseModels\\EventResponseModel.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAswCMAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T07:29:51.343Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Event.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ModelLayer\\Entities\\Event.cs",
-              "RelativeDocumentMoniker": "ModelLayer\\Entities\\Event.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ModelLayer\\Entities\\Event.cs",
-              "RelativeToolTip": "ModelLayer\\Entities\\Event.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T07:29:28.583Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T07:30:58.089Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "EventController.cs",
+              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\EventController.cs",
+              "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\EventController.cs",
+              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\EventController.cs",
+              "RelativeToolTip": "SWP391_PawFund\\Controllers\\EventController.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAwwAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T07:27:30.56Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "EventRequestModel.cs",
+              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\RequestModels\\EventRequestModel.cs",
+              "RelativeDocumentMoniker": "ServiceLayer\\RequestModels\\EventRequestModel.cs",
+              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\RequestModels\\EventRequestModel.cs",
+              "RelativeToolTip": "ServiceLayer\\RequestModels\\EventRequestModel.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAywB4AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T07:47:37.069Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IUsersService.cs",
+              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Interfaces\\IUsersService.cs",
+              "RelativeDocumentMoniker": "ServiceLayer\\Interfaces\\IUsersService.cs",
+              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Interfaces\\IUsersService.cs",
+              "RelativeToolTip": "ServiceLayer\\Interfaces\\IUsersService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T09:53:40.025Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "EventService.cs",
+              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\EventService.cs",
+              "RelativeDocumentMoniker": "ServiceLayer\\Services\\EventService.cs",
+              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\EventService.cs",
+              "RelativeToolTip": "ServiceLayer\\Services\\EventService.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAqwHUAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T07:35:49.065Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IEventService.cs",
+              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Interfaces\\IEventService.cs",
+              "RelativeDocumentMoniker": "ServiceLayer\\Interfaces\\IEventService.cs",
+              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Interfaces\\IEventService.cs",
+              "RelativeToolTip": "ServiceLayer\\Interfaces\\IEventService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T08:00:00.935Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "UserRequestModel.cs",
+              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\RequestModels\\UserRequestModel.cs",
+              "RelativeDocumentMoniker": "ServiceLayer\\RequestModels\\UserRequestModel.cs",
+              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\RequestModels\\UserRequestModel.cs",
+              "RelativeToolTip": "ServiceLayer\\RequestModels\\UserRequestModel.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAA3wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T09:56:08.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "ModelLayer\\Entities\\User.cs",
+              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\User.cs",
+              "RelativeToolTip": "ModelLayer\\Entities\\User.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAA0wCYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T07:29:51.343Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Event.cs",
+              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Event.cs",
+              "RelativeDocumentMoniker": "ModelLayer\\Entities\\Event.cs",
+              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Event.cs",
+              "RelativeToolTip": "ModelLayer\\Entities\\Event.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T07:29:28.583Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "Shelter.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ModelLayer\\Entities\\Shelter.cs",
+              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Shelter.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\Shelter.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ModelLayer\\Entities\\Shelter.cs",
+              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Shelter.cs",
               "RelativeToolTip": "ModelLayer\\Entities\\Shelter.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAmwBoAAAAAAAAA",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAmwBoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-20T07:29:24.335Z"
             }

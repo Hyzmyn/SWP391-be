@@ -22,6 +22,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddHttpClient<ITwilioRestClient, TwilioClient>();
 
+
 var firebaseConfig = Environment.GetEnvironmentVariable("FIREBASE_CONFIG");
 
 if (!string.IsNullOrEmpty(firebaseConfig))
@@ -141,7 +142,7 @@ else
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "HomeHunt API V1");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "PawFund API");
         c.RoutePrefix = string.Empty;
     });
 }
