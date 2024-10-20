@@ -21,5 +21,10 @@ namespace ModelLayer.Entities
 
         public virtual User? User { get; set; }
         public virtual Shelter? Shelter { get; set; }
-    }
+
+		public static double Sum(Func<object, object> value)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }
