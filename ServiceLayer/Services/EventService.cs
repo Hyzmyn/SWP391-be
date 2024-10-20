@@ -1,4 +1,5 @@
-﻿using ModelLayer.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using ModelLayer.Entities;
 using RepositoryLayer.UnitOfWork;
 using ServiceLayer.Interfaces;
 using ServiceLayer.RequestModels;
@@ -31,8 +32,40 @@ namespace ServiceLayer.Services
 				Location = e.Location
 			});
 
+
+
 			return await Task.FromResult(response);
+
 		}
+
+		public async Task<IEnumerable<EventResponseModels>> GetAllEventsWithUsersAsync()
+		{
+			var events = await _unitOfWork.Repository<Event>()
+				.GetAll()
+				.Include(e => e.Users)
+				.ToListAsync();
+
+			var response = events.Select(e => new EventResponseModels
+			{
+				Id = e.Id,
+				ShelterId = e.ShelterId,
+				Name = e.Name,
+				Date = e.Date,
+				Description = e.Description,
+				Location = e.Location,
+				Users = e.Users?.Select(u => new UsersResponseModel
+				{
+					Id = u.Id,
+					Username = u.Username,
+					Email = u.Email,
+					Location = u.Location ?? string.Empty,
+					Phone = u.Phone ?? string.Empty
+				}).ToList()
+			});
+
+			return response;
+		}
+
 		public async Task<EventResponseModel> GetEventByIdAsync(int id)
 		{
 			var eventEntity = await _unitOfWork.Repository<Event>().GetById(id);
