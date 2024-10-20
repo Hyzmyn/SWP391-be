@@ -65,6 +65,57 @@ namespace ServiceLayer.Services
 
 			return response;
 		}
+		public async Task<EventWithUserResponseModel> AddUserToEventAsync(AddUserToEventRequestModel request)
+		{
+			var eventEntity = await _unitOfWork.Repository<Event>()
+				.GetAll()
+				.Include(e => e.Users)
+				.FirstOrDefaultAsync(e => e.Id == request.EventId);
+
+			if (eventEntity == null)
+			{
+				throw new Exception($"Event with ID {request.EventId} not found.");
+			}
+
+			var user = await _unitOfWork.Repository<User>().GetById(request.UserId);
+
+			if (user == null)
+			{
+				throw new Exception($"User with ID {request.UserId} not found.");
+			}
+
+			if (eventEntity.Users == null)
+			{
+				eventEntity.Users = new List<User>();
+			}
+
+			if (!eventEntity.Users.Any(u => u.Id == user.Id))
+			{
+				eventEntity.Users.Add(user);
+				await _unitOfWork.CommitAsync();
+			}
+
+			return new EventWithUserResponseModel
+			{
+				Event = new EventResponseModel
+				{
+					Id = eventEntity.Id,
+					ShelterId = eventEntity.ShelterId,
+					Name = eventEntity.Name,
+					Date = eventEntity.Date,
+					Description = eventEntity.Description,
+					Location = eventEntity.Location
+				},
+				User = new UserResponseModel
+				{
+					Id = user.Id,
+					Username = user.Username,
+					Email = user.Email,
+					Phone = user.Phone,
+					Location = user.Location
+				}
+			};
+		}
 
 		public async Task<EventResponseModel> GetEventByIdAsync(int id)
 		{

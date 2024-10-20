@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dell\\desktop\\swp_be_binh\\swp391-be\\swp391_pawfund\\controllers\\sheltercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\sheltercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dell\\desktop\\swp_be_binh\\swp391-be\\swp391_pawfund\\controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\servicelayer\\requestmodels\\eventrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\requestmodels\\eventrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\servicelayer\\services\\eventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,16 +23,20 @@
       "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\responsemodels\\eventresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\servicelayer\\requestmodels\\eventrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\requestmodels\\eventrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dell\\desktop\\swp_be_binh\\swp391-be\\servicelayer\\interfaces\\iusersservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\interfaces\\iusersservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\modellayer\\entities\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dell\\desktop\\swp_be_binh\\swp391-be\\servicelayer\\requestmodels\\userrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\requestmodels\\userrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\modellayer\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\modellayer\\entities\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\modellayer\\entities\\shelter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -41,92 +45,26 @@
   ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 1,
+      "Orientation": 0,
       "VerticalTabListWidth": 237,
       "DocumentGroups": [
         {
           "DockedWidth": 100,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ShelterController.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\SWP391_PawFund\\Controllers\\ShelterController.cs",
-              "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\ShelterController.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\SWP391_PawFund\\Controllers\\ShelterController.cs",
-              "RelativeToolTip": "SWP391_PawFund\\Controllers\\ShelterController.cs",
-              "ViewState": "AQIAADgAAAAAAAAAAAAYwD8AAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T08:07:03.598Z",
-              "EditorCaption": ""
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         },
         {
           "DockedWidth": 92,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EventService.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\Services\\EventService.cs",
-              "RelativeDocumentMoniker": "ServiceLayer\\Services\\EventService.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\Services\\EventService.cs",
-              "RelativeToolTip": "ServiceLayer\\Services\\EventService.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAmwEIAAAADAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T07:35:49.065Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IEventService.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\Interfaces\\IEventService.cs",
-              "RelativeDocumentMoniker": "ServiceLayer\\Interfaces\\IEventService.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\Interfaces\\IEventService.cs",
-              "RelativeToolTip": "ServiceLayer\\Interfaces\\IEventService.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABIAAABUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T08:00:00.935Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EventController.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\SWP391_PawFund\\Controllers\\EventController.cs",
-              "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\EventController.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\SWP391_PawFund\\Controllers\\EventController.cs",
-              "RelativeToolTip": "SWP391_PawFund\\Controllers\\EventController.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAIwDcAAAADAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T07:27:30.56Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -136,9 +74,88 @@
               "RelativeDocumentMoniker": "ServiceLayer\\ResponseModels\\EventResponseModel.cs",
               "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\ResponseModels\\EventResponseModel.cs",
               "RelativeToolTip": "ServiceLayer\\ResponseModels\\EventResponseModel.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAqwB4AAAACAAAA",
+              "ViewState": "AQIAAB0AAAAAAAAAAAA/wCMAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T07:30:58.089Z"
+              "WhenOpened": "2024-10-20T07:30:58.089Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EventController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\SWP391_PawFund\\Controllers\\EventController.cs",
+              "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\EventController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\SWP391_PawFund\\Controllers\\EventController.cs",
+              "RelativeToolTip": "SWP391_PawFund\\Controllers\\EventController.cs",
+              "ViewState": "AQIAAC8AAAAAAAAAAAASwDoAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T07:27:30.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EventRequestModel.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\RequestModels\\EventRequestModel.cs",
+              "RelativeDocumentMoniker": "ServiceLayer\\RequestModels\\EventRequestModel.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\RequestModels\\EventRequestModel.cs",
+              "RelativeToolTip": "ServiceLayer\\RequestModels\\EventRequestModel.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAA2wB4AAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T07:47:37.069Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IUsersService.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\Interfaces\\IUsersService.cs",
+              "RelativeDocumentMoniker": "ServiceLayer\\Interfaces\\IUsersService.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\Interfaces\\IUsersService.cs",
+              "RelativeToolTip": "ServiceLayer\\Interfaces\\IUsersService.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T09:53:40.025Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EventService.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\Services\\EventService.cs",
+              "RelativeDocumentMoniker": "ServiceLayer\\Services\\EventService.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\Services\\EventService.cs",
+              "RelativeToolTip": "ServiceLayer\\Services\\EventService.cs",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAqwHUAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T07:35:49.065Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IEventService.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\Interfaces\\IEventService.cs",
+              "RelativeDocumentMoniker": "ServiceLayer\\Interfaces\\IEventService.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\Interfaces\\IEventService.cs",
+              "RelativeToolTip": "ServiceLayer\\Interfaces\\IEventService.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABMAAABbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T08:00:00.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserRequestModel.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\RequestModels\\UserRequestModel.cs",
+              "RelativeDocumentMoniker": "ServiceLayer\\RequestModels\\UserRequestModel.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\RequestModels\\UserRequestModel.cs",
+              "RelativeToolTip": "ServiceLayer\\RequestModels\\UserRequestModel.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAA7wAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T09:56:08.315Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -150,23 +167,12 @@
               "RelativeToolTip": "ModelLayer\\Entities\\User.cs",
               "ViewState": "AQIAABMAAAAAAAAAAAAcwCYAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T07:29:51.343Z"
+              "WhenOpened": "2024-10-20T07:29:51.343Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "EventRequestModel.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\RequestModels\\EventRequestModel.cs",
-              "RelativeDocumentMoniker": "ServiceLayer\\RequestModels\\EventRequestModel.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\RequestModels\\EventRequestModel.cs",
-              "RelativeToolTip": "ServiceLayer\\RequestModels\\EventRequestModel.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAYwBsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T07:47:37.069Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Event.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ModelLayer\\Entities\\Event.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\Event.cs",
@@ -174,11 +180,12 @@
               "RelativeToolTip": "ModelLayer\\Entities\\Event.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T07:29:28.583Z"
+              "WhenOpened": "2024-10-20T07:29:28.583Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Shelter.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ModelLayer\\Entities\\Shelter.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\Shelter.cs",
