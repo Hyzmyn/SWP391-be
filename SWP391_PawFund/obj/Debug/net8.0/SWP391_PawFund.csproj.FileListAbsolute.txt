@@ -1,3 +1,10 @@
+D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.csproj.AssemblyReference.cache
+D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.GeneratedMSBuildEditorConfig.editorconfig
+D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.AssemblyInfoInputs.cache
+D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.AssemblyInfo.cs
+D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.csproj.CoreCompileInputs.cache
+D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.MvcApplicationPartsAssemblyInfo.cache
+D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.sourcelink.json
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\appsettings.Development.json
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\firebase-adminsdk.json
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\SWP391_PawFund.exe
@@ -20,6 +27,8 @@ D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\De
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Google.Cloud.Storage.V1.dll
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Humanizer.dll
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Versioning.dll
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
@@ -42,6 +51,7 @@ D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\De
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Mono.TextTemplating.dll
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\MySqlConnector.dll
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Swashbuckle.AspNetCore.Annotations.dll
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
@@ -118,14 +128,6 @@ D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\De
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\ServiceLayer.pdb
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\ModelLayer.pdb
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\RepositoryLayer.pdb
-D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.csproj.AssemblyReference.cache
-D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.GeneratedMSBuildEditorConfig.editorconfig
-D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.AssemblyInfoInputs.cache
-D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.AssemblyInfo.cs
-D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.csproj.CoreCompileInputs.cache
-D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.MvcApplicationPartsAssemblyInfo.cs
-D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.MvcApplicationPartsAssemblyInfo.cache
-D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.sourcelink.json
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\staticwebassets.build.json
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\staticwebassets.development.json
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\staticwebassets\msbuild.SWP391_PawFund.Microsoft.AspNetCore.StaticWebAssets.props
@@ -141,6 +143,4 @@ D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\De
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.pdb
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.genruntimeconfig.cache
 D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\ref\SWP391_PawFund.dll
-D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
-D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
-D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+D:\Course\SWP391V2\SWP391-SE1878\PawFund_Project\SWP391-be\SWP391_PawFund\obj\Debug\net8.0\SWP391_PawFund.MvcApplicationPartsAssemblyInfo.cs

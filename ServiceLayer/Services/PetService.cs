@@ -19,7 +19,12 @@ namespace ServiceLayer.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly PawFundContext _content;
-        public PetService(IUnitOfWork unitOfWork) { _unitOfWork = unitOfWork; }
+        private readonly IFileUploadService _fileUploadService;
+        public PetService(IUnitOfWork unitOfWork, IFileUploadService fileUploadService)
+        {
+            _unitOfWork = unitOfWork;
+            _fileUploadService = fileUploadService;
+        }
 
         // Lấy tất cả các Pet
         public async Task<IEnumerable<PetResponseModel>> GetAllPetsAsync()
@@ -67,6 +72,7 @@ namespace ServiceLayer.Services
         // Lấy Pet theo ID
         public async Task<PetResponseModel> GetPetByIdAsync(int id)
         {
+
             var pet = await _unitOfWork.Repository<Pet>()
                 .AsQueryable()
                 .Include(p => p.Statuses)
@@ -106,6 +112,12 @@ namespace ServiceLayer.Services
         // Tạo mới Pet
         public async Task<PetResponseModel> CreatePetAsync(PetCreateRequestModel createPetRequest)
         {
+            string userImage = null;
+
+            if (createPetRequest.Image != null)
+            {
+                userImage = await _fileUploadService.UploadFileAsync(createPetRequest.Image);
+            }
             var pet = new Pet
             {
                 ShelterID = createPetRequest.ShelterID,
@@ -119,7 +131,7 @@ namespace ServiceLayer.Services
                 Color = createPetRequest.Color,
                 Description = createPetRequest.Description,
                 AdoptionStatus = createPetRequest.AdoptionStatus,
-                Image = createPetRequest.Image
+                Image = userImage
             };
 
             await _unitOfWork.Repository<Pet>().InsertAsync(pet);
@@ -198,6 +210,7 @@ namespace ServiceLayer.Services
             var pet = await _unitOfWork.Repository<Pet>()
                 .AsQueryable()
                 .Include(p => p.Statuses)
+                    .ThenInclude(sp => sp.Status)
                 .FirstOrDefaultAsync(p => p.Id == petId);
 
             if (pet == null)
