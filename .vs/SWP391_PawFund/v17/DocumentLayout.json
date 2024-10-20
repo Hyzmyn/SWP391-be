@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\",
+  "WorkspaceRootPath": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\",
   "Documents": [
     {
       "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|d:\\course\\swp391v2\\swp391-se1878\\pawfund_project\\swp391-be\\swp391_pawfund\\controllers\\certificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -127,10 +127,6 @@
           "DockedHeight": 273,
           "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
