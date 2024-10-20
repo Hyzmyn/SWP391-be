@@ -17,6 +17,7 @@ namespace ServiceLayer.Interfaces
 		Task UpdateEventAsync(int id, UpdateEventRequestModel request);
 		Task DeleteEventAsync(int id);
 		Task<IEnumerable<EventResponseModels>> GetAllEventsWithUsersAsync(); // New method
+		Task<EventWithUserResponseModel> AddUserToEventAsync(AddUserToEventRequestModel request);
 
 	}
 }
