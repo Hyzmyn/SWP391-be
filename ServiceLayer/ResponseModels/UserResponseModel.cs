@@ -19,6 +19,7 @@ namespace ServiceLayer.ResponseModels
         public string Shelter { get; set; }
         public string Event { get; set; }
         public List<string> Roles { get; set; }
+        public decimal Wallet { get; set; }
 
     }
 

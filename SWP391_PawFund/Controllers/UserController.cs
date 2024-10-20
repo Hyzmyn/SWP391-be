@@ -55,7 +55,8 @@ namespace SWP391_PawFund.Controllers
                         Location = user.Location,
                         TotalDonation = user.TotalDonation,
                         Image = user.Image,
-                        Roles = roles.ToList()
+                        Roles = roles.ToList(),
+                        wallet = user.wallet
                     };
 
                     userViewModels.Add(userViewModel);

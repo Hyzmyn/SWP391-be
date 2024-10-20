@@ -1,0 +1,15 @@
+C:\Users\dtori\Desktop\DeleteThis\SWP391-be\ModelLayer\bin\Release\net8.0\ModelLayer.deps.json
+C:\Users\dtori\Desktop\DeleteThis\SWP391-be\ModelLayer\bin\Release\net8.0\ModelLayer.runtimeconfig.json
+C:\Users\dtori\Desktop\DeleteThis\SWP391-be\ModelLayer\bin\Release\net8.0\ModelLayer.dll
+C:\Users\dtori\Desktop\DeleteThis\SWP391-be\ModelLayer\bin\Release\net8.0\ModelLayer.pdb
+C:\Users\dtori\Desktop\DeleteThis\SWP391-be\ModelLayer\obj\Release\net8.0\ModelLayer.csproj.AssemblyReference.cache
+C:\Users\dtori\Desktop\DeleteThis\SWP391-be\ModelLayer\obj\Release\net8.0\ModelLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dtori\Desktop\DeleteThis\SWP391-be\ModelLayer\obj\Release\net8.0\ModelLayer.AssemblyInfoInputs.cache
+C:\Users\dtori\Desktop\DeleteThis\SWP391-be\ModelLayer\obj\Release\net8.0\ModelLayer.AssemblyInfo.cs
+C:\Users\dtori\Desktop\DeleteThis\SWP391-be\ModelLayer\obj\Release\net8.0\ModelLayer.csproj.CoreCompileInputs.cache
+C:\Users\dtori\Desktop\DeleteThis\SWP391-be\ModelLayer\obj\Release\net8.0\ModelLayer.sourcelink.json
+C:\Users\dtori\Desktop\DeleteThis\SWP391-be\ModelLayer\obj\Release\net8.0\ModelLayer.dll
+C:\Users\dtori\Desktop\DeleteThis\SWP391-be\ModelLayer\obj\Release\net8.0\refint\ModelLayer.dll
+C:\Users\dtori\Desktop\DeleteThis\SWP391-be\ModelLayer\obj\Release\net8.0\ModelLayer.pdb
+C:\Users\dtori\Desktop\DeleteThis\SWP391-be\ModelLayer\obj\Release\net8.0\ModelLayer.genruntimeconfig.cache
+C:\Users\dtori\Desktop\DeleteThis\SWP391-be\ModelLayer\obj\Release\net8.0\ref\ModelLayer.dll

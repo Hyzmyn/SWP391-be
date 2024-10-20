@@ -60,7 +60,9 @@ namespace SWP391_PawFund.Controllers
                     IdentificationImageBackSide = form.IdentificationImageBackSide,
                     AdopterId = form.AdopterId,
                     ShelterStaffId = form.ShelterStaffId,
-                    PetId = form.PetId
+                    PetId = form.PetId,
+                    Status = form.Status,
+                    Shelter = form.Pet.Shelter.Name
                 }).ToList();
 
                 return Ok(response);
