@@ -11,5 +11,7 @@ namespace ServiceLayer.Interfaces
         IEnumerable<CertificationResponseDetail> GetAllCertificates();
         Task<CertificationResponseDetail> GetCertificateByIdAsync(int id);
         Task<CertificationResponseDetail> UpdateCertificateAsync(int id, CertificationRequest request);
+
+        Task<IEnumerable<CertificationResponseDetail>> GetCertificationByUserIdAsync(int userId);
     }
 }
