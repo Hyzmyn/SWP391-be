@@ -1,25 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\ServiceLayer.csproj": {}
+    "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\ServiceLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ModelLayer\\ModelLayer.csproj": {
+    "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ModelLayer\\ModelLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ModelLayer\\ModelLayer.csproj",
+        "projectUniqueName": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ModelLayer\\ModelLayer.csproj",
         "projectName": "ModelLayer",
-        "projectPath": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ModelLayer\\ModelLayer.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ModelLayer\\obj\\",
+        "projectPath": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ModelLayer\\ModelLayer.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ModelLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
-        "originalTargetFrameworks": [
-          "net8.0"
-        ],
+        "originalTargetFrameworks": ["net8.0"],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
@@ -31,9 +29,7 @@
           }
         },
         "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
+          "warnAsError": ["NU1605"]
         },
         "restoreAuditProperties": {
           "enableAudit": "true",
@@ -94,26 +90,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\RepositoryLayer\\RepositoryLayer.csproj": {
+    "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\RepositoryLayer\\RepositoryLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\RepositoryLayer\\RepositoryLayer.csproj",
+        "projectUniqueName": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\RepositoryLayer\\RepositoryLayer.csproj",
         "projectName": "RepositoryLayer",
-        "projectPath": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\RepositoryLayer\\RepositoryLayer.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\RepositoryLayer\\obj\\",
+        "projectPath": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\RepositoryLayer\\RepositoryLayer.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\RepositoryLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
-        "originalTargetFrameworks": [
-          "net8.0"
-        ],
+        "originalTargetFrameworks": ["net8.0"],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
@@ -122,16 +116,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ModelLayer\\ModelLayer.csproj": {
-                "projectPath": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ModelLayer\\ModelLayer.csproj"
+              "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ModelLayer\\ModelLayer.csproj": {
+                "projectPath": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ModelLayer\\ModelLayer.csproj"
               }
             }
           }
         },
         "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
+          "warnAsError": ["NU1605"]
         },
         "restoreAuditProperties": {
           "enableAudit": "true",
@@ -184,26 +176,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\ServiceLayer.csproj": {
+    "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\ServiceLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\ServiceLayer.csproj",
+        "projectUniqueName": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\ServiceLayer.csproj",
         "projectName": "ServiceLayer",
-        "projectPath": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\ServiceLayer.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\ServiceLayer\\obj\\",
+        "projectPath": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\ServiceLayer.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\ServiceLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
-        "originalTargetFrameworks": [
-          "net8.0"
-        ],
+        "originalTargetFrameworks": ["net8.0"],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
@@ -212,16 +202,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\RepositoryLayer\\RepositoryLayer.csproj": {
-                "projectPath": "C:\\Users\\DELL\\Desktop\\SWP_BE_binh\\SWP391-be\\RepositoryLayer\\RepositoryLayer.csproj"
+              "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\RepositoryLayer\\RepositoryLayer.csproj": {
+                "projectPath": "D:\\Course\\SWP391V2\\SWP391-SE1878\\PawFund_Project\\SWP391-be\\RepositoryLayer\\RepositoryLayer.csproj"
               }
             }
           }
         },
         "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
+          "warnAsError": ["NU1605"]
         },
         "restoreAuditProperties": {
           "enableAudit": "true",
@@ -266,7 +254,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
