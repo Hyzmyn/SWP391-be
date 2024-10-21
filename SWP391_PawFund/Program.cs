@@ -141,7 +141,7 @@ else
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "HomeHunt API V1");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "PawFund API");
         c.RoutePrefix = string.Empty;
     });
 }

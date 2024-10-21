@@ -72,7 +72,6 @@ namespace ServiceLayer.Services
         // Lấy Pet theo ID
         public async Task<PetResponseModel> GetPetByIdAsync(int id)
         {
-
             var pet = await _unitOfWork.Repository<Pet>()
                 .AsQueryable()
                 .Include(p => p.Statuses)

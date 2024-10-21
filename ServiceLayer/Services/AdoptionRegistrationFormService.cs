@@ -25,6 +25,7 @@ namespace ServiceLayer.Services
             return _unitOfWork.Repository<AdoptionRegistrationForm>().GetAll()
                 .Include(form => form.User)
                 .Include(form => form.Pet)
+                .Include(pet => pet.Pet.Shelter)
                 .ToList();
         }
 

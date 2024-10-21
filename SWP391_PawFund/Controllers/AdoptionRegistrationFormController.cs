@@ -62,14 +62,14 @@ namespace SWP391_PawFund.Controllers
                     ShelterStaffId = form.ShelterStaffId,
                     PetId = form.PetId,
                     Status = form.Status,
-                    Shelter = form.Pet.Shelter.Name
+                    Shelter = form.Pet != null && form.Pet.Shelter != null ? form.Pet.Shelter.Name : "N/A"
                 }).ToList();
 
                 return Ok(response);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = ex });
+                return StatusCode(500, new { message = ex.Message });
             }
         }
 
