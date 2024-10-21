@@ -31,8 +31,10 @@ namespace ServiceLayer.Services
                 .GetAll()
                 .Include(s => s.Pets)
                     .ThenInclude(p => p.Statuses)
-                        .ThenInclude(ps => ps.Status) // Bao gồm thông tin Status từ PetStatus
+                        .ThenInclude(ps => ps.Status) 
                 .Include(s => s.Users)
+                    .ThenInclude(ur=>ur.UserRoles)
+                        .ThenInclude(r=>r.Role)
                 .Include(s => s.Events)
                 .Include(s => s.Donations)
                 .ToListAsync();
