@@ -12,6 +12,7 @@ namespace ModelLayer.Entities
     {
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
+        public bool Status { get; set; }
 
         [ForeignKey("User")]
         public int DonorId { get; set; }

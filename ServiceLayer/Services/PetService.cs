@@ -12,6 +12,7 @@ using ServiceLayer.RequestModels;
 using System.Net;
 using ServiceLayer.ResponseModels;
 using Microsoft.AspNetCore.Http.HttpResults;
+using ModelLayer.Enum;
 
 namespace ServiceLayer.Services
 {
@@ -245,6 +246,30 @@ namespace ServiceLayer.Services
 
             repository.Delete(petStatus);
             await _unitOfWork.CommitAsync();
+        }
+
+        //
+        public async Task UpdatePetAdoptionStatusAsync(int id, int status, int? userId)
+        {
+            var existingPet = await _unitOfWork.Repository<Pet>().GetById(id);
+            if (existingPet == null)
+                throw new Exception($"Pet with ID {id} not found.");
+
+            // Validate and convert the integer status to enum
+            if (Enum.IsDefined(typeof(AdoptionStatus), status))
+            {
+                existingPet.AdoptionStatus = ((AdoptionStatus)status).ToString();
+            }
+            else
+            {
+                throw new Exception($"Invalid status value: {status}. Must be 1 (Available), 2 (Adopted), or 3(Unavailable) .");
+            }
+
+            existingPet.UserID = userId;
+
+            await _unitOfWork.Repository<Pet>().Update(existingPet, id);
+            await _unitOfWork.CommitAsync();
+            
         }
     }
 }
