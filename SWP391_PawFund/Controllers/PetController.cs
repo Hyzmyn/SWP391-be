@@ -13,7 +13,6 @@ namespace SWP391_PawFund.Controllers
     public class PetController : ControllerBase
     {
         private readonly IPetService _petService;
-
         public PetController(IPetService petService)
         {
             _petService = petService;
@@ -59,7 +58,9 @@ namespace SWP391_PawFund.Controllers
         public async Task<IActionResult> AddStatusToPet(int petId, [FromForm] CreatePetStatusRequest createPetStatusRequest)
         {
             await _petService.AddStatusToPetAsync(petId, createPetStatusRequest);
-            return NoContent();
+            return Ok(new { Message = "Status added to pet successfully." });
+            // Trả về mã trạng thái 201 Created với endpoint để truy cập lại pet vừa được cập nhật
+            //return CreatedAtAction(nameof(GetPetById), new { id = petId }, new { Message = "Status added successfully." });
         }
 
         // PUT: api/Pet/5/statuses/3
