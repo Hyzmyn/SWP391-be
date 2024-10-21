@@ -97,10 +97,10 @@ namespace ServiceLayer.Services
                 shelter = await _unitOfWork.Repository<Shelter>().GetById((int)user.ShelterId);
             }
 
-            if (user.EventId != null)
-            {
-                eventEntity = await _unitOfWork.Repository<Event>().GetById((int)user.EventId);
-            }
+            //if (user.EventId != null)
+            //{
+            //    eventEntity = await _unitOfWork.Repository<Event>().GetById((int)user.EventId);
+            //}
 
             var roles = await _unitOfWork.Repository<UserRole>()
                 .AsQueryable()
