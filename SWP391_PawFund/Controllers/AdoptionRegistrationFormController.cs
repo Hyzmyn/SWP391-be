@@ -181,10 +181,7 @@ namespace SWP391_PawFund.Controllers
                 }
                 var form = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
 
-                if (await _adoptionFormService.FormExistsAsync(form.PetId))
-                {
-                    return StatusCode(500, new { message = "Pet already exist in a pending form" });
-                }
+
 
                 if (form == null)
                 {
@@ -223,12 +220,21 @@ namespace SWP391_PawFund.Controllers
 
                 if (request.PetId.HasValue)
                 {
+                    if (await _adoptionFormService.FormExistsAsync((int)request.PetId))
+                    {
+                        return StatusCode(500, new { message = "Pet already exist in a pending form" });
+                    }
                     form.PetId = request.PetId.Value;
                 }
 
                 if (request.Status.HasValue)
                 {
                     form.Status = request.Status;
+
+                    if ((bool)request.Status)
+                        await _petService.UpdatePetAdoptionStatusAsync(form.PetId, 2, form.AdopterId); // Adopted
+                    else
+                        await _petService.UpdatePetAdoptionStatusAsync(form.PetId, 1, null);
                 }
 
                 await _adoptionFormService.UpdateAdoptionFormAsync(form);
@@ -265,11 +271,8 @@ namespace SWP391_PawFund.Controllers
                 else
                     await _petService.UpdatePetAdoptionStatusAsync(form.PetId, 1, null);
 
-
                 // Save the updated form
                 await _adoptionFormService.UpdateAdoptionFormAsync(form);
-
-
 
 
                 return Ok(new { message = "Form status has been updated successfully." });
