@@ -23,7 +23,7 @@ namespace ModelLayer.Entities
         public string? Image { get; set; }
 
         public virtual User? User { get; set; }
-        public virtual AdoptionRegistrationForm? AdoptionRegistrationForm { get; set; }
+        public virtual ICollection<AdoptionRegistrationForm>? AdoptionRegistrationForms { get; set; }
         public virtual Certification? Certification { get; set; }
         public virtual Shelter? Shelter { get; set; }
         public virtual ICollection<PetStatus>? Statuses { get; set; }

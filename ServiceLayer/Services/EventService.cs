@@ -55,11 +55,11 @@ namespace ServiceLayer.Services
 				Location = e.Location,
 				Users = e.Users?.Select(u => new UsersResponseModel
 				{
-					Id = u.Id,
-					Username = u.Username,
-					Email = u.Email,
-					Location = u.Location ?? string.Empty,
-					Phone = u.Phone ?? string.Empty
+					//Id = u.Id,
+					//Username = u.Username,
+					//Email = u.Email,
+					//Location = u.Location ?? string.Empty,
+					//Phone = u.Phone ?? string.Empty
 				}).ToList()
 			});
 
@@ -84,16 +84,16 @@ namespace ServiceLayer.Services
 				throw new Exception($"User with ID {request.UserId} not found.");
 			}
 
-			if (eventEntity.Users == null)
-			{
-				eventEntity.Users = new List<User>();
-			}
+			//if (eventEntity.Users == null)
+			//{
+			//	eventEntity.Users = new List<User>();
+			//}
 
-			if (!eventEntity.Users.Any(u => u.Id == user.Id))
-			{
-				eventEntity.Users.Add(user);
-				await _unitOfWork.CommitAsync();
-			}
+			//if (!eventEntity.Users.Any(u => u.Id == user.Id))
+			//{
+			//	eventEntity.Users.Add(user);
+			//	await _unitOfWork.CommitAsync();
+			//}
 
 			return new EventWithUserResponseModel
 			{

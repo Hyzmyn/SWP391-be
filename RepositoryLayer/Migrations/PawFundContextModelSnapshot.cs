@@ -112,8 +112,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PetId")
-                        .IsUnique();
+                    b.HasIndex("PetId");
 
                     b.HasIndex("UserId");
 
@@ -186,6 +185,9 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("ShelterId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("Status")
+                        .HasColumnType("tinyint(1)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DonorId");
@@ -201,7 +203,8 @@ namespace RepositoryLayer.Migrations
                             Amount = 100000m,
                             Date = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 6,
-                            ShelterId = 1
+                            ShelterId = 1,
+                            Status = false
                         },
                         new
                         {
@@ -209,7 +212,8 @@ namespace RepositoryLayer.Migrations
                             Amount = 200000m,
                             Date = new DateTime(2024, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 7,
-                            ShelterId = 1
+                            ShelterId = 1,
+                            Status = false
                         },
                         new
                         {
@@ -217,7 +221,8 @@ namespace RepositoryLayer.Migrations
                             Amount = 543333m,
                             Date = new DateTime(2024, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 8,
-                            ShelterId = 2
+                            ShelterId = 2,
+                            Status = false
                         },
                         new
                         {
@@ -225,7 +230,8 @@ namespace RepositoryLayer.Migrations
                             Amount = 632229m,
                             Date = new DateTime(2024, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 9,
-                            ShelterId = 2
+                            ShelterId = 2,
+                            Status = false
                         },
                         new
                         {
@@ -233,7 +239,8 @@ namespace RepositoryLayer.Migrations
                             Amount = 760000m,
                             Date = new DateTime(2024, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DonorId = 7,
-                            ShelterId = 2
+                            ShelterId = 2,
+                            Status = false
                         });
                 });
 
@@ -271,6 +278,21 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("ShelterId");
 
                     b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.EventUser", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "EventId");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("EventUser");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.FeedBack", b =>
@@ -841,9 +863,6 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
-                    b.Property<int?>("EventId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Image")
                         .HasColumnType("longtext");
 
@@ -884,8 +903,6 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.HasIndex("EventId");
-
                     b.HasIndex("ShelterId");
 
                     b.ToTable("Users");
@@ -895,14 +912,14 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Email = "Admin@email.com",
-                            Password = "$2a$11$CTMX3d1s4ww5BnChgfe3YecvIlQaDTCKtf9yI5EkMmaBnIlvFArf6",
+                            Password = "$2a$11$94ONSiIrc6ZzzgU.YdnuL.UCYT1.EufAhdgnf3qmopJ68Y4x18/vC",
                             Username = "Admin"
                         },
                         new
                         {
                             Id = 2,
                             Email = "Staff1@email.com",
-                            Password = "$2a$11$MWkomfZo17p7LurNuthMgeefNu6o7Gc6bLtBuVGgFir2kErOMgTp.",
+                            Password = "$2a$11$UX9idfkSkMydugMnhheRReHqwEOUWADWQNUD24nB2zsGLzcI.bBoC",
                             ShelterId = 1,
                             Username = "Staff1"
                         },
@@ -910,7 +927,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 3,
                             Email = "Staff2@email.com",
-                            Password = "$2a$11$pWIA3RevqNzWHSB9VhdxC.qTRFYANy6lrZWas3BJ/9OM/gSpmger6",
+                            Password = "$2a$11$.g94LmEWv3sLpgmVu6aJHeRG9mdIa7wijyB2h2RecmDsGEJJyDsVW",
                             ShelterId = 1,
                             Username = "Staff2"
                         },
@@ -918,7 +935,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 4,
                             Email = "Staff3@email.com",
-                            Password = "$2a$11$Wu4muqhjFU58GnU5o9mzA.IwHotukGPypBdNzEEk8Qj9sDb0yO75W",
+                            Password = "$2a$11$7e8uswLe072aqs/gp5EI2OoplSGjB0Tfup/8l8gBYtNuO2AGfYe5m",
                             ShelterId = 2,
                             Username = "Staff3"
                         },
@@ -926,7 +943,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 5,
                             Email = "Staff4@email.com",
-                            Password = "$2a$11$/.kxkB70AAu.n1BG6HIJWuc9./yZ77esD6CyRFesodfQ8FOHxBXHq",
+                            Password = "$2a$11$GdhmKTTYfTtWu1lM0w1UuO.u.zvTBvEBmsNv9QQ8/6qTGal1I6giq",
                             ShelterId = 2,
                             Username = "Staff4"
                         },
@@ -936,7 +953,7 @@ namespace RepositoryLayer.Migrations
                             Email = "Donor1@email.com",
                             Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
                             Location = "HCM",
-                            Password = "$2a$11$jigTFL.RPoLKvuPuSzeSpe986TOmYm4X4zlCt/eYbdUlxvQ.nBPJm",
+                            Password = "$2a$11$.9SltERpYVQGZXiTRl1qze/NrKsfjJSRWu2Ychb02IELh/QzS1svS",
                             Phone = "123456789",
                             Username = "Donor1"
                         },
@@ -944,77 +961,77 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 7,
                             Email = "Donor2@email.com",
-                            Password = "$2a$11$SpNKjwaUwUEkEWhMQ691LOKfC5n.AU.dHvHIT8Pu9PDZbJiDA/wPW",
+                            Password = "$2a$11$p2PukSpo2ZRlg0IPVVNHlON15xDGVZs8goyx1uobupW9KGLpQslL.",
                             Username = "Donor2"
                         },
                         new
                         {
                             Id = 8,
                             Email = "Donor3@email.com",
-                            Password = "$2a$11$Q0ghwGtxf6cOn33zDknpNuqX/dAwzdliO21hj9saN4vXB6cZBYyBG",
+                            Password = "$2a$11$Ltc2/xqNyqWnMvc9I5szZuK9K1ZQthJ6gvFqOMP7HM/C1EXMxs25a",
                             Username = "Donor3"
                         },
                         new
                         {
                             Id = 9,
                             Email = "Donor4@email.com",
-                            Password = "$2a$11$sm54oX2wF6PS1i5/IieWNus.EWmmEruaUPXRaq6pVZqU39RJOGzKu",
+                            Password = "$2a$11$Hzw0LQjBcU8nYXARgt.zduCFXAda7Zgg50VAT96uXkM3i2tPLVp8i",
                             Username = "Donor4"
                         },
                         new
                         {
                             Id = 10,
                             Email = "Volunteer1@email.com",
-                            Password = "$2a$11$a4fQbq3vJWiszEZcc9ivru8imb80xJUKBTlbEijFmBrJNCPwj/rNu",
+                            Password = "$2a$11$f4rRCsxAx7q/MzCQa45fM.ELyEPGL5CBAw8q1lZbfoCo2m7OuBsrO",
                             Username = "Volunteer1"
                         },
                         new
                         {
                             Id = 11,
                             Email = "Volunteer2@email.com",
-                            Password = "$2a$11$y.GCyl.dc6ilFsVp0ewOa.eEuXvixX.85roNKQ8uHWp8ZKb7JU60S",
+                            Password = "$2a$11$MSY3uc6pnZzYRC8aiBLHV.RU6oViFeY46uH55d.A0e6Z7vIg7Vv12",
                             Username = "Volunteer2"
                         },
                         new
                         {
                             Id = 12,
                             Email = "Volunteer3@email.com",
-                            Password = "$2a$11$UGPzxjzou/vglY7isT.2Ues0N2ZqPM51E0cvuU6eeYLhgnPWwHOZe",
+                            Password = "$2a$11$CHKu/wVEISQqTOUiGAvh5OVMDTibcanIKg3GLBkzO0ZPhZXr22Zua",
                             Username = "Volunteer3"
                         },
                         new
                         {
                             Id = 13,
                             Email = "Volunteer4@email.com",
-                            Password = "$2a$11$UVRlNTdsSDN9OM0HhVebhedJBCyq2QfcbczbcgkQwXvkuH.PuQdkC",
+                            Password = "$2a$11$T8ZdPZU3rQ3E0L.RXufSu.1B/UfiyMgLIGYjOvbPJyFxz3kaRVv66",
                             Username = "Volunteer4"
                         },
                         new
                         {
                             Id = 14,
                             Email = "Adopter1@email.com",
-                            Password = "$2a$11$M1DOUbZzntyNrDMXo5QL.OuoWwN3bKLPCkDkX1tr6qGyPY.DizPgO",
+                            Password = "$2a$11$hc0HY.qGMkoQa98YJ8IY8.sVj3zFbTql.FLbl0S6RVAXMnKfvjdnS",
                             Username = "Adopter1"
                         },
                         new
                         {
                             Id = 15,
                             Email = "Adopter2@email.com",
-                            Password = "$2a$11$tv.i0JSKCOtICWYY9hhhseQ2SppLGMRtyLMEouPDJ3doYG3Jgsicq",
+                            Password = "$2a$11$WJQL78r1jfluo3ki/LUn3.iW5q64I9MTDWeGkXd.iznyo55pgyWgi",
                             Username = "Adopter2"
                         },
                         new
                         {
                             Id = 16,
                             Email = "Adopter3@email.com",
-                            Password = "$2a$11$9/4A7qw48twZ0.My0DzUzeWvoPQrJlrxMl6JNxesb9zVzBZzAkf7e",
+                            Password = "$2a$11$7RNadZ3YVMAIxzCXOoHhfuU9802gSPCdSRVEkxXrqt8TZlbRC..MC",
                             Username = "Adopter3"
                         },
                         new
                         {
                             Id = 17,
                             Email = "Adopter4@email.com",
-                            Password = "$2a$11$o3WZSkf6iCjwVLVP9k2gOeYZM5TAuSXnW9O2u7RAykRexcXaTx6Re",
+                            Password = "$2a$11$ZCulH3DNle33uqNZckJQEufGplEOE0NEr4xyYpPUomgPriIZoY3Ui",
                             Username = "Adopter4"
                         });
                 });
@@ -1184,8 +1201,8 @@ namespace RepositoryLayer.Migrations
             modelBuilder.Entity("ModelLayer.Entities.AdoptionRegistrationForm", b =>
                 {
                     b.HasOne("ModelLayer.Entities.Pet", "Pet")
-                        .WithOne("AdoptionRegistrationForm")
-                        .HasForeignKey("ModelLayer.Entities.AdoptionRegistrationForm", "PetId")
+                        .WithMany("AdoptionRegistrationForms")
+                        .HasForeignKey("PetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1253,6 +1270,25 @@ namespace RepositoryLayer.Migrations
                         .IsRequired();
 
                     b.Navigation("Shelter");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.EventUser", b =>
+                {
+                    b.HasOne("ModelLayer.Entities.Event", "Event")
+                        .WithMany("Users")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ModelLayer.Entities.User", "User")
+                        .WithMany("Events")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.FeedBack", b =>
@@ -1340,17 +1376,10 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("ModelLayer.Entities.User", b =>
                 {
-                    b.HasOne("ModelLayer.Entities.Event", "Event")
-                        .WithMany("Users")
-                        .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.SetNull);
-
                     b.HasOne("ModelLayer.Entities.Shelter", "Shelter")
                         .WithMany("Users")
                         .HasForeignKey("ShelterId")
                         .OnDelete(DeleteBehavior.SetNull);
-
-                    b.Navigation("Event");
 
                     b.Navigation("Shelter");
                 });
@@ -1386,7 +1415,7 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("ModelLayer.Entities.Pet", b =>
                 {
-                    b.Navigation("AdoptionRegistrationForm");
+                    b.Navigation("AdoptionRegistrationForms");
 
                     b.Navigation("Certification");
 
@@ -1421,6 +1450,8 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("Certifications");
 
                     b.Navigation("Donations");
+
+                    b.Navigation("Events");
 
                     b.Navigation("Notifications");
 

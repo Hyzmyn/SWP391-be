@@ -18,7 +18,7 @@ namespace SWP391_PawFund.Controllers
         private readonly IAdoptionRegistrationFormService _adoptionFormService;
         //private readonly IShelterService _shelterService;
         //private readonly IUsersService _usersService;
-        //private readonly IPetService _petService;
+        private readonly IPetService _petService;
         private readonly IAuthServices _authServices;
         private readonly IFileUploadService _fileUploadService;
         private readonly ILogger<FormController> _logger;
@@ -35,7 +35,7 @@ namespace SWP391_PawFund.Controllers
             _adoptionFormService = adoptionFormService;
             //_usersService = usersService;
             //_shelterService = shelterService;
-            //_petService = petService;
+            _petService = petService;
             _authServices = authServices;
             _fileUploadService = fileUploadService;
             _logger = logger;
@@ -62,14 +62,14 @@ namespace SWP391_PawFund.Controllers
                     ShelterStaffId = form.ShelterStaffId,
                     PetId = form.PetId,
                     Status = form.Status,
-                    Shelter = form.Pet.Shelter.Name
+                    Shelter = form.Pet != null && form.Pet.Shelter != null ? form.Pet.Shelter.Name : "N/A"
                 }).ToList();
 
                 return Ok(response);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = ex });
+                return StatusCode(500, new { message = ex.Message });
             }
         }
 
@@ -180,6 +180,12 @@ namespace SWP391_PawFund.Controllers
                     return BadRequest(ModelState);
                 }
                 var form = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
+
+                if (await _adoptionFormService.FormExistsAsync(form.PetId))
+                {
+                    return StatusCode(500, new { message = "Pet already exist in a pending form" });
+                }
+
                 if (form == null)
                 {
                     return NotFound(new { message = "Form not found." });
@@ -234,6 +240,44 @@ namespace SWP391_PawFund.Controllers
                 return StatusCode(500, new { message = ex });
             }
 
+        }
+        [HttpPut("{id}/status")]
+        public async Task<IActionResult> UpdateFormStatus(int id, bool status)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                // Retrieve the form by ID
+                var form = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
+                if (form == null)
+                {
+                    return NotFound(new { message = "Form not found." });
+                }
+
+                form.Status = status;
+
+                if (status)
+                    await _petService.UpdatePetAdoptionStatusAsync(form.PetId, 2, form.AdopterId); // Adopted
+                else
+                    await _petService.UpdatePetAdoptionStatusAsync(form.PetId, 1, null);
+
+
+                // Save the updated form
+                await _adoptionFormService.UpdateAdoptionFormAsync(form);
+
+
+
+
+                return Ok(new { message = "Form status has been updated successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = ex.Message });
+            }
         }
 
         // DELETE: api/AdoptionRegistrationForm/{id}

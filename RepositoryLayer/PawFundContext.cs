@@ -86,11 +86,18 @@ namespace RepositoryLayer
                 .HasForeignKey(u => u.ShelterId)
                 .OnDelete(DeleteBehavior.SetNull);
 
-            modelBuilder.Entity<User>()
-                .HasOne(u => u.Event)
-                .WithMany(e => e.Users)
-                .HasForeignKey(u => u.EventId)
-                .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<EventUser>()
+                .HasKey(ur => new { ur.UserId, ur.EventId });
+
+            modelBuilder.Entity<EventUser>()
+                .HasOne(ur => ur.User)
+                .WithMany(u => u.Events)
+                .HasForeignKey(ur => ur.UserId);
+
+            modelBuilder.Entity<EventUser>()
+                .HasOne(ur => ur.Event)
+                .WithMany(r => r.Users)
+                .HasForeignKey(ur => ur.EventId);
 
             modelBuilder.Entity<UserRole>()
                 .HasKey(ur => new { ur.UserId, ur.RoleId });

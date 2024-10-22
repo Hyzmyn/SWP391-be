@@ -20,12 +20,11 @@ namespace ModelLayer.Entities
         public decimal? wallet { get; set; }
         public string? Image { get; set; }
         public int? ShelterId { get; set; }
-        public int? EventId { get; set; }
         public bool? Status { get; set; }
 
 
         public virtual Shelter? Shelter { get; set; }
-        public virtual Event? Event { get; set; }
+        public virtual ICollection<EventUser>? Events { get; set; }
 
         public virtual ICollection<UserRole>? UserRoles { get; set; }
         public virtual ICollection<Pet>? Pets { get; set; }
