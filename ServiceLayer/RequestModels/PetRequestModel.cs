@@ -49,5 +49,10 @@ namespace ServiceLayer.RequestModels
         //public int PetId { get; set; }
         public int StatusId { get; set; }
     }
+    public class UpdateAdoptionStatusRequest
+    {
+        public int Status { get; set; } // Enum for status: 1 for "Available", 2 for "Adopted"
+        public int? UserId { get; set; } 
+    }
 
 }

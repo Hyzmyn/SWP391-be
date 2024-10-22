@@ -78,5 +78,36 @@ namespace SWP391_PawFund.Controllers
             await _petService.RemoveStatusFromPetAsync(petId, statusId);
             return NoContent();
         }
+
+        [HttpPut("UpdateAdoptionStatus/{id}")]
+        public async Task<IActionResult> UpdatePetAdoptionStatus(int id, [FromBody] UpdateAdoptionStatusRequest request)
+        {
+            try
+            {
+                // Call the service method to update the adoption status of the pet
+                await _petService.UpdatePetAdoptionStatusAsync(id, request.Status, request.UserId);
+                return Ok(new { Message = "Pet adoption status updated successfully." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
+        }
+
+        [HttpPut("{petId}/user")]
+        public async Task<IActionResult> PutUserID(int petId, [FromForm] int userId)
+        {
+            try
+            {
+                var updatedPet = await _petService.PutUserIDAsync(petId, userId);
+                return Ok(updatedPet);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+
+            }
+        }
+
     }
 }
