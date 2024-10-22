@@ -16,7 +16,6 @@ namespace ServiceLayer.Services
         private readonly ITwilioRestClient _innerClient;
         public TwilioClient(IConfiguration config, System.Net.Http.HttpClient httpClient)
         {
-            // customize the underlying HttpClient
             httpClient.DefaultRequestHeaders.Add("X-Custom-Header", "CustomTwilioRestClient-Demo");
             _innerClient = new TwilioRestClient(
             config["Twilio:AccountSid"],
