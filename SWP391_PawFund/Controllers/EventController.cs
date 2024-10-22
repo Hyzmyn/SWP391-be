@@ -88,6 +88,34 @@ namespace SWP391_PawFund.Controllers
 			}
 		}
 
+		[HttpGet("user/{userId}")]
+		public async Task<ActionResult<IEnumerable<EventResponseModel>>> GetEventsByUserId(int userId)
+		{
+			try
+			{
+				var events = await _eventService.GetEventsByUserIdAsync(userId);
+				return Ok(events);
+			}
+			catch (Exception ex)
+			{
+				return NotFound(new { message = ex.Message });
+			}
+		}
+
+		[HttpGet("shelter/{shelterId}")]
+		public async Task<ActionResult<IEnumerable<EventResponseModel>>> GetEventsByShelter(int shelterId)
+		{
+			try
+			{
+				var events = await _eventService.GetEventsByShelterIdAsync(shelterId);
+				return Ok(events);
+			}
+			catch (Exception ex)
+			{
+				return NotFound(new { message = ex.Message });
+			}
+		}
+
 		// POST: api/Events
 		[HttpPost]
 		[Authorize]
