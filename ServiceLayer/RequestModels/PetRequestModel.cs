@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,9 @@ namespace ServiceLayer.RequestModels
         public string? Color { get; set; }
         public string? Description { get; set; }
         public string? AdoptionStatus { get; set; }
-        public string? Image { get; set; }
+        //public string? Image { get; set; }
+        public IFormFile? Image { get; set; }
+
     }
 
     // PetUpdateRequestModel: Dùng khi cập nhật một Pet
@@ -41,7 +44,7 @@ namespace ServiceLayer.RequestModels
     }
     public class CreatePetStatusRequest
     {
-        public int PetId { get; set; }
+        //public int PetId { get; set; }
         public int StatusId { get; set; }
     }
 
