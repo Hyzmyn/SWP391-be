@@ -145,6 +145,12 @@ namespace ServiceLayer.Services
         // Cập nhật Pet
         public async Task<PetResponseModel> UpdatePetAsync(int id, PetUpdateRequestModel updatePetRequest)
         {
+            string userImage = null;
+
+            if (updatePetRequest.Image != null)
+            {
+                userImage = await _fileUploadService.UploadFileAsync(updatePetRequest.Image);
+            }
             var existingPet = await _unitOfWork.Repository<Pet>().GetById(id);
             if (existingPet == null)
                 throw new Exception($"Không tìm thấy Pet với ID {id}.");
@@ -161,7 +167,7 @@ namespace ServiceLayer.Services
             existingPet.Color = updatePetRequest.Color;
             existingPet.Description = updatePetRequest.Description;
             existingPet.AdoptionStatus = updatePetRequest.AdoptionStatus;
-            existingPet.Image = updatePetRequest.Image;
+            existingPet.Image = userImage;
 
             _unitOfWork.Repository<Pet>().Update(existingPet, id);
             await _unitOfWork.CommitAsync();
