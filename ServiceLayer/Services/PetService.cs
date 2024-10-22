@@ -254,7 +254,7 @@ namespace ServiceLayer.Services
             await _unitOfWork.CommitAsync();
         }
 
-        //
+        //Cập nhật AdopStatus cho Pet theo Enum (1 = Available , 2 = Adopte ,3 = Unavalable)
         public async Task UpdatePetAdoptionStatusAsync(int id, int status, int? userId)
         {
             var existingPet = await _unitOfWork.Repository<Pet>().GetById(id);
@@ -277,5 +277,30 @@ namespace ServiceLayer.Services
             await _unitOfWork.CommitAsync();
             
         }
+
+        public async Task<PetResponseModel> PutUserIDAsync(int petId, int userId)
+        {
+            // Kiểm tra xem UserID có tồn tại không
+            var existingUser = await _unitOfWork.Repository<User>().GetById(userId);
+            if (existingUser == null)
+            {
+                throw new Exception($"Không tìm thấy User với ID {userId}.");
+            }
+
+            // Tìm Pet dựa trên petId
+            var existingPet = await _unitOfWork.Repository<Pet>().GetById(petId);
+            if (existingPet == null)
+            {
+                throw new Exception($"Không tìm thấy Pet với ID {petId}.");
+            }
+            existingPet.UserID = userId;
+
+            // Cập nhật Pet trong cơ sở dữ liệu
+            _unitOfWork.Repository<Pet>().Update(existingPet, petId);
+            await _unitOfWork.CommitAsync();
+
+            return await GetPetByIdAsync(petId);
+        }
+
     }
 }
