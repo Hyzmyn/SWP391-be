@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
 using ServiceLayer.Interfaces;
 using ServiceLayer.RequestModels;
 using ServiceLayer.ResponseModels;

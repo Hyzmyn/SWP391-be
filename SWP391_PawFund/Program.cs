@@ -22,7 +22,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddHttpClient<ITwilioRestClient, TwilioClient>();
 
-
 var firebaseConfig = Environment.GetEnvironmentVariable("FIREBASE_CONFIG");
 
 if (!string.IsNullOrEmpty(firebaseConfig))

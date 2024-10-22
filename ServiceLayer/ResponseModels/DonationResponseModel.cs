@@ -22,7 +22,16 @@ namespace ServiceLayer.ResponseModels
         public UsersResponseModel? Donor { get; set; }
         public ShelterResponseModel? Shelter { get; set; }
     }
+    public class DonationReponseForShelterModel
+    {
+        public int Id { get; set; }
+        public decimal Amount { get; set; }
+        public DateTime Date { get; set; }
+        public int DonorId { get; set; }
+        public int ShelterId { get; set; }
+        public UsersResponseModel? Donor { get; set; }
 
+    }
     public class TotalDonorDonationResponseModel
     {
         public int DonorId { get; set; }

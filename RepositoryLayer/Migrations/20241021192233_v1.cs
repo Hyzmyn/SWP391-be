@@ -149,19 +149,12 @@ namespace RepositoryLayer.Migrations
                     Image = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ShelterId = table.Column<int>(type: "int", nullable: true),
-                    EventId = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Users_Events_EventId",
-                        column: x => x.EventId,
-                        principalTable: "Events",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_Users_Shelters_ShelterId",
                         column: x => x.ShelterId,
@@ -179,6 +172,7 @@ namespace RepositoryLayer.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Amount = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Status = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     DonorId = table.Column<int>(type: "int", nullable: false),
                     ShelterId = table.Column<int>(type: "int", nullable: false),
                     IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: true)
@@ -198,6 +192,31 @@ namespace RepositoryLayer.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "EventUser",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    EventId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EventUser", x => new { x.UserId, x.EventId });
+                    table.ForeignKey(
+                        name: "FK_EventUser_Events_EventId",
+                        column: x => x.EventId,
+                        principalTable: "Events",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EventUser_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -503,34 +522,34 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Email", "EventId", "Image", "IsDelete", "Location", "Password", "Phone", "ShelterId", "Status", "Token", "TotalDonation", "Username", "wallet" },
+                columns: new[] { "Id", "Email", "Image", "IsDelete", "Location", "Password", "Phone", "ShelterId", "Status", "Token", "TotalDonation", "Username", "wallet" },
                 values: new object[,]
                 {
-                    { 1, "Admin@email.com", null, null, null, null, "$2a$11$rD3sym8NSQMVgDE9bkyszejZPFODvNXUhBY7Nt7rkDfpT.iVQSMeK", null, null, null, null, null, "Admin", null },
-                    { 6, "Donor1@email.com", null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "HCM", "$2a$11$SUV9MGVsgsSdz80xmDQq9ehYrrXv6r9fekrCOArOOhqVDneWiMq9e", "123456789", null, null, null, null, "Donor1", null },
-                    { 7, "Donor2@email.com", null, null, null, null, "$2a$11$868uKPByQ5B4XpRaKyTl8Ou1x4leM8.fHaajAyxxGqxup2wFtrCGy", null, null, null, null, null, "Donor2", null },
-                    { 8, "Donor3@email.com", null, null, null, null, "$2a$11$VVuG7xXsGAnM67VXh2ZE6ebjCr95h/qER8BUN7YVTLTrWrAOb6vQG", null, null, null, null, null, "Donor3", null },
-                    { 9, "Donor4@email.com", null, null, null, null, "$2a$11$jZ8/5Vc3IeRy3WiRq5rMvOZQvbzbufIp7zvhtnsDhOnwTBbu6fEuu", null, null, null, null, null, "Donor4", null },
-                    { 10, "Volunteer1@email.com", null, null, null, null, "$2a$11$69fIikuJEaMTrd5L/LftKOHv8er50DBs5Xpkm4Bn3PkK5fnsH5pMe", null, null, null, null, null, "Volunteer1", null },
-                    { 11, "Volunteer2@email.com", null, null, null, null, "$2a$11$zmN35pF3HWTV.hn67vpDleFu6kSje2uvULQqroiDKXGnRbD/GHdia", null, null, null, null, null, "Volunteer2", null },
-                    { 12, "Volunteer3@email.com", null, null, null, null, "$2a$11$VQL5Jt/bUAPmY3yLxEbE5ujPqVmj8uGCdcjPoC8mNcr5XoR03vTtq", null, null, null, null, null, "Volunteer3", null },
-                    { 13, "Volunteer4@email.com", null, null, null, null, "$2a$11$AG8PAmecQBRDApiyOHeY/.jQ3b0GdEHmAFP.kSYGTZUzFO88x6Bzu", null, null, null, null, null, "Volunteer4", null },
-                    { 14, "Adopter1@email.com", null, null, null, null, "$2a$11$yZqe4JXijXaWdOySIaaEveKqXkG0V17Jwz4jvHiXnV5YO9cmNCDVK", null, null, null, null, null, "Adopter1", null },
-                    { 15, "Adopter2@email.com", null, null, null, null, "$2a$11$TQ1lEyy2NaKuBtmmNwiehuOCNW41NLZBx9MycRAIIGB7.Tik0.j3.", null, null, null, null, null, "Adopter2", null },
-                    { 16, "Adopter3@email.com", null, null, null, null, "$2a$11$FmctrdW0XIT9jwnEfsWdaeKKFh./tk2t/4M65XprXyNIzUlPX8/ji", null, null, null, null, null, "Adopter3", null },
-                    { 17, "Adopter4@email.com", null, null, null, null, "$2a$11$jA4CBAfiVdOei0qT0zC6wOrGvkKcULz8IVesnEu7DZGXCHfOIbE8K", null, null, null, null, null, "Adopter4", null }
+                    { 1, "Admin@email.com", null, null, null, "$2a$11$94ONSiIrc6ZzzgU.YdnuL.UCYT1.EufAhdgnf3qmopJ68Y4x18/vC", null, null, null, null, null, "Admin", null },
+                    { 6, "Donor1@email.com", "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "HCM", "$2a$11$.9SltERpYVQGZXiTRl1qze/NrKsfjJSRWu2Ychb02IELh/QzS1svS", "123456789", null, null, null, null, "Donor1", null },
+                    { 7, "Donor2@email.com", null, null, null, "$2a$11$p2PukSpo2ZRlg0IPVVNHlON15xDGVZs8goyx1uobupW9KGLpQslL.", null, null, null, null, null, "Donor2", null },
+                    { 8, "Donor3@email.com", null, null, null, "$2a$11$Ltc2/xqNyqWnMvc9I5szZuK9K1ZQthJ6gvFqOMP7HM/C1EXMxs25a", null, null, null, null, null, "Donor3", null },
+                    { 9, "Donor4@email.com", null, null, null, "$2a$11$Hzw0LQjBcU8nYXARgt.zduCFXAda7Zgg50VAT96uXkM3i2tPLVp8i", null, null, null, null, null, "Donor4", null },
+                    { 10, "Volunteer1@email.com", null, null, null, "$2a$11$f4rRCsxAx7q/MzCQa45fM.ELyEPGL5CBAw8q1lZbfoCo2m7OuBsrO", null, null, null, null, null, "Volunteer1", null },
+                    { 11, "Volunteer2@email.com", null, null, null, "$2a$11$MSY3uc6pnZzYRC8aiBLHV.RU6oViFeY46uH55d.A0e6Z7vIg7Vv12", null, null, null, null, null, "Volunteer2", null },
+                    { 12, "Volunteer3@email.com", null, null, null, "$2a$11$CHKu/wVEISQqTOUiGAvh5OVMDTibcanIKg3GLBkzO0ZPhZXr22Zua", null, null, null, null, null, "Volunteer3", null },
+                    { 13, "Volunteer4@email.com", null, null, null, "$2a$11$T8ZdPZU3rQ3E0L.RXufSu.1B/UfiyMgLIGYjOvbPJyFxz3kaRVv66", null, null, null, null, null, "Volunteer4", null },
+                    { 14, "Adopter1@email.com", null, null, null, "$2a$11$hc0HY.qGMkoQa98YJ8IY8.sVj3zFbTql.FLbl0S6RVAXMnKfvjdnS", null, null, null, null, null, "Adopter1", null },
+                    { 15, "Adopter2@email.com", null, null, null, "$2a$11$WJQL78r1jfluo3ki/LUn3.iW5q64I9MTDWeGkXd.iznyo55pgyWgi", null, null, null, null, null, "Adopter2", null },
+                    { 16, "Adopter3@email.com", null, null, null, "$2a$11$7RNadZ3YVMAIxzCXOoHhfuU9802gSPCdSRVEkxXrqt8TZlbRC..MC", null, null, null, null, null, "Adopter3", null },
+                    { 17, "Adopter4@email.com", null, null, null, "$2a$11$ZCulH3DNle33uqNZckJQEufGplEOE0NEr4xyYpPUomgPriIZoY3Ui", null, null, null, null, null, "Adopter4", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Donations",
-                columns: new[] { "Id", "Amount", "Date", "DonorId", "IsDelete", "ShelterId" },
+                columns: new[] { "Id", "Amount", "Date", "DonorId", "IsDelete", "ShelterId", "Status" },
                 values: new object[,]
                 {
-                    { 1, 100000m, new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, null, 1 },
-                    { 2, 200000m, new DateTime(2024, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, null, 1 },
-                    { 3, 543333m, new DateTime(2024, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), 8, null, 2 },
-                    { 4, 632229m, new DateTime(2024, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 9, null, 2 },
-                    { 5, 760000m, new DateTime(2024, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, null, 2 }
+                    { 1, 100000m, new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, null, 1, false },
+                    { 2, 200000m, new DateTime(2024, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, null, 1, false },
+                    { 3, 543333m, new DateTime(2024, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), 8, null, 2, false },
+                    { 4, 632229m, new DateTime(2024, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 9, null, 2, false },
+                    { 5, 760000m, new DateTime(2024, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, null, 2, false }
                 });
 
             migrationBuilder.InsertData(
@@ -538,25 +557,25 @@ namespace RepositoryLayer.Migrations
                 columns: new[] { "Id", "AdoptionStatus", "Age", "Breed", "Color", "Description", "Gender", "Image", "IsDelete", "Name", "ShelterID", "Size", "Type", "UserID" },
                 values: new object[,]
                 {
-                    { 1, "Adopted", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "Buddy", 1, null, "Dog", 17 },
-                    { 2, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "Whiskers", 1, null, "Cat", null },
-                    { 3, "Adopted", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "Max", 1, null, "Dog", 16 },
-                    { 4, "Adopted", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "Luna", 1, null, "Cat", 14 },
-                    { 5, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "Bella", 1, null, "Dog", null },
-                    { 6, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "Lux", 1, null, "Cat", null },
-                    { 7, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "Dono", 1, null, "Dog", null },
-                    { 8, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "Linker", 1, null, "Cat", null },
-                    { 9, "Adopted", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "Dawin", 1, null, "Dog", 15 },
-                    { 10, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "Modor", 2, null, "Cat", null },
-                    { 11, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "Pingking", 2, null, "Dog", null },
-                    { 12, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "Seto", 2, null, "Cat", null },
-                    { 13, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "kaiba", 2, null, "Dog", null },
-                    { 14, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "Asuka", 2, null, "Cat", null },
-                    { 15, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "Jax", 2, null, "Dog", null },
-                    { 16, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "Jihn", 2, null, "Cat", null },
-                    { 18, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "Kaisa", 2, null, "Dog", null },
-                    { 19, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "Bump", 2, null, "Dog", null },
-                    { 20, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/5b4c37c7-7668-4af4-af72-4dcb2ab75047.png", null, "Rasko", 2, null, "Dog", null }
+                    { 1, "Adopted", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "Buddy", 1, null, "Dog", 17 },
+                    { 2, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "Whiskers", 1, null, "Cat", null },
+                    { 3, "Adopted", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "Max", 1, null, "Dog", 16 },
+                    { 4, "Adopted", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "Luna", 1, null, "Cat", 14 },
+                    { 5, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "Bella", 1, null, "Dog", null },
+                    { 6, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "Lux", 1, null, "Cat", null },
+                    { 7, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "Dono", 1, null, "Dog", null },
+                    { 8, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "Linker", 1, null, "Cat", null },
+                    { 9, "Adopted", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "Dawin", 1, null, "Dog", 15 },
+                    { 10, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "Modor", 2, null, "Cat", null },
+                    { 11, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "Pingking", 2, null, "Dog", null },
+                    { 12, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "Seto", 2, null, "Cat", null },
+                    { 13, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "kaiba", 2, null, "Dog", null },
+                    { 14, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "Asuka", 2, null, "Cat", null },
+                    { 15, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "Jax", 2, null, "Dog", null },
+                    { 16, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "Jihn", 2, null, "Cat", null },
+                    { 18, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "Kaisa", 2, null, "Dog", null },
+                    { 19, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "Bump", 2, null, "Dog", null },
+                    { 20, "Available", null, null, null, null, null, "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", null, "Rasko", 2, null, "Dog", null }
                 });
 
             migrationBuilder.InsertData(
@@ -593,13 +612,13 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Email", "EventId", "Image", "IsDelete", "Location", "Password", "Phone", "ShelterId", "Status", "Token", "TotalDonation", "Username", "wallet" },
+                columns: new[] { "Id", "Email", "Image", "IsDelete", "Location", "Password", "Phone", "ShelterId", "Status", "Token", "TotalDonation", "Username", "wallet" },
                 values: new object[,]
                 {
-                    { 2, "Staff1@email.com", null, null, null, null, "$2a$11$1zUYEETWkbsx79Wg5gGXAO9uZ97JBnvrOa3QkUkk0Km8rmtw9M.ee", null, 1, null, null, null, "Staff1", null },
-                    { 3, "Staff2@email.com", null, null, null, null, "$2a$11$1l0mHZhj6Jc9y4RsWgVlFeEJSBxrPLl6aNF4WROWukvy4DW4HEXei", null, 1, null, null, null, "Staff2", null },
-                    { 4, "Staff3@email.com", null, null, null, null, "$2a$11$oaN0CWoSR.km9orhFeEsT.qiATf3xl2bw4aQ1QlOVYsyPxqzWjYDC", null, 2, null, null, null, "Staff3", null },
-                    { 5, "Staff4@email.com", null, null, null, null, "$2a$11$kP8NPO5CtIKbSFbcEzcCLei9p8WTV0kxrfBvHupViLfIT1aMLJkcm", null, 2, null, null, null, "Staff4", null }
+                    { 2, "Staff1@email.com", null, null, null, "$2a$11$UX9idfkSkMydugMnhheRReHqwEOUWADWQNUD24nB2zsGLzcI.bBoC", null, 1, null, null, null, "Staff1", null },
+                    { 3, "Staff2@email.com", null, null, null, "$2a$11$.g94LmEWv3sLpgmVu6aJHeRG9mdIa7wijyB2h2RecmDsGEJJyDsVW", null, 1, null, null, null, "Staff2", null },
+                    { 4, "Staff3@email.com", null, null, null, "$2a$11$7e8uswLe072aqs/gp5EI2OoplSGjB0Tfup/8l8gBYtNuO2AGfYe5m", null, 2, null, null, null, "Staff3", null },
+                    { 5, "Staff4@email.com", null, null, null, "$2a$11$GdhmKTTYfTtWu1lM0w1UuO.u.zvTBvEBmsNv9QQ8/6qTGal1I6giq", null, 2, null, null, null, "Staff4", null }
                 });
 
             migrationBuilder.InsertData(
@@ -657,6 +676,11 @@ namespace RepositoryLayer.Migrations
                 column: "ShelterId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_EventUser_EventId",
+                table: "EventUser",
+                column: "EventId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_FeedBacks_PostId",
                 table: "FeedBacks",
                 column: "PostId");
@@ -669,8 +693,7 @@ namespace RepositoryLayer.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Forms_PetId",
                 table: "Forms",
-                column: "PetId",
-                unique: true);
+                column: "PetId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Forms_UserId",
@@ -719,11 +742,6 @@ namespace RepositoryLayer.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_EventId",
-                table: "Users",
-                column: "EventId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Users_ShelterId",
                 table: "Users",
                 column: "ShelterId");
@@ -737,6 +755,9 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "Donations");
+
+            migrationBuilder.DropTable(
+                name: "EventUser");
 
             migrationBuilder.DropTable(
                 name: "FeedBacks");
@@ -757,6 +778,9 @@ namespace RepositoryLayer.Migrations
                 name: "UserRoles");
 
             migrationBuilder.DropTable(
+                name: "Events");
+
+            migrationBuilder.DropTable(
                 name: "Posts");
 
             migrationBuilder.DropTable(
@@ -770,9 +794,6 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
-
-            migrationBuilder.DropTable(
-                name: "Events");
 
             migrationBuilder.DropTable(
                 name: "Shelters");
