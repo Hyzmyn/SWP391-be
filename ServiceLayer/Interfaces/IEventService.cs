@@ -18,6 +18,8 @@ namespace ServiceLayer.Interfaces
 		Task DeleteEventAsync(int id);
 		Task<IEnumerable<EventResponseModels>> GetAllEventsWithUsersAsync(); // New method
 		Task<EventWithUserResponseModel> AddUserToEventAsync(AddUserToEventRequestModel request);
+		Task<IEnumerable<EventResponseModel>> GetEventsByUserIdAsync(int userId);
+		Task<IEnumerable<EventResponseModel>> GetEventsByShelterIdAsync(int shelterId);
 
 	}
 }

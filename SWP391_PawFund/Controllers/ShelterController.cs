@@ -54,7 +54,7 @@ namespace SWP391_PawFund.Controllers
                     Image = p.Image,
                     Statuses = p.Statuses?.Select(ps => new StatusResponseModel
                     {
-                        StatusId = ps.StatusId, // Giả sử StatusId tương ứng với Status.Id
+                        StatusId = ps.StatusId,
                         //Date = ps.Status?.Date ?? default,
                         Disease = ps.Status?.Disease,
                         Vaccine = ps.Status?.Vaccine
@@ -68,8 +68,24 @@ namespace SWP391_PawFund.Controllers
                     Location = u.Location ?? string.Empty,
                     Phone = u.Phone ?? string.Empty,
                     //TotalDonation = u.TotalDonation ?? 0
+                    Roles = u.UserRoles?.Select(r => r.Role.Name).ToList() ?? new List<string>()
+                }).ToList(),
+                Events = s.Events?.Select(e => new EventResponseModel
+                {
+                    Id = e.Id,
+                    Name = e.Name,
+                    Date = e.Date,
+                    Description = e.Description,
+                    Location = e.Location
+                }).ToList(),
+                Donations = s.Donations?.Select(d => new DonationResponseModel
+                {
+                    Id = d.Id,
+                    Amount = d.Amount,
+                    Date = d.Date,
+                    DonorId = d.DonorId,
+                    ShelterId = d.ShelterId,
                 }).ToList()
-                // Còn thiếu Donation, Event nha 
             }).ToList();
 
             return Ok(shelterResponses);
@@ -111,7 +127,7 @@ namespace SWP391_PawFund.Controllers
                     Image = p.Image,
                     Statuses = p.Statuses?.Select(ps => new StatusResponseModel
                     {
-                        StatusId = ps.StatusId, 
+                        StatusId = ps.StatusId,
                         //Date = ps.Status?.Date ?? default,
                         Disease = ps.Status?.Disease,
                         Vaccine = ps.Status?.Vaccine
@@ -125,6 +141,24 @@ namespace SWP391_PawFund.Controllers
                     Location = u.Location ?? string.Empty,
                     Phone = u.Phone ?? string.Empty,
                     //TotalDonation = u.TotalDonation ?? 0
+                    Roles = u.UserRoles?.Select(r => r.Role.Name).ToList() ?? new List<string>()
+                }).ToList(),
+                Events = shelter.Events?.Select(e => new EventResponseModel
+                {
+                    Id = e.Id,
+                    Name = e.Name,
+                    Date = e.Date,
+                    Description = e.Description,
+                    Location = e.Location
+                }).ToList(),
+                Donations = shelter.Donations?.Select(d => new DonationResponseModel
+                {
+                    Id = d.Id,
+                    Amount = d.Amount,
+                    Date = d.Date,
+                    DonorId = d.DonorId,
+                    ShelterId = d.ShelterId,
+                    //DonorName = d.User?.Username ?? "Anonymous"
                 }).ToList()
                 //Còn thiếu Donation,Event nha
             };
@@ -172,8 +206,8 @@ namespace SWP391_PawFund.Controllers
                         Statuses = p.Statuses?.Select(ps => new StatusResponseModel
                         {
                             StatusId = ps.Status.Id,
-                            Disease=ps.Status.Disease,
-                            Vaccine=ps.Status.Vaccine
+                            Disease = ps.Status.Disease,
+                            Vaccine = ps.Status.Vaccine
                         }).ToList()
                     }).ToList(),
                     Users = shelter.Users?.Select(u => new UsersResponseModel
@@ -184,6 +218,7 @@ namespace SWP391_PawFund.Controllers
                         Phone = u.Phone,
                         Location = u.Location,
                         //TotalDonation = u.TotalDonation ?? 0
+                        Roles = u.UserRoles?.Select(r => r.Role.Name).ToList() ?? new List<string>()
                     }).ToList(),
                     Events = shelter.Events?.Select(e => new EventResponseModel
                     {
@@ -192,12 +227,15 @@ namespace SWP391_PawFund.Controllers
                         Description = e.Description,
                         Date = e.Date
                     }).ToList(),
-                    //Donations = shelter.Donations?.Select(d => new DonationResponseModel
-                    //{
-                    //    Id = d.Id,
-                    //    Amount = d.Amount,
-                    //    DonorName = d.DonorName
-                    //}).ToList()
+                    Donations = shelter.Donations?.Select(d => new DonationResponseModel
+                    {
+                        Id = d.Id,
+                        Amount = d.Amount,
+                        Date = d.Date,
+                        DonorId = d.DonorId,
+                        ShelterId = d.ShelterId,    
+                        //DonorName = d.User?.Username ?? "Anonymous"
+                    }).ToList()
                 };
 
                 return Ok(shelterResponse);
@@ -224,10 +262,10 @@ namespace SWP391_PawFund.Controllers
                 Email = shelterRequest.Email,
                 Website = shelterRequest.Website,
                 DonationAmount = shelterRequest.DonationAmount,
-                Pets = new List<Pet>(), 
-                Users = new List<User>(), 
-                Donations= new List<Donation>(),
-                Events=new List<Event>()
+                Pets = new List<Pet>(),
+                Users = new List<User>(),
+                Donations = new List<Donation>(),
+                Events = new List<Event>()
             };
 
             var createdShelter = await _shelterService.CreateShelterAsync(shelter);
@@ -242,8 +280,8 @@ namespace SWP391_PawFund.Controllers
                 Email = createdShelter.Email,
                 Website = createdShelter.Website,
                 DonationAmount = createdShelter.DonationAmount,
-                Pets = new List<PetResponseModel>(), 
-                Users = new List<UsersResponseModel>() ,
+                Pets = new List<PetResponseModel>(),
+                Users = new List<UsersResponseModel>(),
                 Donations = new List<DonationResponseModel>(),
                 Events = new List<EventResponseModel>()
             };
@@ -317,10 +355,27 @@ namespace SWP391_PawFund.Controllers
                     Location = u.Location ?? string.Empty,
                     Phone = u.Phone ?? string.Empty,
                     //TotalDonation = u.TotalDonation ?? 0
+                    Roles = u.UserRoles?.Select(r => r.Role.Name).ToList() ?? new List<string>()
+                }).ToList(),
+                Events = updatedShelter.Events?.Select(e => new EventResponseModel
+                {
+                    Id = e.Id,
+                    Name = e.Name,
+                    Date = e.Date,
+                    Description = e.Description,
+                    Location = e.Location
+                }).ToList(),
+                Donations = updatedShelter.Donations?.Select(d => new DonationResponseModel
+                {
+                    Id = d.Id,
+                    Amount = d.Amount,
+                    Date = d.Date,
+                    DonorId = d.DonorId,
+                    ShelterId = d.ShelterId,
+                    //DonorName = d.User?.Username ?? "Anonymous"
                 }).ToList()
-                //Còn Donation với Event t chưa thêm nha
             };
-
+            //Khiem
             return Ok(shelterResponse);
         }
 

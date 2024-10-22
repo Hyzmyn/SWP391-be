@@ -86,7 +86,7 @@ namespace ServiceLayer.Services
                         Email = feedback.Post.User.Email,
                         Location = feedback.Post.User.Location,
                         Phone = feedback.Post.User.Phone,
-                        TotalDonation = (decimal)feedback.Post.User.TotalDonation
+                        //TotalDonation = (decimal)feedback.Post.User.TotalDonation
                     },
                     FeedBacks = _unitOfWork.Repository<FeedBack>().GetAll()
                         .Where(fb => fb.PostId == feedback.PostId)
@@ -154,7 +154,7 @@ namespace ServiceLayer.Services
                     Email = createdFeedback.User.Email,
                     Location = createdFeedback.User.Location,
                     Phone = createdFeedback.User.Phone,
-                    TotalDonation = (decimal)createdFeedback.User.TotalDonation
+                    //TotalDonation = (decimal)createdFeedback.User.TotalDonation
                 },
                 Post = new PostResponseDetail
                 {
@@ -266,7 +266,7 @@ namespace ServiceLayer.Services
                         Email = updatedFeedback.Post.User.Email,
                         Location = updatedFeedback.Post.User.Location,
                         Phone = updatedFeedback.Post.User.Phone,
-                        TotalDonation = (decimal)updatedFeedback.Post.User.TotalDonation,
+                        //TotalDonation = (decimal)updatedFeedback.Post.User.TotalDonation,
                     },
                     FeedBacks = _unitOfWork.Repository<FeedBack>().GetAll()
                         .Where(fb => fb.PostId == updatedFeedback.PostId)
