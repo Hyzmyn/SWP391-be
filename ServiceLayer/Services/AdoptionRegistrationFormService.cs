@@ -63,10 +63,16 @@ namespace ServiceLayer.Services
             }
         }
 
+
+        public async Task<IEnumerable<AdoptionRegistrationForm>> GetFormsByPetId(int petid)
+        {
+            return await _unitOfWork.Repository<AdoptionRegistrationForm>().GetWhere(p => p.PetId == petid);
+        }
+
         // Check if an adoption form exists by ID
         public async Task<bool> FormExistsAsync(int petid)
         {
-            var form = await _unitOfWork.Repository<AdoptionRegistrationForm>().GetWhere(p => p.PetId == petid && p.Status != false);
+            var form = await _unitOfWork.Repository<AdoptionRegistrationForm>().GetWhere(p => p.PetId == petid && p.Status == true);
             return form.Any(); 
         }
     }

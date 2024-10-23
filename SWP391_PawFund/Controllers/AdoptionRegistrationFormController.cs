@@ -181,10 +181,7 @@ namespace SWP391_PawFund.Controllers
                 }
                 var form = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
 
-                if (await _adoptionFormService.FormExistsAsync(form.PetId))
-                {
-                    return StatusCode(500, new { message = "Pet already exist in a pending form" });
-                }
+
 
                 if (form == null)
                 {
@@ -223,12 +220,33 @@ namespace SWP391_PawFund.Controllers
 
                 if (request.PetId.HasValue)
                 {
+                    if (await _adoptionFormService.FormExistsAsync((int)request.PetId))
+                    {
+                        return StatusCode(500, new { message = "Pet already exist in a pending form" });
+                    }
                     form.PetId = request.PetId.Value;
                 }
 
                 if (request.Status.HasValue)
                 {
+                    if ((bool)request.Status)
+                    {
+                        var otherForms = await _adoptionFormService.GetFormsByPetId(form.PetId);
+                        if (otherForms != null)
+                        {
+                            foreach (var otherForm in otherForms)
+                            {
+                                otherForm.Status = false;
+                            }
+                        }
+                        await _petService.UpdatePetAdoptionStatusAsync(form.PetId, 2, form.AdopterId); // Adopted
+                    }
+                    else
+                    {
+                        await _petService.UpdatePetAdoptionStatusAsync(form.PetId, 1, null);
+                    }
                     form.Status = request.Status;
+
                 }
 
                 await _adoptionFormService.UpdateAdoptionFormAsync(form);
@@ -240,44 +258,6 @@ namespace SWP391_PawFund.Controllers
                 return StatusCode(500, new { message = ex });
             }
 
-        }
-        [HttpPut("{id}/status")]
-        public async Task<IActionResult> UpdateFormStatus(int id, bool status)
-        {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest(ModelState);
-                }
-
-                // Retrieve the form by ID
-                var form = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
-                if (form == null)
-                {
-                    return NotFound(new { message = "Form not found." });
-                }
-
-                form.Status = status;
-
-                if (status)
-                    await _petService.UpdatePetAdoptionStatusAsync(form.PetId, 2, form.AdopterId); // Adopted
-                else
-                    await _petService.UpdatePetAdoptionStatusAsync(form.PetId, 1, null);
-
-
-                // Save the updated form
-                await _adoptionFormService.UpdateAdoptionFormAsync(form);
-
-
-
-
-                return Ok(new { message = "Form status has been updated successfully." });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = ex.Message });
-            }
         }
 
         // DELETE: api/AdoptionRegistrationForm/{id}

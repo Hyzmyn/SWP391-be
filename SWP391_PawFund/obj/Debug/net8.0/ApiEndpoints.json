@@ -90,7 +90,11 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[ServiceLayer.ResponseModels.CertificationResponseDetail, ServiceLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -148,7 +152,11 @@
     "ReturnTypes": [
       {
         "Type": "ServiceLayer.ResponseModels.CertificationResponseDetail",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -237,7 +245,11 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[ServiceLayer.ResponseModels.DonationResponseModel, ServiceLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -259,7 +271,11 @@
     "ReturnTypes": [
       {
         "Type": "ServiceLayer.ResponseModels.DonationDetailResponseModel",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -281,7 +297,11 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[ServiceLayer.ResponseModels.DonationDetailResponseModel, ServiceLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -345,7 +365,11 @@
     "ReturnTypes": [
       {
         "Type": "ServiceLayer.ResponseModels.TotalDonorDonationResponseModel",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -367,7 +391,11 @@
     "ReturnTypes": [
       {
         "Type": "ServiceLayer.ResponseModels.TotalShelterDonationResponseModel",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -440,7 +468,11 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[ServiceLayer.ResponseModels.EventResponseModel, ServiceLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -478,7 +510,11 @@
     "ReturnTypes": [
       {
         "Type": "ServiceLayer.ResponseModels.EventResponseModel",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -537,7 +573,11 @@
     "ReturnTypes": [
       {
         "Type": "ServiceLayer.ResponseModels.EventWithUserResponseModel",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -553,7 +593,63 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[ServiceLayer.ResponseModels.EventResponseModels, ServiceLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SWP391_PawFund.Controllers.EventsController",
+    "Method": "GetEventsByShelter",
+    "RelativePath": "api/events/shelter/{shelterId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "shelterId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ServiceLayer.ResponseModels.EventResponseModel, ServiceLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SWP391_PawFund.Controllers.EventsController",
+    "Method": "GetEventsByUserId",
+    "RelativePath": "api/events/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ServiceLayer.ResponseModels.EventResponseModel, ServiceLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -648,7 +744,11 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[ServiceLayer.ResponseModels.AdoptionRegistrationFormResponse, ServiceLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -711,7 +811,11 @@
     "ReturnTypes": [
       {
         "Type": "ServiceLayer.ResponseModels.AdoptionRegistrationFormResponse",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -820,7 +924,11 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[ServiceLayer.ResponseModels.NotificationResponseModel, ServiceLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -858,7 +966,11 @@
     "ReturnTypes": [
       {
         "Type": "ServiceLayer.ResponseModels.NotificationResponseModel",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -924,11 +1036,6 @@
         "IsRequired": true
       },
       {
-        "Name": "PetId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
         "Name": "StatusId",
         "Type": "System.Int32",
         "IsRequired": false
@@ -989,6 +1096,27 @@
         "Name": "statusId",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SWP391_PawFund.Controllers.PetController",
+    "Method": "PutUserID",
+    "RelativePath": "api/pet/{petId}/user",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "petId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -1058,7 +1186,7 @@
       },
       {
         "Name": "Image",
-        "Type": "System.String",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
       }
     ],
@@ -1166,8 +1294,29 @@
       },
       {
         "Name": "Image",
-        "Type": "System.String",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SWP391_PawFund.Controllers.PetController",
+    "Method": "UpdatePetAdoptionStatus",
+    "RelativePath": "api/pet/updateadoptionstatus/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "ServiceLayer.RequestModels.UpdateAdoptionStatusRequest",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -1183,7 +1332,11 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[ServiceLayer.ResponseModels.ShelterResponseModel, ServiceLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -1205,7 +1358,11 @@
     "ReturnTypes": [
       {
         "Type": "ServiceLayer.ResponseModels.ShelterResponseModel",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -1273,7 +1430,11 @@
     "ReturnTypes": [
       {
         "Type": "ServiceLayer.ResponseModels.ShelterResponseModel",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -1330,7 +1491,11 @@
     "ReturnTypes": [
       {
         "Type": "ServiceLayer.ResponseModels.ShelterResponseModel",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -1567,7 +1732,11 @@
     "ReturnTypes": [
       {
         "Type": "ServiceLayer.ResponseModels.UserRoleResponseModel",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -1594,7 +1763,11 @@
     "ReturnTypes": [
       {
         "Type": "System.Boolean",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -1610,7 +1783,11 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[ServiceLayer.ResponseModels.DetailUserViewModel, ServiceLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -1672,7 +1849,11 @@
     "ReturnTypes": [
       {
         "Type": "ModelLayer.Entities.User",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -1694,7 +1875,11 @@
     "ReturnTypes": [
       {
         "Type": "ServiceLayer.ResponseModels.UsersResponseModel",
-        "MediaTypes": ["text/plain", "application/json", "text/json"],
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
