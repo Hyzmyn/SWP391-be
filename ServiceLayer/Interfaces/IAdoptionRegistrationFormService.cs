@@ -9,6 +9,7 @@ namespace ServiceLayer.Interfaces
         Task<bool> FormExistsAsync(int petid);
         Task<AdoptionRegistrationForm> GetAdoptionFormByIdAsync(int id);
         IEnumerable<AdoptionRegistrationForm> GetAllAdoptionForms();
+        Task<IEnumerable<AdoptionRegistrationForm>> GetFormsByPetId(int petid);
         Task UpdateAdoptionFormAsync(AdoptionRegistrationForm form);
     }
 }
