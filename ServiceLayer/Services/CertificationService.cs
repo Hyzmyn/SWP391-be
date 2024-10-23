@@ -206,7 +206,7 @@ namespace ServiceLayer.Services
 
             var certification = new Certification
             {
-                Image = request.Image,
+                Image = "string",
                 Desciption = request.Description,
                 Date = DateTime.UtcNow,
                 ShelterStaffId = request.ShelterStaffId,
@@ -335,7 +335,7 @@ namespace ServiceLayer.Services
                 throw new KeyNotFoundException($"User với ID {request.UserId} không tìm thấy.");
             }
 
-            existingCertification.Image = request.Image;
+            existingCertification.Image = "string";
             existingCertification.Desciption = request.Description;
             existingCertification.Date = DateTime.UtcNow;
             existingCertification.UserId = request.ShelterStaffId;
