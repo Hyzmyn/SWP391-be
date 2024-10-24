@@ -3,6 +3,7 @@ using ModelLayer.Entities;
 using ServiceLayer.Interfaces;
 using ServiceLayer.RequestModels;
 using ServiceLayer.ResponseModels;
+using ServiceLayer.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,11 +16,13 @@ namespace SWP391_PawFund.Controllers
     {
         private readonly IShelterService _shelterService;
         private readonly ILogger<ShelterController> _logger;
+        private readonly IDonateService _donateService;
 
-        public ShelterController(IShelterService shelterService, ILogger<ShelterController> logger)
+        public ShelterController(IShelterService shelterService, ILogger<ShelterController> logger, IDonateService donateService)
         {
             _shelterService = shelterService;
             _logger = logger;
+            _donateService = donateService;
         }
 
         [HttpGet]
@@ -36,7 +39,7 @@ namespace SWP391_PawFund.Controllers
                 Capacity = s.Capacity,
                 Email = s.Email,
                 Website = s.Website,
-                DonationAmount = s.DonationAmount,
+                DonationAmount = _donateService.GetTotalDonationByShelter(s.Id),
                 Pets = s.Pets?.Select(p => new PetResponseModel
                 {
                     PetID = p.Id,
@@ -109,7 +112,7 @@ namespace SWP391_PawFund.Controllers
                 Capacity = shelter.Capacity,
                 Email = shelter.Email,
                 Website = shelter.Website,
-                DonationAmount = shelter.DonationAmount,
+                DonationAmount = _donateService.GetTotalDonationByShelter(shelter.Id),
                 Pets = shelter.Pets?.Select(p => new PetResponseModel
                 {
                     PetID = p.Id,
@@ -187,7 +190,7 @@ namespace SWP391_PawFund.Controllers
                     Capacity = shelter.Capacity,
                     Email = shelter.Email,
                     Website = shelter.Website,
-                    DonationAmount = shelter.DonationAmount,
+                    DonationAmount = _donateService.GetTotalDonationByShelter(shelter.Id),
                     Pets = shelter.Pets?.Select(p => new PetResponseModel
                     {
                         PetID = p.Id,
@@ -323,7 +326,7 @@ namespace SWP391_PawFund.Controllers
                 Capacity = updatedShelter.Capacity,
                 Email = updatedShelter.Email,
                 Website = updatedShelter.Website,
-                DonationAmount = updatedShelter.DonationAmount,
+                DonationAmount = _donateService.GetTotalDonationByShelter(updatedShelter.Id),
                 Pets = updatedShelter.Pets?.Select(p => new PetResponseModel
                 {
                     PetID = p.Id,
@@ -375,7 +378,6 @@ namespace SWP391_PawFund.Controllers
                     //DonorName = d.User?.Username ?? "Anonymous"
                 }).ToList()
             };
-            //Khiem
             return Ok(shelterResponse);
         }
 
@@ -389,6 +391,28 @@ namespace SWP391_PawFund.Controllers
             }
 
             return Ok(new { message = "Shelter has been deleted successfully." });
+        }
+
+        // API để lấy tổng donation theo ShelterId
+        [HttpGet("{shelterId}/total-donation")]
+        public IActionResult GetTotalDonationByShelter(int shelterId)
+        {
+            try
+            {
+                if (shelterId <= 0)
+                {
+                    return BadRequest("ShelterId phải lớn hơn 0.");
+                }
+
+                // Gọi phương thức GetTotalDonationByShelter từ DonateService
+                var totalDonation = _donateService.GetTotalDonationByShelter(shelterId);
+
+                return Ok(totalDonation);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Đã có lỗi xảy ra: {ex.Message}");
+            }
         }
     }
 }

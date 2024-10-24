@@ -20,11 +20,6 @@ namespace ServiceLayer.Services
             _unitOfWork = unitOfWork;
         }
 
-
-        /// <summary>
-        /// Lấy tất cả các Shelter bao gồm các Pets và Status của từng Pet.
-        /// </summary>
-        /// <returns>Danh sách các Shelter.</returns>
         public async Task<IEnumerable<Shelter>> GetAllSheltersAsync()
         {
             return await _unitOfWork.Repository<Shelter>()
@@ -40,11 +35,6 @@ namespace ServiceLayer.Services
                 .ToListAsync();
         }
 
-        /// <summary>
-        /// Lấy Shelter theo ID bao gồm các Pets và Status của từng Pet.
-        /// </summary>
-        /// <param name="shelterId">ID của Shelter.</param>
-        /// <returns>Shelter nếu tìm thấy; ngược lại, null.</returns>
         public async Task<Shelter?> GetShelterByIdAsync(int shelterId)
         {
             return await _unitOfWork.Repository<Shelter>()
@@ -58,11 +48,6 @@ namespace ServiceLayer.Services
                 .FirstOrDefaultAsync(s => s.Id == shelterId);
         }
 
-        /// <summary>
-        /// Lấy Shelter liên kết với một User cụ thể nếu User có vai trò "ShelterStaff".
-        /// </summary>
-        /// <param name="userId">ID của User.</param>
-        /// <returns>Shelter nếu tìm thấy và User có quyền truy cập; ngược lại, null.</returns>
         public async Task<Shelter?> GetShelterByUserIdAsync(int userId)
         {
             var user = await _unitOfWork.Repository<User>()
@@ -96,11 +81,6 @@ namespace ServiceLayer.Services
                 .FirstOrDefaultAsync(s => s.Id == user.ShelterId.Value);
         }
 
-        /// <summary>
-        /// Tạo một Shelter mới.
-        /// </summary>
-        /// <param name="shelter">Thông tin Shelter mới.</param>
-        /// <returns>Shelter đã được tạo.</returns>
         public async Task<Shelter> CreateShelterAsync(Shelter shelter)
         {
             if (shelter == null)
@@ -113,11 +93,6 @@ namespace ServiceLayer.Services
             return shelter;
         }
 
-        /// <summary>
-        /// Cập nhật thông tin của một Shelter.
-        /// </summary>
-        /// <param name="shelter">Thông tin Shelter cần cập nhật.</param>
-        /// <returns>Shelter đã được cập nhật.</returns>
         public async Task<Shelter> UpdateShelterAsync(Shelter shelter)
         {
             if (shelter == null)
@@ -146,11 +121,6 @@ namespace ServiceLayer.Services
             return existingShelter;
         }
 
-        /// <summary>
-        /// Xóa một Shelter theo ID.
-        /// </summary>
-        /// <param name="shelterId">ID của Shelter cần xóa.</param>
-        /// <returns>True nếu xóa thành công; ngược lại, false.</returns>
         public async Task<bool> DeleteShelterAsync(int shelterId)
         {
             var shelter = await _unitOfWork.Repository<Shelter>().GetById(shelterId);
