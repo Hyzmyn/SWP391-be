@@ -23,7 +23,7 @@ namespace ServiceLayer.RequestModels
     }
     public class StatusCreateRequest
     {
-        //public DateTime Date { get; set; }
+        //public DateTime Date { get; set; }       
         public string? Disease { get; set; }
         public string? Vaccine { get; set; }
         public int PetId { get; set; }

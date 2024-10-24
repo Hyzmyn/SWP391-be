@@ -17,6 +17,6 @@ namespace ServiceLayer.Interfaces
         Task RemoveStatusFromPetAsync(int petId, int statusId);
         Task UpdatePetAdoptionStatusAsync(int id, int status, int? userId);
 
-        Task<PetResponseModel> PutUserIDAsync(int petId, int userId);
+        Task<PetResponseModel> PutUserIDAsync(int petId, int? userId);
     }
 }
