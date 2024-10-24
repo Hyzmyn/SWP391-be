@@ -19,6 +19,10 @@ namespace ServiceLayer.Interfaces
 
         Task UpdateRolesAsync(int userId, List<int> newRoleIds);
 
+        Task RequestRoleAsync(int userId, int roleId);
 
+        Task AcceptRoleRequestAsync(int userId, int roleId);
+
+        Task<IEnumerable<UserRole>> GetAllPendingRoleRequestsAsync();
     }
 }

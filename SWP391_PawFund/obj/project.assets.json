@@ -5974,19 +5974,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dtori\\.nuget\\packages\\": {}
+    "C:\\Users\\ADMIN\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\SWP391_PawFund.csproj",
+      "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\SWP391_PawFund.csproj",
       "projectName": "SWP391_PawFund",
-      "projectPath": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\SWP391_PawFund.csproj",
-      "packagesPath": "C:\\Users\\dtori\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\obj\\",
+      "projectPath": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\SWP391_PawFund.csproj",
+      "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\dtori\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6001,8 +6001,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\ServiceLayer.csproj": {
-              "projectPath": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\ServiceLayer.csproj"
+            "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\ServiceLayer.csproj": {
+              "projectPath": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\ServiceLayer.csproj"
             }
           }
         }
@@ -6114,7 +6114,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

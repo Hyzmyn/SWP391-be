@@ -1540,19 +1540,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Disease",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Vaccine",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "PetId",
-        "Type": "System.Int32",
-        "IsRequired": false
+        "Name": "createStatusRequest",
+        "Type": "ServiceLayer.RequestModels.StatusCreateRequest",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -1587,19 +1577,9 @@
         "IsRequired": true
       },
       {
-        "Name": "Date",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "Disease",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Vaccine",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "updateStatusRequest",
+        "Type": "ServiceLayer.RequestModels.StatusUpdateRequestModel",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -1679,6 +1659,63 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SWP391_PawFund.Controllers.UserRoleController",
+    "Method": "AcceptRoleRequest",
+    "RelativePath": "api/userrole/acceptrole/{userId}/{roleId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "roleId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SWP391_PawFund.Controllers.UserRoleController",
+    "Method": "GetAllPendingRoleRequests",
+    "RelativePath": "api/userrole/pendingrequests",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ServiceLayer.ResponseModels.PendingRoles, ServiceLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SWP391_PawFund.Controllers.UserRoleController",
+    "Method": "RequestRole",
+    "RelativePath": "api/userrole/requestrole",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roleRequest",
+        "Type": "ServiceLayer.RequestModels.UserRoleRequestModels",
         "IsRequired": true
       }
     ],

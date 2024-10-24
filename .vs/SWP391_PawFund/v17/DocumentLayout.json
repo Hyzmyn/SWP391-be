@@ -1,80 +1,224 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\",
+  "WorkspaceRootPath": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\modellayer\\entities\\donation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\donation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\swp391_pawfund\\controllers\\userrolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\userrolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\modellayer\\entities\\adoptionregistrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\adoptionregistrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\repositorylayer\\pawfundcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E31520A-44EA-4F92-B09A-7AC085645D56}|RepositoryLayer\\RepositoryLayer.csproj|solutionrelative:repositorylayer\\pawfundcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\modellayer\\entities\\shelter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\shelter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\swp391_pawfund\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\modellayer\\entities\\status.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\status.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\servicelayer\\responsemodels\\userroleresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\responsemodels\\userroleresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\controllers\\adoptionregistrationformcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\adoptionregistrationformcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\modellayer\\entities\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\services\\statuspetservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\services\\statuspetservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\servicelayer\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\controllers\\statuspetcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\servicelayer\\requestmodels\\userrolerequestmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\requestmodels\\userrolerequestmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\swp391_pawfund\\controllers\\statuspetcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\statuspetcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\controllers\\certificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\swp391_pawfund\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\modellayer\\entities\\status.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\status.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\modellayer\\entities\\donation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\donation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\modellayer\\entities\\adoptionregistrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\adoptionregistrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\modellayer\\entities\\shelter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\shelter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\swp391_pawfund\\controllers\\adoptionregistrationformcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\adoptionregistrationformcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\servicelayer\\services\\statuspetservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\services\\statuspetservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\swp391_pawfund\\controllers\\certificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\certificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\services\\certificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\servicelayer\\services\\certificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\services\\certificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\modellayer\\entities\\certification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\modellayer\\entities\\certification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\certification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\swp391_pawfund\\controllers\\petcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\swp391_pawfund\\controllers\\petcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F76DFEA5-BD87-4F51-B32F-0E2FE046A139}|SWP391_PawFund\\SWP391_PawFund.csproj|solutionrelative:swp391_pawfund\\controllers\\petcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\services\\petservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\servicelayer\\services\\petservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\services\\petservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\servicelayer\\requestmodels\\petrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\servicelayer\\requestmodels\\petrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AF61F21E-A5B9-43A3-B343-5ACC017180EA}|ServiceLayer\\ServiceLayer.csproj|solutionrelative:servicelayer\\requestmodels\\petrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\dtori\\desktop\\deletethis\\swp391-be\\modellayer\\entities\\pet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|c:\\users\\admin\\desktop\\swp391\\swp391-be\\modellayer\\entities\\pet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20DF42A4-7B84-4565-AB1C-7DD74003BEB8}|ModelLayer\\ModelLayer.csproj|solutionrelative:modellayer\\entities\\pet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
-      "VerticalTabListWidth": 237,
+      "VerticalTabListWidth": 387,
       "DocumentGroups": [
         {
           "DockedHeight": 1692,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PawFundContext.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\RepositoryLayer\\PawFundContext.cs",
+              "RelativeDocumentMoniker": "RepositoryLayer\\PawFundContext.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\RepositoryLayer\\PawFundContext.cs",
+              "RelativeToolTip": "RepositoryLayer\\PawFundContext.cs",
+              "ViewState": "AgIAAL4AAAAAAAAAAAAwwNwAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T17:24:40.247Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\Program.cs",
+              "RelativeDocumentMoniker": "SWP391_PawFund\\Program.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\Program.cs",
+              "RelativeToolTip": "SWP391_PawFund\\Program.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAuwCcAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T17:23:38.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserRoleResponseModel.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\ResponseModels\\UserRoleResponseModel.cs",
+              "RelativeDocumentMoniker": "ServiceLayer\\ResponseModels\\UserRoleResponseModel.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\ResponseModels\\UserRoleResponseModel.cs",
+              "RelativeToolTip": "ServiceLayer\\ResponseModels\\UserRoleResponseModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T17:20:23.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserRoleRequestModels.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\RequestModels\\UserRoleRequestModels.cs",
+              "RelativeDocumentMoniker": "ServiceLayer\\RequestModels\\UserRoleRequestModels.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\RequestModels\\UserRoleRequestModels.cs",
+              "RelativeToolTip": "ServiceLayer\\RequestModels\\UserRoleRequestModels.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T17:19:43.398Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "UserRoleController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\Controllers\\UserRoleController.cs",
+              "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\UserRoleController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\Controllers\\UserRoleController.cs",
+              "RelativeToolTip": "SWP391_PawFund\\Controllers\\UserRoleController.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAA8wIIAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T17:18:32.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\Controllers\\UserController.cs",
+              "RelativeToolTip": "SWP391_PawFund\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAIwNgAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T17:14:12.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "ServiceLayer\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\Services\\UserService.cs",
+              "RelativeToolTip": "ServiceLayer\\Services\\UserService.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAA8wFYAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T17:11:27.465Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserRole.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\UserRole.cs",
+              "RelativeDocumentMoniker": "ModelLayer\\Entities\\UserRole.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\UserRole.cs",
+              "RelativeToolTip": "ModelLayer\\Entities\\UserRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T17:10:34.018Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "Donation.cs",
-              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Donation.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\Donation.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\Donation.cs",
-              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Donation.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\Donation.cs",
               "RelativeToolTip": "ModelLayer\\Entities\\Donation.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -83,37 +227,35 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 11,
               "Title": "AdoptionRegistrationForm.cs",
-              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\AdoptionRegistrationForm.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\AdoptionRegistrationForm.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\AdoptionRegistrationForm.cs",
-              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\AdoptionRegistrationForm.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\AdoptionRegistrationForm.cs",
               "RelativeToolTip": "ModelLayer\\Entities\\AdoptionRegistrationForm.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-24T04:50:49.647Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-24T04:50:49.647Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 12,
               "Title": "Shelter.cs",
-              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Shelter.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\Shelter.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\Shelter.cs",
-              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Shelter.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\Shelter.cs",
               "RelativeToolTip": "ModelLayer\\Entities\\Shelter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-24T04:49:35.076Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-24T04:49:35.076Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "Status.cs",
-              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Status.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\Status.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\Status.cs",
-              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Status.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\Status.cs",
               "RelativeToolTip": "ModelLayer\\Entities\\Status.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -122,37 +264,36 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 13,
               "Title": "AdoptionRegistrationFormController.cs",
-              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\AdoptionRegistrationFormController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\Controllers\\AdoptionRegistrationFormController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\AdoptionRegistrationFormController.cs",
-              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\AdoptionRegistrationFormController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\Controllers\\AdoptionRegistrationFormController.cs",
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\AdoptionRegistrationFormController.cs",
               "ViewState": "AgIAAMoAAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-24T04:18:28.337Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-24T04:18:28.337Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "StatusPetController.cs",
-              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\StatusPetController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\Controllers\\StatusPetController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\StatusPetController.cs",
-              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\StatusPetController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\Controllers\\StatusPetController.cs",
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\StatusPetController.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAYwDUAAABhAAAA",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwDUAAABhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-23T12:45:22.176Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 14,
               "Title": "StatusPetService.cs",
-              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\StatusPetService.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\Services\\StatusPetService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Services\\StatusPetService.cs",
-              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\StatusPetService.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\Services\\StatusPetService.cs",
               "RelativeToolTip": "ServiceLayer\\Services\\StatusPetService.cs",
               "ViewState": "AgIAAF0AAAAAAAAAAAAowIwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -160,24 +301,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 15,
               "Title": "CertificationController.cs",
-              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\CertificationController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\Controllers\\CertificationController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\CertificationController.cs",
-              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\CertificationController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\Controllers\\CertificationController.cs",
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\CertificationController.cs",
               "ViewState": "AQIAAD0AAAAAAAAAAAAgwFkAAABdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T07:29:48.213Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-23T07:29:48.213Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 16,
               "Title": "CertificationService.cs",
-              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\CertificationService.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\Services\\CertificationService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Services\\CertificationService.cs",
-              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\CertificationService.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\Services\\CertificationService.cs",
               "RelativeToolTip": "ServiceLayer\\Services\\CertificationService.cs",
               "ViewState": "AQIAAHQBAAAAAAAAAAAowKwBAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -185,11 +325,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 17,
               "Title": "Certification.cs",
-              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Certification.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\Certification.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\Certification.cs",
-              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Certification.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\Certification.cs",
               "RelativeToolTip": "ModelLayer\\Entities\\Certification.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -197,11 +337,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 20,
               "Title": "PetRequestModel.cs",
-              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\RequestModels\\PetRequestModel.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\RequestModels\\PetRequestModel.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\RequestModels\\PetRequestModel.cs",
-              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\RequestModels\\PetRequestModel.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\RequestModels\\PetRequestModel.cs",
               "RelativeToolTip": "ServiceLayer\\RequestModels\\PetRequestModel.cs",
               "ViewState": "AQIAABYAAAAAAAAAAAA2wA8AAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -209,24 +349,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 18,
               "Title": "PetController.cs",
-              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\PetController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\Controllers\\PetController.cs",
               "RelativeDocumentMoniker": "SWP391_PawFund\\Controllers\\PetController.cs",
-              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\SWP391_PawFund\\Controllers\\PetController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\SWP391_PawFund\\Controllers\\PetController.cs",
               "RelativeToolTip": "SWP391_PawFund\\Controllers\\PetController.cs",
               "ViewState": "AQIAAEgAAAAAAAAAAAAAwGAAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T15:47:13.948Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-22T15:47:13.948Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 21,
               "Title": "Pet.cs",
-              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Pet.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\Pet.cs",
               "RelativeDocumentMoniker": "ModelLayer\\Entities\\Pet.cs",
-              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ModelLayer\\Entities\\Pet.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ModelLayer\\Entities\\Pet.cs",
               "RelativeToolTip": "ModelLayer\\Entities\\Pet.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -234,11 +373,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 19,
               "Title": "PetService.cs",
-              "DocumentMoniker": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\PetService.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\Services\\PetService.cs",
               "RelativeDocumentMoniker": "ServiceLayer\\Services\\PetService.cs",
-              "ToolTip": "C:\\Users\\dtori\\Desktop\\DeleteThis\\SWP391-be\\ServiceLayer\\Services\\PetService.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\SWP391\\SWP391-be\\ServiceLayer\\Services\\PetService.cs",
               "RelativeToolTip": "ServiceLayer\\Services\\PetService.cs",
               "ViewState": "AQIAAAMBAAAAAAAAAAAgwBwBAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
