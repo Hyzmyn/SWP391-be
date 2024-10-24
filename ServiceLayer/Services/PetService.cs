@@ -114,7 +114,7 @@ namespace ServiceLayer.Services
         {
             string userImage = null;
 
-            if (createPetRequest.Image != null)
+            if (createPetRequest.Image != null && createPetRequest.Image.Length > 0)
             {
                 userImage = await _fileUploadService.UploadFileAsync(createPetRequest.Image);
             }
