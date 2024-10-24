@@ -43,7 +43,7 @@ namespace SWP391_PawFund.Controllers
 
         // POST: api/Status
         [HttpPost]
-        public async Task<IActionResult> CreateStatus([FromBody] StatusCreateRequest createStatusRequest)
+        public async Task<IActionResult> CreateStatus([FromForm] StatusCreateRequest createStatusRequest)
         {
             var createdStatus = await _statusPetService.CreateStatusAsync(createStatusRequest);
             return CreatedAtAction(nameof(GetStatusById), new { id = createdStatus.StatusId }, createdStatus);
