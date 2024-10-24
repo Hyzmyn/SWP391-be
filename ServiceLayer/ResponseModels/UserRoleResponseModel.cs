@@ -16,4 +16,12 @@ namespace ServiceLayer.ResponseModels
     {
         public RoleResponseModel Role { get; set; } = null!;
     }
+
+    public class PendingRoles
+    {
+        public int UserId { get; set; }
+        public int RoleId { get; set; }
+        public DateTime CreatedDate { get; set; }
+
+    }
 }
