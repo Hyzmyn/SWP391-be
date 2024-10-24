@@ -17,13 +17,13 @@ namespace ServiceLayer.ResponseModels
         public int? ShelterStaffId { get; set; }
         public int PetId { get; set; }
         public bool? Status { get; set; }
-        public string Shelter { get; set; }
+
 
     }
-    public class AdoptionRegistrationFormDetailResponse:AdoptionRegistrationFormResponse
-    {
-        //public UsersResponseModel Adopter { get; set; } 
-        //public PetDetailResponse Pet { get; set; } 
-        //public UsersResponseModel ShelterStaff { get; set; }
+    public class AdoptionRegistrationFormDetailResponse : AdoptionRegistrationFormResponse { 
+
+        public string Shelter { get; set; }
     }
+
+
 }
