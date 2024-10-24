@@ -95,7 +95,7 @@ namespace SWP391_PawFund.Controllers
         }
 
         [HttpPut("{petId}/user")]
-        public async Task<IActionResult> PutUserID(int petId, [FromForm] int userId)
+        public async Task<IActionResult> PutUserID(int petId, [FromForm] int? userId)
         {
             try
             {
