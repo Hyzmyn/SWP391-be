@@ -144,18 +144,20 @@ namespace ServiceLayer.Services
         // Cập nhật Pet
         public async Task<PetResponseModel> UpdatePetAsync(int id, PetUpdateRequestModel updatePetRequest)
         {
+            var existingPet = await _unitOfWork.Repository<Pet>().GetById(id);
+
             var Pet = await GetPetByIdAsync(id);
             if(Pet == null)
             {
                 throw new Exception($"Không tìm thấy Pet với ID {id}.");
             }
-            string userImage = null;
 
             if (updatePetRequest.Image != null && updatePetRequest.Image.Length>0)
             {
-                 userImage = await _fileUploadService.UploadFileAsync(updatePetRequest.Image);
+                string userImage = await _fileUploadService.UploadFileAsync(updatePetRequest.Image);
+                existingPet.Image = userImage;
+
             }
-            var existingPet = await _unitOfWork.Repository<Pet>().GetById(id);
             if (existingPet == null)
                 throw new Exception($"Không tìm thấy Pet với ID {id}.");
 
@@ -170,7 +172,6 @@ namespace ServiceLayer.Services
             existingPet.Color = updatePetRequest.Color;
             existingPet.Description = updatePetRequest.Description;
             existingPet.AdoptionStatus = updatePetRequest.AdoptionStatus;
-            existingPet.Image = userImage;
 
             _unitOfWork.Repository<Pet>().Update(existingPet, id);
             await _unitOfWork.CommitAsync();
@@ -203,7 +204,6 @@ namespace ServiceLayer.Services
             if (petStatus == null)
                 throw new Exception($"Không tìm thấy Status với ID {statusId} cho Pet với ID {petId}.");
 
-            // Cập nhật thông tin Status
             petStatus.Status.Disease = updateStatusRequest.Disease;
             petStatus.Status.Vaccine = updateStatusRequest.Vaccine;
             petStatus.Status.Date = DateTime.UtcNow;
