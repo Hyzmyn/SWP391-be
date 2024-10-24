@@ -14,7 +14,7 @@ namespace ServiceLayer.RequestModels
         [StringLength(1000, ErrorMessage = "Description cannot exceed 1000 characters.")]
         public string Description { get; set; } = null!;
 
-        //public DateTime Date { get; set; }
+        public DateTimeOffset Date { get; set; }
 
         [Required]
         public int UserId { get; set; }

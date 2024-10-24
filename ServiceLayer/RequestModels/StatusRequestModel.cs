@@ -9,7 +9,7 @@ namespace ServiceLayer.RequestModels
 {
     public class StatusRequestModel
     {
-        public DateTime Date { get; set; }
+        public DateTimeOffset Date { get; set; }
         public string? Disease { get; set; }
         public string? Vaccine { get; set; } 
         public int PetId { get; set; }
@@ -17,13 +17,13 @@ namespace ServiceLayer.RequestModels
     }
     public class StatusUpdateRequestModel
     {
-        public DateTime Date { get; set; }
+        public DateTimeOffset Date { get; set; }
         public string? Disease { get; set; }
         public string? Vaccine { get; set; }
     }
     public class StatusCreateRequest
     {
-        //public DateTime Date { get; set; }       
+        public DateTimeOffset Date { get; set; }
         public string? Disease { get; set; }
         public string? Vaccine { get; set; }
         public int PetId { get; set; }
