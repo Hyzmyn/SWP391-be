@@ -10,8 +10,8 @@ namespace ServiceLayer.ResponseModels
     {
         public int StatusId { get; set; }
         public DateTime Date { get; set; }
-        public string Disease { get; set; }
-        public string Vaccine { get; set; }
+        public string? Disease { get; set; }
+        public string? Vaccine { get; set; }
     }
     public class StatusDetailResponseModel : StatusResponseModel
     {
@@ -21,7 +21,7 @@ namespace ServiceLayer.ResponseModels
     public class PetDetailResponseModel
     {
         public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
+        public string? Name { get; set; } = string.Empty;
     }
     public class PetStatusResponseModel :StatusResponseModel
     {
