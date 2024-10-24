@@ -137,7 +137,6 @@ namespace ServiceLayer.Services
             await _unitOfWork.Repository<Pet>().InsertAsync(pet);
             await _unitOfWork.CommitAsync();
 
-            // Trả về Pet đã được tạo với thông tin mới
             return await GetPetByIdAsync(pet.Id);
         }
 
@@ -145,17 +144,21 @@ namespace ServiceLayer.Services
         // Cập nhật Pet
         public async Task<PetResponseModel> UpdatePetAsync(int id, PetUpdateRequestModel updatePetRequest)
         {
+            var Pet = await GetPetByIdAsync(id);
+            if(Pet == null)
+            {
+                throw new Exception($"Không tìm thấy Pet với ID {id}.");
+            }
             string userImage = null;
 
-            if (updatePetRequest.Image != null)
+            if (updatePetRequest.Image != null && updatePetRequest.Image.Length>0)
             {
-                userImage = await _fileUploadService.UploadFileAsync(updatePetRequest.Image);
+                 userImage = await _fileUploadService.UploadFileAsync(updatePetRequest.Image);
             }
             var existingPet = await _unitOfWork.Repository<Pet>().GetById(id);
             if (existingPet == null)
                 throw new Exception($"Không tìm thấy Pet với ID {id}.");
 
-            // Cập nhật các thuộc tính
             existingPet.ShelterID = updatePetRequest.ShelterID;
             existingPet.UserID = updatePetRequest.UserID;
             existingPet.Name = updatePetRequest.Name;
@@ -172,7 +175,6 @@ namespace ServiceLayer.Services
             _unitOfWork.Repository<Pet>().Update(existingPet, id);
             await _unitOfWork.CommitAsync();
 
-            // Trả về Pet đã được cập nhật
             return await GetPetByIdAsync(id);
         }
 
@@ -278,29 +280,34 @@ namespace ServiceLayer.Services
             
         }
 
-        public async Task<PetResponseModel> PutUserIDAsync(int petId, int userId)
+        public async Task<PetResponseModel> PutUserIDAsync(int petId, int? userId)
         {
-            // Kiểm tra xem UserID có tồn tại không
-            var existingUser = await _unitOfWork.Repository<User>().GetById(userId);
-            if (existingUser == null)
-            {
-                throw new Exception($"Không tìm thấy User với ID {userId}.");
-            }
-
-            // Tìm Pet dựa trên petId
             var existingPet = await _unitOfWork.Repository<Pet>().GetById(petId);
             if (existingPet == null)
             {
                 throw new Exception($"Không tìm thấy Pet với ID {petId}.");
             }
+
             existingPet.UserID = userId;
 
-            // Cập nhật Pet trong cơ sở dữ liệu
+            // Kiểm tra trạng thái hiện tại và cập nhật AdoptionStatus
+            if (userId != null && existingPet.AdoptionStatus == AdoptionStatus.Available.ToString())
+            {
+                // Nếu Pet đang Available và User được gán, chuyển sang Adopted
+                existingPet.AdoptionStatus = AdoptionStatus.Adopted.ToString();
+            }
+            else if (userId == null && existingPet.AdoptionStatus == AdoptionStatus.Adopted.ToString())
+            {
+                // Nếu UserID được bỏ và Pet đang Adopted, chuyển trạng thái về Available
+                existingPet.AdoptionStatus = AdoptionStatus.Available.ToString();
+            }
+
             _unitOfWork.Repository<Pet>().Update(existingPet, petId);
             await _unitOfWork.CommitAsync();
 
             return await GetPetByIdAsync(petId);
         }
+
 
     }
 }
