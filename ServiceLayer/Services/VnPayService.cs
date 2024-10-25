@@ -24,10 +24,15 @@ namespace ServiceLayer.Services
 		{
 			_config = config;
 		}
+		private static Dictionary<string, (int UserId, decimal Amount)> _paymentTracker
+	   = new Dictionary<string, (int UserId, decimal Amount)>();
 		public string CreatePaymentUrl(HttpContext context, VnPaymentRequestModel model)
 		{
 			var tick = DateTime.Now.Ticks.ToString();
 			var vnpay = new VnPayLibrary();
+
+			_paymentTracker[tick] = (model.UserId, model.Amount);
+
 			vnpay.AddRequestData("vnp_Version", _config["VnPay:Version"]);
 			vnpay.AddRequestData("vnp_Command", _config["VnPay:Command"]);
 			vnpay.AddRequestData("vnp_TmnCode", _config["VnPay:TmnCode"]);
@@ -61,6 +66,8 @@ namespace ServiceLayer.Services
 				}
 			}
 			var responseTicket = vnpay.GetResponseData("vnp_TxnRef");
+			var (userId, amount) = _paymentTracker.GetValueOrDefault(responseTicket);
+			_paymentTracker.Remove(responseTicket);
 
 
 			var vnp_orderId = Convert.ToInt64(responseTicket);
@@ -93,7 +100,8 @@ namespace ServiceLayer.Services
 				TransactionId = vnp_TransactionId.ToString(),
 				Token = vnp_SecureHash,
 				VnPayResponseCode = vnp_ResponseCode,
-				//UserId = userId
+				UserId = userId,
+				Amount = amount
 			};
 
 		}
