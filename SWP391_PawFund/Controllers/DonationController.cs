@@ -388,8 +388,9 @@ namespace SWP391_PawFund.Controllers
 				FullName = requestModel.FullName,
 				Description = requestModel.Description,
 				Amount = requestModel.Amount,
-				CreatedDate = DateTime.UtcNow.AddHours(7) // Đặt thời gian hiện tại (UTC+7)
-				
+				CreatedDate = DateTime.UtcNow.AddHours(7), // Đặt thời gian hiện tại (UTC+7)
+				 UserId = requestModel.UserId  // Include UserId in payload
+
 			};
 
 			// Tạo URL thanh toán
@@ -403,27 +404,39 @@ namespace SWP391_PawFund.Controllers
 
 
 		[HttpGet("vnpay/api")]
-		//[Authorize]
 		public async Task<IActionResult> PaymentCallBack()
 		{
 			var response = _vpnPayService.PaymentExecute(Request.Query);
-			if (response == null || response?.VnPayResponseCode != "00")
+
+			if (response == null || response.VnPayResponseCode != "00")
 			{
 				return StatusCode(500, new { message = $"Lỗi thanh toán VNPay: {response?.VnPayResponseCode ?? "unknown error"}" });
 			}
-			//Tìm User dựa trên UserId trả về từ VNPay
-			//var user = await _usersService.GetUserByIdAsync(response.UserId);
-			//if (user != null)
-			//{
-			//	// Cộng thêm số tiền vừa thanh toán vào ví của User
-			//	user.wallet = (user.wallet ?? 0) + response.Amount;
 
-			//	// Cập nhật User vào database
-			//	await _usersService.UpdateUserAsync(user);
-			//	//}
-			//}
-				return Ok(response);
+			try
+			{
+				// Get user by ID
+				var user = await _usersService.GetUserByIdAsync(response.UserId);
+				if (user != null)
+				{
+					// Update wallet balance
+					user.wallet = (user.wallet ?? 0) + response.Amount;
+					await _usersService.UpdateUserAsync(user);
+
+					return Ok(new
+					{
+						response,
+						newWalletBalance = user.wallet
+					});
+				}
+
+				return NotFound(new { message = $"User not found: {response.UserId}" });
 			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, new { message = $"Error updating wallet: {ex.Message}" });
+			}
+		}
 		}
 	}
 

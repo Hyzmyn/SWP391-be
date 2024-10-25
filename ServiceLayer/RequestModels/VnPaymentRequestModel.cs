@@ -14,6 +14,7 @@ namespace ServiceLayer.RequestModels
 		public decimal Amount { get; set; }
 
 		public DateTime CreatedDate { get; set; }
-		//public int UserId { get; set; }
+		
+		public int UserId { get; set; }  // Added UserId
 	}
 }
