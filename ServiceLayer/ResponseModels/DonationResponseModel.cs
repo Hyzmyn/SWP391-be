@@ -14,8 +14,9 @@ namespace ServiceLayer.ResponseModels
         public int DonorId { get; set; }
         //public string DonorName { get; set; } = string.Empty;
         public int ShelterId { get; set; }
-        //public string ShelterName { get; set; } = string.Empty;
-    }
+		//public string ShelterName { get; set; } = string.Empty;
+		public bool Status { get; set; }
+	}
 
     public class DonationDetailResponseModel : DonationResponseModel
     {
