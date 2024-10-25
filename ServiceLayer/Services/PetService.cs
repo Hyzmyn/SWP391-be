@@ -59,7 +59,8 @@ namespace ServiceLayer.Services
                     {
                         StatusId = ps.Status.Id,
                         Disease = ps.Status.Disease,
-                        Vaccine = ps.Status.Vaccine
+                        Vaccine = ps.Status.Vaccine,
+                        Date=ps.Status.Date
                     }).ToList()
                 };
 
@@ -100,7 +101,7 @@ namespace ServiceLayer.Services
                 Statuses = pet.Statuses?.Select(ps => new StatusResponseModel
                 {
                     StatusId = ps.Status.Id,
-                    Date = DateTime.UtcNow,
+                    Date = ps.Status.Date,
                     Disease = ps.Status.Disease,
                     Vaccine = ps.Status.Vaccine
                 }).ToList()
@@ -201,12 +202,14 @@ namespace ServiceLayer.Services
                 .Include(ps => ps.Status)
                 .FirstOrDefaultAsync(ps => ps.PetId == petId && ps.StatusId == statusId);
 
+            var vietnamTime = updateStatusRequest.Date.ToOffset(TimeSpan.FromHours(7)).DateTime;
+
             if (petStatus == null)
                 throw new Exception($"Không tìm thấy Status với ID {statusId} cho Pet với ID {petId}.");
 
             petStatus.Status.Disease = updateStatusRequest.Disease;
             petStatus.Status.Vaccine = updateStatusRequest.Vaccine;
-            petStatus.Status.Date = DateTime.UtcNow;
+            petStatus.Status.Date = vietnamTime;
 
             _unitOfWork.Repository<Status>().Update(petStatus.Status, petStatus.StatusId);
             await _unitOfWork.CommitAsync();
