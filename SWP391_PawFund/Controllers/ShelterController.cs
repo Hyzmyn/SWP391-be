@@ -58,7 +58,7 @@ namespace SWP391_PawFund.Controllers
                     Statuses = p.Statuses?.Select(ps => new StatusResponseModel
                     {
                         StatusId = ps.StatusId,
-                        //Date = ps.Status?.Date ?? default,
+                        Date = ps.Status?.Date ?? default,
                         Disease = ps.Status?.Disease,
                         Vaccine = ps.Status?.Vaccine
                     }).ToList()
@@ -131,7 +131,7 @@ namespace SWP391_PawFund.Controllers
                     Statuses = p.Statuses?.Select(ps => new StatusResponseModel
                     {
                         StatusId = ps.StatusId,
-                        //Date = ps.Status?.Date ?? default,
+                        Date = ps.Status?.Date ?? default,
                         Disease = ps.Status?.Disease,
                         Vaccine = ps.Status?.Vaccine
                     }).ToList()
@@ -209,6 +209,7 @@ namespace SWP391_PawFund.Controllers
                         Statuses = p.Statuses?.Select(ps => new StatusResponseModel
                         {
                             StatusId = ps.Status.Id,
+                            Date=ps.Status.Date,
                             Disease = ps.Status.Disease,
                             Vaccine = ps.Status.Vaccine
                         }).ToList()
@@ -345,7 +346,7 @@ namespace SWP391_PawFund.Controllers
                     Statuses = p.Statuses?.Select(ps => new StatusResponseModel
                     {
                         StatusId = ps.StatusId,
-                        //Date = ps.Status?.Date ?? default,
+                        Date = ps.Status?.Date ?? default,
                         Disease = ps.Status?.Disease,
                         Vaccine = ps.Status?.Vaccine
                     }).ToList()

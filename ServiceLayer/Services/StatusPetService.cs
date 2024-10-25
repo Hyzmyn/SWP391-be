@@ -125,7 +125,6 @@ namespace ServiceLayer.Services
             if (existingStatus == null)
                 throw new Exception($"Không tìm thấy Status với ID {id}.");
 
-            // Lấy thời gian theo giờ Việt Nam (UTC+7)
             var vietnamTime = updateStatusRequest.Date.ToOffset(TimeSpan.FromHours(7)).DateTime;
 
             // Cập nhật các thuộc tính
