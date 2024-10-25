@@ -185,6 +185,8 @@ namespace ServiceLayer.Services
                     .ThenInclude(ur => ur.Role)
                 .FirstOrDefaultAsync(u => u.Id == request.ShelterStaffId);
 
+            var vietnamTime = request.Date.ToOffset(TimeSpan.FromHours(7)).DateTime;
+
             if (shelterStaff == null || !shelterStaff.UserRoles.Any(ur => ur.Role.Name == "ShelterStaff"))
             {
                 throw new UnauthorizedAccessException("User không có quyền truy cập, yêu cầu role là 'Staff'.");
@@ -206,9 +208,9 @@ namespace ServiceLayer.Services
 
             var certification = new Certification
             {
-                Image = request.Image,
+                Image = "string",
                 Desciption = request.Description,
-                Date = DateTime.UtcNow,
+                Date = vietnamTime,
                 ShelterStaffId = request.ShelterStaffId,
                 UserId = request.UserId,
                 PetId = request.PetId
@@ -304,6 +306,9 @@ namespace ServiceLayer.Services
                 throw new ArgumentException("Id phải lớn hơn 0.", nameof(id));
             }
 
+            // Lấy thời gian theo giờ Việt Nam (UTC+7)
+            var vietnamTime = request.Date.ToOffset(TimeSpan.FromHours(7)).DateTime;
+
             var existingCertification = await _unitOfWork.Repository<Certification>().GetById(id);
             if (existingCertification == null)
             {
@@ -335,9 +340,9 @@ namespace ServiceLayer.Services
                 throw new KeyNotFoundException($"User với ID {request.UserId} không tìm thấy.");
             }
 
-            existingCertification.Image = request.Image;
+            existingCertification.Image = "string";
             existingCertification.Desciption = request.Description;
-            existingCertification.Date = DateTime.UtcNow;
+            existingCertification.Date = vietnamTime;
             existingCertification.UserId = request.ShelterStaffId;
             existingCertification.PetId = request.PetId;
 

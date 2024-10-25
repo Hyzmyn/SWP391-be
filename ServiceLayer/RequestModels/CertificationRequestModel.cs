@@ -9,13 +9,12 @@ namespace ServiceLayer.RequestModels
 {
     public class CertificationRequest
     {
-        [Required]
-        public string Image { get; set; }
+        //public string Image { get; set; }
         [Required]
         [StringLength(1000, ErrorMessage = "Description cannot exceed 1000 characters.")]
         public string Description { get; set; } = null!;
 
-        //public DateTime Date { get; set; }
+        public DateTimeOffset Date { get; set; }
 
         [Required]
         public int UserId { get; set; }

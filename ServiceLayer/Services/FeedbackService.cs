@@ -117,13 +117,15 @@ namespace ServiceLayer.Services
             {
                 throw new KeyNotFoundException($"Post with ID {request.PostId} not found.");
             }
+            // Chuyển đổi giờ hiện tại sang giờ Việt Nam (UTC+7)
+            var vietnamTime = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(7)).DateTime;
 
             var feedback = new FeedBack
             {
                 UserId = request.UserId,
                 PostId = request.PostId,
                 Description = request.Description,
-                Date = DateTime.UtcNow
+                Date = vietnamTime
             };
 
             await _unitOfWork.Repository<FeedBack>().InsertAsync(feedback);
@@ -207,6 +209,8 @@ namespace ServiceLayer.Services
             {
                 throw new KeyNotFoundException($"User with ID {request.UserId} not found.");
             }
+            // Chuyển đổi giờ hiện tại sang giờ Việt Nam (UTC+7)
+            var vietnamTime = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(7)).DateTime;
 
             var post = await _unitOfWork.Repository<Post>().GetById(request.PostId);
             if (post == null)
@@ -218,7 +222,7 @@ namespace ServiceLayer.Services
             existingFeedback.UserId = request.UserId;
             existingFeedback.PostId = request.PostId;
             existingFeedback.Description = request.Description;
-            existingFeedback.Date = DateTime.UtcNow;
+            existingFeedback.Date = vietnamTime;
 
             _unitOfWork.Repository<FeedBack>().Update(existingFeedback, existingFeedback.Id);
             await _unitOfWork.CommitAsync();

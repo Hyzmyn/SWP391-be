@@ -51,7 +51,7 @@ namespace SWP391_PawFund.Controllers
 
         // PUT: api/Status/3
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateStatus(int id, [FromForm] StatusUpdateRequestModel updateStatusRequest)
+        public async Task<IActionResult> UpdateStatus(int id, [FromBody] StatusUpdateRequestModel updateStatusRequest)
         {
             var updatedStatus = await _statusPetService.UpdateStatusAsync(id, updateStatusRequest);
             return Ok(updatedStatus);

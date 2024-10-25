@@ -45,13 +45,13 @@ namespace SWP391_PawFund.Controllers
         // GET: api/AdoptionRegistrationForm
         [HttpGet]
 
-        public ActionResult<IEnumerable<AdoptionRegistrationFormResponse>> GetAllForms()
+        public ActionResult<IEnumerable<AdoptionRegistrationFormDetailResponse>> GetAllForms()
         {
             try
             {
                 var forms = _adoptionFormService.GetAllAdoptionForms();
 
-                var response = forms.Select(form => new AdoptionRegistrationFormResponse
+                var response = forms.Select(form => new AdoptionRegistrationFormDetailResponse
                 {
                     Id = form.Id,
                     SocialAccount = form.SocialAccount,
@@ -75,7 +75,7 @@ namespace SWP391_PawFund.Controllers
 
         [HttpGet("{id}")]
 
-        public async Task<ActionResult<AdoptionRegistrationFormResponse>> GetFormDetailById(int id)
+        public async Task<ActionResult<AdoptionRegistrationFormDetailResponse>> GetFormDetailById(int id)
         {
             try
             {
@@ -90,7 +90,7 @@ namespace SWP391_PawFund.Controllers
                 //var shelterStaff = await _usersService.GetUserByIdAsync((int)form.ShelterStaffId);
                 //var shelter = pet != null ? await _shelterService.GetShelterByID(pet.ShelterID) : null;
 
-                var response = new AdoptionRegistrationFormResponse
+                var response = new AdoptionRegistrationFormDetailResponse
                 {
                     Id = form.Id,
                     SocialAccount = form.SocialAccount,
@@ -100,7 +100,8 @@ namespace SWP391_PawFund.Controllers
                     AdopterId = form.AdopterId,
                     ShelterStaffId = form.ShelterStaffId,
                     PetId = form.PetId,
-                    Status = form.Status
+                    Status = form.Status,
+                    Shelter = form.Pet != null && form.Pet.Shelter != null ? form.Pet.Shelter.Name : "N/A"
                 };
 
                 return Ok(response);
@@ -129,10 +130,11 @@ namespace SWP391_PawFund.Controllers
                 {
                     return BadRequest(ModelState);
                 }
-                if (await _adoptionFormService.FormExistsAsync(request.PetId))
-                {
-                    return StatusCode(500, new { message = "Pet is pending for Affirmation" });
-                }
+
+                //if (await _adoptionFormService.FormExistsAsync(request.PetId))
+                //{
+                //    return StatusCode(500, new { message = "Pet is pending for Affirmation" });
+                //}
 
                 var identificationImageUrl = await _fileUploadService.UploadFileAsync(request.IdentificationImage);
                 var identificationImageBackSideUrl = await _fileUploadService.UploadFileAsync(request.IdentificationImageBackSide);
@@ -181,10 +183,7 @@ namespace SWP391_PawFund.Controllers
                 }
                 var form = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
 
-                if (await _adoptionFormService.FormExistsAsync(form.PetId))
-                {
-                    return StatusCode(500, new { message = "Pet already exist in a pending form" });
-                }
+
 
                 if (form == null)
                 {
@@ -223,12 +222,33 @@ namespace SWP391_PawFund.Controllers
 
                 if (request.PetId.HasValue)
                 {
+                    //if (await _adoptionFormService.FormExistsAsync((int)request.PetId))
+                    //{
+                    //    return StatusCode(500, new { message = "Pet already exist in a pending form" });
+                    //}
                     form.PetId = request.PetId.Value;
                 }
 
                 if (request.Status.HasValue)
                 {
+                    if ((bool)request.Status)
+                    {
+                        //var otherForms = await _adoptionFormService.GetFormsByPetId(form.PetId);
+                        //if (otherForms != null)
+                        //{
+                        //    foreach (var otherForm in otherForms)
+                        //    {
+                        //        otherForm.Status = false;
+                        //    }
+                        //}
+                        await _petService.UpdatePetAdoptionStatusAsync(form.PetId, 2, form.AdopterId); // Adopted
+                    }
+                    //else
+                    //{
+                    //    await _petService.UpdatePetAdoptionStatusAsync(form.PetId, 1, null);
+                    //}
                     form.Status = request.Status;
+
                 }
 
                 await _adoptionFormService.UpdateAdoptionFormAsync(form);
@@ -240,44 +260,6 @@ namespace SWP391_PawFund.Controllers
                 return StatusCode(500, new { message = ex });
             }
 
-        }
-        [HttpPut("{id}/status")]
-        public async Task<IActionResult> UpdateFormStatus(int id, bool status)
-        {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest(ModelState);
-                }
-
-                // Retrieve the form by ID
-                var form = await _adoptionFormService.GetAdoptionFormByIdAsync(id);
-                if (form == null)
-                {
-                    return NotFound(new { message = "Form not found." });
-                }
-
-                form.Status = status;
-
-                if (status)
-                    await _petService.UpdatePetAdoptionStatusAsync(form.PetId, 2, form.AdopterId); // Adopted
-                else
-                    await _petService.UpdatePetAdoptionStatusAsync(form.PetId, 1, null);
-
-
-                // Save the updated form
-                await _adoptionFormService.UpdateAdoptionFormAsync(form);
-
-
-
-
-                return Ok(new { message = "Form status has been updated successfully." });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = ex.Message });
-            }
         }
 
         // DELETE: api/AdoptionRegistrationForm/{id}

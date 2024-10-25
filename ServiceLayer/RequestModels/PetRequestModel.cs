@@ -40,7 +40,6 @@ namespace ServiceLayer.RequestModels
         public string? Color { get; set; }
         public string? Description { get; set; }
         public string? AdoptionStatus { get; set; }
-        //public string? Image { get; set; }
         public IFormFile? Image { get; set; }
 
     }
@@ -48,6 +47,11 @@ namespace ServiceLayer.RequestModels
     {
         //public int PetId { get; set; }
         public int StatusId { get; set; }
+    }
+    public class UpdateAdoptionStatusRequest
+    {
+        public int Status { get; set; } // Enum for status: 1 for "Available", 2 for "Adopted"
+        public int? UserId { get; set; } 
     }
 
 }
