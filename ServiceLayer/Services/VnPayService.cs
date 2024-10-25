@@ -44,6 +44,7 @@ namespace ServiceLayer.Services
 			var callback = _config["VnPay:PaymentBackReturnUrl"];
 			vnpay.AddRequestData("vnp_ReturnUrl", callback);
 			vnpay.AddRequestData("vnp_TxnRef", tick ); // Mã tham chiếu của giao dịch tại hệ thống của merchant.Mã này là duy nhất dùng để phân biệt các đơn hàng gửi sang VNPAY.Không được trùng lặp trong ngày
+			
 			var paymentUrl = vnpay.CreateRequestUrl(_config["VnPay:BaseUrl"], _config["VnPay:HashSecret"]);
 
 			return paymentUrl;
@@ -78,6 +79,11 @@ namespace ServiceLayer.Services
 					Success = false
 				};
 			}
+			//int userId;
+			//if (!int.TryParse(vnpay.GetResponseData("vnp_UserId"), out userId))
+			//{
+			//	userId = 0; // Hoặc xử lý nếu không thể chuyển đổi
+			//}
 			return new VNPaymentResponseModel
 			{
 				Success = true,
@@ -87,6 +93,7 @@ namespace ServiceLayer.Services
 				TransactionId = vnp_TransactionId.ToString(),
 				Token = vnp_SecureHash,
 				VnPayResponseCode = vnp_ResponseCode,
+				//UserId = userId
 			};
 
 		}
