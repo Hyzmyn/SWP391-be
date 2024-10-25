@@ -42,4 +42,9 @@ namespace ServiceLayer.RequestModels
         public int DonorID { get; set; }
         public decimal TotalDonation { get; set; }
     }
+	public class UpdateDonationStatusRequest
+	{
+		[Required]
+		public bool Status { get; set; }
+	}
 }

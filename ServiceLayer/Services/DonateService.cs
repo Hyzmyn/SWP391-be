@@ -53,48 +53,48 @@ namespace ServiceLayer.Services
         // Thêm donation mới và cập nhật Shelter và User
         public async Task CreateDonationAsync(Donation donation)
         {
-            // Bắt đầu một transaction nếu UnitOfWork hỗ trợ
-            using (var transaction = await _unitOfWork.BeginTransactionAsync())
-            {
-                try
-                {
-                    // Thêm Donation
-                    await _unitOfWork.Repository<Donation>().InsertAsync(donation);
+			using (var transaction = await _unitOfWork.BeginTransactionAsync())
+			{
+				try
+				{
+					// Set initial status to false
+					donation.Status = false;
 
-                    // Lấy User và Shelter từ database
-                    var donor = await _unitOfWork.Repository<User>().GetById(donation.DonorId);
-                    var shelter = await _unitOfWork.Repository<Shelter>().GetById(donation.ShelterId);
+					// Thêm Donation
+					await _unitOfWork.Repository<Donation>().InsertAsync(donation);
 
-                    if (donor == null)
-                    {
-                        throw new ArgumentException("Donor not found.", nameof(donation.DonorId));
-                    }
+					// Lấy User và Shelter từ database
+					var donor = await _unitOfWork.Repository<User>().GetById(donation.DonorId);
+					var shelter = await _unitOfWork.Repository<Shelter>().GetById(donation.ShelterId);
 
-                    if (shelter == null)
-                    {
-                        throw new ArgumentException("Shelter not found.", nameof(donation.ShelterId));
-                    }
+					if (donor == null)
+					{
+						throw new ArgumentException("Donor not found.", nameof(donation.DonorId));
+					}
 
-                    // Cập nhật TotalDonation của User
-                    donor.TotalDonation = (donor.TotalDonation ?? 0m) + donation.Amount;
-                    _unitOfWork.Repository<User>().Update(donor, donor.Id);
+					if (shelter == null)
+					{
+						throw new ArgumentException("Shelter not found.", nameof(donation.ShelterId));
+					}
 
-                    // Cập nhật DonationAmount của Shelter
-                    shelter.DonationAmount = (shelter.DonationAmount ?? 0m) + donation.Amount;
-                    _unitOfWork.Repository<Shelter>().Update(shelter, shelter.Id);
+					// Cập nhật TotalDonation của User
+					donor.TotalDonation = (donor.TotalDonation ?? 0m) + donation.Amount;
+					_unitOfWork.Repository<User>().Update(donor, donor.Id);
 
-                    await _unitOfWork.CommitAsync();
+					// Cập nhật DonationAmount của Shelter
+					shelter.DonationAmount = (shelter.DonationAmount ?? 0m) + donation.Amount;
+					_unitOfWork.Repository<Shelter>().Update(shelter, shelter.Id);
 
-                    await transaction.CommitAsync();
-                }
-                catch (Exception)
-                {
-                    // Rollback transaction nếu có lỗi xảy ra
-                    await transaction.RollbackAsync();
-                    throw;
-                }
-            }
-        }
+					await _unitOfWork.CommitAsync();
+					await transaction.CommitAsync();
+				}
+				catch (Exception)
+				{
+					await transaction.RollbackAsync();
+					throw;
+				}
+			}
+		}
 
         // Cập nhật donation
         public async Task UpdateDonationAsync(Donation donation)
@@ -115,6 +115,7 @@ namespace ServiceLayer.Services
         }
 
         // Lấy tổng donation theo ShelterId
+
         public decimal GetTotalDonationByShelter(int shelterId)
         {
             return _unitOfWork.Repository<Donation>()
@@ -153,5 +154,17 @@ namespace ServiceLayer.Services
                 throw new ApplicationException("An error occurred while retrieving donations by DonorId.", ex);
             }
         }
-    }
+		public async Task UpdateDonationStatusAsync(int donationId, bool status)
+		{
+			var donation = await _unitOfWork.Repository<Donation>().GetById(donationId);
+			if (donation == null)
+			{
+				throw new ArgumentException($"Donation with ID {donationId} not found.");
+			}
+
+			donation.Status = status;
+			_unitOfWork.Repository<Donation>().Update(donation, donationId);
+			await _unitOfWork.CommitAsync();
+		}
+	}
 }

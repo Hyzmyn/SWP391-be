@@ -21,6 +21,7 @@ namespace ServiceLayer.Interfaces
         Task<UsersResponseModel> GetUserProfile(int id);
 
 
+
     }
 
 }
