@@ -11,14 +11,16 @@ namespace ServiceLayer.RequestModels
     {
         public string Name { get; set; }
 
-        public string Location { get; set; }
+        public string? Location { get; set; }
 
-        public string PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
 
         public int Capacity { get; set; }
 
         [EmailAddress(ErrorMessage = "Please enter a valid email address.")]
-        public string Email { get; set; }
+        public string? Email { get; set; }
+
+        public string? BankAccount { get; set; }
 
         public string? Website { get; set; }
 

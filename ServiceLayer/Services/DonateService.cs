@@ -120,7 +120,8 @@ namespace ServiceLayer.Services
         {
             return _unitOfWork.Repository<Donation>()
                 .AsQueryable()
-                .Where(d => d.ShelterId == shelterId)
+                .Where(d => d.ShelterId == shelterId && d.Status == true)
+                // Chỉ lấy các Donation có Status là true
                 .Sum(d => d.Amount);
         }
 
