@@ -8,6 +8,7 @@ namespace ServiceLayer.RequestModels
 {
 	public class CreateNotificationRequestModel
 	{
+		public string Title { get; set; }
 		public string Message { get; set; } = null!;
 		public DateTime Date { get; set; }
 		public int UserId { get; set; }
@@ -15,6 +16,8 @@ namespace ServiceLayer.RequestModels
 
 	public class UpdateNotificationRequestModel
 	{
+		public string Title { get; set; }
+
 		public string Message { get; set; } = null!;
 		public DateTime Date { get; set; }
 		public int UserId { get; set; }
