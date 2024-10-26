@@ -16,8 +16,8 @@ namespace ServiceLayer.ResponseModels
 		public string TransactionId { get; set; }
 		public string Token { get; set; }
 		public string VnPayResponseCode { get; set; }
-		//public int UserId { get; set; } // Add UserId
-		//public decimal Amount { get; set; } // Add Amount
+		public int UserId { get; set; }
+		public decimal Amount { get; set; }
 
 
 	}
