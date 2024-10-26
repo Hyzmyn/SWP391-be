@@ -29,7 +29,7 @@ namespace SWP391_PawFund.Controllers
         public async Task<ActionResult<IEnumerable<ShelterResponseModel>>> GetAllShelters()
         {
             var shelters = await _shelterService.GetAllSheltersAsync();
-
+            
             var shelterResponses = shelters.Select(s => new ShelterResponseModel
             {
                 Id = s.Id,
@@ -38,6 +38,7 @@ namespace SWP391_PawFund.Controllers
                 PhoneNumber = s.PhoneNumber,
                 Capacity = s.Capacity,
                 Email = s.Email,
+                BankAccount = s.BankAccount,
                 Website = s.Website,
                 DonationAmount = _donateService.GetTotalDonationByShelter(s.Id),
                 Pets = s.Pets?.Select(p => new PetResponseModel
@@ -111,6 +112,7 @@ namespace SWP391_PawFund.Controllers
                 PhoneNumber = shelter.PhoneNumber,
                 Capacity = shelter.Capacity,
                 Email = shelter.Email,
+                BankAccount = shelter.BankAccount,
                 Website = shelter.Website,
                 DonationAmount = _donateService.GetTotalDonationByShelter(shelter.Id),
                 Pets = shelter.Pets?.Select(p => new PetResponseModel
@@ -189,6 +191,7 @@ namespace SWP391_PawFund.Controllers
                     PhoneNumber = shelter.PhoneNumber,
                     Capacity = shelter.Capacity,
                     Email = shelter.Email,
+                    BankAccount = shelter.BankAccount,
                     Website = shelter.Website,
                     DonationAmount = _donateService.GetTotalDonationByShelter(shelter.Id),
                     Pets = shelter.Pets?.Select(p => new PetResponseModel
@@ -264,6 +267,7 @@ namespace SWP391_PawFund.Controllers
                 PhoneNumber = shelterRequest.PhoneNumber,
                 Capacity = shelterRequest.Capacity,
                 Email = shelterRequest.Email,
+                BankAccount = shelterRequest.BankAccount,
                 Website = shelterRequest.Website,
                 DonationAmount = shelterRequest.DonationAmount,
                 Pets = new List<Pet>(),
@@ -282,6 +286,7 @@ namespace SWP391_PawFund.Controllers
                 PhoneNumber = createdShelter.PhoneNumber,
                 Capacity = createdShelter.Capacity,
                 Email = createdShelter.Email,
+                BankAccount = createdShelter.BankAccount,
                 Website = createdShelter.Website,
                 DonationAmount = createdShelter.DonationAmount,
                 Pets = new List<PetResponseModel>(),
@@ -313,6 +318,7 @@ namespace SWP391_PawFund.Controllers
             existingShelter.PhoneNumber = shelterRequest.PhoneNumber;
             existingShelter.Capacity = shelterRequest.Capacity;
             existingShelter.Email = shelterRequest.Email;
+            existingShelter.BankAccount = shelterRequest.BankAccount;
             existingShelter.Website = shelterRequest.Website;
             existingShelter.DonationAmount = shelterRequest.DonationAmount;
 
@@ -326,6 +332,7 @@ namespace SWP391_PawFund.Controllers
                 PhoneNumber = updatedShelter.PhoneNumber,
                 Capacity = updatedShelter.Capacity,
                 Email = updatedShelter.Email,
+                BankAccount = updatedShelter.BankAccount,
                 Website = updatedShelter.Website,
                 DonationAmount = _donateService.GetTotalDonationByShelter(updatedShelter.Id),
                 Pets = updatedShelter.Pets?.Select(p => new PetResponseModel
@@ -404,8 +411,6 @@ namespace SWP391_PawFund.Controllers
                 {
                     return BadRequest("ShelterId phải lớn hơn 0.");
                 }
-
-                // Gọi phương thức GetTotalDonationByShelter từ DonateService
                 var totalDonation = _donateService.GetTotalDonationByShelter(shelterId);
 
                 return Ok(totalDonation);
