@@ -82,17 +82,17 @@ namespace SWP391_PawFund.Controllers
                 return StatusCode(500, $"An error occurred while adding the role: {ex.Message}");
             }
         }
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> RemoveRole(int id)
+        [HttpDelete("{userId}/{roleId}")]
+        public async Task<IActionResult> RemoveRole(int userId, int roleId)
         {
-            if (id <= 0)
+            if (userId <= 0 || roleId <= 0)
             {
                 return BadRequest("Invalid role ID.");
             }
             try
             {
-                await _userRoleService.RemoveRoleAsync(id);
-                return Ok($"Role with ID {id} successfully removed.");
+                await _userRoleService.RemoveRoleAsync(userId, roleId);
+                return Ok($"Role with UserID: {userId}, RoleID: {roleId} successfully removed.");
             }
             catch (Exception ex)
             {
