@@ -17,9 +17,10 @@ namespace ServiceLayer.ResponseModels
         public decimal TotalDonation { get; set; }
         public string Image { get; set; }
         public string Shelter { get; set; }
-        public string Event { get; set; }
-        public List<string> Roles { get; set; }
         public decimal Wallet { get; set; }
+        public List<string> Event { get; set; }
+        public List<string> Roles { get; set; }
+
 
     }
 
