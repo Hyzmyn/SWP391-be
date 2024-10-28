@@ -31,7 +31,7 @@ namespace ServiceLayer.Services
             {
                 FeedbackId = fb.Id,
                 UserId = fb.UserId,
-                PostId = (int)fb.PostId,
+                PostId = fb.PostId,
                 Description = fb.Description,
                 Date = fb.Date
             });
@@ -58,7 +58,7 @@ namespace ServiceLayer.Services
             {
                 FeedbackId = feedback.Id,
                 UserId = feedback.UserId,
-                PostId = (int)feedback.PostId,
+                PostId = feedback.PostId,
                 Description = feedback.Description,
                 Date = feedback.Date,
                 User = new UsersResponseModel
@@ -94,7 +94,7 @@ namespace ServiceLayer.Services
                         {
                             FeedbackId = fb.Id,
                             UserId = fb.UserId,
-                            PostId = (int) fb.PostId,
+                            PostId = fb.PostId,
                             Description = fb.Description,
                             Date = fb.Date
                         }).ToList()
@@ -103,7 +103,6 @@ namespace ServiceLayer.Services
         }
 
 
-        // Create new Feedback
         public async Task<FeedBackResponseDetail> CreateFeedbackAsync(FeedBackRequestModel request)
         {
             var user = await _unitOfWork.Repository<User>().GetById(request.UserId);
@@ -112,26 +111,22 @@ namespace ServiceLayer.Services
                 throw new KeyNotFoundException($"User with ID {request.UserId} not found.");
             }
 
-            var post = await _unitOfWork.Repository<Post>().GetById(request.PostId);
-            if (post == null)
-            {
-                throw new KeyNotFoundException($"Post with ID {request.PostId} not found.");
-            }
             // Chuyển đổi giờ hiện tại sang giờ Việt Nam (UTC+7)
             var vietnamTime = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(7)).DateTime;
 
+            // Tạo mới Feedback và thiết lập các thuộc tính
             var feedback = new FeedBack
             {
                 UserId = request.UserId,
-                PostId = request.PostId,
                 Description = request.Description,
-                Date = vietnamTime
+                Date = vietnamTime,
+                PostId = request.PostId  // Giữ nguyên giá trị null nếu PostId không được nhập
             };
 
             await _unitOfWork.Repository<FeedBack>().InsertAsync(feedback);
             await _unitOfWork.CommitAsync();
 
-            // Lấy lại Feedback vừa tạo để trả về response chi tiết
+            // Truy vấn và trả về chi tiết Feedback đã tạo
             var createdFeedback = await _unitOfWork.Repository<FeedBack>().GetAll()
                 .Include(fb => fb.User)
                 .Include(fb => fb.Post)
@@ -146,7 +141,7 @@ namespace ServiceLayer.Services
             {
                 FeedbackId = createdFeedback.Id,
                 UserId = createdFeedback.UserId,
-                PostId = (int) createdFeedback.PostId,
+                PostId = createdFeedback.PostId,
                 Description = createdFeedback.Description,
                 Date = createdFeedback.Date,
                 User = new UsersResponseModel
@@ -155,10 +150,9 @@ namespace ServiceLayer.Services
                     Username = createdFeedback.User.Username,
                     Email = createdFeedback.User.Email,
                     Location = createdFeedback.User.Location,
-                    Phone = createdFeedback.User.Phone,
-                    //TotalDonation = (decimal)createdFeedback.User.TotalDonation
+                    Phone = createdFeedback.User.Phone
                 },
-                Post = new PostResponseDetail
+                Post = createdFeedback.Post == null ? null : new PostResponseDetail
                 {
                     Id = createdFeedback.Post.Id,
                     Title = createdFeedback.Post.Title,
@@ -166,31 +160,11 @@ namespace ServiceLayer.Services
                     CreateDate = createdFeedback.Post.CreateDate,
                     UpdateDate = createdFeedback.Post.UpdateDate,
                     UserId = createdFeedback.Post.UserId,
-                    PetId = createdFeedback.Post.PetId,
-                    User = new UsersResponseModel
-                    {
-                        Id = createdFeedback.Post.User.Id,
-                        Username = createdFeedback.Post.User.Username,
-                        Email = createdFeedback.Post.User.Email,
-                        Location = createdFeedback.Post.User.Location,
-                        Phone = createdFeedback.Post.User.Phone,
-                        TotalDonation = (decimal)createdFeedback.Post.User.TotalDonation,
-                    },
-                    FeedBacks = _unitOfWork.Repository<FeedBack>().GetAll()
-                        .Where(fb => fb.PostId == createdFeedback.PostId)
-                        .Select(fb => new FeedBackResponseModel
-                        {
-                            FeedbackId = fb.Id,
-                            UserId = fb.UserId,
-                            PostId = (int)fb.PostId,
-                            Description = fb.Description,
-                            Date = fb.Date
-                        }).ToList()
+                    PetId = createdFeedback.Post.PetId
                 }
             };
         }
 
-        // Update Feedback
         public async Task<FeedBackResponseDetail> UpdateFeedbackAsync(int id, FeedBackRequestModel request)
         {
             if (id <= 0)
@@ -213,22 +187,16 @@ namespace ServiceLayer.Services
             // Chuyển đổi giờ hiện tại sang giờ Việt Nam (UTC+7)
             var vietnamTime = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(7)).DateTime;
 
-            var post = await _unitOfWork.Repository<Post>().GetById(request.PostId);
-            if (post == null)
-            {
-                throw new KeyNotFoundException($"Post with ID {request.PostId} not found.");
-            }
-
             // Cập nhật các thuộc tính
             existingFeedback.UserId = request.UserId;
-            existingFeedback.PostId = request.PostId;
             existingFeedback.Description = request.Description;
             existingFeedback.Date = vietnamTime;
+            existingFeedback.PostId = request.PostId;  // Giữ nguyên giá trị null nếu PostId không được nhập
 
             _unitOfWork.Repository<FeedBack>().Update(existingFeedback, existingFeedback.Id);
             await _unitOfWork.CommitAsync();
 
-            // Lấy lại Feedback vừa cập nhật để trả về response chi tiết
+            // Truy vấn và trả về chi tiết Feedback đã cập nhật
             var updatedFeedback = await _unitOfWork.Repository<FeedBack>().GetAll()
                 .Include(fb => fb.User)
                 .Include(fb => fb.Post)
@@ -243,7 +211,7 @@ namespace ServiceLayer.Services
             {
                 FeedbackId = updatedFeedback.Id,
                 UserId = updatedFeedback.UserId,
-                PostId = (int)updatedFeedback.PostId,
+                PostId = updatedFeedback.PostId,
                 Description = updatedFeedback.Description,
                 Date = updatedFeedback.Date,
                 User = new UsersResponseModel
@@ -252,10 +220,9 @@ namespace ServiceLayer.Services
                     Username = updatedFeedback.User.Username,
                     Email = updatedFeedback.User.Email,
                     Location = updatedFeedback.User.Location,
-                    Phone = updatedFeedback.User.Phone,
-                    TotalDonation = (decimal)updatedFeedback.User.TotalDonation
+                    Phone = updatedFeedback.User.Phone
                 },
-                Post = new PostResponseDetail
+                Post = updatedFeedback.Post == null ? null : new PostResponseDetail
                 {
                     Id = updatedFeedback.Post.Id,
                     Title = updatedFeedback.Post.Title,
@@ -263,29 +230,11 @@ namespace ServiceLayer.Services
                     CreateDate = updatedFeedback.Post.CreateDate,
                     UpdateDate = updatedFeedback.Post.UpdateDate,
                     UserId = updatedFeedback.Post.UserId,
-                    PetId = updatedFeedback.Post.PetId,
-                    User = new UsersResponseModel
-                    {
-                        Id = updatedFeedback.Post.User.Id,
-                        Username = updatedFeedback.Post.User.Username,
-                        Email = updatedFeedback.Post.User.Email,
-                        Location = updatedFeedback.Post.User.Location,
-                        Phone = updatedFeedback.Post.User.Phone,
-                        //TotalDonation = (decimal)updatedFeedback.Post.User.TotalDonation,
-                    },
-                    FeedBacks = _unitOfWork.Repository<FeedBack>().GetAll()
-                        .Where(fb => fb.PostId == updatedFeedback.PostId)
-                        .Select(fb => new FeedBackResponseModel
-                        {
-                            FeedbackId = fb.Id,
-                            UserId = fb.UserId,
-                            PostId = (int)fb.PostId,
-                            Description = fb.Description,
-                            Date = fb.Date
-                        }).ToList()
+                    PetId = updatedFeedback.Post.PetId
                 }
             };
         }
+
 
         // Delete Feedback
         public async Task DeleteFeedbackAsync(int id)
