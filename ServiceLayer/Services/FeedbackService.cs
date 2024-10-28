@@ -31,7 +31,7 @@ namespace ServiceLayer.Services
             {
                 FeedbackId = fb.Id,
                 UserId = fb.UserId,
-                PostId = fb.PostId,
+                PostId = (int)fb.PostId,
                 Description = fb.Description,
                 Date = fb.Date
             });
@@ -58,7 +58,7 @@ namespace ServiceLayer.Services
             {
                 FeedbackId = feedback.Id,
                 UserId = feedback.UserId,
-                PostId = feedback.PostId,
+                PostId = (int)feedback.PostId,
                 Description = feedback.Description,
                 Date = feedback.Date,
                 User = new UsersResponseModel
@@ -94,7 +94,7 @@ namespace ServiceLayer.Services
                         {
                             FeedbackId = fb.Id,
                             UserId = fb.UserId,
-                            PostId = fb.PostId,
+                            PostId = (int) fb.PostId,
                             Description = fb.Description,
                             Date = fb.Date
                         }).ToList()
@@ -146,7 +146,7 @@ namespace ServiceLayer.Services
             {
                 FeedbackId = createdFeedback.Id,
                 UserId = createdFeedback.UserId,
-                PostId = createdFeedback.PostId,
+                PostId = (int) createdFeedback.PostId,
                 Description = createdFeedback.Description,
                 Date = createdFeedback.Date,
                 User = new UsersResponseModel
@@ -182,7 +182,7 @@ namespace ServiceLayer.Services
                         {
                             FeedbackId = fb.Id,
                             UserId = fb.UserId,
-                            PostId = fb.PostId,
+                            PostId = (int)fb.PostId,
                             Description = fb.Description,
                             Date = fb.Date
                         }).ToList()
@@ -243,7 +243,7 @@ namespace ServiceLayer.Services
             {
                 FeedbackId = updatedFeedback.Id,
                 UserId = updatedFeedback.UserId,
-                PostId = updatedFeedback.PostId,
+                PostId = (int)updatedFeedback.PostId,
                 Description = updatedFeedback.Description,
                 Date = updatedFeedback.Date,
                 User = new UsersResponseModel
@@ -279,7 +279,7 @@ namespace ServiceLayer.Services
                         {
                             FeedbackId = fb.Id,
                             UserId = fb.UserId,
-                            PostId = fb.PostId,
+                            PostId = (int)fb.PostId,
                             Description = fb.Description,
                             Date = fb.Date
                         }).ToList()
