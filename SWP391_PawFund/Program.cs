@@ -114,7 +114,7 @@ builder.Services.AddCors(options =>
         .AllowAnyMethod()
         .AllowAnyHeader()
         .AllowCredentials()
-        .WithOrigins("https://localhost:7293", "http://localhost:3000", "https://exchangeweb-fpt.netlify.app")
+        //.WithOrigins("https://localhost:7293", "http://localhost:3000", "http://abandonedpets.ddns.net")
         );
 });
 
