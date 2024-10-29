@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using ModelLayer.Entities;
 using ServiceLayer.RequestModels;
 using ServiceLayer.ResponseModels;
 using System;
@@ -13,5 +14,9 @@ namespace ServiceLayer.Interfaces
 	{
 		string CreatePaymentUrl(HttpContext context, VnPaymentRequestModel model);
 		VNPaymentResponseModel PaymentExecute(IQueryCollection collections);
+		Task SaveTransactionAsync(VNPaymentResponseModel response);
+		
+			Task<IEnumerable<VnPayTransaction>> GetTransactionsAsync(int? userId = null);
+		
 	}
 }

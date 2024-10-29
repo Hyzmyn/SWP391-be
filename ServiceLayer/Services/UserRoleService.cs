@@ -71,17 +71,18 @@ namespace ServiceLayer.Services
 
 
 
-        public async Task RemoveRoleAsync(int id)
+        public async Task RemoveRoleAsync(int userId, int roleId)
         {
-            var role = await _unitOfWork.Repository<UserRole>().GetById(id);
-            if (role != null)
+            var userRole = await _unitOfWork.Repository<UserRole>().FindAsync(ur => ur.UserId == userId && ur.RoleId == roleId);
+
+            if (userRole != null)
             {
-                _unitOfWork.Repository<UserRole>().Delete(role);
+                _unitOfWork.Repository<UserRole>().Delete(userRole);
                 await _unitOfWork.CommitAsync();
             }
             else
             {
-                throw new Exception($"UserRole with RoleID {id} not found.");
+                throw new Exception($"UserRole with UserID {userId} and RoleID {roleId} not found.");
             }
         }
 

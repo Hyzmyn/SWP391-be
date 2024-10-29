@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ModelLayer.Entities
 {
-    public class SmsMessage : BaseEntity
+    public class SmsMessage :BaseEntity
     {
-        public string To { get; set; }
-        public string From { get; set; }
-        public string Message {  get; set; }    
+        public string AccountSID { get; set; }
+        public string AuthToken { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

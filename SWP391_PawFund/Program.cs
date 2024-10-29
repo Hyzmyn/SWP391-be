@@ -14,13 +14,18 @@ using Twilio.Clients;
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Http.Features;
+using Google.Apis.Json;
+using System.Text.Json;
+using ModelLayer.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+//Twilio setting
+builder.Services.Configure<SmsMessage>(builder.Configuration.GetSection("Twilio"));
 
+// Add services to the container.
 builder.Services.AddControllers().AddNewtonsoftJson();
-builder.Services.AddHttpClient<ITwilioRestClient, TwilioClient>();
+//builder.Services.AddHttpClient<ITwilioRestClient, TwilioClient>();
 
 var firebaseConfig = Environment.GetEnvironmentVariable("FIREBASE_CONFIG");
 
@@ -114,7 +119,7 @@ builder.Services.AddCors(options =>
         .AllowAnyMethod()
         .AllowAnyHeader()
         .AllowCredentials()
-        .WithOrigins("https://localhost:7293", "http://localhost:3000", "https://exchangeweb-fpt.netlify.app")
+        .WithOrigins("https://localhost:7293", "http://localhost:3000", "https://abandonedpets.ddns.net")
         );
 });
 
