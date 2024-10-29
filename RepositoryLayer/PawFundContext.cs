@@ -67,7 +67,6 @@ namespace RepositoryLayer
                     .Property(nameof(BaseEntity.Id))
                     .ValueGeneratedOnAdd();
             }
-
             modelBuilder.Entity<Certification>()
                 .HasOne(c => c.User)
                 .WithMany(u => u.Certifications)
