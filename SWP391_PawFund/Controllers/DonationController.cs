@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ModelLayer.Entities;
 using ServiceLayer.Interfaces;
 using ServiceLayer.RequestModels;
 using ServiceLayer.ResponseModels;
 using ServiceLayer.Services;
+using static ServiceLayer.Interfaces.IVnPayService;
 
 namespace SWP391_PawFund.Controllers
 {
@@ -393,8 +395,10 @@ namespace SWP391_PawFund.Controllers
 
 			};
 
+			
 			// Tạo URL thanh toán
 			var url = _vpnPayService.CreatePaymentUrl(HttpContext, payload);
+			
 
 			// Trả về link thanh toán
 			return Ok(url);
@@ -422,6 +426,8 @@ namespace SWP391_PawFund.Controllers
 					// Update wallet balance
 					user.wallet = (user.wallet ?? 0) + response.Amount;
 					await _usersService.UpdateUserAsync(user);
+					await _vpnPayService.SaveTransactionAsync(response); // Save transaction to database
+																		//tạo 1 cái hàm lưu payload giống trên hàm post vào database,lưu giống kiểu của wallet dưới hàm get,tạo 1 api mới để get
 
 					return Ok(new
 					{
@@ -437,6 +443,20 @@ namespace SWP391_PawFund.Controllers
 				return StatusCode(500, new { message = $"Error updating wallet: {ex.Message}" });
 			}
 		}
+		[HttpGet("vnpay/transactions")]
+		public async Task<IActionResult> GetTransactions(int? userId = null)
+		{
+			try
+			{
+				var transactions = await _vpnPayService.GetTransactionsAsync(userId);
+				return Ok(transactions);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Internal server error: {ex.Message}");
+			}
 		}
+
+	}
 	}
 
