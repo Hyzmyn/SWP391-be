@@ -28,6 +28,8 @@ namespace RepositoryLayer
         public virtual DbSet<SmsMessage> SmsMessages { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
         public virtual DbSet<PetStatus> PetStatuses { get; set; }
+        public virtual DbSet<VnPayTransaction> VnPayTransaction { get; set; }
+
 
 
         public PawFundContext(DbContextOptions<PawFundContext> options) : base(options)
@@ -87,6 +89,9 @@ namespace RepositoryLayer
 
             modelBuilder.Entity<EventUser>()
                 .HasKey(ur => new { ur.UserId, ur.EventId });
+
+            modelBuilder.Entity<VnPayTransaction>()
+                .HasKey(i => i.TransactionId);
 
             modelBuilder.Entity<EventUser>()
                 .HasOne(ur => ur.User)

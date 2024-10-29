@@ -17,5 +17,7 @@ namespace ModelLayer.Entities
 		public string Token { get; set; }
 		public string VnPayResponseCode { get; set; }
 		public DateTime CreatedDate { get; set; }
-	}
+
+        public virtual User? User { get; set; }
+    }
 }
