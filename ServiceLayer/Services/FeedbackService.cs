@@ -36,6 +36,7 @@ namespace ServiceLayer.Services
                 Date = fb.Date
             });
         }
+
         // Get Feedback by ID
         public async Task<FeedBackResponseDetail> GetFeedbackByIdAsync(int id)
         {
@@ -102,7 +103,7 @@ namespace ServiceLayer.Services
             };
         }
 
-
+        //Create Tạo Feedback
         public async Task<FeedBackResponseDetail> CreateFeedbackAsync(FeedBackRequestModel request)
         {
             var user = await _unitOfWork.Repository<User>().GetById(request.UserId);
@@ -111,7 +112,6 @@ namespace ServiceLayer.Services
                 throw new KeyNotFoundException($"User with ID {request.UserId} not found.");
             }
 
-            // Chuyển đổi giờ hiện tại sang giờ Việt Nam (UTC+7)
             var vietnamTime = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(7)).DateTime;
 
             // Tạo mới Feedback và thiết lập các thuộc tính
@@ -120,7 +120,7 @@ namespace ServiceLayer.Services
                 UserId = request.UserId,
                 Description = request.Description,
                 Date = vietnamTime,
-                PostId = request.PostId  // Giữ nguyên giá trị null nếu PostId không được nhập
+                PostId = request.PostId  
             };
 
             await _unitOfWork.Repository<FeedBack>().InsertAsync(feedback);
@@ -184,14 +184,13 @@ namespace ServiceLayer.Services
                 throw new KeyNotFoundException($"User with ID {request.UserId} not found.");
             }
 
-            // Chuyển đổi giờ hiện tại sang giờ Việt Nam (UTC+7)
             var vietnamTime = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(7)).DateTime;
 
             // Cập nhật các thuộc tính
             existingFeedback.UserId = request.UserId;
             existingFeedback.Description = request.Description;
             existingFeedback.Date = vietnamTime;
-            existingFeedback.PostId = request.PostId;  // Giữ nguyên giá trị null nếu PostId không được nhập
+            existingFeedback.PostId = request.PostId;  
 
             _unitOfWork.Repository<FeedBack>().Update(existingFeedback, existingFeedback.Id);
             await _unitOfWork.CommitAsync();
