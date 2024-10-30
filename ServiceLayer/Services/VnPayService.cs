@@ -17,11 +17,12 @@ namespace ServiceLayer.Services
 	{
 		private IConfiguration _config;
 		private readonly IUnitOfWork _unitOfWork;
-
-		public VnPayService(IConfiguration config, IUnitOfWork unitOfWork)
+		private readonly IServiceProvider _serviceProvider;
+		public VnPayService(IConfiguration config, IUnitOfWork unitOfWork, IServiceProvider serviceProvider)
 		{
 			_config = config;
 			_unitOfWork = unitOfWork;
+			_serviceProvider = serviceProvider;
 		}
 		private static Dictionary<string, (int UserId, decimal Amount)> _paymentTracker
 	   = new Dictionary<string, (int UserId, decimal Amount)>();
