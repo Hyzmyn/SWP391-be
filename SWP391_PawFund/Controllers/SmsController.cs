@@ -17,14 +17,15 @@ namespace SWP391_PawFund.Controllers
     public class SmsController : ControllerBase
     {
 
-        private readonly ISMSService _ismsService;
+        private readonly ISMSService _smsService;
 
-        public SmsController(ISMSService ismsService)
+        public SmsController(ISMSService smsService)
         {
-            _ismsService = ismsService;
+            _smsService = smsService;
         }
 
-        [HttpPost("send-sms")]
+        [HttpPost]
+        [ActionName("SendSMS")]  
         public async Task<IActionResult> SendSms([FromBody] SMSRequest request)
         {
             if (string.IsNullOrEmpty(request.To) || string.IsNullOrEmpty(request.Message))
@@ -34,8 +35,8 @@ namespace SWP391_PawFund.Controllers
 
             try
             {
-                var result = await _ismsService.SendAsync(request.Message, request.To);
-                return Ok(new { MessageSid = result.Sid, Status = result.Status.ToString() });
+                var result = await _smsService.SendAsync(request.Message, request.To);
+                return Ok(result);
             }
             catch (Exception ex)
             {

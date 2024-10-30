@@ -8,8 +8,7 @@ using ServiceLayer.RequestModels;
 namespace SWP391_PawFund.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-     
+    [Route("api/[controller]")]     
     public class FeedbackController : ControllerBase
     {
         private readonly IFeedbackService _feedbackService;
