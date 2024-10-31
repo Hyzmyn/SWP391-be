@@ -21,10 +21,13 @@ namespace ServiceLayer.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly PawFundContext _content;
         private readonly IFileUploadService _fileUploadService;
-        public PetService(IUnitOfWork unitOfWork, IFileUploadService fileUploadService)
+        private readonly IStatusPetService _statusPetService;  
+
+        public PetService(IUnitOfWork unitOfWork, IFileUploadService fileUploadService, IStatusPetService statusPetService)
         {
             _unitOfWork = unitOfWork;
             _fileUploadService = fileUploadService;
+            _statusPetService = statusPetService;
         }
 
         // Lấy tất cả các Pet
@@ -180,13 +183,28 @@ namespace ServiceLayer.Services
             return await GetPetByIdAsync(id);
         }
 
-        // Xóa Pet
+        // Xóa Pet và các Status liên quan
         public async Task<bool> DeletePetAsync(int id)
         {
-            var pet = await _unitOfWork.Repository<Pet>().GetById(id);
+            // Tìm Pet theo ID
+            var pet = await _unitOfWork.Repository<Pet>().AsQueryable()
+                .Include(p => p.Statuses) 
+                .FirstOrDefaultAsync(p => p.Id == id);
+
             if (pet == null)
                 throw new Exception($"Không tìm thấy Pet với ID {id}.");
 
+            // Xóa từng Status liên quan đến Pet
+            if (pet.Statuses != null && pet.Statuses.Any())
+            {
+                foreach (var petStatus in pet.Statuses)
+                {
+                    if (petStatus.StatusId != null)
+                    {
+                        await _statusPetService.DeleteStatusAsync(petStatus.StatusId);
+                    }
+                }
+            }
             _unitOfWork.Repository<Pet>().Delete(pet);
             await _unitOfWork.CommitAsync();
 
@@ -243,21 +261,44 @@ namespace ServiceLayer.Services
 
 
 
-        // Xóa Status khỏi Pet
+        // Xóa Status khỏi Pet và xóa Status nếu không còn liên kết với Pet nào
         public async Task RemoveStatusFromPetAsync(int petId, int statusId)
         {
-            var repository = _unitOfWork.Repository<PetStatus>();
+            var petStatusRepository = _unitOfWork.Repository<PetStatus>();
+            var statusRepository = _unitOfWork.Repository<Status>();
 
-            var petStatus = await repository
+            // Tìm PetStatus với PetId và StatusId
+            var petStatus = await petStatusRepository
                 .AsQueryable()
                 .FirstOrDefaultAsync(ps => ps.PetId == petId && ps.StatusId == statusId);
 
             if (petStatus == null)
                 throw new Exception($"Không tìm thấy Status với ID {statusId} cho Pet với ID {petId}.");
 
-            repository.Delete(petStatus);
+            // Xóa mối quan hệ giữa Pet và Status
+            petStatusRepository.Delete(petStatus);
             await _unitOfWork.CommitAsync();
+
+            // Kiểm tra xem Status có còn được tham chiếu bởi bất kỳ Pet nào không
+            var isStatusInUse = await petStatusRepository
+                .AsQueryable()
+                .AnyAsync(ps => ps.StatusId == statusId);
+
+            //Xóa Status khỏi bảng Status
+            if (!isStatusInUse)
+            {
+                var status = await statusRepository
+                    .AsQueryable()
+                    .FirstOrDefaultAsync(s => s.Id == statusId);
+
+                if (status != null)
+                {
+                    statusRepository.Delete(status);
+                    await _unitOfWork.CommitAsync();
+                }
+            }
         }
+
 
         //Cập nhật AdopStatus cho Pet theo Enum (1 = Available , 2 = Adopte ,3 = Unavalable)
         public async Task UpdatePetAdoptionStatusAsync(int id, int status, int? userId)

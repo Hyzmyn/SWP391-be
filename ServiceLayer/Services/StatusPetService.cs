@@ -25,8 +25,33 @@ namespace ServiceLayer.Services
         // lấy tất cả Status
         public async Task<IEnumerable<StatusResponseModel>> GetAllStatusAsync()
         {
-            var statuses = await _unitOfWork.Repository<Status>()
+            var statusRepository = _unitOfWork.Repository<Status>();
+            var petStatusRepository = _unitOfWork.Repository<PetStatus>();
+
+            // Lọc các Status không có PetId trong bảng PetStatus và xóa chúng
+            var orphanStatuses = await statusRepository
                 .AsQueryable()
+                .Where(status => !petStatusRepository
+                    .AsQueryable()
+                    .Any(ps => ps.StatusId == status.Id))
+                .ToListAsync();
+
+            foreach (var orphanStatus in orphanStatuses)
+            {
+                statusRepository.Delete(orphanStatus);
+            }
+
+            if (orphanStatuses.Any())
+            {
+                await _unitOfWork.CommitAsync();
+            }
+
+            // Lấy các Status có PetId và trả về
+            var statuses = await statusRepository
+                .AsQueryable()
+                .Where(status => petStatusRepository
+                    .AsQueryable()
+                    .Any(ps => ps.StatusId == status.Id))
                 .ToListAsync();
 
             var statusResponses = statuses.Select(status => new StatusResponseModel
@@ -39,6 +64,7 @@ namespace ServiceLayer.Services
 
             return statusResponses;
         }
+
 
         // Lấy tất cả các Status cho một Pet cụ thể
         public async Task<IEnumerable<StatusResponseModel>> GetStatusesForPetAsync(int petId)
@@ -64,7 +90,31 @@ namespace ServiceLayer.Services
         // Lấy Status theo ID
         public async Task<StatusResponseModel> GetStatusByIdAsync(int id)
         {
-            var status = await _unitOfWork.Repository<Status>()
+            var statusRepository = _unitOfWork.Repository<Status>();
+            var petStatusRepository = _unitOfWork.Repository<PetStatus>();
+
+            // Kiểm tra nếu Status không có PetId
+            var hasPetId = await petStatusRepository
+                .AsQueryable()
+                .AnyAsync(ps => ps.StatusId == id);
+
+            if (!hasPetId)
+            {
+                var orphanStatus = await statusRepository
+                    .AsQueryable()
+                    .FirstOrDefaultAsync(s => s.Id == id);
+
+                if (orphanStatus != null)
+                {
+                    statusRepository.Delete(orphanStatus);
+                    await _unitOfWork.CommitAsync();
+                }
+
+                throw new Exception("Status đã bị delete do không có PetId.");
+            }
+
+            // Nếu có PetId, trả về thông tin Status
+            var status = await statusRepository
                 .AsQueryable()
                 .FirstOrDefaultAsync(s => s.Id == id);
 
