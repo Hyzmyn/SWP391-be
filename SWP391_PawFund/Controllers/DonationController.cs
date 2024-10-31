@@ -145,36 +145,27 @@ namespace SWP391_PawFund.Controllers
 		}
 		// Thêm donation mới
 		[HttpPost("CreateDonate")]
-		public async Task<IActionResult> CreateDonation([FromForm] DonationCreateRequestModel request)//, string payment = "VnPay")
-
+		public async Task<IActionResult> CreateDonation([FromForm] DonationCreateRequestModel request)
 		{
-
 			if (!ModelState.IsValid)
 			{
 				return BadRequest(ModelState);
 			}
-			//if (payment == "Thanh toán VNPay")
-			//{
-			//	var user = await _usersService.GetUserByIdAsync(request.DonorId);
-			//	if (user == null)
-			//	{
-			//		return NotFound(new { message = "Donor not found." });
-			//	}
-
-			//	var vnPayModel = new VnPaymentRequestModel
-			//	{
-			//		Amount = request.Amount,
-			//		CreatedDate = DateTime.Now,
-			//		Description = $"ID khách hàng:{request.DonorId}, Donate:{request.Amount}",
-			//		FullName = user.Username,
-			//		OrderId = new Random().Next(1000, 100000)
-			//	};
-
-			//	return Redirect(_vpnPayService.CreatePaymentUrl(HttpContext, vnPayModel));
-			//}
 
 			try
 			{
+				// Kiểm tra user và wallet trước
+				var donor = await _usersService.GetUserByIdAsync(request.DonorId);
+				if (donor == null)
+				{
+					return NotFound(new { message = "Donor not found." });
+				}
+
+				if (donor.wallet == null || donor.wallet < request.Amount)
+				{
+					return BadRequest(new { message = "Insufficient wallet balance to make this donation." });
+				}
+
 				var donation = new Donation
 				{
 					Amount = request.Amount,
@@ -186,7 +177,7 @@ namespace SWP391_PawFund.Controllers
 				await _donateService.CreateDonationAsync(donation);
 
 				// Lấy thông tin User và Shelter đã được cập nhật
-				var donor = await _usersService.GetUserByIdAsync(request.DonorId);
+				donor = await _usersService.GetUserByIdAsync(request.DonorId);
 				var shelter = await _shelterService.GetShelterByIdAsync(request.ShelterId);
 
 				var response = new DonationDetailResponseModel
@@ -203,7 +194,8 @@ namespace SWP391_PawFund.Controllers
 						Email = donor.Email,
 						Location = donor.Location,
 						Phone = donor.Phone,
-						TotalDonation = donor.TotalDonation ?? 0m
+						TotalDonation = donor.TotalDonation ?? 0m,
+						Wallet = donor.wallet ?? 0m  // Thêm thông tin wallet vào response
 					} : null,
 					Shelter = shelter != null ? new ShelterResponseModel
 					{
@@ -220,6 +212,11 @@ namespace SWP391_PawFund.Controllers
 
 				return CreatedAtAction(nameof(GetDonationById), new { id = donation.Id }, response);
 			}
+			catch (InvalidOperationException ex)
+			{
+				_logger.LogError(ex, "Insufficient wallet balance: {Message}", ex.Message);
+				return BadRequest(new { message = ex.Message });
+			}
 			catch (ArgumentException ex)
 			{
 				_logger.LogError(ex, "Error creating donation: {Message}", ex.Message);
@@ -231,7 +228,6 @@ namespace SWP391_PawFund.Controllers
 				return StatusCode(500, new { message = "An unexpected error occurred while creating the donation." });
 			}
 		}
-
 
 		// Cập nhật donation
 		[HttpPut("Update_Donate/{id}")]

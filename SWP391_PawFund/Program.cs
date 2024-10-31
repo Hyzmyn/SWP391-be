@@ -25,7 +25,6 @@ builder.Services.Configure<SmsMessage>(builder.Configuration.GetSection("Twilio"
 
 // Add services to the container.
 builder.Services.AddControllers().AddNewtonsoftJson();
-//builder.Services.AddHttpClient<ITwilioRestClient, TwilioClient>();
 
 var firebaseConfig = Environment.GetEnvironmentVariable("FIREBASE_CONFIG");
 
@@ -125,6 +124,7 @@ builder.Services.AddCors(options =>
 
 var configuration = builder.Configuration;
 var app = builder.Build();
+
 
 
 
