@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using ModelLayer.Entities;
+using ModelLayer.Entities.Momo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace ModelLayer.Entities
         public virtual Shelter? Shelter { get; set; }
         public virtual ICollection<EventUser>? Events { get; set; }
         public virtual ICollection<VnPayTransaction>? VnPay { get; set; }
-
+        public virtual ICollection<MomoPay> MomoPays { get; set; }
 
         public virtual ICollection<UserRole>? UserRoles { get; set; }
         public virtual ICollection<Pet>? Pets { get; set; }

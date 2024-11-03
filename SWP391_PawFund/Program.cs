@@ -17,11 +17,14 @@ using Microsoft.AspNetCore.Http.Features;
 using Google.Apis.Json;
 using System.Text.Json;
 using ModelLayer.Entities;
+using ModelLayer.Entities.Momo;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //Twilio setting
 builder.Services.Configure<SmsMessage>(builder.Configuration.GetSection("Twilio"));
+
+builder.Services.Configure<MomoOptionModel>(builder.Configuration.GetSection("MomoAPI"));
 
 // Add services to the container.
 builder.Services.AddControllers().AddNewtonsoftJson();

@@ -267,7 +267,6 @@ namespace ServiceLayer.Services
             var petStatusRepository = _unitOfWork.Repository<PetStatus>();
             var statusRepository = _unitOfWork.Repository<Status>();
 
-            // Tìm PetStatus với PetId và StatusId
             var petStatus = await petStatusRepository
                 .AsQueryable()
                 .FirstOrDefaultAsync(ps => ps.PetId == petId && ps.StatusId == statusId);
@@ -334,7 +333,6 @@ namespace ServiceLayer.Services
 
             existingPet.UserID = userId;
 
-            // Kiểm tra trạng thái hiện tại và cập nhật AdoptionStatus
             if (userId != null && existingPet.AdoptionStatus == AdoptionStatus.Available.ToString())
             {
                 // Nếu Pet đang Available và User được gán, chuyển sang Adopted
