@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using ModelLayer.Entities;
+using ModelLayer.Entities.Momo;
 using RepositoryLayer.Utils;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace RepositoryLayer
         public virtual DbSet<PetStatus> PetStatuses { get; set; }
         public virtual DbSet<VnPayTransaction> VnPayTransaction { get; set; }
 
-
+        public virtual DbSet<MomoPay> MomoPays { get; set; }
 
         public PawFundContext(DbContextOptions<PawFundContext> options) : base(options)
         {
@@ -170,6 +171,12 @@ namespace RepositoryLayer
                 .WithOne(p => p.Certification)
                 .HasForeignKey<Certification>(c => c.PetId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<MomoPay>()
+                .HasOne(m => m.User)
+                .WithMany(u => u.MomoPays)  // nếu User có danh sách MomoPays
+                .HasForeignKey(m => m.UserId)
+                .OnDelete(DeleteBehavior.Restrict); // hoặc DeleteBehavior khác phù hợp
 
 
             modelBuilder.Entity<Role>().HasData(
