@@ -63,38 +63,37 @@ namespace ServiceLayer.Services
 
             request.AddParameter("application/json", JsonConvert.SerializeObject(requestData), ParameterType.RequestBody);
             var response = await client.ExecuteAsync(request);
-            return JsonConvert.DeserializeObject<MomoPay>(response.Content);
+            //return JsonConvert.DeserializeObject<MomoPay>(response.Content);
 
+            if (response.IsSuccessful)
+            {
+                var responseData = JsonConvert.DeserializeObject<dynamic>(response.Content);
 
-            //if (response.IsSuccessful)
-            //{
-            //    var responseData = JsonConvert.DeserializeObject<dynamic>(response.Content);
-
-            //    var momoPay = new MomoPay()
-            //    {
-            //        RequestId = model.OrderId,
-            //        RequestType = _options.Value.RequestType,
-            //        UserId = model.userID,
-            //        OrderId = model.OrderId,
-            //        Message = responseData?.message,
-            //        LocalMessage = responseData?.localMessage,
-            //        Amount = (decimal)model.Amount,
-            //        PayUrl = responseData?.payUrl,
-            //        Signature = signature,
-            //        QrCodeUrl = responseData?.qrCodeUrl,
-            //        Deeplink = responseData?.deeplink,
-            //        DeeplinkWebInApp = responseData?.deeplinkWebInApp,
-            //        CreatedDate = vietnamTime
-            //    };
-            //    await _unitOfWork.Repository<MomoPay>().InsertAsync(momoPay);
-            //    await _unitOfWork.CommitAsync();
-            //    //return momoPay;
-            //    return JsonConvert.DeserializeObject<MomoPay>(response.Content);
-            //}
-            //else
-            //{
-            //    throw new Exception("Không thể tạo thanh toán Momo: " + response.ErrorMessage);
-            //}
+                var momoPay = new MomoPay()
+                {
+                    RequestId = model.OrderId,
+                    RequestType = _options.Value.RequestType,
+                    UserId = model.userID,
+                    OrderId = model.OrderId,
+                    Message = responseData?.message,
+                    LocalMessage = responseData?.localMessage,
+                    Amount = (decimal)model.Amount,
+                    PayUrl = responseData?.payUrl,
+                    Signature = signature,
+                    QrCodeUrl = responseData?.qrCodeUrl,
+                    Deeplink = responseData?.deeplink,  
+                    DeeplinkWebInApp = responseData?.deeplinkWebInApp,
+                    CreatedDate = vietnamTime
+                };
+                await _unitOfWork.Repository<MomoPay>().InsertAsync(momoPay);
+                await _unitOfWork.CommitAsync();
+                return momoPay;
+                //return JsonConvert.DeserializeObject<MomoPay>(response.Content);
+            }
+            else
+            {
+                throw new Exception("Không thể tạo thanh toán Momo: " + response.ErrorMessage);
+            }
         }
 
         public MomoExecuteResponseModel PaymentExecuteAsync(IQueryCollection collection)
