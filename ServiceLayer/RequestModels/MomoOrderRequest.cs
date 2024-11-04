@@ -11,11 +11,11 @@ namespace ServiceLayer.RequestModels
         //Model của OrderInfoModel
         public string FullName { get; set; }
         public string OrderId { get; set; }
-        public string OrderInfo { get; set; }
+        public string? OrderInfo { get; set; }
         public double Amount { get; set; }
 
         //Phần thêm
-        public DateTimeOffset CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
 
         public int userID { get; set; }
     }
