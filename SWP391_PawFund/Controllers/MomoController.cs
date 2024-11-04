@@ -6,37 +6,51 @@ using ServiceLayer.RequestModels;
 
 namespace SWP391_PawFund.Controllers
 {
-        [Route("api/[controller]")]
-        [ApiController]
-        public class MomoController : ControllerBase
+    [Route("api/[controller]")]
+    [ApiController]
+    public class MomoController : ControllerBase
+    {
+        private readonly IMomoService _momoService;
+
+        public MomoController(IMomoService momoService)
         {
-            private readonly IMomoService _momoService;
+            _momoService = momoService;
+        }
 
-            public MomoController(IMomoService momoService)
+        [HttpPost]
+        public async Task<IActionResult> CreatePaymentUrl([FromForm] MomoOrderRequest request)
+        {
+            try
             {
-                _momoService = momoService;
-            }
-
-            [HttpPost]
-            public async Task<IActionResult> CreatePaymentUrl([FromForm] MomoOrderRequest request)
-            {
-                try
-                {
-                    var response = await _momoService.CreatePaymentAsync(request);
-                    return Ok(response);
-                }
-                catch (Exception ex)
-                {
-                    return BadRequest(new { error = ex.Message });
-                }
-            }
-
-
-            [HttpGet]
-            public IActionResult PaymentCallBack()
-            {
-                var response = _momoService.PaymentExecuteAsync(HttpContext.Request.Query);
+                var response = await _momoService.CreatePaymentAsync(request);
                 return Ok(response);
             }
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
         }
+
+
+        [HttpGet]
+        public IActionResult PaymentCallBack()
+        {
+            var response = _momoService.PaymentExecuteAsync(HttpContext.Request.Query);
+            return Ok(response);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePayment(int id)
+        {
+            // Gọi service để xóa thanh toán với id
+            var result = await _momoService.DeletePaymentAsync(id);
+
+            if (!result)
+            {
+                return NotFound(new { message = "Thanh toán không tồn tại hoặc không thể xóa." });
+            }
+            return NoContent();
+        }
+
+    }
 }

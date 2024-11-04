@@ -9,5 +9,7 @@ namespace ServiceLayer.Interfaces
     {
         Task<MomoPay> CreatePaymentAsync(MomoOrderRequest model);
         MomoExecuteResponseModel PaymentExecuteAsync(IQueryCollection collection);
+
+        Task<bool> DeletePaymentAsync(int id);
     }
 }
