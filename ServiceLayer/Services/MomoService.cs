@@ -98,10 +98,12 @@ namespace ServiceLayer.Services
 
         public MomoExecuteResponseModel PaymentExecuteAsync(IQueryCollection collection)
         {
-            var amount = collection.First(s => s.Key == "amount").Value;
-            var orderInfo = collection.First(s => s.Key == "orderInfo").Value;
-            var orderId = collection.First(s => s.Key == "orderId").Value;
-
+            //var amount = collection.First(s => s.Key == "amount").Value;
+            //var orderInfo = collection.First(s => s.Key == "orderInfo").Value;
+            //var orderId = collection.First(s => s.Key == "orderId").Value;
+            collection.TryGetValue("amount", out var amount);
+            collection.TryGetValue("orderInfo", out var orderInfo);
+            collection.TryGetValue("orderId", out var orderId);
             return new MomoExecuteResponseModel()
             {
                 Amount = amount,
@@ -132,5 +134,21 @@ namespace ServiceLayer.Services
 
             return hashString;
         }
+
+        public async Task<bool> DeletePaymentAsync(int id)
+        {
+            var momoPay = await _unitOfWork.Repository<MomoPay>().FindAsync(x => x.Id == id);
+
+            if (momoPay == null)
+            {
+                return false;
+            }
+
+            _unitOfWork.Repository<MomoPay>().Delete(momoPay);
+            await _unitOfWork.CommitAsync();
+
+            return true; // Trả về true nếu xóa thành công
+        }
+
     }
 }
