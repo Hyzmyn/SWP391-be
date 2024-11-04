@@ -13,6 +13,7 @@ namespace ModelLayer.Entities.Momo
         public string RequestType { get; set; }
         public int UserId { get; set; }
         public string OrderId { get; set; }
+        public string? OrderInfo { get; set; }
         public string Message { get; set; }
         public string LocalMessage { get; set; }
         public decimal Amount { get; set; }

@@ -11,5 +11,7 @@ namespace ServiceLayer.Interfaces
         MomoExecuteResponseModel PaymentExecuteAsync(IQueryCollection collection);
 
         Task<bool> DeletePaymentAsync(int id);
+
+        Task<MomoPay> SaveTransactionAsync(MomoExecuteResponseModel responseModel);
     }
 }

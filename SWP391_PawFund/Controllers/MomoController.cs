@@ -33,10 +33,28 @@ namespace SWP391_PawFund.Controllers
 
 
         [HttpGet]
-        public IActionResult PaymentCallBack()
+        public async Task<IActionResult> PaymentCallBack()
         {
             var response = _momoService.PaymentExecuteAsync(HttpContext.Request.Query);
-            return Ok(response);
+
+            if (response.Success)
+            {
+                try
+                {
+                    var savedTransaction = await _momoService.SaveTransactionAsync(response);
+                    return Ok(new
+                    {
+                        Message = "Payment processed and transaction saved successfully.",
+                        Transaction = savedTransaction
+                    });
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(new { error = "Payment successful, but transaction save failed.", details = ex.Message });
+                }
+            }
+
+            return BadRequest(new { error = response.Message });
         }
 
         [HttpDelete("{id}")]
