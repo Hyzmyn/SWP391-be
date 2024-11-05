@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepositoryLayer;
 
@@ -11,9 +12,11 @@ using RepositoryLayer;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(PawFundContext))]
-    partial class PawFundContextModelSnapshot : ModelSnapshot
+    [Migration("20241103093155_v7")]
+    partial class v7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -363,9 +366,6 @@ namespace RepositoryLayer.Migrations
 
                     b.Property<string>("OrderId")
                         .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("OrderInfo")
                         .HasColumnType("longtext");
 
                     b.Property<string>("PayUrl")
@@ -983,14 +983,14 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Email = "Admin@email.com",
-                            Password = "$2a$11$T.eA41xcBJgTRHvrgV126eURjdJZBW80Vxkmbn1R4y4SnidREiXCC",
+                            Password = "$2a$11$k9USmE31KCvk4q4OZFXR7.I.Pr8MiwjU/r0C4wnhOAYJcBTbzoXQe",
                             Username = "Admin"
                         },
                         new
                         {
                             Id = 2,
                             Email = "Staff1@email.com",
-                            Password = "$2a$11$x5XZgJ8bToZPvcUTTqLEMOK6syG/r7NkIDcc6TEhZtj7rXZW1m86i",
+                            Password = "$2a$11$CnH2QCmLL9aRjD1Wy.0L8ewHhr6WOlvKUjXNDU5TtfCCqRz8JvN/i",
                             ShelterId = 1,
                             Username = "Staff1"
                         },
@@ -998,7 +998,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 3,
                             Email = "Staff2@email.com",
-                            Password = "$2a$11$m3u2B0xLfoJh6n1e7ERIDOswlNe9vysJLxRYLrWtIC7yx2AorfhoG",
+                            Password = "$2a$11$Mvz.ic3OgcFgLRtcJp9bheIsx6lMpFQlHsbbcQpbgiPuROwMwoT7K",
                             ShelterId = 1,
                             Username = "Staff2"
                         },
@@ -1006,7 +1006,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 4,
                             Email = "Staff3@email.com",
-                            Password = "$2a$11$BxeGuwyhhUhcvaDwvf1FyuOQQP7IWoaxXoqvVbtKX8jNCikCT9uoq",
+                            Password = "$2a$11$29npKqrW1jIVP./SdNqH5Oastz3hzC2EKufhxiQPOH1B.WS4f84iy",
                             ShelterId = 2,
                             Username = "Staff3"
                         },
@@ -1014,7 +1014,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 5,
                             Email = "Staff4@email.com",
-                            Password = "$2a$11$bm5JYzKsbD80Uo5KQDbn/uJq1NT6ll5baiJKIYaWwbb0UiT6Gqmka",
+                            Password = "$2a$11$BxcGK/YwIVIyeCjcCh9/CeRlsbi0xjuSdZBKMOafNQ7R6MZZY.lSO",
                             ShelterId = 2,
                             Username = "Staff4"
                         },
@@ -1024,7 +1024,7 @@ namespace RepositoryLayer.Migrations
                             Email = "Donor1@email.com",
                             Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
                             Location = "HCM",
-                            Password = "$2a$11$ks5foZUjFGyQxe7APOpkDOSTDDEWiH61wfdM2bQKeSHc2yeIghUSW",
+                            Password = "$2a$11$pcM.qiWXFGnrB6IX6hvS..wD4RERo6ReLCv/pAehfnncoqtZXl2DC",
                             Phone = "123456789",
                             Username = "Donor1"
                         },
@@ -1032,77 +1032,77 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 7,
                             Email = "Donor2@email.com",
-                            Password = "$2a$11$cRiFWnA/IlCUfYSBxsb8Neo1Y17TV2/gjzOT7R7td5tcMCXEm3EfK",
+                            Password = "$2a$11$ojBue0ijCtzsxaDWHNhwqujMdH93vThhuwWpKZ8fHwANxxc4uykGm",
                             Username = "Donor2"
                         },
                         new
                         {
                             Id = 8,
                             Email = "Donor3@email.com",
-                            Password = "$2a$11$ePpG1eY.SDgsSFu2r3FyKOR3ZV4aZk4fOrCW/Fvd0YQFLZUJ8a4pK",
+                            Password = "$2a$11$i236/ZynFodXAlVGLV.jhu3nV8T191h9.ABhosdVZZFEOK59k9rNG",
                             Username = "Donor3"
                         },
                         new
                         {
                             Id = 9,
                             Email = "Donor4@email.com",
-                            Password = "$2a$11$sQpEs2e3V0UhH2UkWkJ5reL9JQLeIq7W5UksFAcbqkn2HFt4YUdJG",
+                            Password = "$2a$11$NsZrPeowidfW7t0yej3bQOZv5MXzOmnB2aAHDmF8xCSz5VqjUzA9K",
                             Username = "Donor4"
                         },
                         new
                         {
                             Id = 10,
                             Email = "Volunteer1@email.com",
-                            Password = "$2a$11$pNr/iZ8ncr/.3XqmhSyavu3Llxz/rGSKnXLYtS.x7pao3.IYOXniy",
+                            Password = "$2a$11$8wMj8HB07mEVDrfNwR8vFOtRtBszik5aegBxbGRGZbrZLK44JqKnK",
                             Username = "Volunteer1"
                         },
                         new
                         {
                             Id = 11,
                             Email = "Volunteer2@email.com",
-                            Password = "$2a$11$dHCakaLB0xmBYQMJGr.ZB.Vi17Ozl0S5oME63LdKL4Rb5c9kA7MKy",
+                            Password = "$2a$11$K15CvN/bswfWHHXolvQHgenna7nb429Bj/ILw/H9kZ4P5zKx7r9uO",
                             Username = "Volunteer2"
                         },
                         new
                         {
                             Id = 12,
                             Email = "Volunteer3@email.com",
-                            Password = "$2a$11$mYAY6tkZgLHIYfYsOaDYrOsbnAZYQWo36NiRwLS70AlwkIQ3H6Lxa",
+                            Password = "$2a$11$ME4XIfekMI0DCpyK50e8DujI222EzxNbJTD.TdSzwAN9ZrUq3Y2LC",
                             Username = "Volunteer3"
                         },
                         new
                         {
                             Id = 13,
                             Email = "Volunteer4@email.com",
-                            Password = "$2a$11$sAtKNkkJCsaRXN5rwYIsQubAVIVDlYbZ/eyaO5pPzDvbh4YvbewlW",
+                            Password = "$2a$11$nF3prU6GbHsH4DR16Xv7KeVsgRkGwPFtxCdfZRIUCB95YsRz4Vwi2",
                             Username = "Volunteer4"
                         },
                         new
                         {
                             Id = 14,
                             Email = "Adopter1@email.com",
-                            Password = "$2a$11$b8eT4mj9xxKmarTIweQdy.qlTATKdxfGKvHZLgJBTEMJcxoEr5OWG",
+                            Password = "$2a$11$YP46vmEZXu0XDAy8SrQk3.hJzsiG8WuyscBom0/B4UF57k5T8xJ3a",
                             Username = "Adopter1"
                         },
                         new
                         {
                             Id = 15,
                             Email = "Adopter2@email.com",
-                            Password = "$2a$11$PJxx4JLZ1/v6Gr5Hm4k60OganpDjmt0CdhBdur6cxzCXCsMJglYfG",
+                            Password = "$2a$11$8XSM7wcXSnA1wy6pO1a63eHfj1H0Ws4MyUkbrrc0l0nrzOsm.ywtu",
                             Username = "Adopter2"
                         },
                         new
                         {
                             Id = 16,
                             Email = "Adopter3@email.com",
-                            Password = "$2a$11$dQEBB.LrBvdG5yW7IVJ8PuC6OqrT5FLOtD..B4zVLpFsXEyUJOcYC",
+                            Password = "$2a$11$fV.8c6BtPT3dUKZ12ZUWd.CSnzj4qaQX5.nlnIQv0Wa/FJtwORlaa",
                             Username = "Adopter3"
                         },
                         new
                         {
                             Id = 17,
                             Email = "Adopter4@email.com",
-                            Password = "$2a$11$vvmEf4Io2by8MDcBrWaWF.78BrBZq7OKHBHA8pKmDfUJ6rGHac.NK",
+                            Password = "$2a$11$tiia2QgHPG6imYIXY9fUqOY.lNsqbTgxlv0eZkJ3A5xTpnbdXZd7C",
                             Username = "Adopter4"
                         });
                 });
@@ -1132,203 +1132,203 @@ namespace RepositoryLayer.Migrations
                         {
                             UserId = 1,
                             RoleId = 1,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2173),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5075),
                             Status = true
                         },
                         new
                         {
                             UserId = 2,
                             RoleId = 2,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2190),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5093),
                             Status = true
                         },
                         new
                         {
                             UserId = 3,
                             RoleId = 2,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2191),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5094),
                             Status = true
                         },
                         new
                         {
                             UserId = 4,
                             RoleId = 2,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2192),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5095),
                             Status = true
                         },
                         new
                         {
                             UserId = 5,
                             RoleId = 2,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2193),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5095),
                             Status = true
                         },
                         new
                         {
                             UserId = 6,
                             RoleId = 3,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2193),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5096),
                             Status = true
                         },
                         new
                         {
                             UserId = 6,
                             RoleId = 4,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2194),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5097),
                             Status = true
                         },
                         new
                         {
                             UserId = 7,
                             RoleId = 3,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2195),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5097),
                             Status = true
                         },
                         new
                         {
                             UserId = 7,
                             RoleId = 5,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2196),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5098),
                             Status = true
                         },
                         new
                         {
                             UserId = 8,
                             RoleId = 3,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2196),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5099),
                             Status = true
                         },
                         new
                         {
                             UserId = 8,
                             RoleId = 4,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2197),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5100),
                             Status = true
                         },
                         new
                         {
                             UserId = 8,
                             RoleId = 5,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2198),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5100),
                             Status = true
                         },
                         new
                         {
                             UserId = 9,
                             RoleId = 3,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2198),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5101),
                             Status = true
                         },
                         new
                         {
                             UserId = 10,
                             RoleId = 4,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2199),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5102),
                             Status = true
                         },
                         new
                         {
                             UserId = 10,
                             RoleId = 3,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2200),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5184),
                             Status = true
                         },
                         new
                         {
                             UserId = 11,
                             RoleId = 4,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2200),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5185),
                             Status = true
                         },
                         new
                         {
                             UserId = 11,
                             RoleId = 5,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2201),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5185),
                             Status = true
                         },
                         new
                         {
                             UserId = 12,
                             RoleId = 4,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2202),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5186),
                             Status = true
                         },
                         new
                         {
                             UserId = 12,
                             RoleId = 3,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2202),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5187),
                             Status = true
                         },
                         new
                         {
                             UserId = 12,
                             RoleId = 5,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2204),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5188),
                             Status = true
                         },
                         new
                         {
                             UserId = 13,
                             RoleId = 4,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2205),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5189),
                             Status = true
                         },
                         new
                         {
                             UserId = 14,
                             RoleId = 5,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2205),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5189),
                             Status = true
                         },
                         new
                         {
                             UserId = 15,
                             RoleId = 5,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2206),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5190),
                             Status = true
                         },
                         new
                         {
                             UserId = 15,
                             RoleId = 3,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2207),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5191),
                             Status = true
                         },
                         new
                         {
                             UserId = 16,
                             RoleId = 5,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2207),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5191),
                             Status = true
                         },
                         new
                         {
                             UserId = 16,
                             RoleId = 4,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2208),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5192),
                             Status = true
                         },
                         new
                         {
                             UserId = 17,
                             RoleId = 5,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2209),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5193),
                             Status = true
                         },
                         new
                         {
                             UserId = 17,
                             RoleId = 4,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2209),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5193),
                             Status = true
                         },
                         new
                         {
                             UserId = 17,
                             RoleId = 3,
-                            CreatedDate = new DateTime(2024, 11, 5, 13, 15, 7, 996, DateTimeKind.Utc).AddTicks(2210),
+                            CreatedDate = new DateTime(2024, 11, 3, 16, 31, 54, 522, DateTimeKind.Utc).AddTicks(5194),
                             Status = true
                         });
                 });
