@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -26,7 +27,19 @@ namespace SWP391_PawFund.AppStarts
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true
                 };
-            });
+            })
+            //.AddCookie()
+            //.AddGoogle(GoogleDefaults.AuthenticationScheme, googleOptions =>
+            //{
+            //    IConfigurationSection googleAuthNSection = configuration.GetSection("GoogleKeys");
+
+            //    googleOptions.ClientId = googleAuthNSection["ClientId"];
+            //    googleOptions.ClientSecret = googleAuthNSection["ClientSecret"];
+
+            //    // Optional: Set a custom callback path if needed
+            //    googleOptions.CallbackPath = "/dang-nhap-tu-google";
+            //}) 
+            ;
             services.AddAuthorization();
         }
     }

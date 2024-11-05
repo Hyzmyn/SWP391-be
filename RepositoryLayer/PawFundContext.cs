@@ -28,17 +28,19 @@ namespace RepositoryLayer
         public virtual DbSet<SmsMessage> SmsMessages { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
         public virtual DbSet<PetStatus> PetStatuses { get; set; }
+        public virtual DbSet<VnPayTransaction> VnPayTransaction { get; set; }
+
 
 
         public PawFundContext(DbContextOptions<PawFundContext> options) : base(options)
         {
         }
 
-		public PawFundContext()
-		{
-		}
+        public PawFundContext()
+        {
+        }
 
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql(GetConnectionString(),
                 new MySqlServerVersion(new Version(8, 0, 2)));
@@ -67,7 +69,6 @@ namespace RepositoryLayer
                     .Property(nameof(BaseEntity.Id))
                     .ValueGeneratedOnAdd();
             }
-
             modelBuilder.Entity<Certification>()
                 .HasOne(c => c.User)
                 .WithMany(u => u.Certifications)
@@ -88,6 +89,9 @@ namespace RepositoryLayer
 
             modelBuilder.Entity<EventUser>()
                 .HasKey(ur => new { ur.UserId, ur.EventId });
+
+            modelBuilder.Entity<VnPayTransaction>()
+                .HasKey(i => i.TransactionId);
 
             modelBuilder.Entity<EventUser>()
                 .HasOne(ur => ur.User)
@@ -198,35 +202,35 @@ namespace RepositoryLayer
             );
 
             modelBuilder.Entity<UserRole>().HasData(
-                new UserRole { UserId = 1, RoleId = 1 },
-                new UserRole { UserId = 2, RoleId = 2 },
-                new UserRole { UserId = 3, RoleId = 2 },
-                new UserRole { UserId = 4, RoleId = 2 },
-                new UserRole { UserId = 5, RoleId = 2 },
-                new UserRole { UserId = 6, RoleId = 3 },
-                new UserRole { UserId = 6, RoleId = 4 },
-                new UserRole { UserId = 7, RoleId = 3 },
-                new UserRole { UserId = 7, RoleId = 5 },
-                new UserRole { UserId = 8, RoleId = 3 },
-                new UserRole { UserId = 8, RoleId = 4 },
-                new UserRole { UserId = 8, RoleId = 5 },
-                new UserRole { UserId = 9, RoleId = 3 },
-                new UserRole { UserId = 10, RoleId = 4 },
-                new UserRole { UserId = 10, RoleId = 3 },
-                new UserRole { UserId = 11, RoleId = 4 },
-                new UserRole { UserId = 11, RoleId = 5 },
-                new UserRole { UserId = 12, RoleId = 4 },
-                new UserRole { UserId = 12, RoleId = 3 },
-                new UserRole { UserId = 12, RoleId = 5 },
-                new UserRole { UserId = 13, RoleId = 4 },
-                new UserRole { UserId = 14, RoleId = 5 },
-                new UserRole { UserId = 15, RoleId = 5 },
-                new UserRole { UserId = 15, RoleId = 3 },
-                new UserRole { UserId = 16, RoleId = 5 },
-                new UserRole { UserId = 16, RoleId = 4 },
-                new UserRole { UserId = 17, RoleId = 5 },
-                new UserRole { UserId = 17, RoleId = 4 },
-                new UserRole { UserId = 17, RoleId = 3 }
+                new UserRole { UserId = 1, RoleId = 1, Status = true },
+                new UserRole { UserId = 2, RoleId = 2, Status = true },
+                new UserRole { UserId = 3, RoleId = 2, Status = true },
+                new UserRole { UserId = 4, RoleId = 2, Status = true },
+                new UserRole { UserId = 5, RoleId = 2, Status = true },
+                new UserRole { UserId = 6, RoleId = 3, Status = true },
+                new UserRole { UserId = 6, RoleId = 4, Status = true },
+                new UserRole { UserId = 7, RoleId = 3, Status = true },
+                new UserRole { UserId = 7, RoleId = 5, Status = true },
+                new UserRole { UserId = 8, RoleId = 3, Status = true },
+                new UserRole { UserId = 8, RoleId = 4, Status = true },
+                new UserRole { UserId = 8, RoleId = 5, Status = true },
+                new UserRole { UserId = 9, RoleId = 3, Status = true },
+                new UserRole { UserId = 10, RoleId = 4, Status = true },
+                new UserRole { UserId = 10, RoleId = 3, Status = true },
+                new UserRole { UserId = 11, RoleId = 4, Status = true },
+                new UserRole { UserId = 11, RoleId = 5, Status = true },
+                new UserRole { UserId = 12, RoleId = 4, Status = true },
+                new UserRole { UserId = 12, RoleId = 3, Status = true },
+                new UserRole { UserId = 12, RoleId = 5, Status = true },
+                new UserRole { UserId = 13, RoleId = 4, Status = true },
+                new UserRole { UserId = 14, RoleId = 5, Status = true },
+                new UserRole { UserId = 15, RoleId = 5, Status = true },
+                new UserRole { UserId = 15, RoleId = 3, Status = true },
+                new UserRole { UserId = 16, RoleId = 5, Status = true },
+                new UserRole { UserId = 16, RoleId = 4, Status = true },
+                new UserRole { UserId = 17, RoleId = 5, Status = true },
+                new UserRole { UserId = 17, RoleId = 4, Status = true },
+                new UserRole { UserId = 17, RoleId = 3, Status = true }
             );
 
             modelBuilder.Entity<Shelter>().HasData(
@@ -308,12 +312,12 @@ namespace RepositoryLayer
                 }
             );
             modelBuilder.Entity<PetStatus>().HasData(
-                new PetStatus { PetId = 1, StatusId = 1},
-                new PetStatus { PetId = 3, StatusId = 2},
-                new PetStatus { PetId = 5, StatusId = 3},
-                new PetStatus { PetId = 2, StatusId = 4},
-                new PetStatus { PetId = 4, StatusId = 5}
-                
+                new PetStatus { PetId = 1, StatusId = 1 },
+                new PetStatus { PetId = 3, StatusId = 2 },
+                new PetStatus { PetId = 5, StatusId = 3 },
+                new PetStatus { PetId = 2, StatusId = 4 },
+                new PetStatus { PetId = 4, StatusId = 5 }
+
                 );
         }
     }

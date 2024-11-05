@@ -29,7 +29,8 @@ namespace ServiceLayer.Services
 				Id = n.Id,
 				Message = n.Message,
 				Date = n.Date,
-				UserId = n.UserId
+				UserId = n.UserId,
+				Title = n.Title,
 			});
 
 			return await Task.FromResult(response);
@@ -49,7 +50,11 @@ namespace ServiceLayer.Services
 				Id = notification.Id,
 				Message = notification.Message,
 				Date = notification.Date,
-				UserId = notification.UserId
+				UserId = notification.UserId,
+				Title = notification.Title
+
+				
+				
 			};
 		}
 
@@ -59,7 +64,8 @@ namespace ServiceLayer.Services
 			{
 				Message = request.Message,
 				Date = request.Date,
-				UserId = request.UserId
+				UserId = request.UserId,
+				Title = request.Title
 			};
 
 			await _unitOfWork.Repository<Notification>().InsertAsync(newNotification);
@@ -78,6 +84,7 @@ namespace ServiceLayer.Services
 			existingNotification.Message = request.Message;
 			existingNotification.Date = request.Date;
 			existingNotification.UserId = request.UserId;
+			existingNotification.Title = request.Title;
 
 			await _unitOfWork.Repository<Notification>().Update(existingNotification, existingNotification.Id);
 			await _unitOfWork.CommitAsync();

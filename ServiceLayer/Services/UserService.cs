@@ -84,8 +84,7 @@ namespace ServiceLayer.Services
         public async Task<UsersResponseModel> GetUserProfile(int id)
         {
             var user = await _unitOfWork.Repository<User>().GetById(id);
-            Shelter shelter = null;
-            Event eventEntity = null;  // Renamed Event to eventEntity to avoid naming conflict
+            Shelter shelter = null;  
 
             if (user == null)
             {
@@ -97,10 +96,13 @@ namespace ServiceLayer.Services
                 shelter = await _unitOfWork.Repository<Shelter>().GetById((int)user.ShelterId);
             }
 
-            //if (user.EventId != null)
-            //{
-            //    eventEntity = await _unitOfWork.Repository<Event>().GetById((int)user.EventId);
-            //}
+            var eventEntity = await _unitOfWork.Repository<EventUser>()
+                .AsQueryable()
+                .AsNoTracking()
+                .Where(s => s.UserId == id)
+                .Include(s => s.Event)
+                .Select(s => s.Event.Name)
+                .ToListAsync();
 
             var roles = await _unitOfWork.Repository<UserRole>()
                 .AsQueryable()
@@ -117,11 +119,13 @@ namespace ServiceLayer.Services
                 Email = user.Email,
                 Location = user.Location,
                 Phone = user.Phone,
-                TotalDonation = user.TotalDonation ?? 0, 
+                TotalDonation = user.TotalDonation ?? 0,
                 Image = user.Image ?? string.Empty,
-                Shelter = shelter?.Name ?? "No Shelter",  
-                Event = eventEntity?.Name ?? "No Event",  
-                Roles = roles.ToList()  
+                Shelter = shelter?.Name ?? "No Shelter",
+                Wallet = user.wallet ?? 0m,
+                Event = eventEntity.ToList(),
+                Roles = roles.ToList()
+
             };
 
             return responseModel;

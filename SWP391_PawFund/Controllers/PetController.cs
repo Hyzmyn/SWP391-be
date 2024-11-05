@@ -50,41 +50,35 @@ namespace SWP391_PawFund.Controllers
         public async Task<IActionResult> DeletePet(int id)
         {
             await _petService.DeletePetAsync(id);
-            return NoContent();
+            return Ok(new { Message = "Pet deleted successfully." });
         }
 
-        // POST: api/Pet/5/statuses
         [HttpPost("{petId}/statuses")]
         public async Task<IActionResult> AddStatusToPet(int petId, [FromForm] CreatePetStatusRequest createPetStatusRequest)
         {
             await _petService.AddStatusToPetAsync(petId, createPetStatusRequest);
             return Ok(new { Message = "Status added to pet successfully." });
-            // Trả về mã trạng thái 201 Created với endpoint để truy cập lại pet vừa được cập nhật
-            //return CreatedAtAction(nameof(GetPetById), new { id = petId }, new { Message = "Status added successfully." });
         }
 
-        // PUT: api/Pet/5/statuses/3
         [HttpPut("{petId}/statuses/{statusId}")]
         public async Task<IActionResult> UpdatePetStatus(int petId, int statusId, [FromForm] StatusUpdateRequestModel updateStatusRequest)
         {
             await _petService.UpdatePetStatusAsync(petId, statusId, updateStatusRequest);
-            return NoContent();
+            return Ok(new { Message = "Pet status updated successfully." });
         }
 
-        // DELETE: api/Pet/5/statuses/3
         [HttpDelete("{petId}/statuses/{statusId}")]
         public async Task<IActionResult> RemoveStatusFromPet(int petId, int statusId)
         {
             await _petService.RemoveStatusFromPetAsync(petId, statusId);
-            return NoContent();
+            return Ok(new { Message = "Pet status removed successfully." });
         }
 
         [HttpPut("UpdateAdoptionStatus/{id}")]
-        public async Task<IActionResult> UpdatePetAdoptionStatus(int id, [FromBody] UpdateAdoptionStatusRequest request)
+        public async Task<IActionResult> UpdatePetAdoptionStatus(int id, [FromForm] UpdateAdoptionStatusRequest request)
         {
             try
             {
-                // Call the service method to update the adoption status of the pet
                 await _petService.UpdatePetAdoptionStatusAsync(id, request.Status, request.UserId);
                 return Ok(new { Message = "Pet adoption status updated successfully." });
             }
@@ -95,7 +89,7 @@ namespace SWP391_PawFund.Controllers
         }
 
         [HttpPut("{petId}/user")]
-        public async Task<IActionResult> PutUserID(int petId, [FromForm] int userId)
+        public async Task<IActionResult> PutUserID(int petId, [FromForm] int? userId)
         {
             try
             {
@@ -105,9 +99,7 @@ namespace SWP391_PawFund.Controllers
             catch (Exception ex)
             {
                 return BadRequest(new { Message = ex.Message });
-
             }
         }
-
     }
 }

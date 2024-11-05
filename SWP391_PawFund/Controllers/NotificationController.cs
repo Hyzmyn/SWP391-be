@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Interfaces;
 using ServiceLayer.RequestModels;
 using ServiceLayer.ResponseModels;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -24,8 +25,15 @@ namespace SWP391_PawFund.Controllers
 		[Authorize]
 		public async Task<ActionResult<IEnumerable<NotificationResponseModel>>> GetNotifications()
 		{
-			var notifications = await _notificationService.GetAllNotificationsAsync();
-			return Ok(notifications);
+			try
+			{
+				var notifications = await _notificationService.GetAllNotificationsAsync();
+				return Ok(notifications);
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Internal server error: {ex.Message}");
+			}
 		}
 
 		// GET: api/Notifications/5
@@ -36,43 +44,65 @@ namespace SWP391_PawFund.Controllers
 			try
 			{
 				var notification = await _notificationService.GetNotificationByIdAsync(id);
+
+				if (notification == null)
+				{
+					return NotFound(new { message = $"Notification with ID {id} not found." });
+				}
+
 				return Ok(notification);
 			}
 			catch (Exception ex)
 			{
-				return NotFound(new { message = ex.Message });
+				return BadRequest(ex.Message);
 			}
 		}
 
 		// POST: api/Notifications
 		[HttpPost]
 		[Authorize]
-		public async Task<ActionResult> PostNotification(CreateNotificationRequestModel notificationModel)
+		public async Task<ActionResult> CreateNotification([FromBody] CreateNotificationRequestModel request)
 		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
+
 			try
 			{
-				await _notificationService.CreateNotificationAsync(notificationModel);
+				await _notificationService.CreateNotificationAsync(request);
 				return Ok(new { message = "Notification created successfully." });
 			}
 			catch (Exception ex)
 			{
-				return BadRequest(new { message = ex.Message });
+				return BadRequest(ex.Message);
 			}
 		}
 
 		// PUT: api/Notifications/5
 		[HttpPut("{id}")]
 		[Authorize]
-		public async Task<IActionResult> PutNotification(int id, UpdateNotificationRequestModel notificationModel)
+		public async Task<IActionResult> UpdateNotification(int id, [FromBody] UpdateNotificationRequestModel request)
 		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
+
 			try
 			{
-				await _notificationService.UpdateNotificationAsync(id, notificationModel);
+				var notification = await _notificationService.GetNotificationByIdAsync(id);
+				if (notification == null)
+				{
+					return NotFound(new { message = $"Notification with ID {id} not found." });
+				}
+
+				await _notificationService.UpdateNotificationAsync(id, request);
 				return Ok(new { message = "Notification updated successfully." });
 			}
 			catch (Exception ex)
 			{
-				return BadRequest(new { message = ex.Message });
+				return BadRequest(ex.Message);
 			}
 		}
 
@@ -83,12 +113,18 @@ namespace SWP391_PawFund.Controllers
 		{
 			try
 			{
+				var notification = await _notificationService.GetNotificationByIdAsync(id);
+				if (notification == null)
+				{
+					return NotFound(new { message = $"Notification with ID {id} not found." });
+				}
+
 				await _notificationService.DeleteNotificationAsync(id);
 				return NoContent();
 			}
 			catch (Exception ex)
 			{
-				return NotFound(new { message = ex.Message });
+				return StatusCode(500, new { message = $"Error: {ex.Message}" });
 			}
 		}
 	}

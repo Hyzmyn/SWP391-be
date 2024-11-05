@@ -50,54 +50,64 @@ namespace ServiceLayer.Services
         }
 
 
-        // Thêm donation mới và cập nhật Shelter và User
-        public async Task CreateDonationAsync(Donation donation)
-        {
-            // Bắt đầu một transaction nếu UnitOfWork hỗ trợ
-            using (var transaction = await _unitOfWork.BeginTransactionAsync())
-            {
-                try
-                {
-                    // Thêm Donation
-                    await _unitOfWork.Repository<Donation>().InsertAsync(donation);
+		// Thêm donation mới và cập nhật Shelter và User
+		public async Task CreateDonationAsync(Donation donation)
+		{
+			using (var transaction = await _unitOfWork.BeginTransactionAsync())
+			{
+				try
+				{
+					// Lấy User và Shelter từ database
+					var donor = await _unitOfWork.Repository<User>().GetById(donation.DonorId);
+					var shelter = await _unitOfWork.Repository<Shelter>().GetById(donation.ShelterId);
 
-                    // Lấy User và Shelter từ database
-                    var donor = await _unitOfWork.Repository<User>().GetById(donation.DonorId);
-                    var shelter = await _unitOfWork.Repository<Shelter>().GetById(donation.ShelterId);
+					if (donor == null)
+					{
+						throw new ArgumentException("Donor not found.", nameof(donation.DonorId));
+					}
 
-                    if (donor == null)
-                    {
-                        throw new ArgumentException("Donor not found.", nameof(donation.DonorId));
-                    }
+					if (shelter == null)
+					{
+						throw new ArgumentException("Shelter not found.", nameof(donation.ShelterId));
+					}
 
-                    if (shelter == null)
-                    {
-                        throw new ArgumentException("Shelter not found.", nameof(donation.ShelterId));
-                    }
+					// Kiểm tra số dư wallet
+					if (donor.wallet == null || donor.wallet < donation.Amount)
+					{
+						throw new InvalidOperationException("Insufficient wallet balance to make this donation.");
+					}
 
-                    // Cập nhật TotalDonation của User
-                    donor.TotalDonation = (donor.TotalDonation ?? 0m) + donation.Amount;
-                    _unitOfWork.Repository<User>().Update(donor, donor.Id);
+					// Set initial status to false
+					donation.Status = false;
 
-                    // Cập nhật DonationAmount của Shelter
-                    shelter.DonationAmount = (shelter.DonationAmount ?? 0m) + donation.Amount;
-                    _unitOfWork.Repository<Shelter>().Update(shelter, shelter.Id);
+					// Thêm Donation
+					await _unitOfWork.Repository<Donation>().InsertAsync(donation);
 
-                    await _unitOfWork.CommitAsync();
+					// Cập nhật TotalDonation của User
+					donor.TotalDonation = (donor.TotalDonation ?? 0m) + donation.Amount;
 
-                    await transaction.CommitAsync();
-                }
-                catch (Exception)
-                {
-                    // Rollback transaction nếu có lỗi xảy ra
-                    await transaction.RollbackAsync();
-                    throw;
-                }
-            }
-        }
+					// Trừ tiền từ wallet
+					donor.wallet -= donation.Amount;
 
-        // Cập nhật donation
-        public async Task UpdateDonationAsync(Donation donation)
+					_unitOfWork.Repository<User>().Update(donor, donor.Id);
+
+					// Cập nhật DonationAmount của Shelter
+					shelter.DonationAmount = (shelter.DonationAmount ?? 0m) + donation.Amount;
+					_unitOfWork.Repository<Shelter>().Update(shelter, shelter.Id);
+
+					await _unitOfWork.CommitAsync();
+					await transaction.CommitAsync();
+				}
+				catch (Exception)
+				{
+					await transaction.RollbackAsync();
+					throw;
+				}
+			}
+		}
+
+		// Cập nhật donation
+		public async Task UpdateDonationAsync(Donation donation)
         {
             await _unitOfWork.Repository<Donation>().Update(donation, donation.Id);
             await _unitOfWork.CommitAsync();
@@ -115,11 +125,13 @@ namespace ServiceLayer.Services
         }
 
         // Lấy tổng donation theo ShelterId
+
         public decimal GetTotalDonationByShelter(int shelterId)
         {
             return _unitOfWork.Repository<Donation>()
                 .AsQueryable()
-                .Where(d => d.ShelterId == shelterId)
+                .Where(d => d.ShelterId == shelterId && d.Status == true)
+                // Chỉ lấy các Donation có Status là true
                 .Sum(d => d.Amount);
         }
 
@@ -153,5 +165,17 @@ namespace ServiceLayer.Services
                 throw new ApplicationException("An error occurred while retrieving donations by DonorId.", ex);
             }
         }
-    }
+		public async Task UpdateDonationStatusAsync(int donationId, bool status)
+		{
+			var donation = await _unitOfWork.Repository<Donation>().GetById(donationId);
+			if (donation == null)
+			{
+				throw new ArgumentException($"Donation with ID {donationId} not found.");
+			}
+
+			donation.Status = status;
+			_unitOfWork.Repository<Donation>().Update(donation, donationId);
+			await _unitOfWork.CommitAsync();
+		}
+	}
 }

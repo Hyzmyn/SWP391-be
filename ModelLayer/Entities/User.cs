@@ -25,6 +25,8 @@ namespace ModelLayer.Entities
 
         public virtual Shelter? Shelter { get; set; }
         public virtual ICollection<EventUser>? Events { get; set; }
+        public virtual ICollection<VnPayTransaction>? VnPay { get; set; }
+
 
         public virtual ICollection<UserRole>? UserRoles { get; set; }
         public virtual ICollection<Pet>? Pets { get; set; }

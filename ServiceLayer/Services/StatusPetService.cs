@@ -85,9 +85,11 @@ namespace ServiceLayer.Services
         // Tạo mới Status
         public async Task<StatusResponseModel> CreateStatusAsync(StatusCreateRequest createStatusRequest)
         {
+            var vietnamTime = createStatusRequest.Date.ToOffset(TimeSpan.FromHours(7)).DateTime;
+
             var status = new Status
             {
-                Date = DateTime.UtcNow,
+                Date = vietnamTime,  
                 Disease = createStatusRequest.Disease,
                 Vaccine = createStatusRequest.Vaccine
             };
@@ -123,8 +125,10 @@ namespace ServiceLayer.Services
             if (existingStatus == null)
                 throw new Exception($"Không tìm thấy Status với ID {id}.");
 
+            var vietnamTime = updateStatusRequest.Date.ToOffset(TimeSpan.FromHours(7)).DateTime;
+
             // Cập nhật các thuộc tính
-            existingStatus.Date = updateStatusRequest.Date;
+            existingStatus.Date = vietnamTime; 
             existingStatus.Disease = updateStatusRequest.Disease;
             existingStatus.Vaccine = updateStatusRequest.Vaccine;
 
@@ -141,6 +145,7 @@ namespace ServiceLayer.Services
 
             return statusResponse;
         }
+
 
         // Xóa Status
         public async Task<bool> DeleteStatusAsync(int id)

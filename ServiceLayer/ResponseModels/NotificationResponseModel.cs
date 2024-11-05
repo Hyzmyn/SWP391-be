@@ -8,6 +8,7 @@ namespace ServiceLayer.ResponseModels
 {
 	public class NotificationResponseModel
 	{
+		public string Title { get; set; }
 		public int Id { get; set; }
 		public string Message { get; set; } = null!;
 		public DateTime Date { get; set; }

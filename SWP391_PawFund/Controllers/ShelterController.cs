@@ -3,6 +3,7 @@ using ModelLayer.Entities;
 using ServiceLayer.Interfaces;
 using ServiceLayer.RequestModels;
 using ServiceLayer.ResponseModels;
+using ServiceLayer.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,18 +16,20 @@ namespace SWP391_PawFund.Controllers
     {
         private readonly IShelterService _shelterService;
         private readonly ILogger<ShelterController> _logger;
+        private readonly IDonateService _donateService;
 
-        public ShelterController(IShelterService shelterService, ILogger<ShelterController> logger)
+        public ShelterController(IShelterService shelterService, ILogger<ShelterController> logger, IDonateService donateService)
         {
             _shelterService = shelterService;
             _logger = logger;
+            _donateService = donateService;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ShelterResponseModel>>> GetAllShelters()
         {
             var shelters = await _shelterService.GetAllSheltersAsync();
-
+            
             var shelterResponses = shelters.Select(s => new ShelterResponseModel
             {
                 Id = s.Id,
@@ -35,8 +38,9 @@ namespace SWP391_PawFund.Controllers
                 PhoneNumber = s.PhoneNumber,
                 Capacity = s.Capacity,
                 Email = s.Email,
+                BankAccount = s.BankAccount,
                 Website = s.Website,
-                DonationAmount = s.DonationAmount,
+                DonationAmount = _donateService.GetTotalDonationByShelter(s.Id),
                 Pets = s.Pets?.Select(p => new PetResponseModel
                 {
                     PetID = p.Id,
@@ -55,7 +59,7 @@ namespace SWP391_PawFund.Controllers
                     Statuses = p.Statuses?.Select(ps => new StatusResponseModel
                     {
                         StatusId = ps.StatusId,
-                        //Date = ps.Status?.Date ?? default,
+                        Date = ps.Status?.Date ?? default,
                         Disease = ps.Status?.Disease,
                         Vaccine = ps.Status?.Vaccine
                     }).ToList()
@@ -108,8 +112,9 @@ namespace SWP391_PawFund.Controllers
                 PhoneNumber = shelter.PhoneNumber,
                 Capacity = shelter.Capacity,
                 Email = shelter.Email,
+                BankAccount = shelter.BankAccount,
                 Website = shelter.Website,
-                DonationAmount = shelter.DonationAmount,
+                DonationAmount = _donateService.GetTotalDonationByShelter(shelter.Id),
                 Pets = shelter.Pets?.Select(p => new PetResponseModel
                 {
                     PetID = p.Id,
@@ -128,7 +133,7 @@ namespace SWP391_PawFund.Controllers
                     Statuses = p.Statuses?.Select(ps => new StatusResponseModel
                     {
                         StatusId = ps.StatusId,
-                        //Date = ps.Status?.Date ?? default,
+                        Date = ps.Status?.Date ?? default,
                         Disease = ps.Status?.Disease,
                         Vaccine = ps.Status?.Vaccine
                     }).ToList()
@@ -186,8 +191,9 @@ namespace SWP391_PawFund.Controllers
                     PhoneNumber = shelter.PhoneNumber,
                     Capacity = shelter.Capacity,
                     Email = shelter.Email,
+                    BankAccount = shelter.BankAccount,
                     Website = shelter.Website,
-                    DonationAmount = shelter.DonationAmount,
+                    DonationAmount = _donateService.GetTotalDonationByShelter(shelter.Id),
                     Pets = shelter.Pets?.Select(p => new PetResponseModel
                     {
                         PetID = p.Id,
@@ -206,6 +212,7 @@ namespace SWP391_PawFund.Controllers
                         Statuses = p.Statuses?.Select(ps => new StatusResponseModel
                         {
                             StatusId = ps.Status.Id,
+                            Date=ps.Status.Date,
                             Disease = ps.Status.Disease,
                             Vaccine = ps.Status.Vaccine
                         }).ToList()
@@ -260,6 +267,7 @@ namespace SWP391_PawFund.Controllers
                 PhoneNumber = shelterRequest.PhoneNumber,
                 Capacity = shelterRequest.Capacity,
                 Email = shelterRequest.Email,
+                BankAccount = shelterRequest.BankAccount,
                 Website = shelterRequest.Website,
                 DonationAmount = shelterRequest.DonationAmount,
                 Pets = new List<Pet>(),
@@ -278,6 +286,7 @@ namespace SWP391_PawFund.Controllers
                 PhoneNumber = createdShelter.PhoneNumber,
                 Capacity = createdShelter.Capacity,
                 Email = createdShelter.Email,
+                BankAccount = createdShelter.BankAccount,
                 Website = createdShelter.Website,
                 DonationAmount = createdShelter.DonationAmount,
                 Pets = new List<PetResponseModel>(),
@@ -309,6 +318,7 @@ namespace SWP391_PawFund.Controllers
             existingShelter.PhoneNumber = shelterRequest.PhoneNumber;
             existingShelter.Capacity = shelterRequest.Capacity;
             existingShelter.Email = shelterRequest.Email;
+            existingShelter.BankAccount = shelterRequest.BankAccount;
             existingShelter.Website = shelterRequest.Website;
             existingShelter.DonationAmount = shelterRequest.DonationAmount;
 
@@ -322,8 +332,9 @@ namespace SWP391_PawFund.Controllers
                 PhoneNumber = updatedShelter.PhoneNumber,
                 Capacity = updatedShelter.Capacity,
                 Email = updatedShelter.Email,
+                BankAccount = updatedShelter.BankAccount,
                 Website = updatedShelter.Website,
-                DonationAmount = updatedShelter.DonationAmount,
+                DonationAmount = _donateService.GetTotalDonationByShelter(updatedShelter.Id),
                 Pets = updatedShelter.Pets?.Select(p => new PetResponseModel
                 {
                     PetID = p.Id,
@@ -342,7 +353,7 @@ namespace SWP391_PawFund.Controllers
                     Statuses = p.Statuses?.Select(ps => new StatusResponseModel
                     {
                         StatusId = ps.StatusId,
-                        //Date = ps.Status?.Date ?? default,
+                        Date = ps.Status?.Date ?? default,
                         Disease = ps.Status?.Disease,
                         Vaccine = ps.Status?.Vaccine
                     }).ToList()
@@ -375,7 +386,6 @@ namespace SWP391_PawFund.Controllers
                     //DonorName = d.User?.Username ?? "Anonymous"
                 }).ToList()
             };
-            //Khiem
             return Ok(shelterResponse);
         }
 
@@ -389,6 +399,26 @@ namespace SWP391_PawFund.Controllers
             }
 
             return Ok(new { message = "Shelter has been deleted successfully." });
+        }
+
+        // API để lấy tổng donation theo ShelterId
+        [HttpGet("{shelterId}/total-donation")]
+        public IActionResult GetTotalDonationByShelter(int shelterId)
+        {
+            try
+            {
+                if (shelterId <= 0)
+                {
+                    return BadRequest("ShelterId phải lớn hơn 0.");
+                }
+                var totalDonation = _donateService.GetTotalDonationByShelter(shelterId);
+
+                return Ok(totalDonation);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Đã có lỗi xảy ra: {ex.Message}");
+            }
         }
     }
 }

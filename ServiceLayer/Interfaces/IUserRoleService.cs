@@ -15,10 +15,14 @@ namespace ServiceLayer.Interfaces
 
         Task AddRoleAsync(UserRole role);
 
-        Task RemoveRoleAsync(int id);
+        Task RemoveRoleAsync(int userId, int roleId);
 
         Task UpdateRolesAsync(int userId, List<int> newRoleIds);
 
+        Task RequestRoleAsync(int userId, int roleId);
 
+        Task AcceptRoleRequestAsync(int userId, int roleId);
+
+        Task<IEnumerable<UserRole>> GetAllPendingRoleRequestsAsync();
     }
 }

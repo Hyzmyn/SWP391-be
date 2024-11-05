@@ -24,7 +24,7 @@ namespace ServiceLayer.Services
             return await _unitOfWork.Repository<UserRole>()
                 .AsQueryable()
                 .AsNoTracking()
-                .Where(s => s.UserId == userId)
+                .Where(s => s.UserId == userId && s.Status == true)
                 .Include(s => s.Role)
                 .Select(s => s.Role.Name)
                 .ToListAsync();
@@ -33,15 +33,16 @@ namespace ServiceLayer.Services
         public bool UserHasRole(int userId, string roleName)
         {
             return _unitOfWork.Repository<UserRole>()
-                .AsQueryable() 
-                .Where(s => s.UserId == userId)
-                .Include(s => s.Role) 
-                .Any(s => s.Role != null && s.Role.Name == roleName); 
+                .AsQueryable()
+                .Where(s => s.UserId == userId && s.Status == true)
+                .Include(s => s.Role)
+                .Any(s => s.Role != null && s.Role.Name == roleName);
         }
 
         public async Task AddRoleAsync(UserRole role)
         {
-            await _unitOfWork.Repository<UserRole>().InsertAsync(role);
+            var newRole = new UserRole { UserId = role.UserId, RoleId = role.RoleId, Status = true };
+            await _unitOfWork.Repository<UserRole>().InsertAsync(newRole);
             await _unitOfWork.CommitAsync();
         }
 
@@ -54,33 +55,84 @@ namespace ServiceLayer.Services
             var rolesToRemove = existingRoles.Where(er => !newRoleIds.Contains(er.RoleId)).ToList();
             foreach (var role in rolesToRemove)
             {
-                _unitOfWork.Repository<UserRole>().Delete(role);
+                _unitOfWork.Repository<UserRole>().Delete(role);  
             }
 
             // Add new roles that the user doesn't already have
             var rolesToAdd = newRoleIds.Where(nr => !existingRoles.Any(er => er.RoleId == nr)).ToList();
             foreach (var roleId in rolesToAdd)
             {
-                var newRole = new UserRole { UserId = userId, RoleId = roleId };
-                await _unitOfWork.Repository<UserRole>().InsertAsync(newRole);
+                var newRole = new UserRole { UserId = userId, RoleId = roleId, Status = true };
+                await _unitOfWork.Repository<UserRole>().InsertAsync(newRole);  
             }
 
-            await _unitOfWork.CommitAsync();  // Save the changes
+            await _unitOfWork.CommitAsync();  
         }
 
 
-        public async Task RemoveRoleAsync(int id)
+
+        public async Task RemoveRoleAsync(int userId, int roleId)
         {
-            var role = await _unitOfWork.Repository<UserRole>().GetById(id);
-            if (role != null)
+            var userRole = await _unitOfWork.Repository<UserRole>().FindAsync(ur => ur.UserId == userId && ur.RoleId == roleId);
+
+            if (userRole != null)
             {
-                _unitOfWork.Repository<UserRole>().Delete(role);
+                _unitOfWork.Repository<UserRole>().Delete(userRole);
                 await _unitOfWork.CommitAsync();
             }
             else
             {
-                throw new Exception($"UserRole with RoleID {id} not found.");
+                throw new Exception($"UserRole with UserID {userId} and RoleID {roleId} not found.");
             }
+        }
+
+        public async Task RequestRoleAsync(int userId, int roleId)
+        {
+            var existingRoleRequest = await _unitOfWork.Repository<UserRole>()
+                                                        .FindAsync(ur => ur.UserId == userId && ur.RoleId == roleId);
+
+            if (existingRoleRequest != null)
+            {
+                throw new Exception("Role request already exists.");
+            }
+
+            var userRole = new UserRole
+            {
+                UserId = userId,
+                RoleId = roleId,
+                Status = false 
+            };
+
+            await _unitOfWork.Repository<UserRole>().InsertAsync(userRole);
+            await _unitOfWork.CommitAsync();
+        }
+
+        public async Task AcceptRoleRequestAsync(int userId, int roleId)
+        {
+            var roleRequest = await _unitOfWork.Repository<UserRole>()
+                                                .FindAsync(ur => ur.UserId == userId && ur.RoleId == roleId && ur.Status == false);
+
+            if (roleRequest == null)
+            {
+                throw new Exception("No pending role request found.");
+            }
+
+            roleRequest.Status = true; 
+
+            _unitOfWork.Repository<UserRole>().Update(roleRequest, roleRequest.RoleId);
+            await _unitOfWork.CommitAsync();
+        }
+
+        public async Task<IEnumerable<UserRole>> GetAllPendingRoleRequestsAsync()
+        {
+            var pendingRequests = await _unitOfWork.Repository<UserRole>()
+                                                    .AsQueryable()
+                                                    .Where(ur => ur.Status == false) 
+                                                    .Include(ur => ur.User)
+                                                    .Include(ur => ur.Role)
+                                                    .ToListAsync();
+
+            return pendingRequests;
         }
     }
 }
