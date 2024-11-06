@@ -15,6 +15,7 @@ namespace ServiceLayer.RequestModels
 	public class EventUserStatusUpdateRequestModel
 	{
 		public bool? Status { get; set; }
+		public int PointsToAdd { get; set; } // Số điểm staff nhập vào
 	}
 
 

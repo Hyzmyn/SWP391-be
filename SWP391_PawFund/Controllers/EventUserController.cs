@@ -11,15 +11,17 @@ namespace SWP391_PawFund.Controllers
 	public class EventUsersController : ControllerBase
 	{
 		private readonly IEventUserService _eventUserService;
+		private readonly IUsersService _userService;
 
-		public EventUsersController(IEventUserService eventUserService)
+		public EventUsersController(IEventUserService eventUserService, IUsersService userService)
 		{
 			_eventUserService = eventUserService;
+			_userService = userService;
 		}
 
 		// GET: api/EventUsers
 		[HttpGet]
-		[Authorize]
+
 		public async Task<ActionResult<IEnumerable<EventUser>>> GetEventUsers()
 		{
 			var eventUsers = await _eventUserService.GetEventUsersAsync();
@@ -76,16 +78,32 @@ namespace SWP391_PawFund.Controllers
 				// Cập nhật mỗi trường Status
 				eventUser.Status = statusModel.Status;
 
+				// Nếu Status được cập nhật thành true, cộng điểm cho User
+				if (statusModel.Status == true && statusModel.PointsToAdd > 0)
+				{
+					var user = await _userService.GetUserByIdAsync(userId);
+					if (user == null)
+					{
+						return NotFound(new { message = "User not found." });
+					}
+
+					// Cộng điểm vào User
+					user.Point = (user.Point ?? 0) + statusModel.PointsToAdd;
+
+					// Lưu thay đổi User
+					await _userService.UpdateUserAsync(user);
+				}
+
+				// Lưu thay đổi EventUser
 				await _eventUserService.UpdateEventUserAsync(eventUser);
 
-				return Ok(new { message = "EventUser status updated successfully." });
+				return Ok(new { message = "EventUser status updated successfully, and points added if applicable." });
 			}
 			catch (Exception ex)
 			{
 				return BadRequest(new { message = ex.Message });
 			}
 		}
-
 		// DELETE: api/EventUsers/{userId}/{eventId}
 		[HttpDelete("{userId}/{eventId}")]
 		[Authorize]

@@ -167,14 +167,35 @@ namespace ServiceLayer.Services
         }
 		public async Task UpdateDonationStatusAsync(int donationId, bool status)
 		{
+			// Lấy thông tin donation
 			var donation = await _unitOfWork.Repository<Donation>().GetById(donationId);
 			if (donation == null)
 			{
 				throw new ArgumentException($"Donation with ID {donationId} not found.");
 			}
 
+			// Cập nhật trạng thái donation
 			donation.Status = status;
 			_unitOfWork.Repository<Donation>().Update(donation, donationId);
+
+			// Nếu status là true, tính toán điểm và cập nhật cho User
+			if (status == true)
+			{
+				var donor = await _unitOfWork.Repository<User>().GetById(donation.DonorId);
+				if (donor == null)
+				{
+					throw new ArgumentException($"User with ID {donation.DonorId} not found.");
+				}
+
+				// Tính điểm từ Amount và cộng vào Point của User
+				int pointsToAdd = (int)(donation.Amount / 100000);
+				donor.Point = (donor.Point ?? 0) + pointsToAdd;
+
+				// Cập nhật User
+				_unitOfWork.Repository<User>().Update(donor, donor.Id);
+			}
+
+			// Lưu thay đổi
 			await _unitOfWork.CommitAsync();
 		}
 	}
