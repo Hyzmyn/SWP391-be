@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace ServiceLayer.RequestModels
 {
-	internal class EventUserService
+	public class EventUserCreateRequestModel
 	{
+		public int UserId { get; set; }
+		public int EventId { get; set; }
+		public bool? Status { get; set; }
 	}
+	public class EventUserStatusUpdateRequestModel
+	{
+		public bool? Status { get; set; }
+	}
+
+
 }
