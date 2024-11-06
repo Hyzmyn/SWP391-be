@@ -17,6 +17,7 @@ namespace ServiceLayer.RequestModels
         public string Location { get; set; }
         public int? ShelterId { get; set; }
         public decimal? wallet { get; set; }
+        public int? Point { get; set; }
         public decimal? TotalDonation { get; set; }
         public string? Image { get; set; }
     }
