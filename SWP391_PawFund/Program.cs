@@ -53,7 +53,7 @@ builder.Services.Configure<FormOptions>(options =>
 {
     options.MultipartBodyLengthLimit = 104857600; // 100 MB file limit
 });
-builder.Services.AddSingleton<IVnPayService, VnPayService>();
+builder.Services.AddScoped<IVnPayService, VnPayService>();
 
 // Install DI and dbcontext
 builder.Services.InstallService(builder.Configuration);

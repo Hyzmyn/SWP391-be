@@ -124,8 +124,9 @@ namespace ServiceLayer.Services
                 Shelter = shelter?.Name ?? "No Shelter",
                 Wallet = user.wallet ?? 0m,
                 Event = eventEntity.ToList(),
-                Roles = roles.ToList()
-
+                Roles = roles.ToList(),
+                Point = user.Point ?? 0,
+                
             };
 
             return responseModel;
