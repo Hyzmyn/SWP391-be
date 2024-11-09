@@ -74,7 +74,6 @@ namespace ServiceLayer.Services
             //if (response.IsSuccessful)
             //{
             //    var responseData = JsonConvert.DeserializeObject<dynamic>(response.Content);
-
             //    var momoPay = new MomoPay()
             //    {
             //        RequestId = model.OrderId,
@@ -101,7 +100,7 @@ namespace ServiceLayer.Services
             //}
         }
 
-        public MomoExecuteResponseModel PaymentExecuteAsync(IQueryCollection collection)
+       public MomoExecuteResponseModel PaymentExecuteAsync(IQueryCollection collection)
         {
             var momo = new MomoLibrary(); 
 
@@ -126,7 +125,6 @@ namespace ServiceLayer.Services
             var deeplink = momo.GetResponseData("deeplink");
             var deeplinkWebInApp = momo.GetResponseData("deeplinkWebInApp");
 
-            // Lấy userId từ hệ thống theo dõi giao dịch (ví dụ: từ _paymentTracker)
             var userId = 0;
             if (collection.TryGetValue("orderId", out var orderIdValue))
             {
