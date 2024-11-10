@@ -211,7 +211,7 @@ namespace RepositoryLayer.Migrations
                             Id = 2,
                             Amount = 200000m,
                             Date = new DateTime(2024, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DonorId = 7,
+                            DonorId = 6,
                             ShelterId = 1,
                             Status = false
                         },
@@ -220,7 +220,7 @@ namespace RepositoryLayer.Migrations
                             Id = 3,
                             Amount = 543333m,
                             Date = new DateTime(2024, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DonorId = 8,
+                            DonorId = 6,
                             ShelterId = 2,
                             Status = false
                         },
@@ -229,7 +229,7 @@ namespace RepositoryLayer.Migrations
                             Id = 4,
                             Amount = 632229m,
                             Date = new DateTime(2024, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DonorId = 9,
+                            DonorId = 6,
                             ShelterId = 2,
                             Status = false
                         },
@@ -238,7 +238,187 @@ namespace RepositoryLayer.Migrations
                             Id = 5,
                             Amount = 760000m,
                             Date = new DateTime(2024, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DonorId = 7,
+                            DonorId = 6,
+                            ShelterId = 3,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Amount = 200000m,
+                            Date = new DateTime(2024, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 3,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Amount = 543333m,
+                            Date = new DateTime(2024, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 2,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Amount = 632229m,
+                            Date = new DateTime(2024, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 2,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Amount = 760000m,
+                            Date = new DateTime(2024, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 4,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Amount = 200000m,
+                            Date = new DateTime(2024, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 1,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Amount = 543333m,
+                            Date = new DateTime(2024, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 4,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Amount = 632229m,
+                            Date = new DateTime(2024, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 4,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Amount = 760000m,
+                            Date = new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 3,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Amount = 200000m,
+                            Date = new DateTime(2024, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 1,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Amount = 543333m,
+                            Date = new DateTime(2024, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 2,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Amount = 632229m,
+                            Date = new DateTime(2024, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 3,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Amount = 760000m,
+                            Date = new DateTime(2024, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 2,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Amount = 200000m,
+                            Date = new DateTime(2024, 7, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 4,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Amount = 543333m,
+                            Date = new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 3,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Amount = 632229m,
+                            Date = new DateTime(2024, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 2,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Amount = 760000m,
+                            Date = new DateTime(2024, 10, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 1,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Amount = 200000m,
+                            Date = new DateTime(2024, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 4,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Amount = 543333m,
+                            Date = new DateTime(2024, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 2,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Amount = 632229m,
+                            Date = new DateTime(2024, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 1,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Amount = 760000m,
+                            Date = new DateTime(2024, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
                             ShelterId = 2,
                             Status = false
                         });
@@ -489,183 +669,6 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("Pets");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AdoptionStatus = "Adopted",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Buddy",
-                            ShelterID = 1,
-                            Type = "Dog",
-                            UserID = 17
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Whiskers",
-                            ShelterID = 1,
-                            Type = "Cat"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AdoptionStatus = "Adopted",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Max",
-                            ShelterID = 1,
-                            Type = "Dog",
-                            UserID = 16
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AdoptionStatus = "Adopted",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Luna",
-                            ShelterID = 1,
-                            Type = "Cat",
-                            UserID = 14
-                        },
-                        new
-                        {
-                            Id = 5,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Bella",
-                            ShelterID = 1,
-                            Type = "Dog"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Lux",
-                            ShelterID = 1,
-                            Type = "Cat"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Dono",
-                            ShelterID = 1,
-                            Type = "Dog"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Linker",
-                            ShelterID = 1,
-                            Type = "Cat"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            AdoptionStatus = "Adopted",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Dawin",
-                            ShelterID = 1,
-                            Type = "Dog",
-                            UserID = 15
-                        },
-                        new
-                        {
-                            Id = 10,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Modor",
-                            ShelterID = 2,
-                            Type = "Cat"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Pingking",
-                            ShelterID = 2,
-                            Type = "Dog"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Seto",
-                            ShelterID = 2,
-                            Type = "Cat"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "kaiba",
-                            ShelterID = 2,
-                            Type = "Dog"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Asuka",
-                            ShelterID = 2,
-                            Type = "Cat"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Jax",
-                            ShelterID = 2,
-                            Type = "Dog"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Jihn",
-                            ShelterID = 2,
-                            Type = "Cat"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Kaisa",
-                            ShelterID = 2,
-                            Type = "Dog"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Bump",
-                            ShelterID = 2,
-                            Type = "Dog"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Rasko",
-                            ShelterID = 2,
-                            Type = "Dog"
-                        });
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.PetStatus", b =>
@@ -681,33 +684,6 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("StatusId");
 
                     b.ToTable("PetStatuses");
-
-                    b.HasData(
-                        new
-                        {
-                            PetId = 1,
-                            StatusId = 1
-                        },
-                        new
-                        {
-                            PetId = 3,
-                            StatusId = 2
-                        },
-                        new
-                        {
-                            PetId = 5,
-                            StatusId = 3
-                        },
-                        new
-                        {
-                            PetId = 2,
-                            StatusId = 4
-                        },
-                        new
-                        {
-                            PetId = 4,
-                            StatusId = 5
-                        });
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Post", b =>
@@ -886,43 +862,6 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Statuses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Date = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Disease = "Parvovirus Infection",
-                            Vaccine = "Parvovirus Vaccine"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Date = new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Disease = "Distemper Virus",
-                            Vaccine = "Distemper Vaccine"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Date = new DateTime(2024, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Disease = "Rabies Virus",
-                            Vaccine = "Rabies Vaccine"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Date = new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Disease = "FeLV",
-                            Vaccine = "FeLV Vaccine"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Date = new DateTime(2024, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Disease = "FIV",
-                            Vaccine = "None"
-                        });
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.User", b =>
@@ -989,14 +928,14 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Email = "Admin@email.com",
-                            Password = "$2a$11$e9VKoMpC093AfygPTzESAun5YpcJTlBR.9/0hftwIE69J0gkJxlaG",
+                            Password = "$2a$11$Ff5Z2w31CzExtq3ofWO0TejKl4QdyrX66hihETxw9BXbCHTcJ0yaa",
                             Username = "Admin"
                         },
                         new
                         {
                             Id = 2,
                             Email = "Staff1@email.com",
-                            Password = "$2a$11$.lkGlUy.Rw4dKxW/K6KgX.HZ3htqScTYUEwWNzGXDv4.SbvMDogwO",
+                            Password = "$2a$11$uAbsIcD8liWRU.fI.F50muNyckblCI6FVOm0MOKPnQVLEI.3HQF6y",
                             ShelterId = 1,
                             Username = "Staff1"
                         },
@@ -1004,7 +943,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 3,
                             Email = "Staff2@email.com",
-                            Password = "$2a$11$lK9Dgq02GN8EzxzDNL504e1g.qg.1yqVaZims1pR/FrTpbR74fpO.",
+                            Password = "$2a$11$VQAr3HA1RdfveTTrftX88uriOvU6FSdYKApI58MO6d9oW6O5YKWyO",
                             ShelterId = 1,
                             Username = "Staff2"
                         },
@@ -1012,7 +951,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 4,
                             Email = "Staff3@email.com",
-                            Password = "$2a$11$s0erVL3ZeylTfSZQ/RFGRePHUAhGAMc/2nPrdm8LlgkqKExKJSzD2",
+                            Password = "$2a$11$nPZbvzo4rax6eg1EoBLrU.U1bSz2EUM2xE3e7.fU4XH3JMNaXQEKW",
                             ShelterId = 2,
                             Username = "Staff3"
                         },
@@ -1020,7 +959,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 5,
                             Email = "Staff4@email.com",
-                            Password = "$2a$11$6DQV8bS5NvsLJiaNWm1zGOKPbg//JpPleTj.OR8DQWGDnBoDt5QiK",
+                            Password = "$2a$11$uP1pVtr8qsUO35u48WCgaO.zByCJuI32P5/cnR0kUOpKJKsDUwfTq",
                             ShelterId = 2,
                             Username = "Staff4"
                         },
@@ -1030,86 +969,9 @@ namespace RepositoryLayer.Migrations
                             Email = "Donor1@email.com",
                             Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
                             Location = "HCM",
-                            Password = "$2a$11$3NoOG1WI.IH5BSfLvvpupO1T635j4KiCtJyfxVfMjShpkPmqnp34y",
+                            Password = "$2a$11$NQTAD7O2TWT/ur3b1HeLSuCCSaQ9QWCYjsDMx.Tsq9E/ImJl3Vy4O",
                             Phone = "123456789",
                             Username = "Donor1"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Email = "Donor2@email.com",
-                            Password = "$2a$11$/8ggThU/0jpZwjULt256IeAXfCd8fphNqZXu0ia.BhJhMo0LEFDWq",
-                            Username = "Donor2"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Email = "Donor3@email.com",
-                            Password = "$2a$11$0rk1UznMq.P9rr4Izd65hu9zCZebOYPkzXbwkhBW4dn5V2BSoV5S6",
-                            Username = "Donor3"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Email = "Donor4@email.com",
-                            Password = "$2a$11$8tVGWLOEaKVmdw4wDjp4cO.DjdNGEonRr4.GvbVb5vTKn.iDHE.7a",
-                            Username = "Donor4"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Email = "Volunteer1@email.com",
-                            Password = "$2a$11$IJkjfVwF9pLdIswy8TtWY.zaWzl11bW4RJC1KcJgZfMnFfPBrmEdO",
-                            Username = "Volunteer1"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Email = "Volunteer2@email.com",
-                            Password = "$2a$11$IYzaDIAJdKuvaoqdMt3FfeiCC23xMIuO17NBg4heY6dEInw9lBCmu",
-                            Username = "Volunteer2"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Email = "Volunteer3@email.com",
-                            Password = "$2a$11$dxhgatg1jZMw0muYNcR0b.8HqBBUrU/NxYtjm0KgBR8n0xnqCSFOC",
-                            Username = "Volunteer3"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Email = "Volunteer4@email.com",
-                            Password = "$2a$11$Pyl/8pRLfOALIgVOI9QHN.jejnheBfy3WqYEs9MGVjiXOxedYsOAe",
-                            Username = "Volunteer4"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Email = "Adopter1@email.com",
-                            Password = "$2a$11$4v0O4X5Uipa1oArohHjV0eg1ovsJKSWDLbIWxM35bnad4BhyVHg8y",
-                            Username = "Adopter1"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Email = "Adopter2@email.com",
-                            Password = "$2a$11$vH.H9hnfOOoaIiUpNrB4a.BqFQDSHwREYIm.n00sHXW59Mla5y5su",
-                            Username = "Adopter2"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Email = "Adopter3@email.com",
-                            Password = "$2a$11$R/xAVvb/S.YkG7MdpkD1ouG05UN6gxbDoJ/93SUlgeraTDR9OoOVy",
-                            Username = "Adopter3"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            Email = "Adopter4@email.com",
-                            Password = "$2a$11$70za1psSz7kQ4CQtbQ/mFe.VrKT49Fh.fhtzWbd8hhBtjdsGbNAeG",
-                            Username = "Adopter4"
                         });
                 });
 
@@ -1138,203 +1000,56 @@ namespace RepositoryLayer.Migrations
                         {
                             UserId = 1,
                             RoleId = 1,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4868),
+                            CreatedDate = new DateTime(2024, 11, 10, 21, 32, 33, 183, DateTimeKind.Utc).AddTicks(702),
                             Status = true
                         },
                         new
                         {
                             UserId = 2,
                             RoleId = 2,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4889),
+                            CreatedDate = new DateTime(2024, 11, 10, 21, 32, 33, 183, DateTimeKind.Utc).AddTicks(717),
                             Status = true
                         },
                         new
                         {
                             UserId = 3,
                             RoleId = 2,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4890),
+                            CreatedDate = new DateTime(2024, 11, 10, 21, 32, 33, 183, DateTimeKind.Utc).AddTicks(718),
                             Status = true
                         },
                         new
                         {
                             UserId = 4,
                             RoleId = 2,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4891),
+                            CreatedDate = new DateTime(2024, 11, 10, 21, 32, 33, 183, DateTimeKind.Utc).AddTicks(719),
                             Status = true
                         },
                         new
                         {
                             UserId = 5,
                             RoleId = 2,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4891),
+                            CreatedDate = new DateTime(2024, 11, 10, 21, 32, 33, 183, DateTimeKind.Utc).AddTicks(720),
                             Status = true
                         },
                         new
                         {
                             UserId = 6,
                             RoleId = 3,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4892),
+                            CreatedDate = new DateTime(2024, 11, 10, 21, 32, 33, 183, DateTimeKind.Utc).AddTicks(722),
                             Status = true
                         },
                         new
                         {
                             UserId = 6,
                             RoleId = 4,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4893),
+                            CreatedDate = new DateTime(2024, 11, 10, 21, 32, 33, 183, DateTimeKind.Utc).AddTicks(722),
                             Status = true
                         },
                         new
                         {
-                            UserId = 7,
-                            RoleId = 3,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4894),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 7,
+                            UserId = 6,
                             RoleId = 5,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4894),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 8,
-                            RoleId = 3,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4895),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 8,
-                            RoleId = 4,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4896),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 8,
-                            RoleId = 5,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4897),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 9,
-                            RoleId = 3,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4897),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 10,
-                            RoleId = 4,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4898),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 10,
-                            RoleId = 3,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4899),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 11,
-                            RoleId = 4,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4899),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 11,
-                            RoleId = 5,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4900),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 12,
-                            RoleId = 4,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4901),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 12,
-                            RoleId = 3,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4902),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 12,
-                            RoleId = 5,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4902),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 13,
-                            RoleId = 4,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4903),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 14,
-                            RoleId = 5,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4904),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 15,
-                            RoleId = 5,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4904),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 15,
-                            RoleId = 3,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4905),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 16,
-                            RoleId = 5,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4906),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 16,
-                            RoleId = 4,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4906),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 17,
-                            RoleId = 5,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4907),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 17,
-                            RoleId = 4,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4908),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 17,
-                            RoleId = 3,
-                            CreatedDate = new DateTime(2024, 11, 5, 20, 8, 27, 347, DateTimeKind.Utc).AddTicks(4908),
+                            CreatedDate = new DateTime(2024, 11, 10, 21, 32, 33, 183, DateTimeKind.Utc).AddTicks(723),
                             Status = true
                         });
                 });

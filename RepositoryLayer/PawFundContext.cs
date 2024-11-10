@@ -187,58 +187,6 @@ namespace RepositoryLayer
                 new Role { Id = 5, Name = "Adopter" }
             );
 
-            modelBuilder.Entity<User>().HasData(
-                new User { Id = 1, Username = "Admin", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 2, Username = "Staff1", Email = "Staff1@email.com", Password = PasswordTools.HashPassword("123456"), ShelterId = 1 },
-                new User { Id = 3, Username = "Staff2", Email = "Staff2@email.com", Password = PasswordTools.HashPassword("123456"), ShelterId = 1 },
-                new User { Id = 4, Username = "Staff3", Email = "Staff3@email.com", Password = PasswordTools.HashPassword("123456"), ShelterId = 2 },
-                new User { Id = 5, Username = "Staff4", Email = "Staff4@email.com", Password = PasswordTools.HashPassword("123456"), ShelterId = 2 },
-                new User { Id = 6, Username = "Donor1", Email = "Donor1@email.com", Password = PasswordTools.HashPassword("123456"), Phone = "123456789", Location = "HCM", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png" },
-                new User { Id = 7, Username = "Donor2", Email = "Donor2@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 8, Username = "Donor3", Email = "Donor3@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 9, Username = "Donor4", Email = "Donor4@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 10, Username = "Volunteer1", Email = "Volunteer1@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 11, Username = "Volunteer2", Email = "Volunteer2@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 12, Username = "Volunteer3", Email = "Volunteer3@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 13, Username = "Volunteer4", Email = "Volunteer4@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 14, Username = "Adopter1", Email = "Adopter1@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 15, Username = "Adopter2", Email = "Adopter2@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 16, Username = "Adopter3", Email = "Adopter3@email.com", Password = PasswordTools.HashPassword("123456") },
-                new User { Id = 17, Username = "Adopter4", Email = "Adopter4@email.com", Password = PasswordTools.HashPassword("123456") }
-
-            );
-
-            modelBuilder.Entity<UserRole>().HasData(
-                new UserRole { UserId = 1, RoleId = 1, Status = true },
-                new UserRole { UserId = 2, RoleId = 2, Status = true },
-                new UserRole { UserId = 3, RoleId = 2, Status = true },
-                new UserRole { UserId = 4, RoleId = 2, Status = true },
-                new UserRole { UserId = 5, RoleId = 2, Status = true },
-                new UserRole { UserId = 6, RoleId = 3, Status = true },
-                new UserRole { UserId = 6, RoleId = 4, Status = true },
-                new UserRole { UserId = 7, RoleId = 3, Status = true },
-                new UserRole { UserId = 7, RoleId = 5, Status = true },
-                new UserRole { UserId = 8, RoleId = 3, Status = true },
-                new UserRole { UserId = 8, RoleId = 4, Status = true },
-                new UserRole { UserId = 8, RoleId = 5, Status = true },
-                new UserRole { UserId = 9, RoleId = 3, Status = true },
-                new UserRole { UserId = 10, RoleId = 4, Status = true },
-                new UserRole { UserId = 10, RoleId = 3, Status = true },
-                new UserRole { UserId = 11, RoleId = 4, Status = true },
-                new UserRole { UserId = 11, RoleId = 5, Status = true },
-                new UserRole { UserId = 12, RoleId = 4, Status = true },
-                new UserRole { UserId = 12, RoleId = 3, Status = true },
-                new UserRole { UserId = 12, RoleId = 5, Status = true },
-                new UserRole { UserId = 13, RoleId = 4, Status = true },
-                new UserRole { UserId = 14, RoleId = 5, Status = true },
-                new UserRole { UserId = 15, RoleId = 5, Status = true },
-                new UserRole { UserId = 15, RoleId = 3, Status = true },
-                new UserRole { UserId = 16, RoleId = 5, Status = true },
-                new UserRole { UserId = 16, RoleId = 4, Status = true },
-                new UserRole { UserId = 17, RoleId = 5, Status = true },
-                new UserRole { UserId = 17, RoleId = 4, Status = true },
-                new UserRole { UserId = 17, RoleId = 3, Status = true }
-            );
 
             modelBuilder.Entity<Shelter>().HasData(
                 new Shelter { Id = 1, Name = "Shelter1", Location = "Quận 1", PhoneNumber = "1234567890", Capacity = 20, Email = "PetShelter1@email.com" },
@@ -249,83 +197,157 @@ namespace RepositoryLayer
             );
 
 
-            modelBuilder.Entity<Pet>().HasData(
-                new Pet { Id = 1, ShelterID = 1, Name = "Buddy", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Adopted", Type = "Dog", UserID = 17 },
-                new Pet { Id = 2, ShelterID = 1, Name = "Whiskers", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
-                new Pet { Id = 3, ShelterID = 1, Name = "Max", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Adopted", Type = "Dog", UserID = 16 },
-                new Pet { Id = 4, ShelterID = 1, Name = "Luna", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Adopted", Type = "Cat", UserID = 14 },
-                new Pet { Id = 5, ShelterID = 1, Name = "Bella", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
-                new Pet { Id = 6, ShelterID = 1, Name = "Lux", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
-                new Pet { Id = 7, ShelterID = 1, Name = "Dono", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
-                new Pet { Id = 8, ShelterID = 1, Name = "Linker", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
-                new Pet { Id = 9, ShelterID = 1, Name = "Dawin", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Adopted", Type = "Dog", UserID = 15 },
-                new Pet { Id = 10, ShelterID = 2, Name = "Modor", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
-                new Pet { Id = 11, ShelterID = 2, Name = "Pingking", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
-                new Pet { Id = 12, ShelterID = 2, Name = "Seto", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
-                new Pet { Id = 13, ShelterID = 2, Name = "kaiba", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
-                new Pet { Id = 14, ShelterID = 2, Name = "Asuka", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
-                new Pet { Id = 15, ShelterID = 2, Name = "Jax", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
-                new Pet { Id = 16, ShelterID = 2, Name = "Jihn", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
-                new Pet { Id = 18, ShelterID = 2, Name = "Kaisa", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
-                new Pet { Id = 19, ShelterID = 2, Name = "Bump", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
-                new Pet { Id = 20, ShelterID = 2, Name = "Rasko", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" }
-
-
+            modelBuilder.Entity<User>().HasData(
+                new User { Id = 1, Username = "Admin", Email = "Admin@email.com", Password = PasswordTools.HashPassword("123456") },
+                new User { Id = 2, Username = "Staff1", Email = "Staff1@email.com", Password = PasswordTools.HashPassword("123456"), ShelterId = 1 },
+                new User { Id = 3, Username = "Staff2", Email = "Staff2@email.com", Password = PasswordTools.HashPassword("123456"), ShelterId = 1 },
+                new User { Id = 4, Username = "Staff3", Email = "Staff3@email.com", Password = PasswordTools.HashPassword("123456"), ShelterId = 2 },
+                new User { Id = 5, Username = "Staff4", Email = "Staff4@email.com", Password = PasswordTools.HashPassword("123456"), ShelterId = 2 },
+                new User { Id = 6, Username = "Donor1", Email = "Donor1@email.com", Password = PasswordTools.HashPassword("123456"), Phone = "123456789", Location = "HCM", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png" }
+                //, new User { Id = 7, Username = "Donor2", Email = "Donor2@email.com", Password = PasswordTools.HashPassword("123456") }
+                //, new User { Id = 8, Username = "Donor3", Email = "Donor3@email.com", Password = PasswordTools.HashPassword("123456") }
+                //, new User { Id = 9, Username = "Donor4", Email = "Donor4@email.com", Password = PasswordTools.HashPassword("123456") }
+                //, new User { Id = 10, Username = "Volunteer1", Email = "Volunteer1@email.com", Password = PasswordTools.HashPassword("123456") }
+                //, new User { Id = 11, Username = "Volunteer2", Email = "Volunteer2@email.com", Password = PasswordTools.HashPassword("123456") }
+                //, new User { Id = 12, Username = "Volunteer3", Email = "Volunteer3@email.com", Password = PasswordTools.HashPassword("123456") }
+                //, new User { Id = 13, Username = "Volunteer4", Email = "Volunteer4@email.com", Password = PasswordTools.HashPassword("123456") }
+                //, new User { Id = 14, Username = "Adopter1", Email = "Adopter1@email.com", Password = PasswordTools.HashPassword("123456") }
+                //, new User { Id = 15, Username = "Adopter2", Email = "Adopter2@email.com", Password = PasswordTools.HashPassword("123456") }
+                //, new User { Id = 16, Username = "Adopter3", Email = "Adopter3@email.com", Password = PasswordTools.HashPassword("123456") }
+                //, new User { Id = 17, Username = "Adopter4", Email = "Adopter4@email.com", Password = PasswordTools.HashPassword("123456") }
             );
+
+            modelBuilder.Entity<UserRole>().HasData(
+                new UserRole { UserId = 1, RoleId = 1, Status = true },
+                new UserRole { UserId = 2, RoleId = 2, Status = true },
+                new UserRole { UserId = 3, RoleId = 2, Status = true },
+                new UserRole { UserId = 4, RoleId = 2, Status = true },
+                new UserRole { UserId = 5, RoleId = 2, Status = true },
+                new UserRole { UserId = 6, RoleId = 3, Status = true },
+                new UserRole { UserId = 6, RoleId = 4, Status = true },
+                new UserRole { UserId = 6, RoleId = 5, Status = true }
+                //, new UserRole { UserId = 7, RoleId = 3, Status = true },
+                //new UserRole { UserId = 7, RoleId = 5, Status = true },
+                //new UserRole { UserId = 8, RoleId = 3, Status = true },
+                //new UserRole { UserId = 8, RoleId = 4, Status = true },
+                //new UserRole { UserId = 8, RoleId = 5, Status = true },
+                //new UserRole { UserId = 9, RoleId = 3, Status = true },
+                //new UserRole { UserId = 10, RoleId = 4, Status = true },
+                //new UserRole { UserId = 10, RoleId = 3, Status = true },
+                //new UserRole { UserId = 11, RoleId = 4, Status = true },
+                //new UserRole { UserId = 11, RoleId = 5, Status = true },
+                //new UserRole { UserId = 12, RoleId = 4, Status = true },
+                //new UserRole { UserId = 12, RoleId = 3, Status = true },
+                //new UserRole { UserId = 12, RoleId = 5, Status = true },
+                //new UserRole { UserId = 13, RoleId = 4, Status = true },
+                //new UserRole { UserId = 14, RoleId = 5, Status = true },
+                //new UserRole { UserId = 15, RoleId = 5, Status = true },
+                //new UserRole { UserId = 15, RoleId = 3, Status = true },
+                //new UserRole { UserId = 16, RoleId = 5, Status = true },
+                //new UserRole { UserId = 16, RoleId = 4, Status = true },
+                //new UserRole { UserId = 17, RoleId = 5, Status = true },
+                //new UserRole { UserId = 17, RoleId = 4, Status = true },
+                //new UserRole { UserId = 17, RoleId = 3, Status = true }
+            );
+
+
+            //modelBuilder.Entity<Pet>().HasData(
+            //    new Pet { Id = 1, ShelterID = 1, Name = "Buddy", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Adopted", Type = "Dog", UserID = 17 },
+            //    new Pet { Id = 2, ShelterID = 1, Name = "Whiskers", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
+            //    new Pet { Id = 3, ShelterID = 1, Name = "Max", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Adopted", Type = "Dog", UserID = 16 },
+            //    new Pet { Id = 4, ShelterID = 1, Name = "Luna", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Adopted", Type = "Cat", UserID = 14 },
+            //    new Pet { Id = 5, ShelterID = 1, Name = "Bella", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
+            //    new Pet { Id = 6, ShelterID = 1, Name = "Lux", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
+            //    new Pet { Id = 7, ShelterID = 1, Name = "Dono", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
+            //    new Pet { Id = 8, ShelterID = 1, Name = "Linker", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
+            //    new Pet { Id = 9, ShelterID = 1, Name = "Dawin", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Adopted", Type = "Dog", UserID = 15 },
+            //    new Pet { Id = 10, ShelterID = 2, Name = "Modor", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
+            //    new Pet { Id = 11, ShelterID = 2, Name = "Pingking", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
+            //    new Pet { Id = 12, ShelterID = 2, Name = "Seto", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
+            //    new Pet { Id = 13, ShelterID = 2, Name = "kaiba", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
+            //    new Pet { Id = 14, ShelterID = 2, Name = "Asuka", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
+            //    new Pet { Id = 15, ShelterID = 2, Name = "Jax", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
+            //    new Pet { Id = 16, ShelterID = 2, Name = "Jihn", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Cat" },
+            //    new Pet { Id = 18, ShelterID = 2, Name = "Kaisa", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
+            //    new Pet { Id = 19, ShelterID = 2, Name = "Bump", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" },
+            //    new Pet { Id = 20, ShelterID = 2, Name = "Rasko", Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png", AdoptionStatus = "Available", Type = "Dog" }
+
+
+            //);
 
             modelBuilder.Entity<Donation>().HasData(
                 new Donation { Id = 1, DonorId = 6, ShelterId = 1, Amount = 100000, Date = new DateTime(2024, 01, 15) },
-                new Donation { Id = 2, DonorId = 7, ShelterId = 1, Amount = 200000, Date = new DateTime(2024, 02, 10) },
-                new Donation { Id = 3, DonorId = 8, ShelterId = 2, Amount = 543333, Date = new DateTime(2024, 03, 25) },
-                new Donation { Id = 4, DonorId = 9, ShelterId = 2, Amount = 632229, Date = new DateTime(2024, 04, 12) },
-                new Donation { Id = 5, DonorId = 7, ShelterId = 2, Amount = 760000, Date = new DateTime(2024, 05, 20) }
+                new Donation { Id = 2, DonorId = 6, ShelterId = 1, Amount = 200000, Date = new DateTime(2024, 02, 10) },
+                new Donation { Id = 3, DonorId = 6, ShelterId = 2, Amount = 543333, Date = new DateTime(2024, 03, 25) },
+                new Donation { Id = 4, DonorId = 6, ShelterId = 2, Amount = 632229, Date = new DateTime(2024, 04, 12) },
+                new Donation { Id = 5, DonorId = 6, ShelterId = 3, Amount = 760000, Date = new DateTime(2024, 05, 20) },
+                new Donation { Id = 6, DonorId = 6, ShelterId = 3, Amount = 200000, Date = new DateTime(2024, 06, 10) },
+                new Donation { Id = 7, DonorId = 6, ShelterId = 2, Amount = 543333, Date = new DateTime(2024, 07, 25) },
+                new Donation { Id = 8, DonorId = 6, ShelterId = 2, Amount = 632229, Date = new DateTime(2024, 08, 12) },
+                new Donation { Id = 9, DonorId = 6, ShelterId = 4, Amount = 760000, Date = new DateTime(2024, 09, 20) },
+                new Donation { Id = 10, DonorId = 6, ShelterId = 1, Amount = 200000, Date = new DateTime(2024, 10, 10) },
+                new Donation { Id = 11, DonorId = 6, ShelterId = 4, Amount = 543333, Date = new DateTime(2024, 11, 25) },
+                new Donation { Id = 12, DonorId = 6, ShelterId = 4, Amount = 632229, Date = new DateTime(2024, 01, 12) },
+                new Donation { Id = 13, DonorId = 6, ShelterId = 3, Amount = 760000, Date = new DateTime(2024, 02, 20) },
+                new Donation { Id = 14, DonorId = 6, ShelterId = 1, Amount = 200000, Date = new DateTime(2024, 03, 10) },
+                new Donation { Id = 15, DonorId = 6, ShelterId = 2, Amount = 543333, Date = new DateTime(2024, 04, 25) },
+                new Donation { Id = 16, DonorId = 6, ShelterId = 3, Amount = 632229, Date = new DateTime(2024, 05, 12) },
+                new Donation { Id = 17, DonorId = 6, ShelterId = 2, Amount = 760000, Date = new DateTime(2024, 06, 20) },
+                new Donation { Id = 18, DonorId = 6, ShelterId = 4, Amount = 200000, Date = new DateTime(2024, 07, 10) },
+                new Donation { Id = 19, DonorId = 6, ShelterId = 3, Amount = 543333, Date = new DateTime(2024, 08, 25) },
+                new Donation { Id = 20, DonorId = 6, ShelterId = 2, Amount = 632229, Date = new DateTime(2024, 09, 12) },
+                new Donation { Id = 21, DonorId = 6, ShelterId = 1, Amount = 760000, Date = new DateTime(2024, 10, 20) },
+                new Donation { Id = 22, DonorId = 6, ShelterId = 4, Amount = 200000, Date = new DateTime(2024, 11, 10) },
+                new Donation { Id = 23, DonorId = 6, ShelterId = 2, Amount = 543333, Date = new DateTime(2024, 01, 25) },
+                new Donation { Id = 24, DonorId = 6, ShelterId = 1, Amount = 632229, Date = new DateTime(2024, 02, 12) },
+                new Donation { Id = 25, DonorId = 6, ShelterId = 2, Amount = 760000, Date = new DateTime(2024, 03, 20) }
             );
 
-            modelBuilder.Entity<Status>().HasData(
-                new Status
-                {
-                    Id = 1,
-                    Date = new DateTime(2024, 1, 15),
-                    Disease = "Parvovirus Infection",
-                    Vaccine = "Parvovirus Vaccine"
-                },
-                new Status
-                {
-                    Id = 2,
-                    Date = new DateTime(2024, 2, 20),
-                    Disease = "Distemper Virus",
-                    Vaccine = "Distemper Vaccine"
-                },
-                new Status
-                {
-                    Id = 3,
-                    Date = new DateTime(2024, 3, 10),
-                    Disease = "Rabies Virus",
-                    Vaccine = "Rabies Vaccine"
-                },
-                new Status
-                {
-                    Id = 4,
-                    Date = new DateTime(2024, 4, 5),
-                    Disease = "FeLV",
-                    Vaccine = "FeLV Vaccine"
-                },
-                new Status
-                {
-                    Id = 5,
-                    Date = new DateTime(2024, 5, 12),
-                    Disease = "FIV",
-                    Vaccine = "None"
-                }
-            );
-            modelBuilder.Entity<PetStatus>().HasData(
-                new PetStatus { PetId = 1, StatusId = 1 },
-                new PetStatus { PetId = 3, StatusId = 2 },
-                new PetStatus { PetId = 5, StatusId = 3 },
-                new PetStatus { PetId = 2, StatusId = 4 },
-                new PetStatus { PetId = 4, StatusId = 5 }
+            //modelBuilder.Entity<Status>().HasData(
+            //    new Status
+            //    {
+            //        Id = 1,
+            //        Date = new DateTime(2024, 1, 15),
+            //        Disease = "Parvovirus Infection",
+            //        Vaccine = "Parvovirus Vaccine"
+            //    },
+            //    new Status
+            //    {
+            //        Id = 2,
+            //        Date = new DateTime(2024, 2, 20),
+            //        Disease = "Distemper Virus",
+            //        Vaccine = "Distemper Vaccine"
+            //    },
+            //    new Status
+            //    {
+            //        Id = 3,
+            //        Date = new DateTime(2024, 3, 10),
+            //        Disease = "Rabies Virus",
+            //        Vaccine = "Rabies Vaccine"
+            //    },
+            //    new Status
+            //    {
+            //        Id = 4,
+            //        Date = new DateTime(2024, 4, 5),
+            //        Disease = "FeLV",
+            //        Vaccine = "FeLV Vaccine"
+            //    },
+            //    new Status
+            //    {
+            //        Id = 5,
+            //        Date = new DateTime(2024, 5, 12),
+            //        Disease = "FIV",
+            //        Vaccine = "None"
+            //    }
+            //);
+            //modelBuilder.Entity<PetStatus>().HasData(
+            //    new PetStatus { PetId = 1, StatusId = 1 },
+            //    new PetStatus { PetId = 3, StatusId = 2 },
+            //    new PetStatus { PetId = 5, StatusId = 3 },
+            //    new PetStatus { PetId = 2, StatusId = 4 },
+            //    new PetStatus { PetId = 4, StatusId = 5 }
 
-                );
+            //    );
         }
     }
 }
