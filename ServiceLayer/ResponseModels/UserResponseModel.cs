@@ -18,9 +18,9 @@ namespace ServiceLayer.ResponseModels
         public string Image { get; set; }
         public string Shelter { get; set; }
         public decimal Wallet { get; set; }
+        public int Point { get; set; }
         public List<string> Event { get; set; }
         public List<string> Roles { get; set; }
-        public int Point { get; set; }
 
     }
 

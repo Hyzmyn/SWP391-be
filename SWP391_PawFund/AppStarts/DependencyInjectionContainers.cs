@@ -49,6 +49,8 @@ namespace SWP391_PawFund.AppStarts
             services.AddScoped<ISMSService, SMSService>();
             services.AddScoped<IMomoService, MomoService>();
             services.AddScoped<IEventUserService, EventUserService>();
+            services.AddScoped<IVnPayService, VnPayService>();
+
 
         }
     }
