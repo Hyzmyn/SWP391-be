@@ -87,7 +87,10 @@ namespace ServiceLayer.Services
             {
                 throw new ArgumentNullException(nameof(shelter));
             }
-
+            if (shelter.Capacity < 0)
+            {
+                throw new ArgumentException("Capacity cannot be less than 0.");
+            }
             await _unitOfWork.Repository<Shelter>().InsertAsync(shelter);
             await _unitOfWork.CommitAsync();
             return shelter;
@@ -103,7 +106,7 @@ namespace ServiceLayer.Services
             var existingShelter = await _unitOfWork.Repository<Shelter>().GetById(shelter.Id);
             if (existingShelter == null)
             {
-                throw new KeyNotFoundException($"Shelter with ID {shelter.Id} not found.");
+                throw new KeyNotFoundException($"Shelter với ID {shelter.Id} không tìm thấy.");
             }
 
             // Cập nhật các thuộc tính cần thiết

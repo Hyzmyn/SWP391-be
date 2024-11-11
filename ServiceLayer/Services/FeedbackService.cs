@@ -42,7 +42,7 @@ namespace ServiceLayer.Services
         {
             if (id <= 0)
             {
-                throw new ArgumentException("Id must be greater than zero.", nameof(id));
+                throw new ArgumentException("Id cần lớn hơn 0.", nameof(id));
             }
 
             var feedback = await _unitOfWork.Repository<FeedBack>().GetAll()
@@ -52,7 +52,7 @@ namespace ServiceLayer.Services
 
             if (feedback == null)
             {
-                throw new KeyNotFoundException($"Feedback with ID {id} not found.");
+                throw new KeyNotFoundException($"Phản hồi với ID {id} không tìm thấy.");
             }
 
             return new FeedBackResponseDetail
@@ -109,7 +109,7 @@ namespace ServiceLayer.Services
             var user = await _unitOfWork.Repository<User>().GetById(request.UserId);
             if (user == null)
             {
-                throw new KeyNotFoundException($"User with ID {request.UserId} not found.");
+                throw new KeyNotFoundException($"User với ID {request.UserId} không tìm thấy.");
             }
 
             var vietnamTime = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(7)).DateTime;
@@ -134,7 +134,7 @@ namespace ServiceLayer.Services
 
             if (createdFeedback == null)
             {
-                throw new ApplicationException("An error occurred while retrieving the created feedback.");
+                throw new ApplicationException("Đã xảy ra lỗi khi truy xuất phản hồi đã tạo.");
             }
 
             return new FeedBackResponseDetail
@@ -169,19 +169,19 @@ namespace ServiceLayer.Services
         {
             if (id <= 0)
             {
-                throw new ArgumentException("Id must be greater than zero.", nameof(id));
+                throw new ArgumentException("Id cần lớn hơn 0.", nameof(id));
             }
 
             var existingFeedback = await _unitOfWork.Repository<FeedBack>().GetById(id);
             if (existingFeedback == null)
             {
-                throw new KeyNotFoundException($"Feedback with ID {id} not found.");
+                throw new KeyNotFoundException($"Phàn hồi với ID {id} không tìm thấy.");
             }
 
             var user = await _unitOfWork.Repository<User>().GetById(request.UserId);
             if (user == null)
             {
-                throw new KeyNotFoundException($"User with ID {request.UserId} not found.");
+                throw new KeyNotFoundException($"User với ID {request.UserId} không tìm thấy.");
             }
 
             var vietnamTime = DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(7)).DateTime;
@@ -195,7 +195,6 @@ namespace ServiceLayer.Services
             _unitOfWork.Repository<FeedBack>().Update(existingFeedback, existingFeedback.Id);
             await _unitOfWork.CommitAsync();
 
-            // Truy vấn và trả về chi tiết Feedback đã cập nhật
             var updatedFeedback = await _unitOfWork.Repository<FeedBack>().GetAll()
                 .Include(fb => fb.User)
                 .Include(fb => fb.Post)
@@ -241,7 +240,7 @@ namespace ServiceLayer.Services
             var feedback = await _unitOfWork.Repository<FeedBack>().GetById(id);
             if (feedback == null)
             {
-                throw new KeyNotFoundException($"Feedback with ID {id} not found.");
+                throw new KeyNotFoundException($"Phản hồi với ID {id} không tìm thấy.");
             }
 
             _unitOfWork.Repository<FeedBack>().Delete(feedback);
