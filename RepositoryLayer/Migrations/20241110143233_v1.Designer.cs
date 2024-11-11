@@ -12,8 +12,8 @@ using RepositoryLayer;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(PawFundContext))]
-    [Migration("20241024172525_v3")]
-    partial class v3
+    [Migration("20241110143233_v1")]
+    partial class v1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -214,7 +214,7 @@ namespace RepositoryLayer.Migrations
                             Id = 2,
                             Amount = 200000m,
                             Date = new DateTime(2024, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DonorId = 7,
+                            DonorId = 6,
                             ShelterId = 1,
                             Status = false
                         },
@@ -223,7 +223,7 @@ namespace RepositoryLayer.Migrations
                             Id = 3,
                             Amount = 543333m,
                             Date = new DateTime(2024, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DonorId = 8,
+                            DonorId = 6,
                             ShelterId = 2,
                             Status = false
                         },
@@ -232,7 +232,7 @@ namespace RepositoryLayer.Migrations
                             Id = 4,
                             Amount = 632229m,
                             Date = new DateTime(2024, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DonorId = 9,
+                            DonorId = 6,
                             ShelterId = 2,
                             Status = false
                         },
@@ -241,7 +241,187 @@ namespace RepositoryLayer.Migrations
                             Id = 5,
                             Amount = 760000m,
                             Date = new DateTime(2024, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DonorId = 7,
+                            DonorId = 6,
+                            ShelterId = 3,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Amount = 200000m,
+                            Date = new DateTime(2024, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 3,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Amount = 543333m,
+                            Date = new DateTime(2024, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 2,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Amount = 632229m,
+                            Date = new DateTime(2024, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 2,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Amount = 760000m,
+                            Date = new DateTime(2024, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 4,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Amount = 200000m,
+                            Date = new DateTime(2024, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 1,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Amount = 543333m,
+                            Date = new DateTime(2024, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 4,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Amount = 632229m,
+                            Date = new DateTime(2024, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 4,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Amount = 760000m,
+                            Date = new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 3,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Amount = 200000m,
+                            Date = new DateTime(2024, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 1,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Amount = 543333m,
+                            Date = new DateTime(2024, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 2,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Amount = 632229m,
+                            Date = new DateTime(2024, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 3,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Amount = 760000m,
+                            Date = new DateTime(2024, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 2,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Amount = 200000m,
+                            Date = new DateTime(2024, 7, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 4,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Amount = 543333m,
+                            Date = new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 3,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Amount = 632229m,
+                            Date = new DateTime(2024, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 2,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Amount = 760000m,
+                            Date = new DateTime(2024, 10, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 1,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Amount = 200000m,
+                            Date = new DateTime(2024, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 4,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Amount = 543333m,
+                            Date = new DateTime(2024, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 2,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Amount = 632229m,
+                            Date = new DateTime(2024, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
+                            ShelterId = 1,
+                            Status = false
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Amount = 760000m,
+                            Date = new DateTime(2024, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DonorId = 6,
                             ShelterId = 2,
                             Status = false
                         });
@@ -291,6 +471,9 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("EventId")
                         .HasColumnType("int");
 
+                    b.Property<bool?>("Status")
+                        .HasColumnType("tinyint(1)");
+
                     b.HasKey("UserId", "EventId");
 
                     b.HasIndex("EventId");
@@ -316,7 +499,7 @@ namespace RepositoryLayer.Migrations
                     b.Property<bool?>("IsDelete")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("PostId")
+                    b.Property<int?>("PostId")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
@@ -329,6 +512,76 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("FeedBacks");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.Momo.MomoPay", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Deeplink")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DeeplinkWebInApp")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<bool?>("IsDelete")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("LocalMessage")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("OrderId")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("OrderInfo")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PayUrl")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("QrCodeUrl")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("RequestId")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("RequestType")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Signature")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("MomoPays");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Notification", b =>
@@ -419,183 +672,6 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("Pets");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AdoptionStatus = "Adopted",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Buddy",
-                            ShelterID = 1,
-                            Type = "Dog",
-                            UserID = 17
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Whiskers",
-                            ShelterID = 1,
-                            Type = "Cat"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AdoptionStatus = "Adopted",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Max",
-                            ShelterID = 1,
-                            Type = "Dog",
-                            UserID = 16
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AdoptionStatus = "Adopted",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Luna",
-                            ShelterID = 1,
-                            Type = "Cat",
-                            UserID = 14
-                        },
-                        new
-                        {
-                            Id = 5,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Bella",
-                            ShelterID = 1,
-                            Type = "Dog"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Lux",
-                            ShelterID = 1,
-                            Type = "Cat"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Dono",
-                            ShelterID = 1,
-                            Type = "Dog"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Linker",
-                            ShelterID = 1,
-                            Type = "Cat"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            AdoptionStatus = "Adopted",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Dawin",
-                            ShelterID = 1,
-                            Type = "Dog",
-                            UserID = 15
-                        },
-                        new
-                        {
-                            Id = 10,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Modor",
-                            ShelterID = 2,
-                            Type = "Cat"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Pingking",
-                            ShelterID = 2,
-                            Type = "Dog"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Seto",
-                            ShelterID = 2,
-                            Type = "Cat"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "kaiba",
-                            ShelterID = 2,
-                            Type = "Dog"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Asuka",
-                            ShelterID = 2,
-                            Type = "Cat"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Jax",
-                            ShelterID = 2,
-                            Type = "Dog"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Jihn",
-                            ShelterID = 2,
-                            Type = "Cat"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Kaisa",
-                            ShelterID = 2,
-                            Type = "Dog"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Bump",
-                            ShelterID = 2,
-                            Type = "Dog"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            AdoptionStatus = "Available",
-                            Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
-                            Name = "Rasko",
-                            ShelterID = 2,
-                            Type = "Dog"
-                        });
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.PetStatus", b =>
@@ -611,33 +687,6 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("StatusId");
 
                     b.ToTable("PetStatuses");
-
-                    b.HasData(
-                        new
-                        {
-                            PetId = 1,
-                            StatusId = 1
-                        },
-                        new
-                        {
-                            PetId = 3,
-                            StatusId = 2
-                        },
-                        new
-                        {
-                            PetId = 5,
-                            StatusId = 3
-                        },
-                        new
-                        {
-                            PetId = 2,
-                            StatusId = 4
-                        },
-                        new
-                        {
-                            PetId = 4,
-                            StatusId = 5
-                        });
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.Post", b =>
@@ -773,18 +822,18 @@ namespace RepositoryLayer.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("From")
+                    b.Property<string>("AccountSID")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("AuthToken")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<bool?>("IsDelete")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("To")
+                    b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -816,43 +865,6 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Statuses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Date = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Disease = "Parvovirus Infection",
-                            Vaccine = "Parvovirus Vaccine"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Date = new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Disease = "Distemper Virus",
-                            Vaccine = "Distemper Vaccine"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Date = new DateTime(2024, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Disease = "Rabies Virus",
-                            Vaccine = "Rabies Vaccine"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Date = new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Disease = "FeLV",
-                            Vaccine = "FeLV Vaccine"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Date = new DateTime(2024, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Disease = "FIV",
-                            Vaccine = "None"
-                        });
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.User", b =>
@@ -882,6 +894,9 @@ namespace RepositoryLayer.Migrations
 
                     b.Property<string>("Phone")
                         .HasColumnType("longtext");
+
+                    b.Property<int?>("Point")
+                        .HasColumnType("int");
 
                     b.Property<int?>("ShelterId")
                         .HasColumnType("int");
@@ -916,14 +931,14 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Email = "Admin@email.com",
-                            Password = "$2a$11$GIXj1zYBRuKr8TQfyFmTn.OOSqFBm357O5TSLdwjhyRScxKUd/Xee",
+                            Password = "$2a$11$Ff5Z2w31CzExtq3ofWO0TejKl4QdyrX66hihETxw9BXbCHTcJ0yaa",
                             Username = "Admin"
                         },
                         new
                         {
                             Id = 2,
                             Email = "Staff1@email.com",
-                            Password = "$2a$11$WuAusPFUztbx5yFTtEVGme9yBbuJ4bDidCHAk29u1g5kDD8lPKs4y",
+                            Password = "$2a$11$uAbsIcD8liWRU.fI.F50muNyckblCI6FVOm0MOKPnQVLEI.3HQF6y",
                             ShelterId = 1,
                             Username = "Staff1"
                         },
@@ -931,7 +946,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 3,
                             Email = "Staff2@email.com",
-                            Password = "$2a$11$N.tP754xq6odRU9XS8QM2eIYZpRvSINF82kOHnaLp7UJ/V.C.1ZzO",
+                            Password = "$2a$11$VQAr3HA1RdfveTTrftX88uriOvU6FSdYKApI58MO6d9oW6O5YKWyO",
                             ShelterId = 1,
                             Username = "Staff2"
                         },
@@ -939,7 +954,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 4,
                             Email = "Staff3@email.com",
-                            Password = "$2a$11$i5ys.TBHwt7Vigd9OYRgp.6mVAoLRJo38p2jYvQyjOn35tbVjlMTO",
+                            Password = "$2a$11$nPZbvzo4rax6eg1EoBLrU.U1bSz2EUM2xE3e7.fU4XH3JMNaXQEKW",
                             ShelterId = 2,
                             Username = "Staff3"
                         },
@@ -947,7 +962,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 5,
                             Email = "Staff4@email.com",
-                            Password = "$2a$11$2EmrYlEBChT1UkBU1lrLhOiUdzJf8Q43tlqVdf433uRLx6FX43eyO",
+                            Password = "$2a$11$uP1pVtr8qsUO35u48WCgaO.zByCJuI32P5/cnR0kUOpKJKsDUwfTq",
                             ShelterId = 2,
                             Username = "Staff4"
                         },
@@ -957,86 +972,9 @@ namespace RepositoryLayer.Migrations
                             Email = "Donor1@email.com",
                             Image = "https://storage.googleapis.com/pawfund-e7fdd.appspot.com/0a5124ee-0def-454f-bfdb-b652f97acb3d.png",
                             Location = "HCM",
-                            Password = "$2a$11$90SWbkgIRk9eiT8lACqE2OoP1kVKHYUHRWBmtUkGInlTZH8SqsMxi",
+                            Password = "$2a$11$NQTAD7O2TWT/ur3b1HeLSuCCSaQ9QWCYjsDMx.Tsq9E/ImJl3Vy4O",
                             Phone = "123456789",
                             Username = "Donor1"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Email = "Donor2@email.com",
-                            Password = "$2a$11$8bthYR0Vz14eIGU8MU3VheV1Pj9qcwuvE4npBoerpnueZkGjum6mi",
-                            Username = "Donor2"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Email = "Donor3@email.com",
-                            Password = "$2a$11$I.QEJU/j4krISgH77TOac.IT3cQzqDPv02.2BIp5V8wDxoMD/yAlG",
-                            Username = "Donor3"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Email = "Donor4@email.com",
-                            Password = "$2a$11$7DZu.WW.GUnZGJMPR2.4e.i4QcMCqkqjWg/C5Ipgp6h1Lztb7yQsy",
-                            Username = "Donor4"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Email = "Volunteer1@email.com",
-                            Password = "$2a$11$NmX9.b8e5ed3N1zEZgNRaeT8NcH7Su5Hyo.btic1Jr4Y92QRhSld.",
-                            Username = "Volunteer1"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Email = "Volunteer2@email.com",
-                            Password = "$2a$11$tYcU67kF0bqqwP28w7QFnOYNPtOfQGaBZZHCYQKOPSUdAlfIdQRBi",
-                            Username = "Volunteer2"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Email = "Volunteer3@email.com",
-                            Password = "$2a$11$oORlVTRVzl.oWkD34qDZee8RqFTKVYf.Qq9XRDoKlMkm90EX/g/P2",
-                            Username = "Volunteer3"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Email = "Volunteer4@email.com",
-                            Password = "$2a$11$mYFH5F2aXxdY00rgXJUWf.eBfZS.KVG0NrbQ3IBycdkVC6wovIKva",
-                            Username = "Volunteer4"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Email = "Adopter1@email.com",
-                            Password = "$2a$11$CDieSbkpbZoztaEEVn4ZxOuXv/vcvFxIJDOJiU6WlhlqPKkYke4Jq",
-                            Username = "Adopter1"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Email = "Adopter2@email.com",
-                            Password = "$2a$11$ijiZ/LmjrOp6oM134Vr8/O10NrrcJZ8.Qxah5NtBQExiEZsVxgfkC",
-                            Username = "Adopter2"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Email = "Adopter3@email.com",
-                            Password = "$2a$11$6xc3V6M2PnlwG2j0SkWssuJfqqPC4iNV.w3jikxEnmc09YfrA8HnC",
-                            Username = "Adopter3"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            Email = "Adopter4@email.com",
-                            Password = "$2a$11$twUVxp6vrLAGHb2tem0bo.KyJAVR91Z/3kVlOmOZMzh8Aq.0D51EC",
-                            Username = "Adopter4"
                         });
                 });
 
@@ -1065,205 +1003,102 @@ namespace RepositoryLayer.Migrations
                         {
                             UserId = 1,
                             RoleId = 1,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2776),
+                            CreatedDate = new DateTime(2024, 11, 10, 21, 32, 33, 183, DateTimeKind.Utc).AddTicks(702),
                             Status = true
                         },
                         new
                         {
                             UserId = 2,
                             RoleId = 2,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2799),
+                            CreatedDate = new DateTime(2024, 11, 10, 21, 32, 33, 183, DateTimeKind.Utc).AddTicks(717),
                             Status = true
                         },
                         new
                         {
                             UserId = 3,
                             RoleId = 2,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2800),
+                            CreatedDate = new DateTime(2024, 11, 10, 21, 32, 33, 183, DateTimeKind.Utc).AddTicks(718),
                             Status = true
                         },
                         new
                         {
                             UserId = 4,
                             RoleId = 2,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2801),
+                            CreatedDate = new DateTime(2024, 11, 10, 21, 32, 33, 183, DateTimeKind.Utc).AddTicks(719),
                             Status = true
                         },
                         new
                         {
                             UserId = 5,
                             RoleId = 2,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2802),
+                            CreatedDate = new DateTime(2024, 11, 10, 21, 32, 33, 183, DateTimeKind.Utc).AddTicks(720),
                             Status = true
                         },
                         new
                         {
                             UserId = 6,
                             RoleId = 3,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2802),
+                            CreatedDate = new DateTime(2024, 11, 10, 21, 32, 33, 183, DateTimeKind.Utc).AddTicks(722),
                             Status = true
                         },
                         new
                         {
                             UserId = 6,
                             RoleId = 4,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2803),
+                            CreatedDate = new DateTime(2024, 11, 10, 21, 32, 33, 183, DateTimeKind.Utc).AddTicks(722),
                             Status = true
                         },
                         new
                         {
-                            UserId = 7,
-                            RoleId = 3,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2804),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 7,
+                            UserId = 6,
                             RoleId = 5,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2804),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 8,
-                            RoleId = 3,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2805),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 8,
-                            RoleId = 4,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2806),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 8,
-                            RoleId = 5,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2806),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 9,
-                            RoleId = 3,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2807),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 10,
-                            RoleId = 4,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2808),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 10,
-                            RoleId = 3,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2808),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 11,
-                            RoleId = 4,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2809),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 11,
-                            RoleId = 5,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2810),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 12,
-                            RoleId = 4,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2810),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 12,
-                            RoleId = 3,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2811),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 12,
-                            RoleId = 5,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2811),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 13,
-                            RoleId = 4,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2812),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 14,
-                            RoleId = 5,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2813),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 15,
-                            RoleId = 5,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2813),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 15,
-                            RoleId = 3,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2815),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 16,
-                            RoleId = 5,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2816),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 16,
-                            RoleId = 4,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2816),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 17,
-                            RoleId = 5,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2817),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 17,
-                            RoleId = 4,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2818),
-                            Status = true
-                        },
-                        new
-                        {
-                            UserId = 17,
-                            RoleId = 3,
-                            CreatedDate = new DateTime(2024, 10, 25, 0, 25, 25, 265, DateTimeKind.Utc).AddTicks(2818),
+                            CreatedDate = new DateTime(2024, 11, 10, 21, 32, 33, 183, DateTimeKind.Utc).AddTicks(723),
                             Status = true
                         });
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.VnPayTransaction", b =>
+                {
+                    b.Property<int>("TransactionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("TransactionId"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("OrderDescription")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("OrderId")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PaymentMethod")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("VnPayResponseCode")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("TransactionId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("VnPayTransaction");
                 });
 
             modelBuilder.Entity("ModelLayer.Entities.AdoptionRegistrationForm", b =>
@@ -1363,9 +1198,7 @@ namespace RepositoryLayer.Migrations
                 {
                     b.HasOne("ModelLayer.Entities.Post", "Post")
                         .WithMany("FeedBacks")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PostId");
 
                     b.HasOne("ModelLayer.Entities.User", "User")
                         .WithMany()
@@ -1374,6 +1207,17 @@ namespace RepositoryLayer.Migrations
                         .IsRequired();
 
                     b.Navigation("Post");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entities.Momo.MomoPay", b =>
+                {
+                    b.HasOne("ModelLayer.Entities.User", "User")
+                        .WithMany("MomoPays")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
@@ -1471,6 +1315,17 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("ModelLayer.Entities.VnPayTransaction", b =>
+                {
+                    b.HasOne("ModelLayer.Entities.User", "User")
+                        .WithMany("VnPay")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Domain.Entities.Role", b =>
                 {
                     b.Navigation("UserRoles");
@@ -1521,6 +1376,8 @@ namespace RepositoryLayer.Migrations
 
                     b.Navigation("Events");
 
+                    b.Navigation("MomoPays");
+
                     b.Navigation("Notifications");
 
                     b.Navigation("Pets");
@@ -1528,6 +1385,8 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("Posts");
 
                     b.Navigation("UserRoles");
+
+                    b.Navigation("VnPay");
                 });
 #pragma warning restore 612, 618
         }
