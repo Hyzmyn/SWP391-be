@@ -113,15 +113,26 @@ namespace ServiceLayer.Services
             return petResponse;
         }
 
-        // Tạo mới Pet
         public async Task<PetResponseModel> CreatePetAsync(PetCreateRequestModel createPetRequest)
         {
+            // Kiểm tra validate cho Age và Size
+            if (createPetRequest.Age.HasValue && createPetRequest.Age < 0)
+            {
+                throw new ArgumentException("Tuổi Pet không được nhỏ hơn 0.");
+            }
+
+            if (!string.IsNullOrEmpty(createPetRequest.Size) && double.TryParse(createPetRequest.Size, out double sizeValue) && sizeValue < 0)
+            {
+                throw new ArgumentException("Diện tích không được nhỏ hơn 0.");
+            }
+
             string userImage = null;
 
             if (createPetRequest.Image != null && createPetRequest.Image.Length > 0)
             {
                 userImage = await _fileUploadService.UploadFileAsync(createPetRequest.Image);
             }
+
             var pet = new Pet
             {
                 ShelterID = createPetRequest.ShelterID,

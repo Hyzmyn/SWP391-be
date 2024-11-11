@@ -180,7 +180,7 @@ namespace SWP391_PawFund.Controllers
 
                 if (shelter == null)
                 {
-                    return NotFound(new { Message = "Shelter not found or user does not have access." });
+                    return NotFound(new { Message = "Không tìm thấy trại cứu hộ hoặc người dùng không có quyền truy cập." });
                 }
 
                 var shelterResponse = new ShelterResponseModel
@@ -249,9 +249,10 @@ namespace SWP391_PawFund.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = "An error occurred while retrieving the shelter.", Details = ex.Message });
+                return StatusCode(500, new { Message = "Đã xảy ra lỗi khi truy xuất trại.", Details = ex.Message });
             }
         }
+
         [HttpPost("Create_Shelter")]
         public async Task<ActionResult<ShelterResponseModel>> CreateShelter([FromForm] ShelterRequestModel shelterRequest)
         {
