@@ -117,7 +117,7 @@ namespace ServiceLayer.Services
 				OrderId = response.OrderId,
 				Token = response.Token,
 				VnPayResponseCode = response.VnPayResponseCode,
-				CreatedDate = DateTime.UtcNow
+				CreatedDate = DateTime.UtcNow.AddHours(7)
 			};
 
 			//_context.VnPayTransactions.Add(transaction);
